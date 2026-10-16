@@ -17,22 +17,20 @@ Environment: macOS, Node 20, JDK 17 + Android SDK installed on 2026-10-16 (~3 GB
 `npm ci` ✅.
 `./gradlew assembleDebug -PreactNativeArchitectures=arm64-v8a` ✅ (JDK 17, SDK 36, NDK 27.1; 13m53s; 127 MB `app-debug.apk`, package `com.vaani.voiceagent`, all permissions present, sherpa-onnx + onnxruntime native libs packaged). Compiles nitro-voice Kotlin/C++ and resolves the jitpack AAR. Not installed or run on a phone. Release build not attempted. `benchmarks/run_wer.py` ✅ on synthetic data (hand-checked: 5.3 % / 28.6 %).
 
-## Emulator run (2026-10-16, Android 14 arm64 AVD `vaani`, no phone available)
+## Real-phone run (2026-10-16, Redmi Note 12 Pro 5G, HyperOS 2 / Android 14, arm64, 5.5 GB RAM; release APK)
 
-Run with `npx expo run:android --device vaani` and Metro. Found and fixed two bugs unit tests could not catch:
+Verified **on the phone**:
 
-1. **Model download died at 536/537 MB**: an espeak data file is named `!v/Mr serious`; the manifest URL was not percent-encoded. Fixed in `scripts/gen_model_manifest.py`; `tests/download.test.ts` now checks every URL.
-2. **App process killed when Kokoro loaded**: nitro-voice 0.1.1 builds the Kokoro config with no `lexicon`/`lang`, and sherpa-onnx aborts for multi-lingual Kokoro v1.0. Fixed with `patches/react-native-nitro-voice+0.1.1.patch` (applied by `postinstall: patch-package`): `lang = "hi"` and `lexicon-us-en.txt` (added to the Kokoro pack). **Whether Hindi/English then sound correct is still unverified** (needs listening on a device).
+- Install, first-launch model download (542 MB over a hotspot), permissions, Whisper + Kokoro + VAD load, "listening" with the mic live.
+- **Real microphone speech recognised on-device** (Whisper-small): "What is the temperature for Bangalore tomorrow?" (spoken "weather forecast"; a one-word difference) and "Who is this?", answered by the agent. Ambient speech in the room is also transcribed and answered, so an always-listening mic needs a quiet room or the mute button.
+- Tools end to end with the live Groq `gpt-oss-120b`: weather (Open-Meteo), alarm (also seen in the system Clock on the emulator), reminder (emulator), **calendar read** (the agent read a real event from the phone's calendar).
+- English mode replies in English; Hinglish mode in Devanagari + Latin (explicit prompt rule from the toggle).
+- Latency from the overlay, first tool turn on a phone hotspot: first audio **7.4 s** (LLM first token 1.45 s, weather tool 4.4 s, first TTS chunk 4.2 s). A direct, tool-free turn was faster but not yet recorded as a clean series. These are single observations, not medians.
+- New voice UI: orb states (listening / thinking / speaking / muted), live captions, stop button, mute that still allows typing, menu with language, transcript and developer tools.
 
-Verified on the emulator (Android 14 arm64, typed input; microphone speech and audio quality NOT assessed):
+Bugs found on the device and fixed (all with tests): the agent **heard its own voice** (nitro-voice `speak()` resolves when audio is copied into a ~1 s player buffer, not when played; mic now reopens after the buffer drains, and short transcripts made only of the agent's own words are dropped as echo); Whisper annotations such as `(static)` and `[BLANK_AUDIO]` and stray vowel marks were being answered; the transcript cleanup dropped valid short Hindi words like "हाँ"; mute blocked typed input; the echo guard blocked typed input; system bars overlapped the old UI.
 
-- Install, model download with size check, permissions flow, Whisper + Kokoro + VAD load, "listening" state.
-- **Full agent turns through Groq `openai/gpt-oss-120b`:** weather ("What is the weather in Pune tomorrow") called `get_weather(Pune, 2026-10-17)`, live Open-Meteo succeeded, reply spoken in Devanagari Hindi (Hinglish mode). Alarm ("Set an alarm for 7 30 AM tomorrow") called `set_alarm(7, 30)` and the **system Clock app showed a real "Voice assistant alarm 7:30 AM Tomorrow"**. Reminder ("Remind me to call mom tomorrow at 9 AM") called `set_reminder(2026-10-17T09:00+05:30)` and succeeded; the agent confirmed "कल सुबह नौ बजे".
-- Bugs the emulator exposed and that are fixed: download URL encoding; Kokoro abort (nitro-voice patch); the agent confirmed the alarm as "seven o'clock" when it was 7:30 (prompt rule + `alarm_12h` field); the first reminder timed out behind a permission dialog (permissions now requested at launch; device tool timeouts raised to 5-8 s); tool errors now visible in the trace.
-- A failing tool was reported honestly ("I didn't get that") and never as success.
-
-**Not verified:** `get_schedule` (calendar read) timed out once on the starved emulator and was not re-run (cause unknown: slow machine vs real hang); the scheduled reminder firing; real microphone speech and Whisper accuracy (the emulator mic produced noise transcripts such as "ने न", which the transcript filter does not catch); Kokoro Hindi/English audio quality; any latency number (the emulator on this 8 GB Mac took 20+ s for TTS and is not representative); Piper fallback; offline-mode screen; benchmark screen.
-The emulator became unusable when the Mac ran out of memory (about 80 MB free, swap 90 % full); testing stopped there.
+**Still not verified:** Hindi speech recognition accuracy and Hindi/Hinglish voice quality (needs a person speaking and listening); the 40-sentence WER table; a clean latency series (n >= 10 per type); reminder delivery on the phone; offline (airplane-mode) screen; Piper fallback voice; the demo video. Known weakness: first audio of 4-7 s on tool turns, dominated by Kokoro's first chunk on this CPU (hardcoded 2 threads in nitro-voice) and network.
 
 ## Milestones
 
