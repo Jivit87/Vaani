@@ -33,3 +33,16 @@ Each entry: what, why, and what would change it.
 **D15 — Mic reopens only after the speaker buffer drains; own-voice echo is filtered.** nitro-voice 0.1.1 resolves `speak()` after copying audio into a ~1 s `AudioTrack` buffer, so a turn that ends the moment synthesis ends leaves up to a second of speech still playing. On the Redmi the recogniser heard "Celsius." from the agent's own reply and answered it. `TtsQueue.playbackDone()` waits `min(lastAudioMs, 1000) + 350 ms`, and `isEcho()` drops short mic transcripts made only of words from the reply spoken in the last 8 s. Typed input is exempt from the echo guard and from mute.
 
 **D16 — Voice-first UI built from core React Native.** Orb (stacked gradients and translucent rings, animated with the native driver), live captions from `onSpeaking`, one large mic/stop button, and developer tools behind a menu. Added only `react-native-safe-area-context`, `expo-linear-gradient` and `expo-keep-awake`; icons are drawn with Views, so there is no icon font or SVG dependency. The orb pulse while speaking is a random rhythm because the native player exposes no audio level.
+
+**D17 — Review of the external "Performance & Quality Improvement Plan" (2026-10-16).** Implemented: compact prompt (-31 % tokens) and schema descriptions; LLM connection warm-up; geocoding and forecast caches (15 min) with one retry on 429/5xx; Whisper blocklist limited to genuine hallucinations plus repetition-loop detection; Hindi-word Roman-to-Devanagari dictionary (Hindi-origin words only, applied in Hinglish sessions or when the sentence already contains Devanagari); `EXPO_PUBLIC_TTS_VOICE` voice names; broader offline detection; 8 more noisy eval cases and a p90 TTFT warning; a per-segment STT decode-time log line (`adb logcat -s NitroSTT`).
+
+Changed or rejected, with reasons:
+
+- **Blocklist entries "yes", "no", "yeah", "right", "namaste", "shukriya", "a", "the", "I", "so"** are valid replies to a clarifying question ("Do you want 7 AM?" "yes"); only real hallucinations are blocked.
+- **Pre-speaking the filler lines at launch** would be audible, because `speak()` plays through the speaker; the existing `speak('.')` warm-up stays.
+- **Dynamic tool filtering** by keyword would miss "wake me up at five" and similar; Groq's first token is already ~0.7 s, so the gain does not justify the false negatives.
+- **Lower `maxTokens` on the answer step** can truncate a reasoning model before it answers.
+- **STT confidence filtering** is impossible: nitro-voice's `onTranscript` receives only the text.
+- **`sttDecodeMs` in the turn metrics** has no honest source (no end-of-speech timestamp), so it is not reported; the native log line gives the decode time for offline analysis instead.
+- **"The assignment specifies NVIDIA"** does not match the original brief, which also allowed Groq; Groq is the default (D14) and NVIDIA stays selectable.
+- **Whisper threads 2 to 4** is not applied: it needs an A/B measurement with real speech on the phone (thermal throttling is possible), and the first logged numbers show decode takes about 2.0-2.5 s even for 0.6 s of audio (Whisper pads to a fixed window), so it is the largest on-device latency item. Experiment: speak 8 sentences at each setting and compare `decode_ms` from `adb logcat -s NitroSTT`.
