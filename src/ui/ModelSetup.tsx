@@ -1,10 +1,10 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { packDir, requiredPacks } from '../session/runtime';
-import { ensurePack } from '../speech/download';
+import { ensurePack, isPackComplete } from '../speech/download';
 import { expoFsOps } from '../speech/fsOps';
-import { packBytes, type PackId } from '../speech/packs';
+import { packBytes, type ModelPack, type PackId } from '../speech/packs';
 import { Button } from './Button';
 import { Orb } from './Orb';
 import { colors, s } from './theme';
@@ -14,12 +14,26 @@ const mb = (n: number) => `${Math.round(n / 1e6)} MB`;
 /** First launch: fetch the on-device speech models once, with progress, retry and resume. */
 export function ModelSetup({ onDone }: { onDone: () => void }) {
   const insets = useSafeAreaInsets();
-  const packs = requiredPacks();
+  const [packs, setPacks] = useState<ModelPack[]>(requiredPacks);
   const total = packs.reduce((n, p) => n + packBytes(p), 0);
   const [done, setDone] = useState(0);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const ctl = useRef<AbortController | null>(null);
+
+  // Only packs that are not already complete count toward the size shown and the progress bar.
+  useEffect(() => {
+    let alive = true;
+    void Promise.all(requiredPacks().map((p) => isPackComplete(p, packDir(p.id as PackId), expoFsOps))).then(
+      (done) => {
+        const missing = requiredPacks().filter((_, i) => !done[i]);
+        if (alive && missing.length) setPacks(missing);
+      },
+    );
+    return () => {
+      alive = false;
+    };
+  }, []);
 
   const start = useCallback(async () => {
     setBusy(true);
@@ -47,8 +61,7 @@ export function ModelSetup({ onDone }: { onDone: () => void }) {
     } finally {
       setBusy(false);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [onDone]);
+  }, [onDone, packs]);
 
   const pct = Math.min(100, Math.round((done / total) * 100));
   return (

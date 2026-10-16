@@ -62,6 +62,16 @@ def pack_piper_hi(repo="csukuangfj/vits-piper-hi_IN-pratham-medium") -> dict:
     return {"id": "piper-hi-pratham-medium", "files": files}
 
 
+def pack_piper_en(repo="csukuangfj/vits-piper-en_US-amy-medium") -> dict:
+    s = tree(repo)
+    files = [
+        entry(repo, "en_US-amy-medium.onnx", "model.onnx", s),
+        entry(repo, "tokens.txt", "tokens.txt", s),
+    ]
+    files += [entry(repo, p, p, s) for p in sorted(s) if p.startswith("espeak-ng-data/")]
+    return {"id": "piper-en-amy-medium", "files": files}
+
+
 def pack_vad() -> dict:
     url = "https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/silero_vad.onnx"
     req = urllib.request.Request(url, method="HEAD")
@@ -71,7 +81,7 @@ def pack_vad() -> dict:
 
 
 def main() -> int:
-    packs = [pack_whisper_small(), pack_kokoro(), pack_piper_hi(), pack_vad()]
+    packs = [pack_whisper_small(), pack_kokoro(), pack_piper_hi(), pack_piper_en(), pack_vad()]
     OUT.write_text(json.dumps({"packs": packs}, indent=1, ensure_ascii=False) + "\n")
     for p in packs:
         total = sum(f["size"] for f in p["files"])

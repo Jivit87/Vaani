@@ -13,10 +13,15 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import type { Lang, TraceEvent } from '../agent/types';
+import { config } from '../config';
 import { toCsv, type TurnMetrics } from '../pipeline/metrics';
 import type { AgentStatus } from '../pipeline/voiceAgent';
 import { ensureMicPermission, ensureToolPermissions } from '../session/permissions';
-import { createRuntime, type Runtime } from '../session/runtime';
+import { isPackComplete } from '../speech/download';
+import { expoFsOps } from '../speech/fsOps';
+import { getPack } from '../speech/packs';
+import type { TtsEngineChoice } from '../speech/ttsSelect';
+import { createRuntime, packDir, type Runtime } from '../session/runtime';
 import { BenchmarkScreen } from './BenchmarkScreen';
 import { Button } from './Button';
 import { Captions } from './Captions';
@@ -42,6 +47,8 @@ export function VoiceScreen() {
   useKeepAwake();
   const insets = useSafeAreaInsets();
   const [lang, setLang] = useState<Lang>('en');
+  const [voice, setVoice] = useState<TtsEngineChoice>(config.ttsEngine);
+  const [naturalAvailable, setNaturalAvailable] = useState(false);
   const [switching, setSwitching] = useState(false);
   const [status, setStatus] = useState<AgentStatus>('idle');
   const [userText, setUserText] = useState('');
@@ -108,6 +115,27 @@ export function VoiceScreen() {
     // The runtime is created once per attempt; language changes go through setLanguage.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [attempt]);
+
+  // The "Natural" voice is only offered when its files are already on the phone.
+  useEffect(() => {
+    const kokoro = getPack('kokoro-int8-multi-lang-v1_0');
+    void isPackComplete(kokoro, packDir(kokoro.id as never), expoFsOps).then(setNaturalAvailable);
+  }, []);
+
+  const switchVoice = async (next: TtsEngineChoice) => {
+    if (next === voice || switching) return;
+    setSwitching(true);
+    setStatus('thinking');
+    try {
+      await rt.current?.setTtsEngine(next);
+      setVoice(next);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : String(e));
+      setStatus('error');
+    } finally {
+      setSwitching(false);
+    }
+  };
 
   const switchLang = async (next: Lang) => {
     if (next === lang || switching) return;
@@ -240,6 +268,12 @@ export function VoiceScreen() {
         onLang={(l) => {
           setMenu(false);
           void switchLang(l);
+        }}
+        voice={voice}
+        naturalAvailable={naturalAvailable}
+        onVoice={(v) => {
+          setMenu(false);
+          void switchVoice(v);
         }}
         onNew={newConversation}
         onOpen={open}

@@ -12,7 +12,11 @@ export interface ModelPack {
 }
 
 export type PackId =
-  'whisper-small-int8' | 'kokoro-int8-multi-lang-v1_0' | 'piper-hi-pratham-medium' | 'silero-vad';
+  | 'whisper-small-int8'
+  | 'kokoro-int8-multi-lang-v1_0'
+  | 'piper-hi-pratham-medium'
+  | 'piper-en-amy-medium'
+  | 'silero-vad';
 
 export const PACKS = manifest.packs as ModelPack[];
 
@@ -23,6 +27,3 @@ export function getPack(id: PackId): ModelPack {
 }
 
 export const packBytes = (p: ModelPack) => p.files.reduce((n, f) => n + f.size, 0);
-
-/** Packs the default pipeline needs. Piper is an opt-in fallback voice. */
-export const REQUIRED_PACKS: PackId[] = ['silero-vad', 'whisper-small-int8', 'kokoro-int8-multi-lang-v1_0'];

@@ -27,9 +27,18 @@ export interface TtsEngine {
 
 export type SttLanguage = 'en' | 'hi';
 
+export interface TtsOptions {
+  /** Native directory of the voice pack. */
+  dir: string;
+  type: 'kokoro' | 'vits';
+  /** Kokoro speaker id (31 = hf_alpha); Piper voices are single speaker, so 0. */
+  speakerId: number;
+  speed: number;
+}
+
 export interface SpeechFactory {
   createStt(language: SttLanguage): Promise<SttEngine>;
-  createTts(): Promise<TtsEngine>;
+  createTts(options: TtsOptions): Promise<TtsEngine>;
 }
 
 export const FILLER_TEXT: Record<Lang, string> = {

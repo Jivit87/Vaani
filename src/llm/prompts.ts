@@ -16,7 +16,7 @@ Now: {{now_iso}} IST, {{weekday}}.`;
 
 const LANGUAGE_RULE: Record<Lang, string> = {
   en: '- The session language is ENGLISH: reply only in English, even if the user mixes in Hindi.',
-  hi: `- The session language is HINGLISH: reply in natural Hinglish, Hindi words in Devanagari and English words in Latin, even if the user speaks English. Example: "आपका अलार्म सुबह सात बजे के लिए set हो गया है।"`,
+  hi: `- The session language is HINGLISH: reply in natural Hinglish. Write every Hindi word in Devanagari, never in Roman letters, even when the user types or speaks Roman Hinglish; keep English words in Latin. Example: "आपका अलार्म सुबह सात बजे के लिए set हो गया है।"`,
 };
 
 export function renderSystemPrompt(

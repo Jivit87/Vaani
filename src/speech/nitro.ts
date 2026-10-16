@@ -1,14 +1,9 @@
 import { NitroSTT, NitroTTS } from 'react-native-nitro-voice';
-import type { SpeechFactory, SpokenInfo, SttEngine, SttLanguage, TtsEngine } from './types';
+import type { SpeechFactory, SpokenInfo, SttEngine, SttLanguage, TtsEngine, TtsOptions } from './types';
 
 export interface NitroPaths {
   whisperDir: string;
   vadPath: string;
-  ttsDir: string;
-  ttsType: 'kokoro' | 'vits';
-  /** Kokoro speaker id (31 = hf_alpha, Hindi female); ignored for Piper. */
-  speakerId: number;
-  speed: number;
 }
 
 export { KOKORO_VOICES } from './voices';
@@ -27,12 +22,12 @@ export function createNitroSpeech(paths: NitroPaths): SpeechFactory {
       };
     },
 
-    async createTts(): Promise<TtsEngine> {
+    async createTts(options: TtsOptions): Promise<TtsEngine> {
       const tts = await NitroTTS.create({
-        modelDir: paths.ttsDir,
-        type: paths.ttsType,
-        speakerId: paths.speakerId,
-        speed: paths.speed,
+        modelDir: options.dir,
+        type: options.type,
+        speakerId: options.speakerId,
+        speed: options.speed,
       });
       return {
         sampleRate: tts.sampleRate,

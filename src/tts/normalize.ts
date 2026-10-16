@@ -1,4 +1,6 @@
 import { romanizedHindiToDevanagari } from './hinglishDict';
+import { loanwordsToDevanagari } from './loanwords';
+import { transliterateText } from './translit';
 import { numberToEnglish, numberToHindi } from './numbers';
 
 const DEVANAGARI = /[ऀ-ॿ]/;
@@ -30,11 +32,14 @@ function hindiClock(h: number, m: number): string {
 export interface NormalizeOptions {
   /** Session is Hinglish: Roman Hindi words are converted to Devanagari even if no Devanagari is present yet. */
   hinglish?: boolean;
+  /** The voice is Hindi-only (Piper hi_IN): English loanwords are respelled in Devanagari too. */
+  devanagariLoanwords?: boolean;
 }
 
 export function normalizeForTts(raw: string, opts: NormalizeOptions = {}): string {
   // Converting first lets the rest of the pipeline speak numbers and times in Hindi for a Hinglish sentence.
-  const input = opts.hinglish || DEVANAGARI.test(raw) ? romanizedHindiToDevanagari(raw) : raw;
+  let input = opts.hinglish || DEVANAGARI.test(raw) ? romanizedHindiToDevanagari(raw) : raw;
+  if (opts.devanagariLoanwords) input = transliterateText(loanwordsToDevanagari(input));
   const hindi = DEVANAGARI.test(input);
   const num = hindi ? numberToHindi : numberToEnglish;
   let s = input;

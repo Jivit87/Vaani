@@ -74,3 +74,29 @@ describe('Roman Hindi → Devanagari', () => {
     }
   });
 });
+
+describe('English loanwords for a Hindi-only voice', () => {
+  const opts = { hinglish: true, devanagariLoanwords: true };
+  it('respells loanwords and the meridiem in Devanagari', () => {
+    expect(normalizeForTts('Aapka alarm kal subah 7 baje set ho gaya hai', opts)).toBe(
+      'आपका अलार्म कल सुबह सात बजे सेट हो गया है',
+    );
+    expect(normalizeForTts('Meeting at 5 PM', opts)).toBe('मीटिंग अत पाँच पी एम');
+  });
+  it('approximates any other Latin word phonetically, since this voice cannot read Latin letters', () => {
+    const out = normalizeForTts('I am in Pune', opts);
+    expect(out).not.toMatch(/[a-z]/i);
+    expect(out).toBe('इ अम इन पुने');
+  });
+  it('is off by default, so English and Kokoro voices read Latin text unchanged', () => {
+    expect(normalizeForTts('Your alarm is set', { hinglish: true })).toBe('Your alarm is set');
+  });
+  it('has a well-formed loanword list', async () => {
+    const { LOANWORDS } = await import('../src/tts/loanwords');
+    expect(LOANWORDS.size).toBeGreaterThanOrEqual(120);
+    for (const [latin, deva] of LOANWORDS) {
+      expect(latin).toMatch(/^[a-z]+$/);
+      expect(deva).toMatch(/^[\u0900-\u097f-]+$/);
+    }
+  });
+});

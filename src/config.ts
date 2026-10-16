@@ -44,6 +44,7 @@ export const config = {
     clean(process.env.EXPO_PUBLIC_TTS_SPEAKER_ID),
   ),
   ttsSpeed: Number(clean(process.env.EXPO_PUBLIC_TTS_SPEED) ?? 1.0),
-  /** 'kokoro' (default) or 'piper-hi' (VITS Hindi fallback if Kokoro Hindi sounds wrong on device). */
-  ttsEngine: (clean(process.env.EXPO_PUBLIC_TTS_ENGINE) ?? 'kokoro') as 'kokoro' | 'piper-hi',
+  /** 'piper' (default, fast; voice follows the session language) or 'kokoro' (nicer, slower than real time). */
+  ttsEngine: (clean(process.env.EXPO_PUBLIC_TTS_ENGINE) === 'kokoro' ? 'kokoro' : 'piper') as
+    'piper' | 'kokoro',
 };
