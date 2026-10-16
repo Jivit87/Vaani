@@ -301,6 +301,16 @@ describe('VoiceAgent', () => {
     expect(h.events.metrics).toHaveLength(2);
   });
 
+  it('tells the user plainly when the free quota is used up', async () => {
+    const { LlmHttpError } = await import('../src/llm/client');
+    const h = setup(async () => {
+      throw new LlmHttpError(429, 'Rate limit reached');
+    });
+    await h.agent.start();
+    await h.agent.submitText('hello there');
+    expect(h.spoken[0]).toContain('quota');
+  });
+
   it('speaks a generic error line for other failures', async () => {
     const h = setup(async () => {
       throw new Error('HTTP 500');

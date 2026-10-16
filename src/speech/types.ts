@@ -42,6 +42,11 @@ export const OFFLINE_TEXT: Record<Lang, string> = {
   hi: 'अभी internet नहीं है, पर मैं सुन सकती हूँ।',
 };
 
+export const RATE_LIMIT_TEXT: Record<Lang, string> = {
+  en: "I've used up my free thinking quota for a bit. Please try again in a few minutes.",
+  hi: 'मेरा free कोटा अभी ख़त्म हो गया है। कुछ मिनट बाद फिर कोशिश कीजिए।',
+};
+
 export const ERROR_TEXT: Record<Lang, string> = {
   en: 'Sorry, something went wrong. Please try again.',
   hi: 'माफ़ कीजिए, कुछ गड़बड़ हो गई। फिर से कोशिश कीजिए।',

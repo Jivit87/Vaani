@@ -1,8 +1,15 @@
 import http from 'node:http';
 import type { AddressInfo } from 'node:net';
-import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import type { ModelCfg } from '../src/agent/types';
-import { callWithFallback, createLlmClient, LlmHttpError, LlmTimeoutError } from '../src/llm/client';
+import {
+  callWithFallback,
+  createLlmClient,
+  LlmHttpError,
+  LlmTimeoutError,
+  parseRetryAfterMs,
+  resetModelCooldowns,
+} from '../src/llm/client';
 import { TOOLS } from '../src/llm/tools.schema';
 
 const sse = (obj: unknown) => `data: ${JSON.stringify(obj)}\n\n`;
@@ -177,5 +184,55 @@ describe('callWithFallback', () => {
       ),
     ).rejects.toThrow();
     expect(calls).toBe(1);
+  });
+});
+
+describe('rate-limit cooldowns', () => {
+  beforeEach(() => resetModelCooldowns());
+  const limited = new LlmHttpError(
+    429,
+    'Rate limit reached ... Please try again in 3m13.968s. Need more tokens?',
+  );
+  const ok = (text: string) => async (req: any) => {
+    req.onText(text);
+    return { text, toolCalls: [], ttftMs: 1, totalMs: 1 };
+  };
+
+  it('parses the provider hint and falls back to a sane default', () => {
+    expect(parseRetryAfterMs('try again in 3m13.968s')).toBe(193_968);
+    expect(parseRetryAfterMs('try again in 40.176s')).toBe(40_176);
+    expect(parseRetryAfterMs('try again in 1h2m5s')).toBe(15 * 60_000); // capped at 15 minutes
+    expect(parseRetryAfterMs('try again in 250ms')).toBe(60_000); // no usable seconds part
+    expect(parseRetryAfterMs('no hint here')).toBe(60_000);
+  });
+
+  it('skips a rate-limited model for its cooldown, then tries it again', async () => {
+    let clock = 0;
+    const calls: string[] = [];
+    const client = async (req: any) => {
+      calls.push(req.model.id);
+      if (req.model.id === 'big') throw limited;
+      return ok('hi')(req);
+    };
+    const models = { primary: cfg('big'), backup: cfg('small') };
+    const run = () =>
+      callWithFallback(client as any, models, { messages: [], tools: [], onText: () => {} }, () => clock);
+    await run(); // big fails, small answers
+    await run(); // big is skipped
+    expect(calls).toEqual(['big', 'small', 'small']);
+    clock = 200_000; // past the 193 s cooldown
+    await run();
+    expect(calls.slice(3)).toEqual(['big', 'small']);
+  });
+
+  it('tries everything anyway when every model is cooling, and rethrows the last error', async () => {
+    const client = async () => {
+      throw limited;
+    };
+    const models = { primary: cfg('a'), backup: cfg('b') };
+    const run = () =>
+      callWithFallback(client as any, models, { messages: [], tools: [], onText: () => {} }, () => 0);
+    await expect(run()).rejects.toBe(limited);
+    await expect(run()).rejects.toBe(limited); // still attempted, not silently swallowed
   });
 });

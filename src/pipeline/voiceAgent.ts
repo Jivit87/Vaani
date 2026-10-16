@@ -1,7 +1,8 @@
 import type { Memory } from '../agent/memory';
 import { runTurn, type AgentDeps } from '../agent/runTurn';
 import type { Lang, TraceEvent } from '../agent/types';
-import { ERROR_TEXT, FILLER_TEXT, OFFLINE_TEXT, type SttEngine } from '../speech/types';
+import { isRateLimit } from '../llm/client';
+import { ERROR_TEXT, FILLER_TEXT, OFFLINE_TEXT, RATE_LIMIT_TEXT, type SttEngine } from '../speech/types';
 import type { TurnMetrics } from './metrics';
 import { TtsQueue } from './ttsQueue';
 import { isEcho, isNoiseTranscript } from './transcriptFilter';
@@ -189,7 +190,9 @@ export class VoiceAgent {
     } catch (e) {
       if (!this.ctl.signal.aborted) {
         metrics.error = e instanceof Error ? e.message : String(e);
-        this.d.queue.say((isNetworkError(e) ? OFFLINE_TEXT : ERROR_TEXT)[lang]);
+        this.d.queue.say(
+          (isRateLimit(e) ? RATE_LIMIT_TEXT : isNetworkError(e) ? OFFLINE_TEXT : ERROR_TEXT)[lang],
+        );
       }
     }
 
