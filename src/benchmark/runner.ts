@@ -6,7 +6,7 @@ import { parseWav } from './wav';
 
 export const benchmarkAudioDir = () => new Directory(Paths.document, 'benchmark', 'audio');
 
-/** Whisper model folders under models/ (push extra candidates with adb; see README). */
+// whisper model folders under models/ (push extra candidates with adb, see README)
 export function listWhisperModels(): string[] {
   const root = new Directory(modelsRoot());
   if (!root.exists) return [];
@@ -30,7 +30,7 @@ const SILENCE_TAIL_S = 1.5; // lets the VAD see the end of speech so it flushes 
 const FIRST_TRANSCRIPT_TIMEOUT_MS = 30_000;
 const EXTRA_SEGMENT_WAIT_MS = 600;
 
-/** Language is inferred from the file prefix: en_*.wav / hi_*.wav. */
+// language comes from the file prefix: en_*.wav / hi_*.wav
 export const languageOf = (file: string): 'en' | 'hi' => (file.toLowerCase().startsWith('hi_') ? 'hi' : 'en');
 
 export async function runBenchmark(
@@ -79,7 +79,7 @@ export async function runBenchmark(
           let hyp = '';
           try {
             await first;
-            await new Promise((r) => setTimeout(r, EXTRA_SEGMENT_WAIT_MS)); // collect later VAD segments
+            await new Promise((r) => setTimeout(r, EXTRA_SEGMENT_WAIT_MS)); // wait a bit for later VAD segments
             hyp = pending.join(' ').trim();
           } catch {
             hyp = '';

@@ -13,7 +13,7 @@ export interface VoiceAgentEvents {
   onStatus(s: AgentStatus): void;
   onTranscript(text: string): void;
   onReply(text: string): void;
-  /** Each sentence as it is handed to the speaker, for live captions. */
+  // every sentence as it goes to the speaker, for live captions
   onSpeaking?(sentence: string): void;
   onTrace(e: TraceEvent): void;
   onMetrics(m: TurnMetrics): void;
@@ -23,18 +23,18 @@ export interface VoiceAgentDeps {
   stt: SttEngine;
   queue: TtsQueue;
   memory: Memory;
-  /** Everything runTurn needs except the speaker, which this class provides. */
+  // everything runTurn needs except the speaker, which this class supplies
   agent: Omit<AgentDeps, 'speaker' | 'onTrace'>;
   summarize?: () => Promise<void>;
   events: VoiceAgentEvents;
   now?: () => number;
 }
 
-/** After a reply, short transcripts made of its own words are treated as echo for this long. */
+// for this long after a reply, short transcripts made of its own words count as echo
 const ECHO_WINDOW_MS = 8000;
 
 const isNetworkError = (e: unknown) => {
-  if (e instanceof TypeError) return true; // what fetch throws when the network is down
+  if (e instanceof TypeError) return true; // fetch throws this when there's no network
   const code = (e as { code?: unknown } | null)?.code;
   if (code === 'ECONNABORTED' || code === 'ENETUNREACH' || code === 'ENOTFOUND' || code === 'ECONNREFUSED')
     return true;
@@ -43,10 +43,8 @@ const isNetworkError = (e: unknown) => {
   );
 };
 
-/**
- * Half-duplex loop: listen → (mic off) think/act → speak → (mic on) listen.
- * Transcripts that arrive while a turn is running are dropped, not queued.
- */
+// half-duplex loop: listen, mic off, think/act, speak, mic on.
+// anything heard while a turn is running is dropped, not queued.
 export class VoiceAgent {
   private status: AgentStatus = 'idle';
   private busy = false;
@@ -72,12 +70,12 @@ export class VoiceAgent {
     this.setStatus('idle');
   }
 
-  /** 'transcribe' reports what was heard and never calls the LLM (offline STT test). */
+  // 'transcribe' just reports what was heard and never calls the LLM (offline STT test)
   setMode(mode: 'agent' | 'transcribe') {
     this.mode = mode;
   }
 
-  /** Mic off: nothing is heard until unmuted. A turn already running finishes normally. */
+  // mic off: nothing is heard until unmuted. a turn already running finishes normally.
   setMuted(muted: boolean) {
     this.muted = muted;
     if (this.busy) return; // the end of the turn applies it
@@ -89,18 +87,18 @@ export class VoiceAgent {
     }
   }
 
-  /** Typed input path, used by tests and the on-screen text box. */
+  // typed input, used by the text box and the tests
   submitText(text: string) {
     return this.handleTranscript(text, false);
   }
 
-  /** Barge-in / manual stop: cancel the LLM stream and the speech, go back to listening. */
+  // stop button: cancel the LLM stream and the speech, go back to listening
   async interrupt() {
     this.ctl?.abort();
     await this.d.queue.cancel();
   }
 
-  /** Queue callback wiring: call once after constructing the TtsQueue. */
+  // call once after building the TtsQueue
   onFirstAudio = (firstChunkMs: number) => {
     this.ttsFirstChunkMs = firstChunkMs;
     this.firstAudioMs = (this.d.now ?? Date.now)() - this.turnStart;
@@ -112,11 +110,11 @@ export class VoiceAgent {
     this.d.events.onStatus(s);
   }
 
-  /** `fromMic` is false for typed text, which mute must not block. */
+  // fromMic is false for typed text, which mute shouldn't block
   private async handleTranscript(raw: string, fromMic = true) {
     const text = raw.trim();
     if (this.muted && fromMic) return;
-    // Visible in `adb logcat -s ReactNativeJS`: shows what the recognizer produced and why a turn was skipped.
+    // shows in adb logcat (ReactNativeJS): what the recognizer gave us and why a turn got skipped
     const recent = (this.d.now ?? Date.now)() - this.lastSpokenAt < ECHO_WINDOW_MS;
     const skip = this.busy
       ? 'busy'
@@ -137,10 +135,10 @@ export class VoiceAgent {
     this.firstAudioMs = null;
     this.ttsFirstChunkMs = null;
     this.ctl = new AbortController();
-    // The EN / Hinglish toggle is the single source of truth for the session language.
+    // the language toggle decides the session language
     const lang: Lang = this.d.memory.state.lang;
 
-    this.d.stt.pauseMic(); // half-duplex: the speaker must not feed the VAD
+    this.d.stt.pauseMic(); // half-duplex: don't let the speaker feed the VAD
     this.d.events.onTranscript(text);
     this.setStatus('thinking');
     this.d.queue.beginTurn();

@@ -1,10 +1,10 @@
 export interface Wav {
   sampleRate: number;
-  /** Mono float samples in [-1, 1]. */
+  // mono float samples in [-1, 1]
   samples: Float32Array;
 }
 
-/** Parses a RIFF/WAVE file (PCM 16-bit, or 32-bit float). Multi-channel audio is averaged to mono. */
+// parses a RIFF/WAVE file (16-bit PCM or 32-bit float), averages multi-channel to mono
 export function parseWav(bytes: Uint8Array): Wav {
   const dv = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
   const tag = (o: number) =>
@@ -30,7 +30,7 @@ export function parseWav(bytes: Uint8Array): Wav {
       dataLen = Math.min(size, bytes.byteLength - dataStart); // tolerate truncated/streamed files
       break;
     }
-    o += 8 + size + (size % 2); // chunks are word-aligned
+    o += 8 + size + (size % 2); // chunks are word aligned
   }
   if (!fmt) throw new Error('WAV has no fmt chunk');
   if (dataStart < 0) throw new Error('WAV has no data chunk');
@@ -54,7 +54,7 @@ export function parseWav(bytes: Uint8Array): Wav {
   return { sampleRate: fmt.rate, samples: out };
 }
 
-/** Minimal 16-bit mono PCM encoder; used by tests and by tooling that needs fixtures. */
+// minimal 16-bit mono PCM encoder, for tests and anything that needs fixtures
 export function encodeWav16(samples: Float32Array, sampleRate: number): Uint8Array {
   const buf = new ArrayBuffer(44 + samples.length * 2);
   const dv = new DataView(buf);

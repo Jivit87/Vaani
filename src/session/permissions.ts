@@ -2,7 +2,7 @@ import * as Calendar from 'expo-calendar';
 import * as Notifications from 'expo-notifications';
 import { PermissionsAndroid, Platform } from 'react-native';
 
-/** RECORD_AUDIO is a runtime permission on Android 6+; the manifest entry alone is not enough. */
+// RECORD_AUDIO is a runtime permission on android 6+, the manifest entry alone isn't enough
 export async function ensureMicPermission(): Promise<boolean> {
   if (Platform.OS !== 'android') return true;
   const p = PermissionsAndroid.PERMISSIONS.RECORD_AUDIO;
@@ -10,11 +10,10 @@ export async function ensureMicPermission(): Promise<boolean> {
   return (await PermissionsAndroid.request(p)) === PermissionsAndroid.RESULTS.GRANTED;
 }
 
-/**
- * Ask for the tool permissions at launch, not on first use: a system dialog can sit open longer than a
- * tool's timeout (3-4 s), which made the first reminder or calendar request fail. Best-effort: a denial
- * is surfaced by the tool itself (permission_denied) when the user actually asks for that feature.
- */
+// ask for the tool permissions at launch, not on first use. a system dialog can stay open
+// longer than a tool's timeout (3-4 s), which made the first reminder or calendar request
+// fail. best effort: if the user says no, the tool reports permission_denied when they
+// actually ask for that feature.
 export async function ensureToolPermissions(): Promise<void> {
   if (Platform.OS !== 'android') return;
   await Notifications.requestPermissionsAsync().catch(() => undefined);

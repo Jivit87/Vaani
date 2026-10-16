@@ -20,7 +20,7 @@ const step = (text: string, toolCalls: ToolCall[] = []): StepResult => ({
   totalMs: 10,
 });
 
-/** Scripted LLM: each request pops the next step and streams its text token by token. */
+// scripted LLM: every request pops the next step and streams its text token by token
 function scriptedLlm(script: (StepResult | Error)[]) {
   const requests: LlmRequest[] = [];
   const llm: LlmClient = async (req) => {
@@ -156,7 +156,7 @@ describe('runTurn', () => {
       { role: 'assistant', content: 'Sunny tomorrow.' },
     ]);
     expect(h.mem.state).toMatchObject({ last_city: 'Pune', last_date: '2026-10-17' });
-    // A follow-up sees the structured state in its system prompt.
+    // a follow-up sees the structured state in its system prompt
     const h2 = harness([step('Cloudy.')]);
     h2.mem.state = { ...h.mem.state };
     await runTurn('aur parso?', h2.mem, h2.deps);
@@ -188,7 +188,7 @@ describe('runTurn', () => {
     h.mem.setLang('hi');
     const r = await runTurn('aaj ka schedule', h.mem, h.deps);
     expect(h.fillers).toEqual(['hi']);
-    expect(r.spoken).toBe('हो गया।'); // get_schedule succeeded, so claiming completion is honest
+    expect(r.spoken).toBe('हो गया।'); // get_schedule worked, so saying it's done is honest
   });
 
   it('falls back to the backup model on a 429 and reports which model answered', async () => {

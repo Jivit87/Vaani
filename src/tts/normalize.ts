@@ -5,10 +5,10 @@ import { numberToEnglish, numberToHindi } from './numbers';
 
 const DEVANAGARI = /[ऀ-ॿ]/;
 
-// Emoji, pictographs and variation selectors.
+// emoji and friends
 const EMOJI = /[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE0F}\u{200D}]/gu;
 
-/** English "7:30" style times spoken the way people say them. */
+// "7:30" the way people say it
 function englishClock(h: number, m: number): string {
   const hour = numberToEnglish(h);
   if (m === 0) return `${hour} o'clock`;
@@ -25,19 +25,17 @@ function hindiClock(h: number, m: number): string {
   return `${word(h)} बजकर ${word(m)} मिनट`;
 }
 
-/**
- * Last line of defence before TTS: the prompt asks the LLM for speakable text,
- * this makes sure digits, times and symbols never reach the synthesizer.
- */
+// last line of defence before TTS. the prompt already asks for speakable text,
+// this catches digits, times and symbols that slip through
 export interface NormalizeOptions {
-  /** Session is Hinglish: Roman Hindi words are converted to Devanagari even if no Devanagari is present yet. */
+  // Hinglish session: convert roman hindi words even if there's no devanagari yet
   hinglish?: boolean;
-  /** The voice is Hindi-only (Piper hi_IN): English loanwords are respelled in Devanagari too. */
+  // hindi-only voice (piper hi_IN): respell english loanwords in devanagari too
   devanagariLoanwords?: boolean;
 }
 
 export function normalizeForTts(raw: string, opts: NormalizeOptions = {}): string {
-  // Converting first lets the rest of the pipeline speak numbers and times in Hindi for a Hinglish sentence.
+  // do this first so numbers and times get spoken in hindi for a hinglish sentence
   let input = opts.hinglish || DEVANAGARI.test(raw) ? romanizedHindiToDevanagari(raw) : raw;
   if (opts.devanagariLoanwords) input = transliterateText(loanwordsToDevanagari(input));
   const hindi = DEVANAGARI.test(input);
@@ -45,18 +43,18 @@ export function normalizeForTts(raw: string, opts: NormalizeOptions = {}): strin
   let s = input;
 
   s = s.replace(/```[\s\S]*?```/g, ' ').replace(/`([^`]*)`/g, '$1');
-  s = s.replace(/!?\[([^\]]*)\]\([^)]*\)/g, '$1'); // markdown links/images → label
+  s = s.replace(/!?\[([^\]]*)\]\([^)]*\)/g, '$1'); // markdown links and images, keep the label
   s = s.replace(/^\s{0,3}(#{1,6}|[-*•]|\d+\.)\s+/gm, ''); // headings, bullets, list numbers
-  s = s.replace(/[*_~]{1,3}([^*_~\n]+)[*_~]{1,3}/g, '$1'); // bold/italic/strike
+  s = s.replace(/[*_~]{1,3}([^*_~\n]+)[*_~]{1,3}/g, '$1'); // bold, italic, strikethrough
   s = s.replace(EMOJI, ' ');
 
-  // 7:30, 17:05 (optionally followed by AM/PM, which stays as letters)
-  // A trailing "बजे" is consumed because the Hindi clock phrase already ends with it.
+  // 7:30, 17:05 (AM/PM stays as letters). a trailing "बजे" gets eaten because the
+  // hindi clock phrase already ends with it
   s = s.replace(/\b(\d{1,2}):(\d{2})\b(?:\s*बजे)?/g, (_, h: string, m: string) => {
     const hh = Number(h);
     const mm = Number(m);
     if (hh > 24 || mm > 59) return `${h} ${m}`;
-    const h12 = hh % 12 || 12; // spoken clocks are 12-hour
+    const h12 = hh % 12 || 12; // spoken clocks are 12 hour
     return hindi ? hindiClock(h12, mm) : englishClock(h12, mm);
   });
 
@@ -68,7 +66,7 @@ export function normalizeForTts(raw: string, opts: NormalizeOptions = {}): strin
     /(\d+(?:\.\d+)?)\s*%/g,
     (_, n: string) => `${spokenDecimal(n, num)} ${hindi ? 'प्रतिशत' : 'percent'}`,
   );
-  s = s.replace(/(\d)(AM|PM|am|pm)\b/g, '$1 $2'); // 5PM → 5 PM
+  s = s.replace(/(\d)(AM|PM|am|pm)\b/g, '$1 $2'); // 5PM becomes 5 PM
   s = s.replace(/(\d+)\.(\d+)/g, (_, a: string, b: string) => spokenDecimal(`${a}.${b}`, num));
   s = s.replace(/\d+/g, (d) => num(Number(d)));
 

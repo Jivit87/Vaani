@@ -1,5 +1,5 @@
-// A small, safe arithmetic evaluator (no eval, no Function): a recursive-descent parser over a fixed
-// grammar. The LLM is unreliable at multi-digit arithmetic, so it hands the expression to this instead.
+// small safe arithmetic evaluator (no eval, no Function): a recursive-descent parser over a
+// fixed grammar. the LLM is shaky at multi-digit arithmetic so it hands expressions to this.
 const MAX_LENGTH = 200;
 
 type Fn = (...a: number[]) => number;
@@ -48,7 +48,7 @@ function tokenize(src: string): Token[] {
   return out;
 }
 
-/** Evaluates an arithmetic expression. Throws a short Error for anything invalid. */
+// evaluates an arithmetic expression, throws a short Error for anything invalid
 export function calculate(expression: string): number {
   if (expression.length > MAX_LENGTH) throw new Error('expression too long');
   const cleaned = expression
@@ -79,7 +79,7 @@ export function calculate(expression: string): number {
     }
     return left;
   }
-  // Unary minus binds looser than ^, so -3^2 is -9, as in normal maths.
+  // unary minus binds looser than ^, so -3^2 is -9, like normal maths
   function unary(): number {
     if (isOp('-')) {
       pos++;
@@ -142,5 +142,5 @@ export function calculate(expression: string): number {
   return value;
 }
 
-/** Up to 12 significant digits, no floating-point noise (0.1 + 0.2 -> "0.3"). */
+// up to 12 significant digits, so no float noise (0.1 + 0.2 gives "0.3")
 export const formatNumber = (n: number): string => String(Number(n.toPrecision(12)));

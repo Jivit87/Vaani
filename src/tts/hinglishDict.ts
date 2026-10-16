@@ -1,10 +1,10 @@
-// Romanised Hindi → Devanagari for the TTS front end. The prompt already asks the model for Devanagari, but
-// models slip into Roman Hinglish, and espeak-ng (via Kokoro, lang "hi") reads Devanagari far better.
+// roman hindi -> devanagari for the TTS. the prompt already asks for devanagari but models
+// slip into roman hinglish, and espeak-ng (kokoro, lang "hi") reads devanagari much better.
 //
-// Rules for this list: Hindi-origin words only. English loanwords (alarm, reminder, meeting) stay Latin so
-// the English lexicon reads them. Words that are also common English ("do", "main", "par", "hum", "is",
-// "to", "hi", "me", "us", "din", "teen", "char") are deliberately left out: converting them would corrupt
-// English replies.
+// hindi words only. english loanwords (alarm, reminder, meeting) stay latin so the english
+// lexicon reads them. words that are also plain english ("do", "main", "par", "hum", "is",
+// "to", "hi", "me", "us", "din", "teen", "char") are left out on purpose, converting them
+// would mangle english replies.
 const PAIRS = `
 kal कल|aaj आज|parso परसों|subah सुबह|savere सवेरे|dopahar दोपहर|shaam शाम|raat रात|baje बजे|ghanta घंटा
 ghante घंटे|hafta हफ़्ता|mahina महीना|saal साल|abhi अभी|jaldi जल्दी|der देर|pehle पहले|baad बाद|phir फिर
@@ -42,7 +42,7 @@ export const ROMAN_TO_DEVANAGARI: ReadonlyMap<string, string> = new Map(
     }),
 );
 
-/** Replaces whole Latin words that are Hindi with their Devanagari spelling; everything else is untouched. */
+// swaps whole latin words that are hindi for their devanagari spelling, leaves the rest alone
 export function romanizedHindiToDevanagari(text: string): string {
   return text.replace(/\b[A-Za-z]+\b/g, (w) => ROMAN_TO_DEVANAGARI.get(w.toLowerCase()) ?? w);
 }

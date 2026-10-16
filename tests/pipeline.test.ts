@@ -271,7 +271,7 @@ describe('VoiceAgent', () => {
     };
     const h = setup(slow);
     await h.agent.start();
-    await h.agent.submitText('you'); // hallucination → ignored
+    await h.agent.submitText('you'); // hallucination, ignored
     expect(h.stt.pauseMic).not.toHaveBeenCalled();
     const first = h.agent.submitText('what time is it');
     await h.agent.submitText('second question while busy'); // dropped

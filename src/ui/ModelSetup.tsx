@@ -11,7 +11,7 @@ import { colors, s } from './theme';
 
 const mb = (n: number) => `${Math.round(n / 1e6)} MB`;
 
-/** First launch: fetch the on-device speech models once, with progress, retry and resume. */
+// first launch: download the on-device speech models once, with progress, retry and resume
 export function ModelSetup({ onDone }: { onDone: () => void }) {
   const insets = useSafeAreaInsets();
   const [packs, setPacks] = useState<ModelPack[]>(requiredPacks);
@@ -21,7 +21,7 @@ export function ModelSetup({ onDone }: { onDone: () => void }) {
   const [error, setError] = useState<string | null>(null);
   const ctl = useRef<AbortController | null>(null);
 
-  // Only packs that are not already complete count toward the size shown and the progress bar.
+  // only packs that aren't complete yet count toward the size and the progress bar
   useEffect(() => {
     let alive = true;
     void Promise.all(requiredPacks().map((p) => isPackComplete(p, packDir(p.id as PackId), expoFsOps))).then(

@@ -1,7 +1,7 @@
 import type { ModelCfg } from '../agent/types';
 
-// Chosen from a live eval on 2026-10-16 (eval/results.md, docs/DECISIONS.md D10). Catalog IDs get
-// retired (llama-3.3-70b was shut down 2026-08-26): re-run `npm run eval:tools` before relying on them.
+// picked from a live eval on 2026-10-16 (eval/results.md, docs/DECISIONS.md D10). catalog ids
+// get retired (llama-3.3-70b was shut down 2026-08-26), so re-run `npm run eval:tools` before trusting them.
 export const NVIDIA_BASE_URL = 'https://integrate.api.nvidia.com/v1';
 
 export const PRIMARY_MODEL: ModelCfg = {
@@ -14,8 +14,9 @@ export const BACKUP_MODEL: ModelCfg = {
   maxTokens: 500,
 };
 
-// Groq free tier (OpenAI-compatible). ~30 requests/min per model, so tool turns (2 calls) are rate-limited.
-// gpt-oss are reasoning models: keep reasoning low or the small token cap is spent before any answer.
+// groq free tier, OpenAI compatible. limits for gpt-oss-120b: 8k tokens/min and 200k tokens/day
+// (see DECISIONS D19). gpt-oss are reasoning models, so keep reasoning low or the token cap
+// gets spent before any answer.
 export const GROQ_BASE_URL = 'https://api.groq.com/openai/v1';
 
 export const GROQ_PRIMARY_MODEL: ModelCfg = {

@@ -1,13 +1,11 @@
-/**
- * Tool-calling eval: replays eval/tool_cases.json through the real agent loop
- * (runTurn + Memory + tool validation) against live NVIDIA models.
- *
- *   NVIDIA_API_KEY=nvapi-... npx tsx eval/run_tool_eval.ts --models <id>,<id>
- *
- * Other providers: --base-url https://api.groq.com/openai/v1 --key-env GROQ_API_KEY
- * Options: --cases <path>  --out <dir>  --delay-ms <n> (pause between LLM turns, default 2500)
- *          --only <caseId,...>
- */
+// tool-calling eval: replays eval/tool_cases.json through the real agent loop
+// (runTurn + Memory + tool validation) against live models.
+//
+//   NVIDIA_API_KEY=nvapi-... npx tsx eval/run_tool_eval.ts --models <id>,<id>
+//
+// other providers: --base-url https://api.groq.com/openai/v1 --key-env GROQ_API_KEY
+// options: --cases <path>  --out <dir>  --delay-ms <n> (pause between turns, default 2500)
+//          --only <caseId,...>  --extra-body '<json>' (e.g. reasoning_effort)
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { Memory } from '../src/agent/memory';
@@ -42,7 +40,7 @@ const fixtures: ToolBackends = {
   setAlarm: async () => {},
   setReminder: async () => {},
   setTimer: async () => {},
-  // Real Wikipedia, so the eval also exercises the live integration.
+  // real Wikipedia, so the eval also exercises the live integration
   searchWikipedia: (query, language) => searchWikipedia(fetch, query, language),
   getSchedule: async () => [
     { title: 'Team standup', start_hhmm: '10:30' },
@@ -86,11 +84,11 @@ async function main() {
     const observed: Observed[] = [];
     for (const c of cases) {
       const mem = new Memory(() => NOW);
-      // Hinglish cases run in a Hinglish session, as the app's toggle would be set for them.
+      // hinglish cases run in a hinglish session, like the app's toggle would be for them
       mem.setLang(HINGLISH.test(c.turns.map((t) => t.user).join(' ')) ? 'hi' : 'en');
       for (const turn of c.turns) {
         let obs: Observed = { tools: [], spoken: 'ERROR not run', ttftMs: null, totalMs: 0 };
-        // Free tiers cap tokens per minute: on a 429, cool down and retry instead of scoring a rate limit.
+        // free tiers cap tokens per minute: on a 429, cool down and retry instead of scoring a rate limit
         for (let attempt = 0; attempt < 4; attempt++) {
           let throttled = false;
           try {

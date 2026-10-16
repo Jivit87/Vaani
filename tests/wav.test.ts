@@ -12,7 +12,7 @@ describe('wav', () => {
   });
 
   it('averages stereo to mono and skips unknown chunks', () => {
-    // Build: RIFF, LIST chunk (odd size → padding), fmt (stereo), data.
+    // build: RIFF, LIST chunk (odd size so it needs padding), fmt (stereo), data
     const list = new Uint8Array([...'LIST'].map((c) => c.charCodeAt(0)).concat([3, 0, 0, 0, 1, 2, 3, 0]));
     const fmt = new DataView(new ArrayBuffer(24));
     [...'fmt '].forEach((c, i) => fmt.setUint8(i, c.charCodeAt(0)));

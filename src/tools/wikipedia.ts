@@ -7,11 +7,11 @@ export interface WikiResult {
 const MAX_SUMMARY_CHARS = 600;
 const RETRY_DELAY_MS = 500;
 
-/** Keeps whole sentences up to a budget, so the LLM and the speaker never get a half sentence. */
+// keeps whole sentences up to a budget so neither the LLM nor the speaker gets half a sentence
 export function trimSummary(text: string, max = MAX_SUMMARY_CHARS): string {
   const clean = text
     .replace(/\s+/g, ' ')
-    .replace(/\s*\([^)]*\)/g, '') // pronunciation and date asides read badly aloud
+    .replace(/\s*\([^)]*\)/g, '') // pronunciation and date asides sound bad read aloud
     .trim();
   if (clean.length <= max) return clean;
   const cut = clean.slice(0, max);
@@ -29,7 +29,7 @@ async function getJson(fetchFn: typeof fetch, url: string, signal?: AbortSignal)
   }
 }
 
-/** One request: full-text search for the best page and return its introduction. Null when nothing matches. */
+// one request: full-text search for the best page, returns its intro. null when nothing matches
 export async function searchWikipedia(
   fetchFn: typeof fetch,
   query: string,

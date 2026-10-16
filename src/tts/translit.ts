@@ -1,7 +1,7 @@
-// Phonetic Roman → Devanagari for words the dictionaries do not know. Used only with the Hindi-only Piper
-// voice, which cannot read Latin letters: a rough Devanagari spelling is far better than letter names.
-// Input is Hinglish-style romanisation ("chhota", "rehta", "tumhe"); English words come out as an
-// approximation of how they sound ("robot" -> रोबोत), which is understandable.
+// rough roman -> devanagari for words the dictionaries don't know. only used with the
+// hindi-only piper voice, which can't read latin letters, and a rough devanagari spelling beats
+// letter names. it expects hinglish style spelling ("chhota", "rehta"). english words come out
+// as a sound-alike ("robot" -> रोबोत), good enough to understand.
 
 const CONSONANTS: [string, string][] = [
   ['chh', 'छ'],
@@ -37,7 +37,7 @@ const CONSONANTS: [string, string][] = [
   ['c', 'क'],
 ];
 
-// [roman, independent letter, matra]; longest first.
+// [roman, letter, matra], longest first
 const VOWELS: [string, string, string][] = [
   ['aa', 'आ', 'ा'],
   ['ai', 'ऐ', 'ै'],
@@ -59,26 +59,26 @@ const VIRAMA = '्';
 const startsWithAny = <T extends [string, ...string[]]>(s: string, i: number, table: T[]): T | undefined =>
   table.find((row) => s.startsWith(row[0], i));
 
-/** Converts one lowercase ASCII word. Anything unexpected is returned unchanged. */
+// converts one lowercase word, returns it unchanged if there's anything odd in it
 export function transliterateWord(word: string): string {
   if (!/^[a-z]+$/.test(word)) return word;
   let out = '';
   let i = 0;
-  let afterConsonant = false; // the last thing written was a consonant still waiting for its vowel
+  let afterConsonant = false; // last thing written was a consonant waiting for its vowel
   while (i < word.length) {
     const v = startsWithAny(word, i, VOWELS);
     if (v) {
       const [roman, letter, matra] = v;
       const atEnd = i + roman.length === word.length;
       if (afterConsonant) {
-        // A final single "a" after a consonant is the long vowel in Hinglish spelling: "tha", "hota".
+        // a lone "a" at the end of a word is a long vowel in hinglish spelling ("tha", "hota")
         out += roman === 'a' && atEnd ? 'ा' : matra;
       } else {
         out += roman === 'a' && atEnd && out === '' ? 'अ' : letter;
       }
       afterConsonant = false;
       i += roman.length;
-      // Final "n" after a long vowel is nasalisation: "hoon" -> हूं, "nahin" stays न (see below).
+      // a final "n" after a long vowel is a nasal: "hoon" -> हूं
       if (LONG.has(roman) && word.slice(i) === 'n') {
         out += 'ं';
         i += 1;
@@ -95,7 +95,7 @@ export function transliterateWord(word: string): string {
   return out;
 }
 
-/** Converts every Latin word in a sentence. Capitalised acronyms (SMS, OTP) are left to the loanword list. */
+// converts every latin word in a sentence. all-caps acronyms (SMS, OTP) are left alone
 export function transliterateText(text: string): string {
   return text.replace(/\b[A-Za-z]+\b/g, (w) =>
     /^[A-Z]{2,}$/.test(w) ? w : transliterateWord(w.toLowerCase()),

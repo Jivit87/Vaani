@@ -1,12 +1,12 @@
-// Pure scoring for the tool-calling eval; imported by run_tool_eval.ts and by tests.
+// pure scoring for the tool-calling eval, used by run_tool_eval.ts and the tests
 export interface Expect {
   tool?: string | null;
   tools?: string[];
   args?: Record<string, unknown>;
   asks_question?: boolean;
-  /** Tools the model may call without penalty when `tool` is null (e.g. a fact it could look up or answer). */
+  // tools the model may call without penalty when `tool` is null (e.g. a fact it could look up or just answer)
   allow?: string[];
-  /** Spoken-reply word limit for this turn (default 130). */
+  // word limit for the spoken reply this turn (default 130)
   max_words?: number;
 }
 export interface Turn {
@@ -27,11 +27,11 @@ export interface TurnScore {
   caseId: string;
   user: string;
   toolOk: boolean;
-  /** null when the turn has no argument expectation. */
+  // null when the turn has no argument expectation
   argsOk: boolean | null;
-  /** null unless the turn expects a clarifying question. */
+  // null unless the turn expects a clarifying question
   clarifyOk: boolean | null;
-  /** Spoken reply is non-empty, plain speech (no markdown or links) and not too long. */
+  // reply is non-empty, plain speech (no markdown or links) and not too long
   styleOk: boolean;
   detail: string;
 }
@@ -39,7 +39,7 @@ export interface TurnScore {
 const DEFAULT_MAX_WORDS = 130;
 const MARKDOWN = /(^|\n)\s*([-*•]|\d+[.)])\s|[*#`~_]{1,}|https?:\/\/|\[[^\]]*\]\(/;
 
-/** Voice replies must be plain speech and reasonably short. */
+// voice replies have to be plain speech and reasonably short
 export function checkStyle(spoken: string, maxWords: number): boolean {
   const text = spoken.trim();
   if (!text || text.startsWith('ERROR')) return false;
@@ -75,7 +75,7 @@ export function scoreTurn(caseId: string, turn: Turn, obs: Observed): TurnScore 
       argsOk = obs.tools.filter((t) => t.name === expect.tool).some((t) => argsMatch(expect.args!, t.args));
     }
   } else {
-    // chit-chat and clarification must not call tools, except ones the case explicitly allows
+    // chit-chat and clarifications must not call tools, except ones the case explicitly allows
     toolOk = names.every((n) => expect.allow?.includes(n));
   }
   if (expect.asks_question) clarifyOk = names.length === 0 && /[?？]/.test(obs.spoken);

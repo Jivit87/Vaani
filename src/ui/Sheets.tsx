@@ -22,7 +22,7 @@ interface MenuProps {
   onClose: () => void;
   onLang: (l: Lang) => void;
   voice: TtsEngineChoice;
-  /** False when the other voice's files are not on the phone yet. */
+  // false when the other voice's files aren't on the phone yet
   naturalAvailable: boolean;
   onVoice: (v: TtsEngineChoice) => void;
   onNew: () => void;
@@ -30,7 +30,7 @@ interface MenuProps {
   onExport: () => void;
 }
 
-/** Bottom sheet: language, conversation, and a Developer section for the measurement tools. */
+// bottom sheet: language, voice, conversation, and a developer section for the measurement tools
 export function MenuSheet(p: MenuProps) {
   const insets = useSafeAreaInsets();
   return (
@@ -132,7 +132,7 @@ function Row({ title, onPress, disabled }: { title: string; onPress: () => void;
   );
 }
 
-/** Full-screen panel with a close button; hosts the transcript and the developer tools. */
+// full-screen panel with a close button, holds the transcript and the developer tools
 export function FullSheet({
   title,
   visible,

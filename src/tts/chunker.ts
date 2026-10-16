@@ -1,10 +1,8 @@
-const MIN_CHUNK_CHARS = 12; // Kokoro is weak on very short utterances, so merge tiny sentences.
-const FIRST_COMMA_MIN = 25; // first chunk only: flush early on a comma once long enough
+const MIN_CHUNK_CHARS = 12; // kokoro is weak on very short utterances, so merge tiny sentences
+const FIRST_COMMA_MIN = 25; // first chunk only: flush early on a comma once it's long enough
 
-/**
- * Turns a token stream into speakable chunks. A terminator ends a sentence only
- * when whitespace follows it, so "3.5 degrees" is not split at the dot.
- */
+// turns a token stream into speakable chunks. a terminator only ends a sentence when
+// whitespace follows it, so "3.5 degrees" isn't split at the dot.
 export class SentenceChunker {
   private buf = '';
   private carry = '';
@@ -29,7 +27,7 @@ export class SentenceChunker {
     }
   }
 
-  /** Flush whatever is left at end of stream (including a final unterminated sentence). */
+  // flush whatever is left at the end of the stream, including a last unterminated sentence
   end() {
     const rest = (this.carry + ' ' + this.buf).trim();
     this.buf = '';

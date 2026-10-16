@@ -16,14 +16,14 @@ export interface AgentState {
   last_city?: string;
   last_date?: string;
   last_intent?: string;
-  /** The last few things the agent actually did, written by tool code, never by the LLM. */
+  // the last few things the agent actually did, written by tool code, never by the LLM
   actions: string[];
 }
 
 export interface StepResult {
   text: string;
   toolCalls: ToolCall[];
-  /** ms from request start to first content/tool delta (null if none arrived). */
+  // ms from request start to the first content/tool delta (null if none arrived)
   ttftMs: number | null;
   totalMs: number;
 }
@@ -31,9 +31,9 @@ export interface StepResult {
 export interface ModelCfg {
   id: string;
   maxTokens: number;
-  /** Extra request-body fields, e.g. reasoning controls. */
+  // extra request body fields, e.g. reasoning controls
   extraBody?: Record<string, unknown>;
-  /** Appended to the system prompt, e.g. a "reasoning off" switch. */
+  // appended to the system prompt, e.g. a "reasoning off" switch
   systemSuffix?: string;
 }
 

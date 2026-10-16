@@ -1,5 +1,5 @@
-// India has no DST, so IST is a fixed UTC+5:30. Doing the math by hand avoids
-// depending on Intl timezone support in the JS engine.
+// india has no DST, so IST is a fixed UTC+5:30. doing the math by hand means we don't
+// depend on Intl timezone support in the JS engine.
 const IST_OFFSET_MIN = 330;
 const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
@@ -33,7 +33,7 @@ export function istDateString(date: Date): string {
   return `${p.year}-${pad(p.month)}-${pad(p.day)}`;
 }
 
-/** ISO 8601 with an explicit +05:30 offset, e.g. 2026-10-16T10:00:00+05:30. */
+// ISO 8601 with an explicit +05:30, e.g. 2026-10-16T10:00:00+05:30
 export function istIsoString(date: Date): string {
   const p = istParts(date);
   return `${istDateString(date)}T${pad(p.hour)}:${pad(p.minute)}:${pad(p.second)}+05:30`;
@@ -45,7 +45,7 @@ export function addDays(date: Date, days: number): Date {
 
 const DATE_RE = /^(\d{4})-(\d{2})-(\d{2})$/;
 
-/** True for a real calendar date written as YYYY-MM-DD (rejects 2026-02-30). */
+// true for a real calendar date as YYYY-MM-DD (rejects 2026-02-30)
 export function isValidDateString(s: string): boolean {
   const m = DATE_RE.exec(s);
   if (!m) return false;
@@ -54,7 +54,7 @@ export function isValidDateString(s: string): boolean {
   return probe.getUTCFullYear() === y && probe.getUTCMonth() === mo - 1 && probe.getUTCDate() === d;
 }
 
-/** Whole IST calendar days from `from` to the date string `to` (negative = past). */
+// whole IST days from `from` to the date string `to` (negative means past)
 export function daysBetween(from: Date, to: string): number {
   const [y, mo, d] = to.split('-').map(Number);
   const target = Date.UTC(y, mo - 1, d);
@@ -63,7 +63,7 @@ export function daysBetween(from: Date, to: string): number {
   return Math.round((target - today) / 86_400_000);
 }
 
-/** Start and end (exclusive) instants of an IST calendar day. */
+// start and end (exclusive) of an IST day
 export function istDayRange(dateString: string): { start: Date; end: Date } {
   const [y, mo, d] = dateString.split('-').map(Number);
   const start = new Date(Date.UTC(y, mo - 1, d) - IST_OFFSET_MIN * 60_000);
@@ -75,7 +75,7 @@ export const hhmm = (date: Date): string => {
   return `${pad(p.hour)}:${pad(p.minute)}`;
 };
 
-/** "1 hour 30 minutes", "45 seconds": the wording a confirmation should use for a timer. */
+// "1 hour 30 minutes", "45 seconds": how a timer confirmation should sound
 export function describeDuration(totalSeconds: number): string {
   const h = Math.floor(totalSeconds / 3600);
   const m = Math.floor((totalSeconds % 3600) / 60);

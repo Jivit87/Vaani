@@ -38,7 +38,7 @@ export function createNitroSpeech(paths: NitroPaths): SpeechFactory {
             let audioMs = 0;
             tts
               .speak(text, {
-                // nitro-voice synthesizes the whole sentence, then calls this once and plays it natively.
+                // nitro-voice synthesizes the whole sentence, then calls this once and plays it natively
                 onAudioChunk: (samples, sr) => {
                   if (firstChunkMs < 0) firstChunkMs = Date.now() - started;
                   audioMs += (samples.byteLength / 4 / sr) * 1000;

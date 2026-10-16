@@ -21,7 +21,7 @@ const speechPaths = () => ({
   vadPath: toNativePath(`${packDir('silero-vad')}/silero_vad.onnx`),
 });
 
-/** The voice for a session language: Piper English / Piper Hindi, or Kokoro for both. */
+// voice for a session language: piper english / piper hindi, or kokoro for both
 const voiceFor = (lang: Lang, engine: TtsEngineChoice) => {
   const spec = ttsSpecFor(lang, engine, config.ttsSpeakerId);
   const options: TtsOptions = {
@@ -40,15 +40,15 @@ export interface Runtime {
   agent: VoiceAgent;
   memory: Memory;
   tts: TtsEngine;
-  /** Current voice engine: 'piper' (fast) or 'kokoro' (natural, slower on mid-range phones). */
+  // 'piper' (fast) or 'kokoro' (nicer, but slower than real time on mid-range phones)
   readonly ttsEngine: TtsEngineChoice;
-  /** Re-creates the Whisper engine: its language is fixed when the engine is created. */
+  // whisper's language is fixed when it's created, so this rebuilds it
   setLanguage(lang: Lang): Promise<void>;
-  /** Switches the voice engine (needs that engine's packs on the phone). */
+  // switch voice engine (its packs have to be on the phone)
   setTtsEngine(engine: TtsEngineChoice): Promise<void>;
-  /** Speaks a line without the LLM (used by the offline test). */
+  // say a line without the LLM (offline test)
   speakDirect(text: string): Promise<void>;
-  /** Subscribe to every accepted transcript; returns an unsubscribe function. */
+  // listen to every accepted transcript, returns an unsubscribe function
   onHeard(cb: (text: string) => void): () => void;
   destroy(): Promise<void>;
 }
@@ -77,12 +77,12 @@ export async function createRuntime(lang: Lang, uiEvents: VoiceAgentEvents): Pro
     fetch: expoFetch as unknown as typeof fetch,
     apiKey: config.llmApiKey,
     baseUrl: config.baseUrl,
-    // Measured median TTFT on the shared NVIDIA endpoint is ~3 s with a long tail (eval/results.md).
+    // median first-token time on the shared NVIDIA endpoint is ~3 s with a long tail (eval/results.md)
     firstTokenTimeoutMs: 15_000,
   });
   const summarizer = createSummarizer(llm, config.backup);
 
-  // The agent needs the queue and the queue reports back to the agent, so wire them lazily.
+  // the agent needs the queue and the queue calls back into the agent, so wire them lazily
   let agent: VoiceAgent;
   const queue = new TtsQueue(tts, {
     onFirstAudio: (ms) => agent.onFirstAudio(ms),
@@ -107,9 +107,9 @@ export async function createRuntime(lang: Lang, uiEvents: VoiceAgentEvents): Pro
     });
   agent = build(stt);
 
-  // Warm up so the first real turn does not pay model-load or first-inference cost.
+  // warm up so the first real turn doesn't pay for model load
   await tts.speak('.').catch(() => undefined);
-  // Open the TLS connection to the LLM now so the first real turn skips the handshake (fire and forget).
+  // open the TLS connection to the LLM now (fire and forget) so the first turn skips the handshake
   void llm({
     model: { ...config.primary, maxTokens: 4 },
     messages: [{ role: 'user', content: 'hi' }],
@@ -117,12 +117,12 @@ export async function createRuntime(lang: Lang, uiEvents: VoiceAgentEvents): Pro
     onText: () => undefined,
   }).catch(() => undefined);
 
-  /** Stops the agent, swaps the voice if it changed, re-creates Whisper for the language, and restarts. */
+  // stop the agent, swap the voice if needed, rebuild whisper for the language, restart
   async function reconfigure(nextLang: Lang, nextEngine: TtsEngineChoice) {
     await agent.stop();
     const nextVoice = voiceFor(nextLang, nextEngine);
     if (nextVoice.spec.packId !== voice.spec.packId) {
-      // A different voice: release the old one first to keep memory flat.
+      // different voice: free the old one first so memory stays flat
       await tts.destroy();
       tts = await speech.createTts(nextVoice.options);
       queue.setEngine(tts);

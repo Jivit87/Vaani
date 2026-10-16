@@ -7,10 +7,10 @@ export interface TurnMetrics {
   llmSteps: number;
   llmTtftMs: number | null;
   toolMs: number;
-  /** transcript received → first synthesized audio ready. STT decode + endpointing are excluded (see README). */
+  // transcript received to first synthesized audio. STT decode and endpointing aren't included (see README)
   firstAudioMs: number | null;
   ttsFirstChunkMs: number | null;
-  totalMs: number; // transcript received → whole reply spoken
+  totalMs: number; // transcript received to whole reply spoken
   error?: string;
 }
 
@@ -51,7 +51,7 @@ export interface Summary {
   p90: number | null;
 }
 
-/** Direct answers and tool turns have very different latency; report them apart. */
+// direct answers and tool turns have very different latency, so report them separately
 export function summarize(rows: TurnMetrics[]): { direct: Summary; tool: Summary } {
   const part = (list: TurnMetrics[]): Summary => {
     const v = list.map((r) => r.firstAudioMs).filter((x): x is number => x !== null);

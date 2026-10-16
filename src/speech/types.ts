@@ -1,25 +1,25 @@
 import type { Lang } from '../agent/types';
 
-/** Speech-to-text with built-in endpointing: one transcript per utterance. */
+// speech-to-text with built-in endpointing, one transcript per utterance
 export interface SttEngine {
-  /** Starts the mic and VAD-gated recognition; resolves once listening. */
+  // starts the mic and VAD-gated recognition, resolves once it's listening
   listen(onTranscript: (text: string) => void): Promise<void>;
-  /** Half-duplex: stop capturing while the agent speaks so it never hears itself. */
+  // half-duplex: stop capturing while the agent speaks so it doesn't hear itself
   pauseMic(): void;
   resumeMic(): Promise<void>;
   destroy(): Promise<void>;
 }
 
 export interface SpokenInfo {
-  /** ms from speak() call to the first synthesized audio being available. */
+  // ms from the speak() call until the first audio is ready
   firstChunkMs: number;
   audioMs: number;
 }
 
-/** Text-to-speech that also plays the audio it synthesizes. */
+// text-to-speech that also plays what it synthesizes
 export interface TtsEngine {
   sampleRate: number;
-  /** Resolves when the sentence has been synthesized and handed to the audio output. */
+  // resolves when the sentence is synthesized and handed to the audio output
   speak(text: string): Promise<SpokenInfo>;
   stop(): Promise<void>;
   destroy(): Promise<void>;
@@ -28,10 +28,10 @@ export interface TtsEngine {
 export type SttLanguage = 'en' | 'hi';
 
 export interface TtsOptions {
-  /** Native directory of the voice pack. */
+  // native directory of the voice pack
   dir: string;
   type: 'kokoro' | 'vits';
-  /** Kokoro speaker id (31 = hf_alpha); Piper voices are single speaker, so 0. */
+  // kokoro speaker id (31 = hf_alpha). piper voices are single speaker, so 0
   speakerId: number;
   speed: number;
 }

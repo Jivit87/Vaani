@@ -25,7 +25,7 @@ const modeOf = (s: AgentStatus): Mode =>
           ? 'muted'
           : 'calm';
 
-/** The glowing orb: breathes while listening, shimmers while thinking, pulses while speaking. */
+// the glowing orb: breathes while listening, shimmers while thinking, pulses while speaking
 export function Orb({ status, size = 168 }: { status: AgentStatus; size?: number }) {
   const mode = modeOf(status);
   const [scale] = useState(() => new Animated.Value(1));
@@ -68,7 +68,7 @@ export function Orb({ status, size = 168 }: { status: AgentStatus; size?: number
         ]),
       );
     if (status === 'speaking') {
-      // No audio level is exposed by the native player, so the pulse is a lively random rhythm.
+      // the native player doesn't expose an audio level, so the pulse is just a lively random rhythm
       timer = setInterval(() => {
         Animated.timing(scale, {
           toValue: 1.02 + Math.random() * 0.13,

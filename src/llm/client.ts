@@ -20,7 +20,7 @@ export interface LlmRequest {
   model: ModelCfg;
   messages: Msg[];
   tools: ToolSchema[];
-  /** Called with speakable text only (reasoning and <think> blocks removed). */
+  // speakable text only (reasoning and <think> blocks already stripped)
   onText: (t: string) => void;
   signal?: AbortSignal;
 }
@@ -28,7 +28,7 @@ export interface LlmRequest {
 export type LlmClient = (req: LlmRequest) => Promise<StepResult>;
 
 export interface LlmClientConfig {
-  /** `expo/fetch` in the app (streaming bodies), global `fetch` in Node. */
+  // expo/fetch in the app (streaming bodies), plain fetch in node
   fetch: typeof fetch;
   apiKey: string;
   baseUrl: string;
@@ -107,7 +107,7 @@ export function createLlmClient(cfg: LlmClientConfig): LlmClient {
       while (!done) {
         const { value, done: eof } = await reader.read();
         if (eof) break;
-        stopTimer(); // bytes are flowing; from here the caller's own limits apply
+        stopTimer(); // bytes are flowing, so the first-token timer is done
         for (const data of sse.push(decoder.decode(value, { stream: true }))) {
           if (data.trim() === '[DONE]') {
             done = true;
@@ -117,7 +117,7 @@ export function createLlmClient(cfg: LlmClientConfig): LlmClient {
           try {
             delta = (JSON.parse(data).choices?.[0]?.delta ?? {}) as Delta;
           } catch {
-            continue; // keep-alive or malformed fragment
+            continue; // keep-alive or a broken fragment
           }
           if (delta.content) {
             if (ttftMs === null) ttftMs = clock() - started;
@@ -167,7 +167,7 @@ export interface ModelPair {
 const DEFAULT_COOLDOWN_MS = 60_000;
 const MAX_COOLDOWN_MS = 15 * 60_000;
 
-/** Reads "try again in 3m13.968s" style hints from a provider's rate-limit message. */
+// parses hints like "try again in 3m13.968s" out of a rate-limit message
 export function parseRetryAfterMs(message: string): number {
   const m = /try again in (?:(\d+)h)?(?:(\d+)m(?!s))?(?:([\d.]+)s)?/i.exec(message);
   if (!m || (!m[1] && !m[2] && !m[3])) return DEFAULT_COOLDOWN_MS;
@@ -177,18 +177,16 @@ export function parseRetryAfterMs(message: string): number {
 
 export const isRateLimit = (e: unknown): e is LlmHttpError => e instanceof LlmHttpError && e.status === 429;
 
-/** Models that returned a 429, until when. Skipped meanwhile so each turn does not waste a call on them. */
+// models that got a 429, and until when. skipped meanwhile so we don't waste a call each turn
 const coolingUntil = new Map<string, number>();
 
 export function resetModelCooldowns() {
   coolingUntil.clear();
 }
 
-/**
- * Tries the primary model, then the backup. Falls back only if nothing was
- * spoken yet, so the user never hears the start of an answer twice. A model that
- * answered 429 is skipped until its cooldown ends (unless every model is cooling).
- */
+// try the primary, then the backup. we only fall back if nothing was spoken yet, so the
+// user never hears the start of an answer twice. a model that answered 429 is skipped
+// until its cooldown ends (unless every model is cooling).
 export async function callWithFallback(
   client: LlmClient,
   models: ModelPair,

@@ -9,7 +9,7 @@ const LINES = {
   hi: 'यह आवाज़ पूरी तरह फ़ोन पर बन रही है, इंटरनेट के बिना।',
 };
 
-/** Probes real connectivity so the airplane-mode demo has on-screen proof. */
+// checks real connectivity so the airplane mode demo has proof on screen
 async function networkReachable(): Promise<boolean> {
   const ctl = new AbortController();
   const t = setTimeout(() => ctl.abort(), 2500);

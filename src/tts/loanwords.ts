@@ -1,6 +1,6 @@
-// English words that are normal in Hinglish, respelled in Devanagari for a Hindi-only voice. Piper's Hindi
-// voice reads Latin letters with Hindi sounds (or spells them out), so "alarm" must become "अलार्म". This is
-// NOT applied for English voices or for Kokoro, which read Latin text with an English lexicon.
+// english words that are normal in hinglish, respelled in devanagari for a hindi-only voice.
+// piper's hindi voice reads latin letters with hindi sounds (or spells them out), so "alarm"
+// has to become "अलार्म". not used for english voices or kokoro, they read latin with an english lexicon.
 const PAIRS = `
 alarm अलार्म|timer टाइमर|reminder रिमाइंडर|set सेट|calendar कैलेंडर|meeting मीटिंग|schedule शेड्यूल
 weather वेदर|temperature टेम्परेचर|degrees डिग्री|degree डिग्री|celsius सेल्सियस|rain रेन|cloudy क्लाउडी
@@ -31,7 +31,7 @@ export const LOANWORDS: ReadonlyMap<string, string> = new Map(
     }),
 );
 
-/** "5 PM" is spoken as the letters, in the Hindi style: पी एम. Lowercase "am" is the English verb, left alone. */
+// "5 PM" is spoken as letters, hindi style: पी एम. lowercase "am" is the english verb so it's left alone
 const MERIDIEM: Record<string, string> = { AM: 'ए एम', PM: 'पी एम' };
 
 export function loanwordsToDevanagari(text: string): string {

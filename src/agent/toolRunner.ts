@@ -23,21 +23,21 @@ export interface WeatherReport {
   summary: string;
 }
 
-/** Everything that touches the phone or the network, injected so the logic is testable. */
+// everything that touches the phone or the network, injected so the logic is testable
 export interface ToolBackends {
   setAlarm(a: { hour: number; minute: number; label?: string }): Promise<void>;
   setReminder(r: { when: Date; text: string }): Promise<void>;
   getSchedule(date: string): Promise<CalendarEvent[]>;
   getWeather(city: string, date: string): Promise<WeatherReport>;
   setTimer(t: { seconds: number; label?: string }): Promise<void>;
-  /** Null when nothing matches. */
+  // null when nothing matches
   searchWikipedia(query: string, language: 'en' | 'hi'): Promise<WikiHit | null>;
 }
 
 export type ToolRunner = (name: string, args: unknown, mem: Memory) => Promise<ToolResult>;
 
-// Device tools get generous limits: the first call can include a cold start (content provider, channel
-// creation) and, on a loaded phone, a system dialog. The agent speaks a filler line while it waits.
+// device tools get generous limits: the first call can include a cold start (content provider,
+// channel creation) and, on a busy phone, a system dialog. the agent speaks a filler meanwhile.
 const TOOL_TIMEOUT_MS: Record<string, number> = {
   set_alarm: 5000,
   set_reminder: 6000,
@@ -71,14 +71,14 @@ function withTimeout<T>(p: Promise<T>, ms: number): Promise<T> {
   });
 }
 
-/** "7:30 AM": the form people say aloud, so confirmations keep the minutes. */
+// "7:30 AM", the way people say it, so confirmations keep the minutes
 export function twelveHour(h: number, m: number): string {
   return `${h % 12 || 12}:${String(m).padStart(2, '0')} ${h < 12 ? 'AM' : 'PM'}`;
 }
 
 const HAS_TZ = /(Z|[+-]\d{2}:?\d{2})$/i;
 
-/** Parses an ISO datetime; a missing offset is read as IST because that is what the user means. */
+// parses an ISO datetime. no offset means IST, because that's what the user means
 export function parseReminderTime(iso: string): Date | null {
   const s = iso.trim();
   const withTz = HAS_TZ.test(s) ? s : `${s}+05:30`;

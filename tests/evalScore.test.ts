@@ -153,8 +153,8 @@ describe('eval cases file', () => {
       }
   });
 
-  // Replays the real cases through the real agent loop with a scripted "ideal" model,
-  // proving the harness wiring (memory, tool validation, scoring) end to end without a network.
+  // replays a real case through the real agent loop with a scripted "ideal" model, to check the
+  // wiring (memory, tool validation, scoring) end to end without a network
   it('scores a perfect oracle model at 100% on a single-turn case through runTurn', async () => {
     const NOW = new Date(file.now);
     const c = file.cases.find((x: any) => x.id === 'hi_alarm_subah');

@@ -1,11 +1,11 @@
-/** Incremental Server-Sent-Events parser: feed arbitrary text chunks, get `data:` payloads out. */
+// incremental SSE parser: feed it text chunks, get the `data:` payloads back
 export class SseParser {
   private buf = '';
 
   push(chunk: string): string[] {
     this.buf += chunk;
     const out: string[] = [];
-    // Events end with a blank line; tolerate \r\n and \r.
+    // events end with a blank line, handle \r\n and \r too
     const normalized = this.buf.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
     const parts = normalized.split('\n\n');
     this.buf = parts.pop() ?? '';
@@ -21,10 +21,8 @@ export class SseParser {
   }
 }
 
-/**
- * Removes <think>…</think> blocks from a token stream, including tags split across chunks.
- * Reasoning text must never reach the TTS engine.
- */
+// strips <think>...</think> blocks from a token stream, even when a tag is split across
+// chunks. reasoning text must never reach the TTS.
 export class ThinkFilter {
   private inThink = false;
   private pending = '';
@@ -50,7 +48,7 @@ export class ThinkFilter {
     }
   }
 
-  /** Text held back while waiting to see whether it was a tag; call once at end of stream. */
+  // text held back while we wait to see if it was a tag. call once at the end of the stream
   flush(): string {
     const rest = this.inThink ? '' : this.pending;
     this.pending = '';
@@ -58,7 +56,7 @@ export class ThinkFilter {
   }
 }
 
-/** Length of the longest suffix of `s` that is a proper prefix of `tag`. */
+// length of the longest suffix of s that is a proper prefix of tag
 function partialSuffix(s: string, tag: string): number {
   for (let n = Math.min(tag.length - 1, s.length); n > 0; n--) {
     if (tag.startsWith(s.slice(s.length - n))) return n;

@@ -13,8 +13,8 @@ interface Place {
   longitude: number;
 }
 
-// City coordinates never change, so they are cached for the life of the app. A follow-up like
-// "aur kal?" then costs one request instead of two.
+// city coordinates never change, so cache them for the life of the app. then a follow-up
+// like "aur kal?" costs one request instead of two.
 const places = new Map<string, Place>();
 const reports = new Map<string, { at: number; report: WeatherReport }>();
 
@@ -30,7 +30,7 @@ export function clearWeatherCaches() {
   reports.clear();
 }
 
-// WMO weather interpretation codes → short spoken phrase.
+// WMO weather codes to a short spoken phrase
 function describeCode(code: number): string {
   if (code === 0) return 'clear sky';
   if (code <= 2) return 'partly cloudy';
@@ -50,7 +50,7 @@ export class CityNotFoundError extends Error {
   }
 }
 
-/** One retry for rate limits and server errors; a flaky free API should not fail a demo turn. */
+// one retry on rate limit or server error. the free API is flaky and a demo turn shouldn't die on it
 async function getJson(fetchFn: typeof fetch, url: string, signal?: AbortSignal): Promise<any> {
   for (let attempt = 0; ; attempt++) {
     const res = await fetchFn(url, { signal });
@@ -71,7 +71,7 @@ async function locate(fetchFn: typeof fetch, city: string, signal?: AbortSignal)
   return place as Place;
 }
 
-/** Open-Meteo needs no API key. City → coordinates → one-day forecast, both steps cached. */
+// Open-Meteo needs no API key. city -> coordinates -> one day forecast, both steps cached
 export async function fetchWeather(
   fetchFn: typeof fetch,
   city: string,

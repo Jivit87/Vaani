@@ -11429,7 +11429,7 @@ index 0000000..baebbcd
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/compile_commands.json.bin differ
 diff --git a/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/configure_fingerprint.bin b/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/configure_fingerprint.bin
 new file mode 100644
-index 0000000..a53f3e9
+index 0000000..8a9fa9b
 --- /dev/null
 +++ b/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/configure_fingerprint.bin
 @@ -0,0 +1,40 @@
@@ -11437,42 +11437,42 @@ index 0000000..a53f3e9
 +Β
 +Ώ/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-modules/android/build/intermediates/prefab_package_configuration/release/prefabReleaseConfigurePackage/prefab_publication.jsonC
 +A
-+?com.android.build.gradle.internal.cxx.io.EncodedFileFingerPrint	όγί―”4
++?com.android.build.gradle.internal.cxx.io.EncodedFileFingerPrint	²Υ°”4
 +•
-+’/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/additional_project_files.txt	όγί―”4 Ίρ”«”4•
++’/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/additional_project_files.txt	²Υ°”4 Ίρ”«”4•
 +’
-+/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/android_gradle_build.json	όγί―”4Ά »ρ”«”4
++/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/android_gradle_build.json	²Υ°”4Ά »ρ”«”4
 +—
-+”/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/android_gradle_build_mini.json	όγί―”4φ Ώρ”«”4‡
++”/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/android_gradle_build_mini.json	²Υ°”4φ Ώρ”«”4‡
 +„
-+/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/build.ninja	όγί―”4 °ρ”«”4‹
++/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/build.ninja	²Υ°”4 °ρ”«”4‹
 +
-+…/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/build.ninja.txt	όγί―”4
++…/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/build.ninja.txt	²Υ°”4
 +
-+/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/build_file_index.txt	όγί―”4έ Ώρ”«”4‘
++/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/build_file_index.txt	²Υ°”4έ Ώρ”«”4‘
 +
-+‹/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/compile_commands.json	όγί―”4	 °ρ”«”4•
++‹/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/compile_commands.json	²Υ°”4	 °ρ”«”4•
 +’
-+/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/compile_commands.json.bin	όγί―”4
++/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/compile_commands.json.bin	²Υ°”4
 +$ °ρ”«”4›
 +
-+•/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/metadata_generation_command.txt	όγί―”4ο Ώρ”«”4
++•/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/metadata_generation_command.txt	²Υ°”4ο Ώρ”«”4
 +‹
-+/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/prefab_config.json	όγί―”4Ò Ώρ”«”4“
++/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/prefab_config.json	²Υ°”4Ò Ώρ”«”4“
 +
-+/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/symbol_folder_index.txt	όγί―”4 Ώρ”«”4Ο
++/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/symbol_folder_index.txt	²Υ°”4 Ώρ”«”4Ο
 +Μ
-+Ι/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/prefab/arm64-v8a/prefab/lib/aarch64-linux-android/cmake/ReactAndroid/ReactAndroidConfig.cmake	όγί―”4ω Ψξ”«”4Φ
++Ι/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/prefab/arm64-v8a/prefab/lib/aarch64-linux-android/cmake/ReactAndroid/ReactAndroidConfig.cmake	²Υ°”4ω Ψξ”«”4Φ
 +Σ
-+Π/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/prefab/arm64-v8a/prefab/lib/aarch64-linux-android/cmake/ReactAndroid/ReactAndroidConfigVersion.cmake	όγί―”4¶ Ψξ”«”4Α
++Π/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/prefab/arm64-v8a/prefab/lib/aarch64-linux-android/cmake/ReactAndroid/ReactAndroidConfigVersion.cmake	²Υ°”4¶ Ψξ”«”4Α
 +Ύ
-+»/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/prefab/arm64-v8a/prefab/lib/aarch64-linux-android/cmake/fbjni/fbjniConfig.cmake	όγί―”4„ Χξ”«”4Θ
++»/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/prefab/arm64-v8a/prefab/lib/aarch64-linux-android/cmake/fbjni/fbjniConfig.cmake	²Υ°”4„ Χξ”«”4Θ
 +Ε
-+Β/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/prefab/arm64-v8a/prefab/lib/aarch64-linux-android/cmake/fbjni/fbjniConfigVersion.cmake	όγί―”4¶ Χξ”«”4λ
++Β/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/prefab/arm64-v8a/prefab/lib/aarch64-linux-android/cmake/fbjni/fbjniConfigVersion.cmake	²Υ°”4¶ Χξ”«”4λ
 +θ
-+ε/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/prefab/arm64-v8a/prefab/lib/aarch64-linux-android/cmake/react-native-nitro-modules/react-native-nitro-modulesConfig.cmake	όγί―”4½ Χξ”«”4a
++ε/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/prefab/arm64-v8a/prefab/lib/aarch64-linux-android/cmake/react-native-nitro-modules/react-native-nitro-modulesConfig.cmake	²Υ°”4½ Χξ”«”4a
 +_
-+]/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/CMakeLists.txt	όγί―”4• μρΆ”4
++]/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/CMakeLists.txt	²Υ°”4• μρΆ”4
 \ No newline at end of file
 diff --git a/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/metadata_generation_command.txt b/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/metadata_generation_command.txt
 new file mode 100644
@@ -13585,6 +13585,30 @@ new file mode 100644
 index 0000000..9708df4
 --- /dev/null
 +++ b/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_2173_timing.txt
+@@ -0,0 +1,2 @@
++# C/C++ build system timings
++
+diff --git a/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_2290_timing.txt b/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_2290_timing.txt
+new file mode 100644
+index 0000000..9708df4
+--- /dev/null
++++ b/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_2290_timing.txt
+@@ -0,0 +1,2 @@
++# C/C++ build system timings
++
+diff --git a/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_2358_timing.txt b/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_2358_timing.txt
+new file mode 100644
+index 0000000..9708df4
+--- /dev/null
++++ b/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_2358_timing.txt
+@@ -0,0 +1,2 @@
++# C/C++ build system timings
++
+diff --git a/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_2455_timing.txt b/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_2455_timing.txt
+new file mode 100644
+index 0000000..9708df4
+--- /dev/null
++++ b/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_2455_timing.txt
 @@ -0,0 +1,2 @@
 +# C/C++ build system timings
 +
@@ -68533,7 +68557,7 @@ new file mode 100644
 index 0000000..71780ae
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/tmp/kotlin-classes/release/com/margelo/nitro/nitrovoice/VADConfig.class differ
 diff --git a/node_modules/react-native-nitro-voice/android/src/main/java/com/margelo/nitro/nitrovoice/HybridSTT.kt b/node_modules/react-native-nitro-voice/android/src/main/java/com/margelo/nitro/nitrovoice/HybridSTT.kt
-index 690760a..5aa4155 100644
+index 690760a..031cb1a 100644
 --- a/node_modules/react-native-nitro-voice/android/src/main/java/com/margelo/nitro/nitrovoice/HybridSTT.kt
 +++ b/node_modules/react-native-nitro-voice/android/src/main/java/com/margelo/nitro/nitrovoice/HybridSTT.kt
 @@ -317,10 +317,17 @@ class HybridSTT : HybridSTTSpec() {
@@ -68545,7 +68569,7 @@ index 690760a..5aa4155 100644
      stream.acceptWaveform(samples, 16000)
      recognizer.decode(stream)
      val text = recognizer.getResult(stream).text.trim()
-+    // Measured decode time per VAD segment, read with: adb logcat -s NitroSTT
++    // decode time per VAD segment, see it with: adb logcat -s NitroSTT
 +    android.util.Log.i(
 +      "NitroSTT",
 +      "decode_ms=" + (android.os.SystemClock.elapsedRealtime() - startedAt) +
@@ -68555,7 +68579,7 @@ index 690760a..5aa4155 100644
      if (text.isNotEmpty()) {
        onTranscriptCallback?.invoke(text)
 diff --git a/node_modules/react-native-nitro-voice/android/src/main/java/com/margelo/nitro/nitrovoice/HybridTTS.kt b/node_modules/react-native-nitro-voice/android/src/main/java/com/margelo/nitro/nitrovoice/HybridTTS.kt
-index 9172939..2cdbf0d 100644
+index 9172939..84b7bd0 100644
 --- a/node_modules/react-native-nitro-voice/android/src/main/java/com/margelo/nitro/nitrovoice/HybridTTS.kt
 +++ b/node_modules/react-native-nitro-voice/android/src/main/java/com/margelo/nitro/nitrovoice/HybridTTS.kt
 @@ -23,7 +23,14 @@ class HybridTTS : HybridTTSSpec() {
@@ -68563,9 +68587,9 @@ index 9172939..2cdbf0d 100644
    // State
    private var tts: OfflineTts? = null
 -  @Volatile private var isSpeaking = false
-+  // speak() may be called again before the previous call finishes. Each call takes a ticket when it is made;
-+  // synthesis is serialized (sherpa's thread-safety is not guaranteed) but overlaps with the previous sentence's
-+  // playback, and audio is written strictly in ticket order.
++  // speak() can be called again before the last call finishes. each call takes a ticket when it's
++  // made. synthesis is serialized (not sure sherpa is thread safe) but overlaps with the previous
++  // sentence's playback, and audio is written strictly in ticket order.
 +  private val tickets = java.util.concurrent.atomic.AtomicLong(0)
 +  private var nowServing = 0L
 +  private val playLock = Object()
@@ -68578,8 +68602,8 @@ index 9172939..2cdbf0d 100644
              voices = "$modelDir/voices.bin",
              tokens = "$modelDir/tokens.txt",
              dataDir = dataDir,
-+            // Multi-lingual Kokoro (v1.0+) aborts the process unless a lexicon or lang is given.
-+            // English words come from the lexicon; everything else (Devanagari) goes through espeak "hi".
++            // multi-lingual kokoro (v1.0+) kills the process unless it gets a lexicon or a lang.
++            // english words come from the lexicon, everything else (devanagari) goes through espeak "hi"
 +            lexicon = if (File("$modelDir/lexicon-us-en.txt").exists()) "$modelDir/lexicon-us-en.txt" else "",
 +            lang = "hi",
              lengthScale = 1.0f / (config.speed?.toFloat() ?: 1.0f)
@@ -68643,7 +68667,7 @@ index 9172939..2cdbf0d 100644
 +      val genMs = android.os.SystemClock.elapsedRealtime() - calledAt
  
 -      isSpeaking = false
-+      // Wait for our turn so audio is written in call order.
++      // wait for our turn so audio gets written in call order
 +      synchronized(playLock) {
 +        while (nowServing != ticket) playLock.wait()
 +      }
@@ -68659,8 +68683,8 @@ index 9172939..2cdbf0d 100644
 +          if (track != null && track.state == AudioTrack.STATE_INITIALIZED) {
 +            if (track.playState != AudioTrack.PLAYSTATE_PLAYING) track.play()
 +            val playAt = android.os.SystemClock.elapsedRealtime()
-+            // Read with: adb logcat -s NitroTTS. Estimated audible gap before this sentence =
-+            // max(0, play_at - (previous play_at + previous audio_ms)).
++            // adb logcat -s NitroTTS. estimated gap before this sentence is
++            // max(0, play_at - (previous play_at + previous audio_ms))
 +            android.util.Log.i(
 +              "NitroTTS",
 +              "ticket=" + ticket + " synth_ms=" + synthMs + " gen_ms=" + genMs + " turn_wait_ms=" + (playAt - calledAt - genMs) +

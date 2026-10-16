@@ -8,12 +8,10 @@ const MAX_ACTIONS = 5;
 const IDLE_RESET_MS = 10 * 60_000;
 const MAX_SUMMARY_CHARS = 500;
 
-/**
- * Bounded three-layer memory (see about.md §7.6):
- *  1. a window of recent turns (user text + what the agent said, never tool payloads),
- *  2. a rolling summary of older turns, updated off the latency path,
- *  3. a small state record written by tool code, so follow-ups never depend on the LLM remembering.
- */
+// bounded memory in three layers:
+//  1. a window of recent turns (what the user said and what we spoke, never tool payloads)
+//  2. a rolling summary of older turns, updated off the latency path
+//  3. a small state record written by tool code, so follow-ups don't depend on the LLM remembering
 export class Memory {
   window: Msg[] = [];
   summary = '';
@@ -47,12 +45,12 @@ export class Memory {
     ];
   }
 
-  /** Stores only the user's words and what the agent actually spoke. */
+  // keeps only what the user said and what we actually spoke
   commitTurn(user: string, spoken: string) {
     this.window.push({ role: 'user', content: user });
     if (spoken.trim()) this.window.push({ role: 'assistant', content: spoken.trim() });
     while (this.window.length > MAX_WINDOW_MESSAGES) {
-      // Evict whole turns so the window always starts on a user message.
+      // evict whole turns so the window always starts on a user message
       const nextUser = this.window.findIndex((m, i) => i > 0 && m.role === 'user');
       const cut = nextUser === -1 ? this.window.length : nextUser;
       this.evicted.push(...this.window.splice(0, cut));
@@ -60,14 +58,14 @@ export class Memory {
     this.lastActive = this.now().getTime();
   }
 
-  /** Call when playback has finished so the extra LLM call never delays a reply. */
+  // call after playback so the extra LLM call never delays a reply
   async summarizeIfIdle(summarize: Summarizer): Promise<void> {
     if (!this.evicted.length) return;
     const batch = this.evicted.splice(0);
     try {
       this.summary = (await summarize(this.summary, batch)).trim().slice(0, MAX_SUMMARY_CHARS);
     } catch {
-      // Memory is best-effort: losing an old turn is better than failing a live one.
+      // best effort: losing an old turn beats failing a live one
     }
   }
 

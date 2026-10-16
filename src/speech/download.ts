@@ -1,8 +1,8 @@
 import type { ModelPack, PackFile } from './packs';
 
-/** Filesystem + network primitives, injected so the policy below is unit-testable. */
+// filesystem and network pieces, injected so the logic below can be unit tested
 export interface FsOps {
-  /** File size in bytes, or null if the file does not exist. */
+  // file size in bytes, or null if it doesn't exist
   sizeOf(path: string): Promise<number | null>;
   download(url: string, dest: string, signal?: AbortSignal): Promise<void>;
   remove(path: string): Promise<void>;
@@ -26,11 +26,9 @@ export interface EnsureOptions {
 
 const defaultSleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
 
-/**
- * Makes sure every file of a pack is on disk with exactly the expected size.
- * A file whose size is wrong (e.g. a download killed halfway) is re-fetched,
- * which is also the resume mechanism: complete files are never downloaded twice.
- */
+// makes sure every file of a pack is on disk at exactly the expected size. a file with the
+// wrong size (say a download killed halfway) gets fetched again, which doubles as resume:
+// complete files are never downloaded twice.
 export async function ensurePack(
   pack: ModelPack,
   dir: string,
@@ -90,7 +88,7 @@ export async function ensurePack(
   if (failure !== undefined) throw failure;
 }
 
-/** True if every file of the pack is already present at the right size. */
+// true if every file of the pack is there at the right size
 export async function isPackComplete(pack: ModelPack, dir: string, fs: FsOps): Promise<boolean> {
   for (const f of pack.files) if ((await fs.sizeOf(`${dir}/${f.path}`)) !== f.size) return false;
   return true;

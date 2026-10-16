@@ -1,9 +1,7 @@
 export type ScriptLang = 'hi' | 'en';
 
-/**
- * Splits text into runs of Devanagari (hi) and Latin (en). Spaces, digits and
- * punctuation stay with the current run. Used by the optional dual-voice TTS strategy.
- */
+// splits text into runs of Devanagari (hi) and Latin (en). spaces, digits and punctuation
+// stay with the current run. for the optional dual-voice TTS idea.
 export function splitByScript(text: string): [string, ScriptLang][] {
   const out: [string, ScriptLang][] = [];
   let buf = '';

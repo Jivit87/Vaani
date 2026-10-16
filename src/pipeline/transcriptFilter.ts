@@ -1,7 +1,6 @@
-// Whisper is known to invent short phrases on near-silence or noise. These are
-// ignored so the agent does not answer a cough or the room's air conditioning.
-// Phrases Whisper invents on silence or noise (mostly YouTube sign-offs). Deliberately NOT included:
-// "yes", "no", "yeah", "right", "namaste", "shukriya": those are valid answers to a clarifying question.
+// whisper invents short phrases on silence or noise (mostly youtube sign-offs).
+// not in the list on purpose: "yes", "no", "yeah", "right", "namaste", "shukriya".
+// those are valid answers to a clarifying question.
 const HALLUCINATIONS = new Set([
   'you',
   'thank you',
@@ -31,11 +30,11 @@ const HALLUCINATIONS = new Set([
   'subtitles by the amara.org community',
 ]);
 
-// A combining mark (Devanagari vowel sign, anusvara...) on its own is never valid text: it only appears when
-// Whisper decodes noise, e.g. "र ो ो र ो".
+// a lone combining mark (vowel sign, anusvara) is never real text. it only shows up
+// when whisper decodes noise, like "र ो ो र ो"
 const ORPHAN_MARK = /(^|\s)\p{M}+(?=\s|$)/u;
 
-// Whisper labels non-speech as "(static)", "[BLANK_AUDIO]", "[Music]", "*sigh*"; none of it is something to answer.
+// whisper tags non-speech like "(static)", "[BLANK_AUDIO]", "[Music]", "*sigh*". nothing to answer there
 const ANNOTATION = /^\s*[([*].*[)\]*]\s*$/s;
 
 export function isNoiseTranscript(raw: string): boolean {
@@ -48,7 +47,7 @@ export function isNoiseTranscript(raw: string): boolean {
     .trim();
   if (t.length < 2) return true;
   if (HALLUCINATIONS.has(t)) return true;
-  // Repetition loops ("ne ne ne", "okay okay okay okay") are a classic decoder failure on noise.
+  // repetition loops ("ne ne ne") are a classic decoder failure on noise
   const tokens = t.split(' ');
   const unique = new Set(tokens).size;
   return (tokens.length >= 3 && unique === 1) || (tokens.length >= 4 && unique <= 2);
@@ -61,10 +60,8 @@ const words = (t: string) =>
     .split(/\s+/)
     .filter(Boolean);
 
-/**
- * True when a short transcript is made only of words Vaani itself just said: the microphone picked up its
- * own speaker. Real follow-ups ("and the day after?") contain words it did not just say.
- */
+// true when a short transcript only has words vaani just said, i.e. the mic caught its
+// own speaker. real follow-ups ("and the day after?") have words it didn't say.
 export function isEcho(transcript: string, lastSpoken: string, maxWords = 6): boolean {
   const heard = words(transcript);
   if (!heard.length || heard.length > maxWords) return false;

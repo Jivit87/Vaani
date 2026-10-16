@@ -3,7 +3,7 @@ import type { FsOps } from './download';
 
 export const modelsRoot = () => `${Paths.document.uri.replace(/\/$/, '')}/models`;
 
-/** Native paths (no file:// scheme) are what the sherpa-onnx native code opens. */
+// native paths have no file:// scheme, that's what the sherpa-onnx native code opens
 export const toNativePath = (uri: string) => uri.replace(/^file:\/\//, '');
 
 export const expoFsOps: FsOps = {

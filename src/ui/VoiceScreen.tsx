@@ -112,11 +112,11 @@ export function VoiceScreen() {
       rt.current = null;
       setRuntime(null);
     };
-    // The runtime is created once per attempt; language changes go through setLanguage.
+    // the runtime is created once per attempt, language changes go through setLanguage
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [attempt]);
 
-  // The "Natural" voice is only offered when its files are already on the phone.
+  // only offer the "Natural" voice when its files are already on the phone
   useEffect(() => {
     const kokoro = getPack('kokoro-int8-multi-lang-v1_0');
     void isPackComplete(kokoro, packDir(kokoro.id as never), expoFsOps).then(setNaturalAvailable);

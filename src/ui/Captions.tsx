@@ -14,7 +14,7 @@ interface Props {
   onSuggest: (text: string) => void;
 }
 
-/** What you said (small, dim) and what Vaani is saying (large). Empty state offers a few things to try. */
+// what you said (small, dim) and what Vaani is saying (large). the empty state suggests a few things to try
 export function Captions({ user, reply, ready, onSuggest }: Props) {
   if (!user && !reply) {
     return (

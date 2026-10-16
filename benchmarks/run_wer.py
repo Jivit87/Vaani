@@ -18,8 +18,8 @@ from collections import defaultdict
 
 def normalize(text: str) -> str:
     text = unicodedata.normalize("NFKC", text).lower()
-    text = re.sub(r"[^\w\s]", " ", text)  # strip punctuation (keeps Devanagari letters)
-    # common Hinglish spelling variants; extend as your test set needs
+    text = re.sub(r"[^\w\s]", " ", text)  # strip punctuation (devanagari letters stay)
+    # a few common hinglish spelling variants, add more if your test set needs them
     for a, b in {"kl": "kal", "bje": "baje", "bajey": "baje"}.items():
         text = re.sub(rf"\b{a}\b", b, text)
     return re.sub(r"\s+", " ", text).strip()
