@@ -24,6 +24,14 @@ describe('Memory', () => {
     expect(sys).toContain('alarm 07:00');
   });
 
+  it('renders an explicit reply-language rule from the session toggle', () => {
+    const en = new Memory(() => new Date(t0), undefined, 'en').buildMessages('hi')[0] as any;
+    const hi = new Memory(() => new Date(t0), undefined, 'hi').buildMessages('hi')[0] as any;
+    expect(en.content).toContain('session language is ENGLISH');
+    expect(en.content).not.toContain('HINGLISH');
+    expect(hi.content).toContain('session language is HINGLISH');
+  });
+
   it('keeps only the last 5 actions', () => {
     const m = new Memory();
     for (let i = 0; i < 8; i++) m.recordAction(`a${i}`);

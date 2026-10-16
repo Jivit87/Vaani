@@ -17,6 +17,9 @@ import { createLlmClient } from '../src/llm/client';
 import { NVIDIA_BASE_URL } from '../src/llm/models';
 import { markdownTable, scoreTurn, summarizeScores, type Case, type Observed, type TurnScore } from './score';
 
+const HINGLISH =
+  /[\u0900-\u097f]|\b(ka|kal|aaj|baje|bje|karna|laga|kya|hai|mujhe|parso|shaam|subah|aur|do|dena|btao|set kr)\b/i;
+
 function arg(name: string, fallback?: string): string | undefined {
   const i = process.argv.indexOf(`--${name}`);
   return i >= 0 ? process.argv[i + 1] : fallback;
@@ -77,7 +80,8 @@ async function main() {
     const observed: Observed[] = [];
     for (const c of cases) {
       const mem = new Memory(() => NOW);
-      mem.setLang('en');
+      // Hinglish cases run in a Hinglish session, as the app's toggle would be set for them.
+      mem.setLang(HINGLISH.test(c.turns.map((t) => t.user).join(' ')) ? 'hi' : 'en');
       for (const turn of c.turns) {
         let obs: Observed;
         try {

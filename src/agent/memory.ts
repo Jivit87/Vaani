@@ -40,7 +40,7 @@ export class Memory {
       .filter(Boolean)
       .join('\n');
     return [
-      { role: 'system', content: renderSystemPrompt(this.now(), block, this.systemSuffix) },
+      { role: 'system', content: renderSystemPrompt(this.now(), block, this.systemSuffix, this.state.lang) },
       ...this.window,
       { role: 'user', content: userText },
       ...scratch,
