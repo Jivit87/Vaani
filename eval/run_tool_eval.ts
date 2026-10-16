@@ -20,6 +20,8 @@ import { markdownTable, scoreTurn, summarizeScores, type Case, type Observed, ty
 const HINGLISH =
   /[\u0900-\u097f]|\b(ka|kal|aaj|baje|bje|karna|laga|kya|hai|mujhe|parso|shaam|subah|aur|do|dena|btao|set kr)\b/i;
 
+const P90_TTFT_WARN_MS = 6000;
+
 function arg(name: string, fallback?: string): string | undefined {
   const i = process.argv.indexOf(`--${name}`);
   return i >= 0 ? process.argv[i + 1] : fallback;
@@ -109,6 +111,10 @@ async function main() {
         await sleep(delay);
       }
     }
+    const ttfts = observed.flatMap((o) => (o.ttftMs === null ? [] : [o.ttftMs])).sort((a, c) => a - c);
+    const p90 = ttfts.length ? ttfts[Math.min(ttfts.length - 1, Math.ceil(0.9 * ttfts.length) - 1)] : null;
+    if (p90 !== null && p90 > P90_TTFT_WARN_MS)
+      console.warn(`WARNING ${modelId}: p90 TTFT ${p90} ms exceeds ${P90_TTFT_WARN_MS} ms`);
     table.push({ model: modelId, s: summarizeScores(scores, observed) });
     writeFileSync(
       `${outDir}/${modelId.replace(/[^\w.-]/g, '_')}.json`,

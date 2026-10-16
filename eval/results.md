@@ -45,3 +45,13 @@ gpt-oss-20b failures (3): asked "when?" for "a meeting at 5 PM" instead of assum
 Compared with NVIDIA's best (deepseek-v4.1-flash: 100% / 100% / 100%, median TTFT 3203 ms), gpt-oss-120b on Groq gives the same accuracy with a ~4.5x faster first token. Caveats: one run each; `qwen/qwen3.8-27b` was available but not evaluated. The NVIDIA chat endpoint also hung for all models for 12+ minutes later the same day, so a second provider is a real availability benefit.
 
 Re-run of gpt-oss-120b after the "repeat the time exactly, including minutes" prompt rule and the `alarm_12h` tool field: 33 turns, tool choice 97 %, arguments 96 %, clarification 100 %, median TTFT 713 ms. The one miss (`followup_reminder`) is `ERROR fetch failed`, a transient network error on a single request, not a model answer, so it is not evidence of a prompt regression, but it also means this run is **not** a clean 100 %.
+
+## After prompt/schema compression and 8 extra noisy cases (35 cases / 41 turns, Groq free tier, 2026-10-16)
+
+System prompt cut from ~266 to ~184 tokens (-31 %), tool-schema descriptions shortened (schemas ~512 -> ~479 tokens; most of their size is JSON structure, so the saving is small).
+
+| Model               | Turns | Tool choice | Arguments | Clarification | Median TTFT (ms) | Median turn (ms) |
+| ------------------- | ----- | ----------- | --------- | ------------- | ---------------- | ---------------- |
+| openai/gpt-oss-120b | 41    | 100%        | 97%       | 100%          | 690              | 1337             |
+
+One miss: `noisy_alarm_02` ("subh paanch bje ka alram laga do") produced 05:30 instead of 05:00, a hallucinated minute on a noisy transcript, and the spoken line contained a mixed-script word ("बaje"). Single run; no accuracy loss from compression is visible, but 41 turns cannot show a 1-2 point difference.

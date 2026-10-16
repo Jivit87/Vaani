@@ -9,12 +9,12 @@ export const TOOLS: ToolSchema[] = [
     type: 'function',
     function: {
       name: 'set_alarm',
-      description: 'Set an alarm in the phone Clock app for the next occurrence of the given time.',
+      description: 'Set an alarm in the Clock app.',
       parameters: {
         type: 'object',
         required: ['hour', 'minute'],
         properties: {
-          hour: { type: 'integer', minimum: 0, maximum: 23, description: '24-hour clock' },
+          hour: { type: 'integer', minimum: 0, maximum: 23, description: '0-23' },
           minute: { type: 'integer', minimum: 0, maximum: 59 },
           label: { type: 'string' },
         },
@@ -25,14 +25,14 @@ export const TOOLS: ToolSchema[] = [
     type: 'function',
     function: {
       name: 'set_reminder',
-      description: 'Schedule a reminder notification at an exact future time.',
+      description: 'Schedule a reminder notification.',
       parameters: {
         type: 'object',
         required: ['datetime_iso', 'text'],
         properties: {
           datetime_iso: {
             type: 'string',
-            description: 'ISO 8601 with +05:30 offset, e.g. 2026-10-17T17:00:00+05:30',
+            description: 'ISO 8601 with +05:30, e.g. 2026-10-17T17:00:00+05:30',
           },
           text: { type: 'string' },
         },
@@ -43,7 +43,7 @@ export const TOOLS: ToolSchema[] = [
     type: 'function',
     function: {
       name: 'get_schedule',
-      description: "Read the user's calendar events for one day, sorted by start time.",
+      description: 'Read calendar events for one day.',
       parameters: {
         type: 'object',
         required: ['date'],
@@ -55,7 +55,7 @@ export const TOOLS: ToolSchema[] = [
     type: 'function',
     function: {
       name: 'get_weather',
-      description: 'Daily weather forecast for a city, from today up to 7 days ahead.',
+      description: 'Weather forecast for a city, today up to 7 days ahead.',
       parameters: {
         type: 'object',
         required: ['city', 'date'],
