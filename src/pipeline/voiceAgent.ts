@@ -1,0 +1,169 @@
+import type { Memory } from '../agent/memory';
+import { runTurn, type AgentDeps } from '../agent/runTurn';
+import type { Lang, TraceEvent } from '../agent/types';
+import { ERROR_TEXT, FILLER_TEXT, OFFLINE_TEXT, type SttEngine } from '../speech/types';
+import type { TurnMetrics } from './metrics';
+import { TtsQueue } from './ttsQueue';
+import { isNoiseTranscript } from './transcriptFilter';
+
+export type AgentStatus = 'idle' | 'listening' | 'thinking' | 'acting' | 'speaking' | 'error';
+
+export interface VoiceAgentEvents {
+  onStatus(s: AgentStatus): void;
+  onTranscript(text: string): void;
+  onReply(text: string): void;
+  onTrace(e: TraceEvent): void;
+  onMetrics(m: TurnMetrics): void;
+}
+
+export interface VoiceAgentDeps {
+  stt: SttEngine;
+  queue: TtsQueue;
+  memory: Memory;
+  /** Everything runTurn needs except the speaker, which this class provides. */
+  agent: Omit<AgentDeps, 'speaker' | 'onTrace'>;
+  summarize?: () => Promise<void>;
+  events: VoiceAgentEvents;
+  now?: () => number;
+}
+
+const isNetworkError = (e: unknown) =>
+  e instanceof TypeError ||
+  /network|fetch|timeout|Failed to connect/i.test(String((e as Error)?.message ?? e));
+
+/**
+ * Half-duplex loop: listen → (mic off) think/act → speak → (mic on) listen.
+ * Transcripts that arrive while a turn is running are dropped, not queued.
+ */
+export class VoiceAgent {
+  private status: AgentStatus = 'idle';
+  private busy = false;
+  private mode: 'agent' | 'transcribe' = 'agent';
+  private ctl: AbortController | null = null;
+  private firstAudioMs: number | null = null;
+  private ttsFirstChunkMs: number | null = null;
+
+  constructor(private readonly d: VoiceAgentDeps) {}
+
+  async start() {
+    await this.d.stt.listen((t) => void this.handleTranscript(t));
+    this.setStatus('listening');
+  }
+
+  async stop() {
+    this.ctl?.abort();
+    await this.d.queue.cancel();
+    await this.d.stt.destroy();
+    this.setStatus('idle');
+  }
+
+  /** 'transcribe' reports what was heard and never calls the LLM (offline STT test). */
+  setMode(mode: 'agent' | 'transcribe') {
+    this.mode = mode;
+  }
+
+  /** Typed input path, used by tests and the on-screen text box. */
+  submitText(text: string) {
+    return this.handleTranscript(text);
+  }
+
+  /** Barge-in / manual stop: cancel the LLM stream and the speech, go back to listening. */
+  async interrupt() {
+    this.ctl?.abort();
+    await this.d.queue.cancel();
+  }
+
+  /** Queue callback wiring: call once after constructing the TtsQueue. */
+  onFirstAudio = (firstChunkMs: number) => {
+    this.ttsFirstChunkMs = firstChunkMs;
+    this.firstAudioMs = (this.d.now ?? Date.now)() - this.turnStart;
+  };
+  private turnStart = 0;
+
+  private setStatus(s: AgentStatus) {
+    this.status = s;
+    this.d.events.onStatus(s);
+  }
+
+  private async handleTranscript(raw: string) {
+    const text = raw.trim();
+    if (this.busy || isNoiseTranscript(text)) return;
+    if (this.mode === 'transcribe') {
+      this.d.events.onTranscript(text);
+      return;
+    }
+    this.busy = true;
+    const now = this.d.now ?? Date.now;
+    this.turnStart = now();
+    this.firstAudioMs = null;
+    this.ttsFirstChunkMs = null;
+    this.ctl = new AbortController();
+    // The EN / Hinglish toggle is the single source of truth for the session language.
+    const lang: Lang = this.d.memory.state.lang;
+
+    this.d.stt.pauseMic(); // half-duplex: the speaker must not feed the VAD
+    this.d.events.onTranscript(text);
+    this.setStatus('thinking');
+    this.d.queue.beginTurn();
+
+    const metrics: TurnMetrics = {
+      at: new Date().toISOString(),
+      user: text,
+      spoken: '',
+      model: '',
+      tools: '',
+      llmSteps: 0,
+      llmTtftMs: null,
+      toolMs: 0,
+      firstAudioMs: null,
+      ttsFirstChunkMs: null,
+      totalMs: 0,
+    };
+
+    try {
+      const result = await runTurn(
+        text,
+        this.d.memory,
+        {
+          ...this.d.agent,
+          speaker: {
+            say: (s) => {
+              this.setStatus('speaking');
+              this.d.queue.say(s);
+            },
+            playFiller: (l) => this.d.queue.say(FILLER_TEXT[l]),
+          },
+          onTrace: (e) => {
+            this.setStatus('acting');
+            this.d.events.onTrace(e);
+          },
+        },
+        this.ctl.signal,
+      );
+      metrics.spoken = result.spoken;
+      metrics.model = result.model.id;
+      metrics.tools = result.toolsCalled.map((t) => t.name).join(';');
+      metrics.llmSteps = result.timings.llmSteps;
+      metrics.llmTtftMs = result.timings.llmTtftMs;
+      metrics.toolMs = result.timings.toolMs;
+      this.d.events.onReply(result.spoken);
+    } catch (e) {
+      if (!this.ctl.signal.aborted) {
+        metrics.error = e instanceof Error ? e.message : String(e);
+        this.d.queue.say((isNetworkError(e) ? OFFLINE_TEXT : ERROR_TEXT)[lang]);
+      }
+    }
+
+    await this.d.queue.drain();
+    metrics.firstAudioMs = this.firstAudioMs;
+    metrics.ttsFirstChunkMs = this.ttsFirstChunkMs;
+    metrics.totalMs = now() - this.turnStart;
+    this.d.events.onMetrics(metrics);
+
+    this.busy = false;
+    this.ctl = null;
+    await this.d.stt.resumeMic().catch(() => this.setStatus('error'));
+    if (this.status !== 'error') this.setStatus('listening');
+    void this.d.summarize?.();
+  }
+}
