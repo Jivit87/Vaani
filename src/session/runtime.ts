@@ -75,7 +75,10 @@ export async function createRuntime(lang: Lang, uiEvents: VoiceAgentEvents): Pro
 
   // The agent needs the queue and the queue reports back to the agent, so wire them lazily.
   let agent: VoiceAgent;
-  const queue = new TtsQueue(tts, { onFirstAudio: (ms) => agent.onFirstAudio(ms) });
+  const queue = new TtsQueue(tts, {
+    onFirstAudio: (ms) => agent.onFirstAudio(ms),
+    hinglish: () => memory.state.lang === 'hi',
+  });
 
   const build = (engine: SttEngine) =>
     new VoiceAgent({
@@ -94,6 +97,13 @@ export async function createRuntime(lang: Lang, uiEvents: VoiceAgentEvents): Pro
 
   // Warm up so the first real turn does not pay model-load or first-inference cost.
   await tts.speak('.').catch(() => undefined);
+  // Open the TLS connection to the LLM now so the first real turn skips the handshake (fire and forget).
+  void llm({
+    model: { ...config.primary, maxTokens: 4 },
+    messages: [{ role: 'user', content: 'hi' }],
+    tools: [],
+    onText: () => undefined,
+  }).catch(() => undefined);
 
   return {
     get agent() {

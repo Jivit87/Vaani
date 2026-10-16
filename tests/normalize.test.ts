@@ -45,3 +45,32 @@ describe('normalizeForTts', () => {
     expect(normalizeForTts('सुबह सात बजे का alarm set है।')).toBe('सुबह सात बजे का alarm set है।');
   });
 });
+
+describe('Roman Hindi → Devanagari', () => {
+  it('converts Hindi words in a Hinglish session and speaks the number in Hindi', () => {
+    expect(normalizeForTts('Aapka alarm kal subah 7 baje set ho gaya hai', { hinglish: true })).toBe(
+      'आपका alarm कल सुबह सात बजे set हो गया है',
+    );
+  });
+  it('converts Hindi words once the sentence already contains Devanagari', () => {
+    expect(normalizeForTts('आपका reminder kal shaam set hai')).toBe('आपका reminder कल शाम set है');
+  });
+  it('leaves English sentences alone, including words that are also Hindi-looking', () => {
+    const en = 'We do it at the main park, and hi to them';
+    expect(normalizeForTts(en, { hinglish: true })).toBe(en);
+    expect(normalizeForTts('Your alarm is set for seven AM')).toBe('Your alarm is set for seven AM');
+  });
+  it('never converts the deliberately excluded English homographs', async () => {
+    const { ROMAN_TO_DEVANAGARI } = await import('../src/tts/hinglishDict');
+    for (const w of ['do', 'main', 'par', 'hum', 'is', 'to', 'hi', 'me', 'us', 'din', 'teen', 'char'])
+      expect(ROMAN_TO_DEVANAGARI.has(w)).toBe(false);
+  });
+  it('has a well-formed dictionary', async () => {
+    const { ROMAN_TO_DEVANAGARI } = await import('../src/tts/hinglishDict');
+    expect(ROMAN_TO_DEVANAGARI.size).toBeGreaterThan(150);
+    for (const [roman, deva] of ROMAN_TO_DEVANAGARI) {
+      expect(roman).toMatch(/^[a-z]+$/);
+      expect(deva).toMatch(/^[\u0900-\u097f]+$/);
+    }
+  });
+});

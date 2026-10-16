@@ -9,6 +9,8 @@ export interface QueueEvents {
   /** Fires once per turn when the first sentence's audio exists (end of the perceived wait). */
   onFirstAudio?: (firstChunkMs: number) => void;
   onError?: (e: unknown) => void;
+  /** True while the session language is Hinglish (enables Roman → Devanagari conversion). */
+  hinglish?: () => boolean;
 }
 
 /**
@@ -33,7 +35,7 @@ export class TtsQueue {
   }
 
   say(sentence: string) {
-    const text = normalizeForTts(sentence);
+    const text = normalizeForTts(sentence, { hinglish: this.events.hinglish?.() ?? false });
     if (!text || !/[\p{L}\p{N}]/u.test(text)) return;
     const mine = this.epoch;
     this.tail = this.tail.then(async () => {
