@@ -1,0 +1,40 @@
+# dependencies
+node_modules/
+
+# secrets and local config
+.env
+.env.*
+!.env.example
+*.jks
+*.keystore
+*.p8
+*.p12
+*.key
+*.pem
+*.mobileprovision
+
+# Expo / React Native
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+.metro-health-check*
+# prebuild output is generated: `npm run prebuild`
+/android/
+/ios/
+.kotlin/
+
+# eval + benchmark artefacts that may contain personal recordings or raw model output
+eval/out/
+benchmarks/audio/
+benchmarks/*.json
+
+# logs, OS, editors
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+*.log
+.DS_Store
+.idea/
+.vscode/
+*.tsbuildinfo

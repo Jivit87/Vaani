@@ -1,0 +1,8 @@
+node_modules
+package-lock.json
+src/speech/manifest.generated.json
+assets
+android
+ios
+eval/out
+about.md

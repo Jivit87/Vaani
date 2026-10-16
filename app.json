@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "Vaani",
+    "slug": "vaani-voice-agent",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "android": {
+      "package": "com.vaani.voiceagent",
+      "adaptiveIcon": {
+        "backgroundColor": "#0f1115",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.INTERNET",
+        "android.permission.READ_CALENDAR",
+        "android.permission.WRITE_CALENDAR",
+        "android.permission.POST_NOTIFICATIONS",
+        "android.permission.SCHEDULE_EXACT_ALARM",
+        "com.android.alarm.permission.SET_ALARM"
+      ]
+    },
+    "plugins": [
+      [
+        "react-native-nitro-voice",
+        { "microphonePermission": "On-device speech recognition. Audio never leaves the phone." }
+      ],
+      ["expo-build-properties", { "android": { "minSdkVersion": 29 } }],
+      "expo-calendar",
+      "expo-notifications",
+      "expo-dev-client"
+    ]
+  }
+}
