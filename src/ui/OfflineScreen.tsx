@@ -55,7 +55,6 @@ export function OfflineScreen({ runtime }: { runtime: Runtime | null }) {
 
   return (
     <View style={[s.screen, s.pad, { gap: 12 }]}>
-      <Text style={s.h1}>Offline test</Text>
       <Text style={s.dim}>
         Turn on airplane mode, then try both buttons. Neither one touches the network.
       </Text>

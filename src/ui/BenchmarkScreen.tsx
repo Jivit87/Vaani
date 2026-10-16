@@ -41,7 +41,6 @@ export function BenchmarkScreen() {
 
   return (
     <ScrollView style={s.screen} contentContainerStyle={[s.pad, { gap: 10 }]}>
-      <Text style={s.h1}>STT benchmark</Text>
       <Text style={s.dim}>
         Put en_*.wav / hi_*.wav (16 kHz mono) in the app&apos;s benchmark/audio folder and extra Whisper
         folders under models/ (see README). Close the Agent tab&apos;s mic first for clean timings.
