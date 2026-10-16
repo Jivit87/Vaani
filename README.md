@@ -1,7 +1,7 @@
 # Vaani — on-device Hinglish voice agent (React Native, Android)
 
-Speak English or Hinglish; the agent answers out loud. **Speech recognition and speech synthesis run on
-the phone** (sherpa-onnx: Silero VAD + Whisper-small int8 + Kokoro-82M int8). The language model is in the
+Speak English or Hinglish; the agent answers out loud, like a voice-mode chat assistant: ask it anything (facts, explanations, maths, translation, advice, stories) or have it set alarms, timers and reminders, read your calendar and check the weather. **Speech recognition and speech synthesis run on
+the phone** (sherpa-onnx: Silero VAD + Whisper-small int8 + Piper voices, with Kokoro-82M as an optional richer voice). The language model is in the
 cloud (Groq free tier by default, or the NVIDIA API; both OpenAI-compatible) and runs inside a small tool-using **agent loop** with bounded memory.
 Built for the IISc Computational Intelligence Lab assignment; design rationale is in `about.md`.
 
@@ -36,6 +36,10 @@ npm run android                 # builds the dev client, installs on the connect
 
 After editing `.env`, restart Metro with `npx expo start --clear` — Expo caches inlined env values.
 First launch downloads the speech models (Wi-Fi recommended); the download resumes and verifies sizes.
+
+## Free-tier limits (Groq)
+
+The default LLM provider is Groq's free tier. Measured limits for `gpt-oss-120b`: 8,000 tokens per minute and **200,000 tokens per day** (about 150-190 requests). When a model answers 429 the app skips it until its cooldown and uses the backup model; when both are limited it says so out loud. Avoid running big evals on the primary model on a demo day. See `docs/DECISIONS.md` D19.
 
 ## Using the app
 

@@ -32,6 +32,13 @@ Bugs found on the device and fixed (all with tests): the agent **heard its own v
 
 **Still not verified:** Hindi speech recognition accuracy and Hindi/Hinglish voice quality (needs a person speaking and listening); the 40-sentence WER table; a clean latency series (n >= 10 per type); reminder delivery on the phone; offline (airplane-mode) screen; Piper fallback voice; the demo video. Known weakness: first audio of 4-7 s on tool turns, dominated by Kokoro's first chunk on this CPU (hardcoded 2 threads in nitro-voice) and network.
 
+## General assistant and speech speed (2026-10-17)
+
+- **General assistant:** prompt rewritten, `calculate` / `search_wikipedia` / `set_timer` added, memory 6 turns, answers up to ~120 words. Eval on `gpt-oss-20b` (general cases): 96 % / 100 % style; answers read by hand. **Not yet run on the primary `gpt-oss-120b`**: its free daily token budget was used up by earlier evals (D19).
+- **On-device speech speed (measured, Redmi Note 12 Pro 5G):** Kokoro real-time factor 1.5 (about 40 % silence in a long reply); Piper 0.2 (about 1 %). Piper is now the default voice; Kokoro is a menu option ("Natural"). Voice quality of both is **unjudged**: nobody has listened to them side by side yet.
+- **Needs a listener:** open the menu, switch Voice between Fast and Natural, and in both English and Hinglish ask for a short story. Judge pronunciation (especially Hindi words and English words inside Hindi).
+- **Known weakness:** the Hindi-only voice relies on dictionaries and a rule-based transliterator for English words and Roman Hinglish (D21); expect some odd pronunciations until it is tuned by ear.
+
 ## Milestones
 
 | #   | Item                                                                                    | Status                                  | Notes                                                        |
