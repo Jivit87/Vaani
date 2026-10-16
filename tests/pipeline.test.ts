@@ -3,7 +3,7 @@ import { Memory } from '../src/agent/memory';
 import type { StepResult } from '../src/agent/types';
 import type { LlmClient } from '../src/llm/client';
 import { CSV_HEADER, percentile, summarize, toCsvRow, type TurnMetrics } from '../src/pipeline/metrics';
-import { isNoiseTranscript } from '../src/pipeline/transcriptFilter';
+import { isEcho, isNoiseTranscript } from '../src/pipeline/transcriptFilter';
 import { TtsQueue } from '../src/pipeline/ttsQueue';
 import { VoiceAgent, type AgentStatus } from '../src/pipeline/voiceAgent';
 import type { SttEngine, TtsEngine } from '../src/speech/types';
@@ -70,12 +70,68 @@ describe('TtsQueue', () => {
 });
 
 describe('isNoiseTranscript', () => {
-  it.each(['', ' ', '.', 'you', 'Thank you.', 'Thanks for watching!', 'hmm'])('drops %j', (t) =>
-    expect(isNoiseTranscript(t)).toBe(true),
-  );
-  it.each(['set an alarm', 'कल का मौसम', 'ok set it for seven'])('keeps %j', (t) =>
-    expect(isNoiseTranscript(t)).toBe(false),
-  );
+  it.each([
+    '',
+    ' ',
+    '.',
+    'you',
+    'Thank you.',
+    'Thanks for watching!',
+    'hmm',
+    'र ो ो र ो',
+    'ो ं',
+    '(static)',
+    '[BLANK_AUDIO]',
+    '[Music]',
+    '*sigh*',
+    '(silence)',
+  ])('drops %j', (t) => expect(isNoiseTranscript(t)).toBe(true));
+  it.each([
+    'set an alarm',
+    'कल का मौसम',
+    'ok set it for seven',
+    'हाँ',
+    'ना',
+    'turn on (the) light',
+    'मुझे अलार्म चाहिए',
+  ])('keeps %j', (t) => expect(isNoiseTranscript(t)).toBe(false));
+});
+
+describe('isEcho', () => {
+  const said = 'The weather in Pune tomorrow will be overcast with a high of thirty four degrees Celsius.';
+  it('catches the tail of our own sentence', () => {
+    expect(isEcho('Celsius.', said)).toBe(true);
+    expect(isEcho('degrees Celsius', said)).toBe(true);
+  });
+  it('lets real follow-ups through', () => {
+    expect(isEcho('and the day after?', said)).toBe(false);
+    expect(isEcho('What about Mumbai', said)).toBe(false);
+  });
+  it('ignores long transcripts and empty input', () => {
+    expect(isEcho('the weather in Pune tomorrow will be overcast with a high', said)).toBe(false);
+    expect(isEcho('', said)).toBe(false);
+  });
+});
+
+describe('TtsQueue.playbackDone', () => {
+  it('waits out the player buffer (capped at 1 s) plus margin after the last sentence', async () => {
+    vi.useFakeTimers();
+    const tts: TtsEngine = {
+      sampleRate: 24000,
+      speak: vi.fn(async () => ({ firstChunkMs: 10, audioMs: 4000 })),
+      stop: vi.fn(async () => {}),
+      destroy: vi.fn(async () => {}),
+    };
+    const q = new TtsQueue(tts);
+    q.say('A long sentence that plays for several seconds.');
+    let done = false;
+    void q.playbackDone().then(() => (done = true));
+    await vi.advanceTimersByTimeAsync(1000);
+    expect(done).toBe(false); // 1 s buffer + 350 ms margin not yet elapsed
+    await vi.advanceTimersByTimeAsync(400);
+    expect(done).toBe(true);
+    vi.useRealTimers();
+  });
 });
 
 describe('metrics', () => {
@@ -219,6 +275,22 @@ describe('VoiceAgent', () => {
     await h.agent.submitText('what is the weather like');
     expect(h.spoken.every((t) => !/[ऀ-ॿ]/.test(t))).toBe(true);
     expect(h.memory.state.lang).toBe('en');
+  });
+
+  it('mute stops hearing, pauses the mic, and survives a turn in flight', async () => {
+    const h = setup(say('Hello there friend.'));
+    await h.agent.start();
+    h.agent.setMuted(true);
+    expect(h.stt.pauseMic).toHaveBeenCalledTimes(1);
+    expect(h.events.statuses.at(-1)).toBe('muted');
+    await h.agent.submitText('anyone there'); // ignored while muted
+    expect(h.events.metrics).toHaveLength(0);
+    h.agent.setMuted(false);
+    await new Promise((r) => setTimeout(r, 0));
+    expect(h.stt.resumeMic).toHaveBeenCalledTimes(1);
+    expect(h.events.statuses.at(-1)).toBe('listening');
+    await h.agent.submitText('hello');
+    expect(h.events.metrics).toHaveLength(1);
   });
 
   it('speaks a generic error line for other failures', async () => {

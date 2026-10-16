@@ -4,14 +4,16 @@ import type { Lang, TraceEvent } from '../agent/types';
 import { ERROR_TEXT, FILLER_TEXT, OFFLINE_TEXT, type SttEngine } from '../speech/types';
 import type { TurnMetrics } from './metrics';
 import { TtsQueue } from './ttsQueue';
-import { isNoiseTranscript } from './transcriptFilter';
+import { isEcho, isNoiseTranscript } from './transcriptFilter';
 
-export type AgentStatus = 'idle' | 'listening' | 'thinking' | 'acting' | 'speaking' | 'error';
+export type AgentStatus = 'idle' | 'listening' | 'muted' | 'thinking' | 'acting' | 'speaking' | 'error';
 
 export interface VoiceAgentEvents {
   onStatus(s: AgentStatus): void;
   onTranscript(text: string): void;
   onReply(text: string): void;
+  /** Each sentence as it is handed to the speaker, for live captions. */
+  onSpeaking?(sentence: string): void;
   onTrace(e: TraceEvent): void;
   onMetrics(m: TurnMetrics): void;
 }
@@ -27,6 +29,9 @@ export interface VoiceAgentDeps {
   now?: () => number;
 }
 
+/** After a reply, short transcripts made of its own words are treated as echo for this long. */
+const ECHO_WINDOW_MS = 8000;
+
 const isNetworkError = (e: unknown) =>
   e instanceof TypeError ||
   /network|fetch|timeout|Failed to connect/i.test(String((e as Error)?.message ?? e));
@@ -39,6 +44,9 @@ export class VoiceAgent {
   private status: AgentStatus = 'idle';
   private busy = false;
   private mode: 'agent' | 'transcribe' = 'agent';
+  private muted = false;
+  private lastSpoken = '';
+  private lastSpokenAt = 0;
   private ctl: AbortController | null = null;
   private firstAudioMs: number | null = null;
   private ttsFirstChunkMs: number | null = null;
@@ -60,6 +68,18 @@ export class VoiceAgent {
   /** 'transcribe' reports what was heard and never calls the LLM (offline STT test). */
   setMode(mode: 'agent' | 'transcribe') {
     this.mode = mode;
+  }
+
+  /** Mic off: nothing is heard until unmuted. A turn already running finishes normally. */
+  setMuted(muted: boolean) {
+    this.muted = muted;
+    if (this.busy) return; // the end of the turn applies it
+    if (muted) {
+      this.d.stt.pauseMic();
+      this.setStatus('muted');
+    } else {
+      void this.d.stt.resumeMic().then(() => this.setStatus('listening'));
+    }
   }
 
   /** Typed input path, used by tests and the on-screen text box. */
@@ -87,7 +107,18 @@ export class VoiceAgent {
 
   private async handleTranscript(raw: string) {
     const text = raw.trim();
-    if (this.busy || isNoiseTranscript(text)) return;
+    if (this.muted) return;
+    // Visible in `adb logcat -s ReactNativeJS`: shows what the recognizer produced and why a turn was skipped.
+    const recent = (this.d.now ?? Date.now)() - this.lastSpokenAt < ECHO_WINDOW_MS;
+    const skip = this.busy
+      ? 'busy'
+      : isNoiseTranscript(text)
+        ? 'noise'
+        : recent && isEcho(text, this.lastSpoken)
+          ? 'echo'
+          : null;
+    console.warn(`[stt] ${skip ? `ignored (${skip})` : 'heard'}: ${JSON.stringify(text)}`);
+    if (skip) return;
     if (this.mode === 'transcribe') {
       this.d.events.onTranscript(text);
       return;
@@ -129,6 +160,7 @@ export class VoiceAgent {
           speaker: {
             say: (s) => {
               this.setStatus('speaking');
+              this.d.events.onSpeaking?.(s);
               this.d.queue.say(s);
             },
             playFiller: (l) => this.d.queue.say(FILLER_TEXT[l]),
@@ -159,11 +191,18 @@ export class VoiceAgent {
     metrics.ttsFirstChunkMs = this.ttsFirstChunkMs;
     metrics.totalMs = now() - this.turnStart;
     this.d.events.onMetrics(metrics);
+    this.lastSpoken = metrics.spoken;
+    await this.d.queue.playbackDone();
+    this.lastSpokenAt = (this.d.now ?? Date.now)();
 
     this.busy = false;
     this.ctl = null;
-    await this.d.stt.resumeMic().catch(() => this.setStatus('error'));
-    if (this.status !== 'error') this.setStatus('listening');
+    if (this.muted) {
+      this.setStatus('muted');
+    } else {
+      await this.d.stt.resumeMic().catch(() => this.setStatus('error'));
+      if (this.status !== 'error') this.setStatus('listening');
+    }
     void this.d.summarize?.();
   }
 }
