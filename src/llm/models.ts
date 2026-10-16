@@ -6,12 +6,12 @@ export const NVIDIA_BASE_URL = 'https://integrate.api.nvidia.com/v1';
 
 export const PRIMARY_MODEL: ModelCfg = {
   id: 'deepseek-ai/deepseek-v4.1-flash',
-  maxTokens: 200,
+  maxTokens: 500,
 };
 
 export const BACKUP_MODEL: ModelCfg = {
   id: 'nvidia/nemotron-3.5-lightning-30b-a3b',
-  maxTokens: 200,
+  maxTokens: 500,
 };
 
 // Groq free tier (OpenAI-compatible). ~30 requests/min per model, so tool turns (2 calls) are rate-limited.
@@ -20,12 +20,12 @@ export const GROQ_BASE_URL = 'https://api.groq.com/openai/v1';
 
 export const GROQ_PRIMARY_MODEL: ModelCfg = {
   id: 'openai/gpt-oss-120b',
-  maxTokens: 300,
+  maxTokens: 700,
   extraBody: { reasoning_effort: 'low' },
 };
 
 export const GROQ_BACKUP_MODEL: ModelCfg = {
   id: 'openai/gpt-oss-20b',
-  maxTokens: 300,
+  maxTokens: 700,
   extraBody: { reasoning_effort: 'low' },
 };

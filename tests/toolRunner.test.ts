@@ -8,6 +8,8 @@ function setup(over: Partial<ToolBackends> = {}) {
   const backends: ToolBackends = {
     setAlarm: vi.fn(async () => {}),
     setReminder: vi.fn(async () => {}),
+    setTimer: vi.fn(async () => {}),
+    searchWikipedia: vi.fn(async (q: string) => ({ title: q, summary: 'A short summary.', url: 'u' })),
     getSchedule: vi.fn(async () => [{ title: 'Standup', start_hhmm: '10:30' }]),
     getWeather: vi.fn(async (city, date) => ({
       city,
@@ -86,6 +88,56 @@ describe('tool runner success paths update state', () => {
     const { run, mem } = setup({ getSchedule: async () => many });
     const r = (await run('get_schedule', { date: '2026-10-16' }, mem)) as any;
     expect(r.count).toBe(6);
+  });
+});
+
+describe('general-purpose tools', () => {
+  it('set_timer validates, calls the backend and confirms in words', async () => {
+    const { run, mem, backends } = setup();
+    expect(await run('set_timer', { seconds: 0 }, mem)).toMatchObject({
+      error: 'invalid_argument',
+      field: 'seconds',
+    });
+    expect(await run('set_timer', { seconds: 90000 }, mem)).toMatchObject({ field: 'seconds' });
+    expect(await run('set_timer', { seconds: 5400, label: 'pasta' }, mem)).toEqual({
+      ok: true,
+      timer: '1 hour 30 minutes',
+    });
+    expect(backends.setTimer).toHaveBeenCalledWith({ seconds: 5400, label: 'pasta' });
+    expect(mem.state.actions).toEqual(['timer 1 hour 30 minutes']);
+  });
+
+  it('search_wikipedia returns a summary, defaults to English, and reports not_found', async () => {
+    const { run, mem, backends } = setup();
+    expect(await run('search_wikipedia', { query: '  Chandrayaan 3 ' }, mem)).toEqual({
+      ok: true,
+      title: 'Chandrayaan 3',
+      summary: 'A short summary.',
+      source: 'Wikipedia',
+    });
+    expect(backends.searchWikipedia).toHaveBeenCalledWith('Chandrayaan 3', 'en');
+    expect(await run('search_wikipedia', { query: 'x', language: 'fr' }, mem)).toMatchObject({
+      field: 'language',
+    });
+    expect(await run('search_wikipedia', { query: '' }, mem)).toMatchObject({ field: 'query' });
+    (backends.searchWikipedia as any).mockResolvedValueOnce(null);
+    expect(await run('search_wikipedia', { query: 'zzzz' }, mem)).toEqual({ error: 'not_found' });
+  });
+
+  it('calculate gives exact results and rejects bad input without throwing', async () => {
+    const { run, mem } = setup();
+    expect(await run('calculate', { expression: '17 * 23' }, mem)).toEqual({ ok: true, result: '391' });
+    expect(await run('calculate', { expression: '15% * 2,480 + 1,375' }, mem)).toEqual({
+      ok: true,
+      result: '1747',
+    });
+    expect(await run('calculate', { expression: '1/0' }, mem)).toMatchObject({
+      error: 'invalid_argument',
+      field: 'expression',
+    });
+    expect(await run('calculate', { expression: 'process.exit()' }, mem)).toMatchObject({
+      field: 'expression',
+    });
   });
 });
 

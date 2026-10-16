@@ -1,5 +1,12 @@
 import { describe, expect, it } from 'vitest';
-import { daysBetween, istDateString, istDayRange, istIsoString, isValidDateString } from '../src/util/time';
+import {
+  daysBetween,
+  describeDuration,
+  istDateString,
+  istDayRange,
+  istIsoString,
+  isValidDateString,
+} from '../src/util/time';
 
 // 2026-10-16 04:30 UTC is 10:00 IST
 const NOW = new Date('2026-10-16T04:30:00Z');
@@ -25,5 +32,11 @@ describe('time utils', () => {
     const { start, end } = istDayRange('2026-10-17');
     expect(start.toISOString()).toBe('2026-10-16T18:30:00.000Z');
     expect(end.getTime() - start.getTime()).toBe(86_400_000);
+  });
+  it('describes durations for spoken confirmation', () => {
+    expect(describeDuration(600)).toBe('10 minutes');
+    expect(describeDuration(5400)).toBe('1 hour 30 minutes');
+    expect(describeDuration(1)).toBe('1 second');
+    expect(describeDuration(3661)).toBe('1 hour 1 minute 1 second');
   });
 });

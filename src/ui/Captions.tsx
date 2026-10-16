@@ -2,9 +2,9 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { colors } from './theme';
 
 export const SUGGESTIONS = [
-  'What is the weather in Pune tomorrow?',
-  'Set an alarm for 7 AM tomorrow',
-  'Remind me to call mom at 6 PM',
+  'Explain how a rainbow forms',
+  'Set a timer for ten minutes',
+  'Tell me a fun fact about space',
 ];
 
 interface Props {
@@ -21,7 +21,8 @@ export function Captions({ user, reply, ready, onSuggest }: Props) {
       <View style={styles.center}>
         <Text style={styles.greeting}>Hi, I&apos;m Vaani</Text>
         <Text style={styles.greetingSub}>
-          Talk to me in English or Hinglish. Alarms, reminders, calendar and weather.
+          Ask me anything in English or Hinglish. I can also set alarms, reminders and timers, and check the
+          weather and your calendar.
         </Text>
         {ready && (
           <View style={styles.chips}>

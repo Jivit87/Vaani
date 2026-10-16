@@ -164,25 +164,56 @@ export interface ModelPair {
   backup?: ModelCfg;
 }
 
+const DEFAULT_COOLDOWN_MS = 60_000;
+const MAX_COOLDOWN_MS = 15 * 60_000;
+
+/** Reads "try again in 3m13.968s" style hints from a provider's rate-limit message. */
+export function parseRetryAfterMs(message: string): number {
+  const m = /try again in (?:(\d+)h)?(?:(\d+)m(?!s))?(?:([\d.]+)s)?/i.exec(message);
+  if (!m || (!m[1] && !m[2] && !m[3])) return DEFAULT_COOLDOWN_MS;
+  const ms = (Number(m[1] ?? 0) * 3600 + Number(m[2] ?? 0) * 60 + Number(m[3] ?? 0)) * 1000;
+  return Math.min(Math.max(ms, 1000), MAX_COOLDOWN_MS);
+}
+
+export const isRateLimit = (e: unknown): e is LlmHttpError => e instanceof LlmHttpError && e.status === 429;
+
+/** Models that returned a 429, until when. Skipped meanwhile so each turn does not waste a call on them. */
+const coolingUntil = new Map<string, number>();
+
+export function resetModelCooldowns() {
+  coolingUntil.clear();
+}
+
 /**
  * Tries the primary model, then the backup. Falls back only if nothing was
- * spoken yet, so the user never hears the start of an answer twice.
+ * spoken yet, so the user never hears the start of an answer twice. A model that
+ * answered 429 is skipped until its cooldown ends (unless every model is cooling).
  */
 export async function callWithFallback(
   client: LlmClient,
   models: ModelPair,
   req: Omit<LlmRequest, 'model'>,
+  now: () => number = Date.now,
 ): Promise<{ result: StepResult; model: ModelCfg }> {
   let emitted = false;
   const onText = (t: string) => {
     emitted = true;
     req.onText(t);
   };
-  try {
-    return { result: await client({ ...req, onText, model: models.primary }), model: models.primary };
-  } catch (e) {
-    const aborted = req.signal?.aborted;
-    if (!models.backup || emitted || aborted) throw e;
-    return { result: await client({ ...req, onText, model: models.backup }), model: models.backup };
+  const cooling = (m: ModelCfg) => (coolingUntil.get(m.id) ?? 0) > now();
+  const order = [models.primary, ...(models.backup ? [models.backup] : [])];
+  const ready = order.filter((m) => !cooling(m));
+  const candidates = ready.length ? ready : order; // all limited: try anyway, the limit may have lifted
+
+  let lastError: unknown;
+  for (const model of candidates) {
+    try {
+      return { result: await client({ ...req, onText, model }), model };
+    } catch (e) {
+      lastError = e;
+      if (isRateLimit(e)) coolingUntil.set(model.id, now() + parseRetryAfterMs(e.message));
+      if (emitted || req.signal?.aborted) throw e;
+    }
   }
+  throw lastError;
 }

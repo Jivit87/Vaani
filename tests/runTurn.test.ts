@@ -41,6 +41,8 @@ function harness(script: (StepResult | Error)[], backendOver: Partial<ToolBacken
   const backends: ToolBackends = {
     setAlarm: vi.fn(async () => {}),
     setReminder: vi.fn(async () => {}),
+    setTimer: vi.fn(async () => {}),
+    searchWikipedia: vi.fn(async (q: string) => ({ title: q, summary: 'A short summary.', url: 'u' })),
     getSchedule: vi.fn(async () => [{ title: 'Standup', start_hhmm: '10:30' }]),
     getWeather: vi.fn(async (city, date) => ({
       city,

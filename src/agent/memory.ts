@@ -3,7 +3,7 @@ import type { AgentState, Lang, Msg } from './types';
 
 export type Summarizer = (previousSummary: string, evicted: Msg[]) => Promise<string>;
 
-const MAX_WINDOW_MESSAGES = 8; // 4 user/assistant turns
+const MAX_WINDOW_MESSAGES = 12; // 6 user/assistant turns
 const MAX_ACTIONS = 5;
 const IDLE_RESET_MS = 10 * 60_000;
 const MAX_SUMMARY_CHARS = 500;

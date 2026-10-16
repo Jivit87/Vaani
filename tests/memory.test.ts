@@ -5,10 +5,23 @@ const t0 = new Date('2026-10-16T04:30:00Z').getTime();
 const clockAt = (ms: { v: number }) => () => new Date(ms.v);
 
 describe('Memory', () => {
-  it('keeps at most 4 turns and evicts whole turns', () => {
+  it('keeps at most 6 turns and evicts whole turns', () => {
     const m = new Memory(() => new Date(t0));
-    for (let i = 1; i <= 6; i++) m.commitTurn(`u${i}`, `a${i}`);
-    expect(m.window.map((x) => (x as any).content)).toEqual(['u3', 'a3', 'u4', 'a4', 'u5', 'a5', 'u6', 'a6']);
+    for (let i = 1; i <= 8; i++) m.commitTurn(`u${i}`, `a${i}`);
+    expect(m.window.map((x) => (x as any).content)).toEqual([
+      'u3',
+      'a3',
+      'u4',
+      'a4',
+      'u5',
+      'a5',
+      'u6',
+      'a6',
+      'u7',
+      'a7',
+      'u8',
+      'a8',
+    ]);
     expect(m.window[0].role).toBe('user');
   });
 
@@ -40,7 +53,7 @@ describe('Memory', () => {
 
   it('summarizes evicted turns off the hot path and caps the summary', async () => {
     const m = new Memory(() => new Date(t0));
-    for (let i = 1; i <= 5; i++) m.commitTurn(`u${i}`, `a${i}`);
+    for (let i = 1; i <= 7; i++) m.commitTurn(`u${i}`, `a${i}`);
     let received: any[] = [];
     await m.summarizeIfIdle(async (prev, batch) => {
       received = batch;

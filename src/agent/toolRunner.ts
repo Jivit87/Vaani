@@ -1,6 +1,13 @@
-import { addDays, daysBetween, hhmm, isValidDateString, istDateString } from '../util/time';
+import { addDays, daysBetween, describeDuration, hhmm, isValidDateString, istDateString } from '../util/time';
+import { calculate, formatNumber } from './calc';
 import type { Memory } from './memory';
 import type { ToolResult } from './types';
+
+export interface WikiHit {
+  title: string;
+  summary: string;
+  url: string;
+}
 
 export interface CalendarEvent {
   title: string;
@@ -22,6 +29,9 @@ export interface ToolBackends {
   setReminder(r: { when: Date; text: string }): Promise<void>;
   getSchedule(date: string): Promise<CalendarEvent[]>;
   getWeather(city: string, date: string): Promise<WeatherReport>;
+  setTimer(t: { seconds: number; label?: string }): Promise<void>;
+  /** Null when nothing matches. */
+  searchWikipedia(query: string, language: 'en' | 'hi'): Promise<WikiHit | null>;
 }
 
 export type ToolRunner = (name: string, args: unknown, mem: Memory) => Promise<ToolResult>;
@@ -33,6 +43,9 @@ const TOOL_TIMEOUT_MS: Record<string, number> = {
   set_reminder: 6000,
   get_schedule: 8000,
   get_weather: 6000,
+  set_timer: 5000,
+  search_wikipedia: 8000,
+  calculate: 1000,
 };
 const MAX_EVENTS = 6;
 const MAX_FORECAST_DAYS = 7;
@@ -131,6 +144,44 @@ export function createToolRunner(backends: ToolBackends, now: () => Date = () =>
           mem.state.last_date = date;
           mem.state.last_intent = 'get_weather';
           return { ok: true, ...report };
+        }
+        case 'set_timer': {
+          const { seconds, label } = rawArgs;
+          if (!Number.isInteger(seconds) || (seconds as number) < 1 || (seconds as number) > 86_400)
+            return invalid('seconds', 'integer 1-86400');
+          if (label !== undefined && typeof label !== 'string') return invalid('label', 'string');
+          const secs = seconds as number;
+          await backends.setTimer({ seconds: secs, label: label as string | undefined });
+          const spoken = describeDuration(secs);
+          mem.recordAction(`timer ${spoken}`);
+          mem.state.last_intent = 'set_timer';
+          return { ok: true, timer: spoken };
+        }
+        case 'search_wikipedia': {
+          const { query, language } = rawArgs;
+          if (typeof query !== 'string' || !query.trim() || query.length > 200)
+            return invalid('query', 'non-empty string, at most 200 characters');
+          if (language !== undefined && language !== 'en' && language !== 'hi')
+            return invalid('language', "'en' or 'hi'");
+          const hit = await backends.searchWikipedia(
+            query.trim(),
+            (language as 'en' | 'hi' | undefined) ?? 'en',
+          );
+          mem.state.last_intent = 'search';
+          if (!hit) return { error: 'not_found' };
+          return { ok: true, title: hit.title, summary: hit.summary, source: 'Wikipedia' };
+        }
+        case 'calculate': {
+          const { expression } = rawArgs;
+          if (typeof expression !== 'string' || !expression.trim())
+            return invalid('expression', 'non-empty string');
+          try {
+            const result = formatNumber(calculate(expression));
+            mem.state.last_intent = 'calculate';
+            return { ok: true, result };
+          } catch (e) {
+            return invalid('expression', e instanceof Error ? e.message : 'could not evaluate');
+          }
         }
         default:
           return { error: 'unknown_tool', name };

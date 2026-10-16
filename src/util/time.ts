@@ -74,3 +74,12 @@ export const hhmm = (date: Date): string => {
   const p = istParts(date);
   return `${pad(p.hour)}:${pad(p.minute)}`;
 };
+
+/** "1 hour 30 minutes", "45 seconds": the wording a confirmation should use for a timer. */
+export function describeDuration(totalSeconds: number): string {
+  const h = Math.floor(totalSeconds / 3600);
+  const m = Math.floor((totalSeconds % 3600) / 60);
+  const sec = totalSeconds % 60;
+  const part = (n: number, unit: string) => (n ? [`${n} ${unit}${n === 1 ? '' : 's'}`] : []);
+  return [...part(h, 'hour'), ...part(m, 'minute'), ...part(sec, 'second')].join(' ') || '0 seconds';
+}

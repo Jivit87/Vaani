@@ -66,6 +66,56 @@ export const TOOLS: ToolSchema[] = [
       },
     },
   },
+  {
+    type: 'function',
+    function: {
+      name: 'set_timer',
+      description: 'Start a countdown timer.',
+      parameters: {
+        type: 'object',
+        required: ['seconds'],
+        properties: {
+          seconds: { type: 'integer', minimum: 1, maximum: 86400, description: 'duration in seconds' },
+          label: { type: 'string' },
+        },
+      },
+    },
+  },
+  {
+    type: 'function',
+    function: {
+      name: 'search_wikipedia',
+      description:
+        'Look up facts about a person, place, event or topic, including recent changes you may not know.',
+      parameters: {
+        type: 'object',
+        required: ['query'],
+        properties: {
+          query: { type: 'string', description: 'a short search phrase' },
+          language: { type: 'string', enum: ['en', 'hi'] },
+        },
+      },
+    },
+  },
+  {
+    type: 'function',
+    function: {
+      name: 'calculate',
+      description: 'Exact arithmetic: + - * / ^ %, parentheses, sqrt, abs, round, pow, min, max, pi.',
+      parameters: {
+        type: 'object',
+        required: ['expression'],
+        properties: { expression: { type: 'string', description: 'e.g. 15% * 2480 + 1375' } },
+      },
+    },
+  },
 ];
 
-export type ToolName = 'set_alarm' | 'set_reminder' | 'get_schedule' | 'get_weather';
+export type ToolName =
+  | 'set_alarm'
+  | 'set_reminder'
+  | 'get_schedule'
+  | 'get_weather'
+  | 'set_timer'
+  | 'search_wikipedia'
+  | 'calculate';
