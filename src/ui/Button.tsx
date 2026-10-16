@@ -14,7 +14,11 @@ export function Button(p: {
       accessibilityState={{ disabled: !!p.disabled }}
       disabled={p.disabled}
       onPress={p.onPress}
-      style={[p.ghost ? s.btnGhost : s.btn, p.disabled && { opacity: 0.4 }, p.style]}
+      style={({ pressed }) => [
+        p.ghost ? s.btnGhost : s.btn,
+        (p.disabled || pressed) && { opacity: 0.55 },
+        p.style,
+      ]}
     >
       <Text style={[s.btnText, p.ghost && { color: colors.text }]}>{p.title}</Text>
     </Pressable>
