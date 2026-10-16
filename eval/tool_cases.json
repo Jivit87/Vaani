@@ -1,0 +1,259 @@
+{
+  "now": "2026-10-16T10:00:00+05:30",
+  "notes": "Fixed clock: Friday 16 Oct 2026, 10:00 IST. kal=2026-10-17, parso=2026-10-18. A value starting with '~' means startsWith; an array means any-of.",
+  "cases": [
+    {
+      "id": "en_alarm_am",
+      "turns": [
+        {
+          "user": "Set an alarm for 6:30 AM tomorrow",
+          "expect": { "tool": "set_alarm", "args": { "hour": 6, "minute": 30 } }
+        }
+      ]
+    },
+    {
+      "id": "en_alarm_evening",
+      "turns": [
+        {
+          "user": "Wake me up at five in the evening",
+          "expect": { "tool": "set_alarm", "args": { "hour": 17, "minute": 0 } }
+        }
+      ]
+    },
+    {
+      "id": "en_weather",
+      "turns": [
+        {
+          "user": "What is the weather forecast for Bangalore tomorrow?",
+          "expect": {
+            "tool": "get_weather",
+            "args": { "city": ["Bangalore", "Bengaluru"], "date": "2026-10-17" }
+          }
+        }
+      ]
+    },
+    {
+      "id": "en_weather_today",
+      "turns": [
+        {
+          "user": "Is it going to rain in Mumbai today?",
+          "expect": { "tool": "get_weather", "args": { "city": "Mumbai", "date": "2026-10-16" } }
+        }
+      ]
+    },
+    {
+      "id": "en_reminder_pm",
+      "turns": [
+        {
+          "user": "Can you set a reminder for my meeting at 5 PM?",
+          "expect": { "tool": "set_reminder", "args": { "datetime_iso": "~2026-10-16T17:00" } }
+        }
+      ]
+    },
+    {
+      "id": "en_reminder_tomorrow",
+      "turns": [
+        {
+          "user": "Remind me to call mom tomorrow at 9 AM",
+          "expect": { "tool": "set_reminder", "args": { "datetime_iso": "~2026-10-17T09:00" } }
+        }
+      ]
+    },
+    {
+      "id": "en_schedule_today",
+      "turns": [
+        {
+          "user": "What's on my calendar today?",
+          "expect": { "tool": "get_schedule", "args": { "date": "2026-10-16" } }
+        }
+      ]
+    },
+    {
+      "id": "en_schedule_tomorrow",
+      "turns": [
+        {
+          "user": "Do I have any meetings tomorrow?",
+          "expect": { "tool": "get_schedule", "args": { "date": "2026-10-17" } }
+        }
+      ]
+    },
+    { "id": "en_chitchat_joke", "turns": [{ "user": "Tell me a short joke", "expect": { "tool": null } }] },
+    {
+      "id": "en_chitchat_fact",
+      "turns": [{ "user": "What is the capital of France?", "expect": { "tool": null } }]
+    },
+
+    {
+      "id": "hi_alarm_subah",
+      "turns": [
+        {
+          "user": "mujhe kal subah 7 baje ka alarm set karna hai",
+          "expect": { "tool": "set_alarm", "args": { "hour": 7, "minute": 0 } }
+        }
+      ]
+    },
+    {
+      "id": "hi_alarm_shaam",
+      "turns": [
+        {
+          "user": "shaam ko 6 baje alarm laga do",
+          "expect": { "tool": "set_alarm", "args": { "hour": 18, "minute": 0 } }
+        }
+      ]
+    },
+    {
+      "id": "hi_schedule",
+      "turns": [
+        {
+          "user": "aaj ka schedule kya hai, aur meri next meeting kab hai?",
+          "expect": { "tool": "get_schedule", "args": { "date": "2026-10-16" } }
+        }
+      ]
+    },
+    {
+      "id": "hi_weather",
+      "turns": [
+        {
+          "user": "Delhi ka mausam kal kaisa rahega",
+          "expect": { "tool": "get_weather", "args": { "city": "Delhi", "date": "2026-10-17" } }
+        }
+      ]
+    },
+    {
+      "id": "hi_reminder_parso",
+      "turns": [
+        {
+          "user": "mujhe parso subah 10 baje doctor ke appointment ka reminder dena",
+          "expect": { "tool": "set_reminder", "args": { "datetime_iso": "~2026-10-18T10:00" } }
+        }
+      ]
+    },
+    {
+      "id": "hi_devanagari_alarm",
+      "turns": [
+        {
+          "user": "कल सुबह छह बजे का अलार्म लगा दो",
+          "expect": { "tool": "set_alarm", "args": { "hour": 6, "minute": 0 } }
+        }
+      ]
+    },
+    {
+      "id": "hi_devanagari_weather",
+      "turns": [
+        {
+          "user": "पुणे में आज मौसम कैसा है",
+          "expect": { "tool": "get_weather", "args": { "city": ["Pune", "पुणे"], "date": "2026-10-16" } }
+        }
+      ]
+    },
+
+    {
+      "id": "noisy_alarm",
+      "turns": [
+        {
+          "user": "kal subah saat bje ka alrm lagana",
+          "expect": { "tool": "set_alarm", "args": { "hour": 7, "minute": 0 } }
+        }
+      ]
+    },
+    {
+      "id": "noisy_reminder",
+      "turns": [
+        {
+          "user": "remindr set kr do kal shaam 5 baje gym ka",
+          "expect": { "tool": "set_reminder", "args": { "datetime_iso": "~2026-10-17T17:00" } }
+        }
+      ]
+    },
+    {
+      "id": "noisy_weather",
+      "turns": [
+        {
+          "user": "bangalor ka wether btao kal",
+          "expect": {
+            "tool": "get_weather",
+            "args": { "city": ["Bangalore", "Bengaluru"], "date": "2026-10-17" }
+          }
+        }
+      ]
+    },
+
+    {
+      "id": "clarify_alarm",
+      "turns": [
+        { "user": "alarm laga do", "expect": { "tool": null, "asks_question": true } },
+        { "user": "saat baje subah", "expect": { "tool": "set_alarm", "args": { "hour": 7, "minute": 0 } } }
+      ]
+    },
+    {
+      "id": "clarify_weather",
+      "turns": [
+        { "user": "What's the weather like?", "expect": { "tool": null, "asks_question": true } },
+        { "user": "Pune", "expect": { "tool": "get_weather", "args": { "city": "Pune" } } }
+      ]
+    },
+    {
+      "id": "clarify_reminder",
+      "turns": [
+        { "user": "Set a reminder", "expect": { "tool": null, "asks_question": true } },
+        {
+          "user": "to buy milk tomorrow at 6 PM",
+          "expect": { "tool": "set_reminder", "args": { "datetime_iso": "~2026-10-17T18:00" } }
+        }
+      ]
+    },
+
+    {
+      "id": "followup_weather",
+      "turns": [
+        {
+          "user": "Bangalore ka weather kal kaisa rahega",
+          "expect": {
+            "tool": "get_weather",
+            "args": { "city": ["Bangalore", "Bengaluru"], "date": "2026-10-17" }
+          }
+        },
+        {
+          "user": "aur parso?",
+          "expect": {
+            "tool": "get_weather",
+            "args": { "city": ["Bangalore", "Bengaluru"], "date": "2026-10-18" }
+          }
+        }
+      ]
+    },
+    {
+      "id": "followup_schedule",
+      "turns": [
+        {
+          "user": "What's my schedule today?",
+          "expect": { "tool": "get_schedule", "args": { "date": "2026-10-16" } }
+        },
+        { "user": "and tomorrow?", "expect": { "tool": "get_schedule", "args": { "date": "2026-10-17" } } }
+      ]
+    },
+    {
+      "id": "followup_reminder",
+      "turns": [
+        {
+          "user": "Remind me to drink water at 3 PM",
+          "expect": { "tool": "set_reminder", "args": { "datetime_iso": "~2026-10-16T15:00" } }
+        },
+        {
+          "user": "make that 4 PM instead",
+          "expect": { "tool": "set_reminder", "args": { "datetime_iso": "~2026-10-16T16:00" } }
+        }
+      ]
+    },
+
+    {
+      "id": "parallel_schedule_weather",
+      "turns": [
+        {
+          "user": "aaj ka schedule aur Bangalore ka weather bata do",
+          "expect": { "tools": ["get_schedule", "get_weather"] }
+        }
+      ]
+    }
+  ]
+}
