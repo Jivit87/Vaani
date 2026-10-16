@@ -51,21 +51,57 @@ describe('TtsQueue', () => {
     expect(spoken).toEqual(['Second sentence here.']);
   });
 
-  it('cancel drops queued sentences and stops the engine', async () => {
+  it('cancel drops sentences not yet handed to the engine and stops it', async () => {
     const { tts, spoken } = fakeTts();
-    let release!: () => void;
-    (tts.speak as any).mockImplementationOnce(
-      () => new Promise((r) => (release = () => r({ firstChunkMs: 1, audioMs: 1 }))),
+    const releases: (() => void)[] = [];
+    (tts.speak as any).mockImplementation(
+      (t: string) =>
+        new Promise((r) => {
+          spoken.push(t);
+          releases.push(() => r({ firstChunkMs: 1, audioMs: 1 }));
+        }),
     );
     const q = new TtsQueue(tts);
     q.say('Playing right now.');
-    q.say('Never spoken at all.');
-    await new Promise((r) => setTimeout(r, 0)); // let the first sentence start synthesizing
+    q.say('Synthesizing next.');
+    q.say('Never sent to the engine.');
+    await new Promise((r) => setTimeout(r, 0));
+    expect(spoken).toEqual(['Playing right now.', 'Synthesizing next.']); // two in flight, third waits
     await q.cancel();
-    release();
+    releases.forEach((r) => r());
     await q.drain();
     expect(tts.stop).toHaveBeenCalled();
-    expect(spoken).toEqual([]);
+    expect(spoken).toHaveLength(2); // the third was dropped
+  });
+
+  it('keeps two sentences in flight so the next one synthesizes while the current plays', async () => {
+    const { tts } = fakeTts();
+    let live = 0;
+    let peak = 0;
+    const order: string[] = [];
+    (tts.speak as any).mockImplementation(async (t: string) => {
+      live++;
+      peak = Math.max(peak, live);
+      order.push(t);
+      await new Promise((r) => setTimeout(r, 5));
+      live--;
+      return { firstChunkMs: 1, audioMs: 1 };
+    });
+    const q = new TtsQueue(tts);
+    [
+      'First sentence here.',
+      'Second sentence here.',
+      'Third sentence here.',
+      'Fourth sentence here.',
+    ].forEach((x) => q.say(x));
+    await q.drain();
+    expect(peak).toBe(2);
+    expect(order).toEqual([
+      'First sentence here.',
+      'Second sentence here.',
+      'Third sentence here.',
+      'Fourth sentence here.',
+    ]);
   });
 });
 
