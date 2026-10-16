@@ -84,7 +84,7 @@ export class VoiceAgent {
 
   /** Typed input path, used by tests and the on-screen text box. */
   submitText(text: string) {
-    return this.handleTranscript(text);
+    return this.handleTranscript(text, false);
   }
 
   /** Barge-in / manual stop: cancel the LLM stream and the speech, go back to listening. */
@@ -105,16 +105,17 @@ export class VoiceAgent {
     this.d.events.onStatus(s);
   }
 
-  private async handleTranscript(raw: string) {
+  /** `fromMic` is false for typed text, which mute must not block. */
+  private async handleTranscript(raw: string, fromMic = true) {
     const text = raw.trim();
-    if (this.muted) return;
+    if (this.muted && fromMic) return;
     // Visible in `adb logcat -s ReactNativeJS`: shows what the recognizer produced and why a turn was skipped.
     const recent = (this.d.now ?? Date.now)() - this.lastSpokenAt < ECHO_WINDOW_MS;
     const skip = this.busy
       ? 'busy'
       : isNoiseTranscript(text)
         ? 'noise'
-        : recent && isEcho(text, this.lastSpoken)
+        : fromMic && recent && isEcho(text, this.lastSpoken)
           ? 'echo'
           : null;
     console.warn(`[stt] ${skip ? `ignored (${skip})` : 'heard'}: ${JSON.stringify(text)}`);

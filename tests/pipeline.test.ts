@@ -283,14 +283,17 @@ describe('VoiceAgent', () => {
     h.agent.setMuted(true);
     expect(h.stt.pauseMic).toHaveBeenCalledTimes(1);
     expect(h.events.statuses.at(-1)).toBe('muted');
-    await h.agent.submitText('anyone there'); // ignored while muted
+    await (h.agent as any).handleTranscript('anyone there'); // heard by the mic while muted: ignored
     expect(h.events.metrics).toHaveLength(0);
+    await h.agent.submitText('typed while muted'); // typing still works
+    expect(h.events.metrics).toHaveLength(1);
+    expect(h.events.statuses.at(-1)).toBe('muted');
     h.agent.setMuted(false);
     await new Promise((r) => setTimeout(r, 0));
     expect(h.stt.resumeMic).toHaveBeenCalledTimes(1);
     expect(h.events.statuses.at(-1)).toBe('listening');
     await h.agent.submitText('hello');
-    expect(h.events.metrics).toHaveLength(1);
+    expect(h.events.metrics).toHaveLength(2);
   });
 
   it('speaks a generic error line for other failures', async () => {
