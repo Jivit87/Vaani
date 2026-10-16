@@ -32,9 +32,15 @@ export interface VoiceAgentDeps {
 /** After a reply, short transcripts made of its own words are treated as echo for this long. */
 const ECHO_WINDOW_MS = 8000;
 
-const isNetworkError = (e: unknown) =>
-  e instanceof TypeError ||
-  /network|fetch|timeout|Failed to connect/i.test(String((e as Error)?.message ?? e));
+const isNetworkError = (e: unknown) => {
+  if (e instanceof TypeError) return true; // what fetch throws when the network is down
+  const code = (e as { code?: unknown } | null)?.code;
+  if (code === 'ECONNABORTED' || code === 'ENETUNREACH' || code === 'ENOTFOUND' || code === 'ECONNREFUSED')
+    return true;
+  return /network|fetch|timeout|Failed to connect|ENOTFOUND|ECONNREFUSED|ERR_NETWORK|Unable to resolve host/i.test(
+    String((e as Error)?.message ?? e),
+  );
+};
 
 /**
  * Half-duplex loop: listen → (mic off) think/act → speak → (mic on) listen.

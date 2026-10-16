@@ -85,6 +85,11 @@ describe('isNoiseTranscript', () => {
     '[Music]',
     '*sigh*',
     '(silence)',
+    'Please subscribe!',
+    'like and subscribe',
+    'ने ने ने',
+    'okay okay okay okay',
+    'a b a b',
   ])('drops %j', (t) => expect(isNoiseTranscript(t)).toBe(true));
   it.each([
     'set an alarm',
