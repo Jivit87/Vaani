@@ -4,6 +4,10 @@ export interface Expect {
   tools?: string[];
   args?: Record<string, unknown>;
   asks_question?: boolean;
+  /** Tools the model may call without penalty when `tool` is null (e.g. a fact it could look up or answer). */
+  allow?: string[];
+  /** Spoken-reply word limit for this turn (default 130). */
+  max_words?: number;
 }
 export interface Turn {
   user: string;
@@ -27,7 +31,19 @@ export interface TurnScore {
   argsOk: boolean | null;
   /** null unless the turn expects a clarifying question. */
   clarifyOk: boolean | null;
+  /** Spoken reply is non-empty, plain speech (no markdown or links) and not too long. */
+  styleOk: boolean;
   detail: string;
+}
+
+const DEFAULT_MAX_WORDS = 130;
+const MARKDOWN = /(^|\n)\s*([-*•]|\d+[.)])\s|[*#`~_]{1,}|https?:\/\/|\[[^\]]*\]\(/;
+
+/** Voice replies must be plain speech and reasonably short. */
+export function checkStyle(spoken: string, maxWords: number): boolean {
+  const text = spoken.trim();
+  if (!text || text.startsWith('ERROR')) return false;
+  return !MARKDOWN.test(text) && text.split(/\s+/).length <= maxWords;
 }
 
 const norm = (v: unknown) => (typeof v === 'string' ? v.trim().toLowerCase() : v);
@@ -59,12 +75,14 @@ export function scoreTurn(caseId: string, turn: Turn, obs: Observed): TurnScore 
       argsOk = obs.tools.filter((t) => t.name === expect.tool).some((t) => argsMatch(expect.args!, t.args));
     }
   } else {
-    toolOk = names.length === 0; // chit-chat and clarification must not call tools
+    // chit-chat and clarification must not call tools, except ones the case explicitly allows
+    toolOk = names.every((n) => expect.allow?.includes(n));
   }
   if (expect.asks_question) clarifyOk = names.length === 0 && /[?？]/.test(obs.spoken);
+  const styleOk = checkStyle(obs.spoken, expect.max_words ?? DEFAULT_MAX_WORDS);
 
   const detail = `tools=[${names.join(',')}] args=${JSON.stringify(obs.tools.map((t) => t.args))} said="${obs.spoken}"`;
-  return { caseId, user: turn.user, toolOk, argsOk, clarifyOk, detail };
+  return { caseId, user: turn.user, toolOk, argsOk, clarifyOk, styleOk, detail };
 }
 
 export interface ModelSummary {
@@ -72,6 +90,7 @@ export interface ModelSummary {
   toolAcc: number;
   argAcc: number | null;
   clarifyAcc: number | null;
+  styleAcc: number;
   medianTtftMs: number | null;
   medianTotalMs: number | null;
 }
@@ -89,6 +108,7 @@ export function summarizeScores(scores: TurnScore[], obs: Observed[]): ModelSumm
     toolAcc: ratio(scores.map((s) => s.toolOk)) ?? 0,
     argAcc: ratio(scores.flatMap((s) => (s.argsOk === null ? [] : [s.argsOk]))),
     clarifyAcc: ratio(scores.flatMap((s) => (s.clarifyOk === null ? [] : [s.clarifyOk]))),
+    styleAcc: ratio(scores.map((s) => s.styleOk)) ?? 0,
     medianTtftMs: median(obs.flatMap((o) => (o.ttftMs === null ? [] : [o.ttftMs]))),
     medianTotalMs: median(obs.map((o) => o.totalMs)),
   };
@@ -98,10 +118,10 @@ export const pct = (x: number | null) => (x === null ? 'n/a' : `${(x * 100).toFi
 
 export function markdownTable(rows: { model: string; s: ModelSummary }[]): string {
   const head =
-    '| Model | Turns | Tool choice | Arguments | Clarification | Median TTFT (ms) | Median turn (ms) |\n|---|---|---|---|---|---|---|';
+    '| Model | Turns | Tool choice | Arguments | Clarification | Style | Median TTFT (ms) | Median turn (ms) |\n|---|---|---|---|---|---|---|---|';
   const body = rows.map(
     ({ model, s }) =>
-      `| ${model} | ${s.turns} | ${pct(s.toolAcc)} | ${pct(s.argAcc)} | ${pct(s.clarifyAcc)} | ${s.medianTtftMs ?? 'n/a'} | ${s.medianTotalMs ?? 'n/a'} |`,
+      `| ${model} | ${s.turns} | ${pct(s.toolAcc)} | ${pct(s.argAcc)} | ${pct(s.clarifyAcc)} | ${pct(s.styleAcc)} | ${s.medianTtftMs ?? 'n/a'} | ${s.medianTotalMs ?? 'n/a'} |`,
   );
   return [head, ...body].join('\n');
 }

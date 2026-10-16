@@ -8,6 +8,7 @@ import {
   valueMatches,
   type Observed,
 } from '../eval/score';
+import { TOOLS } from '../src/llm/tools.schema';
 import { Memory } from '../src/agent/memory';
 import { runTurn } from '../src/agent/runTurn';
 import { createToolRunner } from '../src/agent/toolRunner';
@@ -83,6 +84,37 @@ describe('scoreTurn', () => {
   });
 });
 
+describe('general-assistant scoring', () => {
+  const chat = { user: 'explain rainbows', expect: { tool: null, max_words: 20 } };
+  it('rewards plain, short, non-empty speech', () => {
+    expect(
+      scoreTurn('c', chat, obs({ spoken: 'Sunlight bends inside raindrops and splits into colours.' }))
+        .styleOk,
+    ).toBe(true);
+  });
+  it.each([
+    ['', 'empty'],
+    ['ERROR fetch failed', 'error text'],
+    ['**Rainbows** form when light bends', 'bold markdown'],
+    ['- first point\n- second point', 'bullets'],
+    ['1. Light enters the drop', 'numbered list'],
+    ['See https://example.com for more', 'a link'],
+    ['word '.repeat(25), 'over the word limit'],
+  ])('flags %j (%s)', (spoken) => {
+    expect(scoreTurn('c', chat, obs({ spoken })).styleOk).toBe(false);
+  });
+  it('allows optional tools on a general turn but not others', () => {
+    const t = { user: 'who wrote it', expect: { tool: null, allow: ['search_wikipedia'] } };
+    expect(
+      scoreTurn('c', t, obs({ spoken: 'x', tools: [{ name: 'search_wikipedia', args: {} }] })).toolOk,
+    ).toBe(true);
+    expect(scoreTurn('c', t, obs({ spoken: 'x', tools: [{ name: 'set_alarm', args: {} }] })).toolOk).toBe(
+      false,
+    );
+    expect(scoreTurn('c', t, obs({ spoken: 'x' })).toolOk).toBe(true);
+  });
+});
+
 describe('summary + table', () => {
   it('aggregates and formats', () => {
     const a = obs({
@@ -97,7 +129,7 @@ describe('summary + table', () => {
     ];
     const s = summarizeScores(scores, [a, b]);
     expect(s).toMatchObject({ turns: 2, toolAcc: 0.5, argAcc: 0.5, clarifyAcc: null, medianTtftMs: 200 });
-    expect(markdownTable([{ model: 'm', s }])).toContain('| m | 2 | 50% | 50% | n/a | 200 | 900 |');
+    expect(markdownTable([{ model: 'm', s }])).toContain('| m | 2 | 50% | 50% | n/a | 0% | 200 | 900 |');
   });
 });
 
@@ -110,12 +142,9 @@ describe('eval cases file', () => {
     for (const c of file.cases) for (const t of c.turns) expect(t.user.trim()).not.toBe('');
   });
   it('only expects real tools with schema-valid argument names', () => {
-    const allowed: Record<string, string[]> = {
-      set_alarm: ['hour', 'minute', 'label'],
-      set_reminder: ['datetime_iso', 'text'],
-      get_schedule: ['date'],
-      get_weather: ['city', 'date'],
-    };
+    const allowed: Record<string, string[]> = Object.fromEntries(
+      TOOLS.map((t) => [t.function.name, Object.keys((t.function.parameters as any).properties)]),
+    );
     for (const c of file.cases)
       for (const t of c.turns) {
         for (const n of [t.expect.tool, ...(t.expect.tools ?? [])].filter(Boolean))
@@ -158,6 +187,8 @@ describe('eval cases file', () => {
         {
           setAlarm: async () => {},
           setReminder: async () => {},
+          setTimer: async () => {},
+          searchWikipedia: async () => null,
           getSchedule: async () => [],
           getWeather: async () => {
             throw new Error('x');

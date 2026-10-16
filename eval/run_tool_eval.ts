@@ -13,12 +13,13 @@ import { resolve } from 'node:path';
 import { Memory } from '../src/agent/memory';
 import { runTurn } from '../src/agent/runTurn';
 import { createToolRunner, type ToolBackends } from '../src/agent/toolRunner';
+import { searchWikipedia } from '../src/tools/wikipedia';
 import { createLlmClient } from '../src/llm/client';
 import { NVIDIA_BASE_URL } from '../src/llm/models';
 import { markdownTable, scoreTurn, summarizeScores, type Case, type Observed, type TurnScore } from './score';
 
 const HINGLISH =
-  /[\u0900-\u097f]|\b(ka|kal|aaj|baje|bje|karna|laga|kya|hai|mujhe|parso|shaam|subah|aur|do|dena|btao|set kr)\b/i;
+  /[\u0900-\u097f]|\b(ka|kal|aaj|baje|bje|karna|laga|kya|hai|mujhe|parso|shaam|subah|aur|dena|btao|kehte|khane|bhookh|motivate|karo|batao)\b/i;
 
 const P90_TTFT_WARN_MS = 6000;
 
@@ -40,6 +41,9 @@ function loadKey(name: string): string {
 const fixtures: ToolBackends = {
   setAlarm: async () => {},
   setReminder: async () => {},
+  setTimer: async () => {},
+  // Real Wikipedia, so the eval also exercises the live integration.
+  searchWikipedia: (query, language) => searchWikipedia(fetch, query, language),
   getSchedule: async () => [
     { title: 'Team standup', start_hhmm: '10:30' },
     { title: 'Lunch with Rahul', start_hhmm: '13:00' },
@@ -85,27 +89,36 @@ async function main() {
       // Hinglish cases run in a Hinglish session, as the app's toggle would be set for them.
       mem.setLang(HINGLISH.test(c.turns.map((t) => t.user).join(' ')) ? 'hi' : 'en');
       for (const turn of c.turns) {
-        let obs: Observed;
-        try {
-          const r = await runTurn(turn.user, mem, {
-            llm,
-            models: { primary: { id: modelId, maxTokens: 400, extraBody: extra } },
-            runTool,
-            speaker: { say: () => {}, playFiller: () => {} },
-          });
-          obs = {
-            tools: r.toolsCalled.map((t) => ({ name: t.name, args: t.args })),
-            spoken: r.spoken,
-            ttftMs: r.timings.llmTtftMs,
-            totalMs: r.timings.totalMs,
-          };
-        } catch (e) {
-          obs = { tools: [], spoken: `ERROR ${(e as Error).message}`, ttftMs: null, totalMs: 0 };
+        let obs: Observed = { tools: [], spoken: 'ERROR not run', ttftMs: null, totalMs: 0 };
+        // Free tiers cap tokens per minute: on a 429, cool down and retry instead of scoring a rate limit.
+        for (let attempt = 0; attempt < 4; attempt++) {
+          let throttled = false;
+          try {
+            const r = await runTurn(turn.user, mem, {
+              llm,
+              models: { primary: { id: modelId, maxTokens: 700, extraBody: extra } },
+              runTool,
+              speaker: { say: () => {}, playFiller: () => {} },
+            });
+            obs = {
+              tools: r.toolsCalled.map((t) => ({ name: t.name, args: t.args })),
+              spoken: r.spoken,
+              ttftMs: r.timings.llmTtftMs,
+              totalMs: r.timings.totalMs,
+            };
+          } catch (e) {
+            const msg = (e as Error).message;
+            throttled = /HTTP 429/.test(msg);
+            obs = { tools: [], spoken: `ERROR ${msg}`, ttftMs: null, totalMs: 0 };
+          }
+          if (!throttled) break;
+          console.log(`  (429 rate limit, cooling down 40 s, attempt ${attempt + 1})`);
+          await sleep(40_000);
         }
         const s = scoreTurn(c.id, turn, obs);
         scores.push(s);
         observed.push(obs);
-        const ok = s.toolOk && s.argsOk !== false && s.clarifyOk !== false;
+        const ok = s.toolOk && s.argsOk !== false && s.clarifyOk !== false && s.styleOk;
         if (!ok) failures.push(`[${modelId}] ${c.id}: "${turn.user}" → ${s.detail}`);
         console.log(`${ok ? 'PASS' : 'FAIL'}  ${modelId}  ${c.id}  ${obs.ttftMs ?? '-'}ms`);
         await sleep(delay);

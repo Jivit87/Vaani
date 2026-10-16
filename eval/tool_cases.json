@@ -548,6 +548,268 @@
           }
         }
       ]
+    },
+    {
+      "id": "gen_fact_01",
+      "turns": [
+        {
+          "user": "Who wrote Jana Gana Mana?",
+          "expect": {
+            "tool": null,
+            "allow": ["search_wikipedia"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "gen_recent_01",
+      "turns": [
+        {
+          "user": "Who is the current Prime Minister of India?",
+          "expect": {
+            "tool": "search_wikipedia"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gen_recent_02",
+      "turns": [
+        {
+          "user": "Tell me about the Chandrayaan 3 mission",
+          "expect": {
+            "tool": null,
+            "allow": ["search_wikipedia"],
+            "max_words": 140
+          }
+        }
+      ]
+    },
+    {
+      "id": "gen_explain_01",
+      "turns": [
+        {
+          "user": "Explain how a rainbow forms",
+          "expect": {
+            "tool": null,
+            "max_words": 150
+          }
+        }
+      ]
+    },
+    {
+      "id": "gen_explain_02",
+      "turns": [
+        {
+          "user": "What is the difference between a virus and a bacterium?",
+          "expect": {
+            "tool": null,
+            "max_words": 150
+          }
+        }
+      ]
+    },
+    {
+      "id": "gen_advice_01",
+      "turns": [
+        {
+          "user": "I have an exam tomorrow and I cannot sleep, what should I do?",
+          "expect": {
+            "tool": null,
+            "max_words": 150
+          }
+        }
+      ]
+    },
+    {
+      "id": "gen_math_01",
+      "turns": [
+        {
+          "user": "What is 17 times 23?",
+          "expect": {
+            "tool": null,
+            "allow": ["calculate"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "gen_math_02",
+      "turns": [
+        {
+          "user": "what is 15 percent of 2480 plus 1375",
+          "expect": {
+            "tool": "calculate"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gen_translate_01",
+      "turns": [
+        {
+          "user": "How do you say good morning in Hindi?",
+          "expect": {
+            "tool": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "gen_translate_02",
+      "turns": [
+        {
+          "user": "Thank you ko Spanish mein kya kehte hain",
+          "expect": {
+            "tool": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "gen_joke_01",
+      "turns": [
+        {
+          "user": "Tell me a joke about programmers",
+          "expect": {
+            "tool": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "gen_story_01",
+      "turns": [
+        {
+          "user": "Tell me a very short bedtime story about a lion",
+          "expect": {
+            "tool": null,
+            "max_words": 170
+          }
+        }
+      ]
+    },
+    {
+      "id": "gen_recipe_01",
+      "turns": [
+        {
+          "user": "How do I make masala chai?",
+          "expect": {
+            "tool": null,
+            "max_words": 150
+          }
+        }
+      ]
+    },
+    {
+      "id": "gen_hi_01",
+      "turns": [
+        {
+          "user": "bhookh lagi hai, kuch healthy khane ko batao",
+          "expect": {
+            "tool": null,
+            "max_words": 120
+          }
+        }
+      ]
+    },
+    {
+      "id": "gen_hi_02",
+      "turns": [
+        {
+          "user": "mujhe thoda motivate karo",
+          "expect": {
+            "tool": null,
+            "max_words": 100
+          }
+        }
+      ]
+    },
+    {
+      "id": "gen_chat_01",
+      "turns": [
+        {
+          "user": "I'm feeling a bit low today",
+          "expect": {
+            "tool": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "gen_capability_01",
+      "turns": [
+        {
+          "user": "Can you call my mom for me?",
+          "expect": {
+            "tool": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "gen_timer_01",
+      "turns": [
+        {
+          "user": "Set a timer for ten minutes",
+          "expect": {
+            "tool": "set_timer",
+            "args": {
+              "seconds": 600
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "gen_timer_02",
+      "turns": [
+        {
+          "user": "paanch minute ka timer laga do",
+          "expect": {
+            "tool": "set_timer",
+            "args": {
+              "seconds": 300
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "gen_followup_01",
+      "turns": [
+        {
+          "user": "Who invented the telephone?",
+          "expect": {
+            "tool": null,
+            "allow": ["search_wikipedia"]
+          }
+        },
+        {
+          "user": "and in which year was that?",
+          "expect": {
+            "tool": null,
+            "allow": ["search_wikipedia"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "gen_followup_02",
+      "turns": [
+        {
+          "user": "Tell me a fun fact about octopuses",
+          "expect": {
+            "tool": null
+          }
+        },
+        {
+          "user": "another one",
+          "expect": {
+            "tool": null
+          }
+        }
+      ]
     }
   ]
 }
