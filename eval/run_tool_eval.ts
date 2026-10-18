@@ -12,12 +12,12 @@ import { Memory } from '../src/agent/memory';
 import { runTurn } from '../src/agent/runTurn';
 import { createToolRunner, type ToolBackends } from '../src/agent/toolRunner';
 import { searchWikipedia } from '../src/tools/wikipedia';
+import { SentenceChunker } from '../src/tts/chunker';
+import { normalizeForTts } from '../src/tts/normalize';
+import { createPhoneticizer } from '../src/tts/phonetic';
 import { createLlmClient } from '../src/llm/client';
 import { NVIDIA_BASE_URL } from '../src/llm/models';
 import { markdownTable, scoreTurn, summarizeScores, type Case, type Observed, type TurnScore } from './score';
-
-const HINGLISH =
-  /[\u0900-\u097f]|\b(ka|kal|aaj|baje|bje|karna|laga|kya|hai|mujhe|parso|shaam|subah|aur|dena|btao|kehte|khane|bhookh|motivate|karo|batao)\b/i;
 
 const P90_TTFT_WARN_MS = 6000;
 
@@ -75,6 +75,20 @@ async function main() {
     firstTokenTimeoutMs: 20_000,
   });
   const runTool = createToolRunner(fixtures, () => NOW);
+  // the app rewrites each sentence for the voice with the smaller model, so the eval does the same
+  const phoneticize = createPhoneticizer({
+    llm,
+    model: { id: arg('voice-model', models[models.length - 1])!, maxTokens: 300, extraBody: extra },
+  });
+  const voiceTextOf = async (reply: string) => {
+    const sentences: string[] = [];
+    const chunker = new SentenceChunker((x) => sentences.push(x));
+    chunker.push(reply);
+    chunker.end();
+    // the same two steps as the app: the small model first, then the rule-based clean-up for anything it left
+    const rewritten = await Promise.all(sentences.map(phoneticize));
+    return rewritten.map((x) => normalizeForTts(x, { hinglish: true, devanagariLoanwords: true })).join(' ');
+  };
   const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
   const table: { model: string; s: ReturnType<typeof summarizeScores> }[] = [];
   const failures: string[] = [];
@@ -84,10 +98,8 @@ async function main() {
     const observed: Observed[] = [];
     for (const c of cases) {
       const mem = new Memory(() => NOW);
-      // hinglish cases run in a hinglish session, like the app's toggle would be for them
-      mem.setLang(HINGLISH.test(c.turns.map((t) => t.user).join(' ')) ? 'hi' : 'en');
       for (const turn of c.turns) {
-        let obs: Observed = { tools: [], spoken: 'ERROR not run', ttftMs: null, totalMs: 0 };
+        let obs: Observed = { tools: [], spoken: 'ERROR not run', speech: '', ttftMs: null, totalMs: 0 };
         // free tiers cap tokens per minute: on a 429, cool down and retry instead of scoring a rate limit
         for (let attempt = 0; attempt < 4; attempt++) {
           let throttled = false;
@@ -96,27 +108,28 @@ async function main() {
               llm,
               models: { primary: { id: modelId, maxTokens: 700, extraBody: extra } },
               runTool,
-              speaker: { say: () => {}, playFiller: () => {} },
+              speaker: { show: () => {}, say: () => {}, playFiller: () => {} },
             });
             obs = {
               tools: r.toolsCalled.map((t) => ({ name: t.name, args: t.args })),
               spoken: r.spoken,
+              speech: await voiceTextOf(r.spoken),
               ttftMs: r.timings.llmTtftMs,
               totalMs: r.timings.totalMs,
             };
           } catch (e) {
             const msg = (e as Error).message;
             throttled = /HTTP 429/.test(msg);
-            obs = { tools: [], spoken: `ERROR ${msg}`, ttftMs: null, totalMs: 0 };
+            obs = { tools: [], spoken: `ERROR ${msg}`, speech: '', ttftMs: null, totalMs: 0 };
           }
           if (!throttled) break;
           console.log(`  (429 rate limit, cooling down 40 s, attempt ${attempt + 1})`);
           await sleep(40_000);
         }
-        const s = scoreTurn(c.id, turn, obs);
+        const s = scoreTurn(c.id, turn, obs, mem.state.lang);
         scores.push(s);
         observed.push(obs);
-        const ok = s.toolOk && s.argsOk !== false && s.clarifyOk !== false && s.styleOk;
+        const ok = s.toolOk && s.argsOk !== false && s.clarifyOk !== false && s.styleOk && s.speechOk;
         if (!ok) failures.push(`[${modelId}] ${c.id}: "${turn.user}" → ${s.detail}`);
         console.log(`${ok ? 'PASS' : 'FAIL'}  ${modelId}  ${c.id}  ${obs.ttftMs ?? '-'}ms`);
         await sleep(delay);

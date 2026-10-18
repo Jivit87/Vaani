@@ -18,6 +18,7 @@ import type { LlmClient } from '../src/llm/client';
 const obs = (over: Partial<Observed>): Observed => ({
   tools: [],
   spoken: '',
+  speech: '',
   ttftMs: 100,
   totalMs: 500,
   ...over,
@@ -115,6 +116,48 @@ describe('general-assistant scoring', () => {
   });
 });
 
+describe('voice text scoring', () => {
+  it('needs a devanagari voice version whenever the screen text has latin letters', () => {
+    const t = { user: 'x', expect: { tool: null } };
+    expect(scoreTurn('c', t, obs({ spoken: 'Hello there.', speech: 'हेलो देयर।' })).speechOk).toBe(true);
+    expect(scoreTurn('c', t, obs({ spoken: 'Hello there.', speech: '' })).speechOk).toBe(false);
+    expect(scoreTurn('c', t, obs({ spoken: 'Hello there.', speech: 'हेलो there।' })).speechOk).toBe(false);
+  });
+  it('is fine with no voice part when the screen text is already devanagari', () => {
+    const t = { user: 'x', expect: { tool: null } };
+    expect(scoreTurn('c', t, obs({ spoken: 'हो गया।', speech: 'हो गया।' })).speechOk).toBe(true);
+    expect(scoreTurn('c', t, obs({ spoken: 'हो गया।', speech: '' })).speechOk).toBe(true);
+  });
+});
+
+describe('language scoring', () => {
+  const t = { user: '', expect: { tool: null } };
+  it('english in needs no devanagari out, hindi in needs devanagari out', () => {
+    expect(
+      scoreTurn('c', { ...t, user: 'What is the weather' }, obs({ spoken: 'It is sunny.' })).langOk,
+    ).toBe(true);
+    expect(scoreTurn('c', { ...t, user: 'What is the weather' }, obs({ spoken: 'आज धूप है।' })).langOk).toBe(
+      false,
+    );
+    expect(
+      scoreTurn('c', { ...t, user: 'aaj ka mausam kya hai' }, obs({ spoken: 'आज धूप है।' })).langOk,
+    ).toBe(true);
+    expect(
+      scoreTurn('c', { ...t, user: 'aaj ka mausam kya hai' }, obs({ spoken: 'It is sunny.' })).langOk,
+    ).toBe(false);
+  });
+  it('a short follow-up uses the previous turn language, and a translation may use the other script', () => {
+    expect(scoreTurn('c', { ...t, user: 'Pune' }, obs({ spoken: 'पुणे में धूप है।' }), 'hi').langOk).toBe(
+      true,
+    );
+    const tr = {
+      user: 'How do you say good morning in Hindi?',
+      expect: { tool: null, other_script_ok: true },
+    };
+    expect(scoreTurn('c', tr, obs({ spoken: 'सुप्रभात।' })).langOk).toBe(true);
+  });
+});
+
 describe('summary + table', () => {
   it('aggregates and formats', () => {
     const a = obs({
@@ -129,7 +172,9 @@ describe('summary + table', () => {
     ];
     const s = summarizeScores(scores, [a, b]);
     expect(s).toMatchObject({ turns: 2, toolAcc: 0.5, argAcc: 0.5, clarifyAcc: null, medianTtftMs: 200 });
-    expect(markdownTable([{ model: 'm', s }])).toContain('| m | 2 | 50% | 50% | n/a | 0% | 200 | 900 |');
+    expect(markdownTable([{ model: 'm', s }])).toContain(
+      '| m | 2 | 50% | 50% | n/a | 0% | 100% | 0% | 200 | 900 |',
+    );
   });
 });
 
@@ -196,11 +241,12 @@ describe('eval cases file', () => {
         },
         () => NOW,
       ),
-      speaker: { say: () => {}, playFiller: () => {} },
+      speaker: { show: () => {}, say: () => {}, playFiller: () => {} },
     });
     const s = scoreTurn(c.id, c.turns[0], {
       tools: r.toolsCalled.map((t) => ({ name: t.name, args: t.args })),
       spoken: r.spoken,
+      speech: '',
       ttftMs: 1,
       totalMs: 2,
     });

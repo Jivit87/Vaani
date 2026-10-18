@@ -650,7 +650,8 @@
         {
           "user": "How do you say good morning in Hindi?",
           "expect": {
-            "tool": null
+            "tool": null,
+            "other_script_ok": true
           }
         }
       ]
@@ -807,6 +808,64 @@
           "user": "another one",
           "expect": {
             "tool": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "core_weather",
+      "turns": [
+        {
+          "user": "What is the weather forecast for Bangalore tomorrow?",
+          "expect": {
+            "tool": "get_weather",
+            "args": {
+              "city": ["Bangalore", "Bengaluru"],
+              "date": "2026-10-17"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "core_reminder",
+      "turns": [
+        {
+          "user": "Can you set a reminder for my meeting at 5 PM?",
+          "expect": {
+            "tool": "set_reminder",
+            "args": {
+              "datetime_iso": "~2026-10-16T17:00"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "core_alarm",
+      "turns": [
+        {
+          "user": "Mujhe kal subah 7 baje ka alarm set karna hai.",
+          "expect": {
+            "tool": "set_alarm",
+            "args": {
+              "hour": 7,
+              "minute": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "core_schedule",
+      "turns": [
+        {
+          "user": "Aaj ka schedule kya hai, aur meri next meeting kab hai?",
+          "expect": {
+            "tool": "get_schedule",
+            "args": {
+              "date": "2026-10-16"
+            }
           }
         }
       ]
