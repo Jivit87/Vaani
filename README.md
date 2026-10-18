@@ -15,8 +15,6 @@
 
 Vaani is a voice-mode chat assistant, in the spirit of ChatGPT's voice screen. Talk to it, or type. Ask it anything (facts, explanations, maths, translation, advice, stories), or have it set alarms, timers and reminders, read your calendar and check the weather. It answers out loud and shows live captions.
 
-It was built for the IISc Computational Intelligence Lab assignment (on-device STT and TTS, cloud LLM, English and Hinglish). The original brief is in [`docs/original-brief.md`](docs/original-brief.md).
-
 ## What it does
 
 - **Talks both ways, on the phone.** Silero VAD finds the end of your sentence, Whisper-small (int8) transcribes it, and a Piper voice speaks the reply. No audio leaves the device.
@@ -73,7 +71,7 @@ All measured on a Redmi Note 12 Pro 5G (Android 14, 5.5 GB RAM) unless stated.
 | Voice speed: Kokoro                                | about 1.5x real time, around 40% silence in a long reply, so it is an opt-in "Natural" voice       |
 | First audio, a weather question                    | about 3.8 s on one phone hotspot run (LLM 0.5 s, tool 2.7 s, voice 1 s). One sample, not a median. |
 
-Full tables and the failures are in [`eval/results.md`](eval/results.md). Things that are **not** measured yet (accuracy on a recorded test set, a proper latency series, the audio quality of the voices) are listed in [`docs/TASKS.md`](docs/TASKS.md).
+Full tables and the failures are in [`eval/results.md`](eval/results.md).
 
 ## Run it
 
@@ -132,11 +130,11 @@ The core (`agent`, `llm`, `tts`, `pipeline`) has no React Native imports and tak
 
 ## Known limits
 
-- **Voice quality is unjudged.** Piper is fast, but nobody has compared it with Kokoro by ear yet. The Hindi voice cannot read Latin letters, so English words in Hinglish go through a dictionary and a rough transliterator, and some will sound off.
+- **Hindi voice.** The Piper Hindi voice cannot read Latin letters, so English words in Hinglish go through a dictionary and a rough transliterator, and some will sound off.
 - **Always-on mic.** In a noisy room it will transcribe and answer other people. Use the mute button, or a quiet room.
 - **Latency.** Whisper takes about 2 s per utterance on this phone, and a tool turn adds a network call. First audio is a few seconds, not instant.
 - **Not tested on other phones.** Everything above is one Redmi Note 12 Pro 5G.
-- **The API key ships inside the APK** (`EXPO_PUBLIC_*` values are bundled). Fine for a coursework demo, so revoke it afterwards. A real product would put the LLM behind its own proxy.
+- **The API key ships inside the APK** (`EXPO_PUBLIC_*` values are bundled). Fine for a demo, so revoke it afterwards. A real product would put the LLM behind its own proxy.
 
 ## Troubleshooting
 
@@ -153,4 +151,4 @@ The core (`agent`, `llm`, `tts`, `pipeline`) has no React Native imports and tak
 
 ## Docs
 
-[Architecture](docs/ARCHITECTURE.md) · [Decisions](docs/DECISIONS.md) · [Requirements](docs/PRD.md) · [Status and to-do](docs/TASKS.md) · [Eval results](eval/results.md) · [Agent notes](AGENTS.md)
+[Architecture](docs/ARCHITECTURE.md) · [Decisions](docs/DECISIONS.md) · [Requirements](docs/PRD.md) · [Eval results](eval/results.md) · [Agent notes](AGENTS.md)

@@ -10,7 +10,7 @@ import {
 } from './llm/models';
 
 // EXPO_PUBLIC_* values get inlined into the JS bundle at build time, so anyone with the
-// APK can read the API key. fine for this assignment (see README, Security). a real
+// APK can read the API key. fine for a demo (see README, Known limits). a real
 // deployment should put the LLM behind its own proxy.
 //
 // every variable has to be read as a literal `process.env.EXPO_PUBLIC_NAME`. expo only

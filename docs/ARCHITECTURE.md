@@ -52,7 +52,7 @@ Anything that must be testable takes its I/O as an argument: `fetch` (LLM client
 
 ## Security notes
 
-- `EXPO_PUBLIC_NVIDIA_API_KEY` is compiled into the bundle. Acceptable for this assignment; revoke after grading. A production app would proxy the LLM.
+- `EXPO_PUBLIC_NVIDIA_API_KEY` (and the Groq key) is compiled into the bundle, so anyone with the APK can read it. Fine for a demo, revoke it afterwards. A production app would proxy the LLM.
 - Tool arguments from the LLM are untrusted: validated for type, range, date validity, future-only reminders, forecast window; city names are URL-encoded.
 - Downloads are HTTPS and size-verified against the generated manifest (not a cryptographic hash; see DECISIONS D9).
 - Permissions are requested at use (mic, calendar, notifications). No other data leaves the device.
