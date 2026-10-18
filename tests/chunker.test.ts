@@ -1,6 +1,5 @@
 import { describe, expect, it } from 'vitest';
 import { SentenceChunker } from '../src/tts/chunker';
-import { splitByScript } from '../src/tts/splitByScript';
 
 function collect(tokens: string[]) {
   const out: string[] = [];
@@ -40,18 +39,5 @@ describe('SentenceChunker', () => {
   });
   it('flushes an unterminated tail at end', () => {
     expect(collect(['No punctuation here at all'])).toEqual(['No punctuation here at all']);
-  });
-});
-
-describe('splitByScript', () => {
-  it('separates Devanagari and Latin runs', () => {
-    expect(splitByScript('आपका alarm set हो गया')).toEqual([
-      ['आपका ', 'hi'],
-      ['alarm set ', 'en'],
-      ['हो गया', 'hi'],
-    ]);
-  });
-  it('defaults pure punctuation to en', () => {
-    expect(splitByScript('...')).toEqual([['...', 'en']]);
   });
 });

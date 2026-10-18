@@ -1,5 +1,3 @@
-import type { Lang } from '../agent/types';
-
 // speech-to-text with built-in endpointing, one transcript per utterance
 export interface SttEngine {
   // starts the mic and VAD-gated recognition, resolves once it's listening
@@ -25,8 +23,6 @@ export interface TtsEngine {
   destroy(): Promise<void>;
 }
 
-export type SttLanguage = 'en' | 'hi';
-
 export interface TtsOptions {
   // native directory of the voice pack
   dir: string;
@@ -37,26 +33,7 @@ export interface TtsOptions {
 }
 
 export interface SpeechFactory {
-  createStt(language: SttLanguage): Promise<SttEngine>;
+  // whisper detects english or hindi from the audio itself
+  createStt(): Promise<SttEngine>;
   createTts(options: TtsOptions): Promise<TtsEngine>;
 }
-
-export const FILLER_TEXT: Record<Lang, string> = {
-  en: 'One second, let me check.',
-  hi: 'एक second, मैं check करती हूँ।',
-};
-
-export const OFFLINE_TEXT: Record<Lang, string> = {
-  en: "I can't reach the internet right now, but I can still hear you.",
-  hi: 'अभी internet नहीं है, पर मैं सुन सकती हूँ।',
-};
-
-export const RATE_LIMIT_TEXT: Record<Lang, string> = {
-  en: "I've used up my free thinking quota for a bit. Please try again in a few minutes.",
-  hi: 'मेरा free कोटा अभी ख़त्म हो गया है। कुछ मिनट बाद फिर कोशिश कीजिए।',
-};
-
-export const ERROR_TEXT: Record<Lang, string> = {
-  en: 'Sorry, something went wrong. Please try again.',
-  hi: 'माफ़ कीजिए, कुछ गड़बड़ हो गई। फिर से कोशिश कीजिए।',
-};

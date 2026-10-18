@@ -2,49 +2,25 @@ import { fetch as expoFetch } from 'expo/fetch';
 import { Memory } from '../agent/memory';
 import { createSummarizer } from '../agent/summarizer';
 import { createToolRunner } from '../agent/toolRunner';
-import type { Lang } from '../agent/types';
 import { config } from '../config';
 import { createLlmClient } from '../llm/client';
 import { TtsQueue } from '../pipeline/ttsQueue';
 import { VoiceAgent, type VoiceAgentEvents } from '../pipeline/voiceAgent';
-import { getPack, type PackId } from '../speech/packs';
-import { requiredPackIdsFor, ttsSpecFor, type TtsEngineChoice } from '../speech/ttsSelect';
+import { createPhoneticizer } from '../tts/phonetic';
+import { getPack, REQUIRED_PACKS, type PackId } from '../speech/packs';
 import { createNitroSpeech } from '../speech/nitro';
 import { modelsRoot, toNativePath } from '../speech/fsOps';
-import type { SttEngine, TtsEngine, TtsOptions } from '../speech/types';
+import type { TtsEngine } from '../speech/types';
 import { createDeviceBackends } from '../tools';
 
 export const packDir = (id: PackId) => `${modelsRoot()}/${id}`;
 
-const speechPaths = () => ({
-  whisperDir: toNativePath(packDir('whisper-small-int8')),
-  vadPath: toNativePath(`${packDir('silero-vad')}/silero_vad.onnx`),
-});
-
-// voice for a session language: piper english / piper hindi, or kokoro for both
-const voiceFor = (lang: Lang, engine: TtsEngineChoice) => {
-  const spec = ttsSpecFor(lang, engine, config.ttsSpeakerId);
-  const options: TtsOptions = {
-    dir: toNativePath(packDir(spec.packId)),
-    type: spec.type,
-    speakerId: spec.speakerId,
-    speed: config.ttsSpeed,
-  };
-  return { spec, options };
-};
-
-export const requiredPacks = () => requiredPackIdsFor(config.ttsEngine).map(getPack);
+export const requiredPacks = () => REQUIRED_PACKS.map(getPack);
 
 export interface Runtime {
   agent: VoiceAgent;
   memory: Memory;
   tts: TtsEngine;
-  // 'piper' (fast) or 'kokoro' (nicer, but slower than real time on mid-range phones)
-  readonly ttsEngine: TtsEngineChoice;
-  // whisper's language is fixed when it's created, so this rebuilds it
-  setLanguage(lang: Lang): Promise<void>;
-  // switch voice engine (its packs have to be on the phone)
-  setTtsEngine(engine: TtsEngineChoice): Promise<void>;
   // say a line without the LLM (offline test)
   speakDirect(text: string): Promise<void>;
   // listen to every accepted transcript, returns an unsubscribe function
@@ -52,7 +28,7 @@ export interface Runtime {
   destroy(): Promise<void>;
 }
 
-export async function createRuntime(lang: Lang, uiEvents: VoiceAgentEvents): Promise<Runtime> {
+export async function createRuntime(uiEvents: VoiceAgentEvents): Promise<Runtime> {
   if (!config.llmApiKey) throw new Error(`No API key for provider '${config.provider}' (see .env.example)`);
 
   const heardListeners = new Set<(t: string) => void>();
@@ -64,14 +40,21 @@ export async function createRuntime(lang: Lang, uiEvents: VoiceAgentEvents): Pro
     },
   };
 
-  const speech = createNitroSpeech(speechPaths());
-  let engineChoice: TtsEngineChoice = config.ttsEngine;
-  let currentLang = lang;
-  let voice = voiceFor(lang, engineChoice);
-  let tts: TtsEngine = await speech.createTts(voice.options);
-  let stt: SttEngine = await speech.createStt(lang);
+  // one hindi voice (piper priyamvada) speaks everything. english comes out right because each sentence is first
+  // rewritten in devanagari as it sounds, see src/tts/phonetic.ts. whisper detects the language by itself.
+  const speech = createNitroSpeech({
+    whisperDir: toNativePath(packDir('whisper-small-int8')),
+    vadPath: toNativePath(`${packDir('silero-vad')}/silero_vad.onnx`),
+  });
+  const tts = await speech.createTts({
+    dir: toNativePath(packDir('piper-hi-priyamvada-medium')),
+    type: 'vits',
+    speakerId: 0,
+    speed: config.ttsSpeed,
+  });
+  const stt = await speech.createStt();
 
-  const memory = new Memory(() => new Date(), undefined, lang);
+  const memory = new Memory(() => new Date());
   const llm = createLlmClient({
     fetch: expoFetch as unknown as typeof fetch,
     apiKey: config.llmApiKey,
@@ -83,28 +66,23 @@ export async function createRuntime(lang: Lang, uiEvents: VoiceAgentEvents): Pro
 
   // the agent needs the queue and the queue calls back into the agent, so wire them lazily
   let agent: VoiceAgent;
+  // the small model also rewrites each sentence into spoken devanagari for the hindi voice
   const queue = new TtsQueue(tts, {
     onFirstAudio: (ms) => agent.onFirstAudio(ms),
-    normalizeOptions: () => ({
-      hinglish: memory.state.lang === 'hi',
-      devanagariLoanwords: voice.spec.devanagariLoanwords,
-    }),
+    prepare: createPhoneticizer({ llm, model: config.backup }),
   });
-
-  const build = (engine: SttEngine) =>
-    new VoiceAgent({
-      stt: engine,
-      queue,
-      memory,
-      agent: {
-        llm,
-        models: { primary: config.primary, backup: config.backup },
-        runTool: createToolRunner(createDeviceBackends()),
-      },
-      summarize: () => memory.summarizeIfIdle(summarizer),
-      events,
-    });
-  agent = build(stt);
+  agent = new VoiceAgent({
+    stt,
+    queue,
+    memory,
+    agent: {
+      llm,
+      models: { primary: config.primary, backup: config.backup },
+      runTool: createToolRunner(createDeviceBackends()),
+    },
+    summarize: () => memory.summarizeIfIdle(summarizer),
+    events,
+  });
 
   // warm up so the first real turn doesn't pay for model load
   await tts.speak('.').catch(() => undefined);
@@ -116,39 +94,10 @@ export async function createRuntime(lang: Lang, uiEvents: VoiceAgentEvents): Pro
     onText: () => undefined,
   }).catch(() => undefined);
 
-  // stop the agent, swap the voice if needed, rebuild whisper for the language, restart
-  async function reconfigure(nextLang: Lang, nextEngine: TtsEngineChoice) {
-    await agent.stop();
-    const nextVoice = voiceFor(nextLang, nextEngine);
-    if (nextVoice.spec.packId !== voice.spec.packId) {
-      // different voice: free the old one first so memory stays flat
-      await tts.destroy();
-      tts = await speech.createTts(nextVoice.options);
-      queue.setEngine(tts);
-      await tts.speak('.').catch(() => undefined);
-    }
-    voice = nextVoice;
-    engineChoice = nextEngine;
-    currentLang = nextLang;
-    stt = await speech.createStt(nextLang);
-    memory.setLang(nextLang);
-    agent = build(stt);
-    await agent.start();
-  }
-
   return {
-    get agent() {
-      return agent;
-    },
+    agent,
     memory,
-    get tts() {
-      return tts;
-    },
-    get ttsEngine() {
-      return engineChoice;
-    },
-    setLanguage: (next) => reconfigure(next, engineChoice),
-    setTtsEngine: (next) => reconfigure(currentLang, next),
+    tts,
     async speakDirect(text) {
       await tts.speak(text);
     },
@@ -160,5 +109,5 @@ export async function createRuntime(lang: Lang, uiEvents: VoiceAgentEvents): Pro
       await agent.stop();
       await tts.destroy();
     },
-  } as Runtime;
+  };
 }

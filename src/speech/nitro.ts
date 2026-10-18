@@ -1,5 +1,5 @@
 import { NitroSTT, NitroTTS } from 'react-native-nitro-voice';
-import type { SpeechFactory, SpokenInfo, SttEngine, SttLanguage, TtsEngine, TtsOptions } from './types';
+import type { SpeechFactory, SpokenInfo, SttEngine, TtsEngine, TtsOptions } from './types';
 
 export interface NitroPaths {
   whisperDir: string;
@@ -8,8 +8,9 @@ export interface NitroPaths {
 
 export function createNitroSpeech(paths: NitroPaths): SpeechFactory {
   return {
-    async createStt(language: SttLanguage): Promise<SttEngine> {
-      const stt = await NitroSTT.create({ modelDir: paths.whisperDir, type: 'whisper', language });
+    async createStt(): Promise<SttEngine> {
+      // an empty language makes whisper detect it per utterance
+      const stt = await NitroSTT.create({ modelDir: paths.whisperDir, type: 'whisper', language: '' });
       return {
         async listen(onTranscript) {
           await stt.startVADGated(paths.vadPath, { onTranscript });

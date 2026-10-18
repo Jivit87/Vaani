@@ -1,8 +1,6 @@
 import type { ReactNode } from 'react';
 import { FlatList, Modal, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import type { Lang } from '../agent/types';
-import type { TtsEngineChoice } from '../speech/ttsSelect';
 import { CloseIcon } from './icons';
 import { colors } from './theme';
 
@@ -16,21 +14,14 @@ export type SheetName = 'transcript' | 'latency' | 'offline' | 'benchmark';
 
 interface MenuProps {
   visible: boolean;
-  lang: Lang;
-  switching: boolean;
   canExport: boolean;
   onClose: () => void;
-  onLang: (l: Lang) => void;
-  voice: TtsEngineChoice;
-  // false when the other voice's files aren't on the phone yet
-  naturalAvailable: boolean;
-  onVoice: (v: TtsEngineChoice) => void;
   onNew: () => void;
   onOpen: (s: SheetName) => void;
   onExport: () => void;
 }
 
-// bottom sheet: language, voice, conversation, and a developer section for the measurement tools
+// bottom sheet: conversation, and a developer section for the measurement tools
 export function MenuSheet(p: MenuProps) {
   const insets = useSafeAreaInsets();
   return (
@@ -45,63 +36,6 @@ export function MenuSheet(p: MenuProps) {
       <Pressable style={styles.scrim} onPress={p.onClose} accessibilityLabel="Close menu" />
       <View style={[styles.sheet, { paddingBottom: insets.bottom + 18 }]}>
         <View style={styles.grab} />
-        <Text style={styles.sectionLabel}>Language</Text>
-        <View style={styles.seg}>
-          {(
-            [
-              ['en', 'English'],
-              ['hi', 'हिन्दी · Hinglish'],
-            ] as [Lang, string][]
-          ).map(([l, label]) => (
-            <Pressable
-              key={l}
-              disabled={p.switching}
-              onPress={() => p.onLang(l)}
-              style={[styles.segItem, p.lang === l && styles.segOn]}
-              accessibilityState={{ selected: p.lang === l }}
-            >
-              <Text style={[styles.segText, p.lang === l && { color: colors.bg, fontWeight: '700' }]}>
-                {label}
-              </Text>
-            </Pressable>
-          ))}
-        </View>
-        <Text style={styles.hint}>Sets both what Vaani listens for and the language it answers in.</Text>
-
-        <Text style={styles.sectionLabel}>Voice</Text>
-        <View style={styles.seg}>
-          {(
-            [
-              ['piper', 'Fast'],
-              ['kokoro', 'Natural'],
-            ] as [TtsEngineChoice, string][]
-          ).map(([v, label]) => {
-            const off = p.switching || (v === 'kokoro' && !p.naturalAvailable);
-            return (
-              <Pressable
-                key={v}
-                disabled={off}
-                onPress={() => p.onVoice(v)}
-                style={[
-                  styles.segItem,
-                  p.voice === v && styles.segOn,
-                  off && v !== p.voice && { opacity: 0.4 },
-                ]}
-                accessibilityState={{ selected: p.voice === v }}
-              >
-                <Text style={[styles.segText, p.voice === v && { color: colors.bg, fontWeight: '700' }]}>
-                  {label}
-                </Text>
-              </Pressable>
-            );
-          })}
-        </View>
-        <Text style={styles.hint}>
-          {p.naturalAvailable
-            ? 'Fast speaks without pauses. Natural sounds richer but pauses between sentences on this phone.'
-            : 'Fast speaks without pauses. Natural needs a one-time extra download.'}
-        </Text>
-
         <Text style={styles.sectionLabel}>Conversation</Text>
         <Row title="New conversation" onPress={p.onNew} />
         <Row title="Transcript" onPress={() => p.onOpen('transcript')} />

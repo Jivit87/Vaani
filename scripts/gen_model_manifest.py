@@ -40,36 +40,14 @@ def pack_whisper_small(repo="csukuangfj/sherpa-onnx-whisper-small") -> dict:
     }
 
 
-def pack_kokoro(repo="csukuangfj/kokoro-int8-multi-lang-v1_0") -> dict:
+def pack_piper_hi(repo="csukuangfj/vits-piper-hi_IN-priyamvada-medium") -> dict:
     s = tree(repo)
     files = [
-        entry(repo, "model.int8.onnx", "model.onnx", s),
-        entry(repo, "voices.bin", "voices.bin", s),
-        entry(repo, "tokens.txt", "tokens.txt", s),
-        entry(repo, "lexicon-us-en.txt", "lexicon-us-en.txt", s),
-    ]
-    files += [entry(repo, p, p, s) for p in sorted(s) if p.startswith("espeak-ng-data/")]
-    return {"id": "kokoro-int8-multi-lang-v1_0", "files": files}
-
-
-def pack_piper_hi(repo="csukuangfj/vits-piper-hi_IN-pratham-medium") -> dict:
-    s = tree(repo)
-    files = [
-        entry(repo, "hi_IN-pratham-medium.onnx", "model.onnx", s),
+        entry(repo, "hi_IN-priyamvada-medium.onnx", "model.onnx", s),
         entry(repo, "tokens.txt", "tokens.txt", s),
     ]
     files += [entry(repo, p, p, s) for p in sorted(s) if p.startswith("espeak-ng-data/")]
-    return {"id": "piper-hi-pratham-medium", "files": files}
-
-
-def pack_piper_en(repo="csukuangfj/vits-piper-en_US-amy-medium") -> dict:
-    s = tree(repo)
-    files = [
-        entry(repo, "en_US-amy-medium.onnx", "model.onnx", s),
-        entry(repo, "tokens.txt", "tokens.txt", s),
-    ]
-    files += [entry(repo, p, p, s) for p in sorted(s) if p.startswith("espeak-ng-data/")]
-    return {"id": "piper-en-amy-medium", "files": files}
+    return {"id": "piper-hi-priyamvada-medium", "files": files}
 
 
 def pack_vad() -> dict:
@@ -81,7 +59,7 @@ def pack_vad() -> dict:
 
 
 def main() -> int:
-    packs = [pack_whisper_small(), pack_kokoro(), pack_piper_hi(), pack_piper_en(), pack_vad()]
+    packs = [pack_whisper_small(), pack_piper_hi(), pack_vad()]
     OUT.write_text(json.dumps({"packs": packs}, indent=1, ensure_ascii=False) + "\n")
     for p in packs:
         total = sum(f["size"] for f in p["files"])

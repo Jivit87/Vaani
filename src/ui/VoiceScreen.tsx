@@ -11,16 +11,11 @@ import {
   View,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import type { Lang, TraceEvent } from '../agent/types';
-import { config } from '../config';
+import type { TraceEvent } from '../agent/types';
 import { toCsv, type TurnMetrics } from '../pipeline/metrics';
 import type { AgentStatus } from '../pipeline/voiceAgent';
 import { ensureMicPermission, ensureToolPermissions } from '../session/permissions';
-import { isPackComplete } from '../speech/download';
-import { expoFsOps } from '../speech/fsOps';
-import { getPack } from '../speech/packs';
-import type { TtsEngineChoice } from '../speech/ttsSelect';
-import { createRuntime, packDir, type Runtime } from '../session/runtime';
+import { createRuntime, type Runtime } from '../session/runtime';
 import { BenchmarkScreen } from './BenchmarkScreen';
 import { Button } from './Button';
 import { Captions } from './Captions';
@@ -45,10 +40,6 @@ const LABEL: Record<AgentStatus, string> = {
 export function VoiceScreen() {
   useKeepAwake();
   const insets = useSafeAreaInsets();
-  const [lang, setLang] = useState<Lang>('en');
-  const [voice, setVoice] = useState<TtsEngineChoice>(config.ttsEngine);
-  const [naturalAvailable, setNaturalAvailable] = useState(false);
-  const [switching, setSwitching] = useState(false);
   const [status, setStatus] = useState<AgentStatus>('idle');
   const [userText, setUserText] = useState('');
   const [reply, setReply] = useState('');
@@ -80,14 +71,14 @@ export function VoiceScreen() {
           throw new Error('Vaani needs the microphone to hear you.');
         }
         await ensureToolPermissions();
-        const created = await createRuntime(lang, {
+        const created = await createRuntime({
           onStatus: setStatus,
           onTranscript: (t) => {
             setUserText(t);
             setReply('');
             addLine('you', t);
           },
-          onSpeaking: (sentence) => setReply((r) => (r ? `${r} ${sentence}` : sentence)),
+          onShow: (text) => setReply((r) => r + text),
           onReply: (t) => {
             setReply(t);
             addLine('agent', t);
@@ -114,42 +105,6 @@ export function VoiceScreen() {
     // the runtime is created once per attempt, language changes go through setLanguage
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [attempt]);
-
-  // only offer the "Natural" voice when its files are already on the phone
-  useEffect(() => {
-    const kokoro = getPack('kokoro-int8-multi-lang-v1_0');
-    void isPackComplete(kokoro, packDir(kokoro.id as never), expoFsOps).then(setNaturalAvailable);
-  }, []);
-
-  const switchVoice = async (next: TtsEngineChoice) => {
-    if (next === voice || switching) return;
-    setSwitching(true);
-    setStatus('thinking');
-    try {
-      await rt.current?.setTtsEngine(next);
-      setVoice(next);
-    } catch (e) {
-      setError(e instanceof Error ? e.message : String(e));
-      setStatus('error');
-    } finally {
-      setSwitching(false);
-    }
-  };
-
-  const switchLang = async (next: Lang) => {
-    if (next === lang || switching) return;
-    setSwitching(true);
-    setStatus('thinking');
-    try {
-      await rt.current?.setLanguage(next);
-      setLang(next);
-    } catch (e) {
-      setError(e instanceof Error ? e.message : String(e));
-      setStatus('error');
-    } finally {
-      setSwitching(false);
-    }
-  };
 
   const retry = () => {
     setError(null);
@@ -194,22 +149,11 @@ export function VoiceScreen() {
       <View style={[styles.screen, { paddingTop: insets.top + 6, paddingBottom: insets.bottom + 10 }]}>
         <View style={styles.header}>
           <Text style={styles.brand}>Vaani</Text>
-          <Pressable
-            onPress={() => void switchLang(lang === 'en' ? 'hi' : 'en')}
-            disabled={switching || !runtime}
-            accessibilityRole="button"
-            accessibilityLabel="Switch language"
-            style={({ pressed }) => [styles.langChip, pressed && { opacity: 0.6 }]}
-          >
-            <Text style={styles.langText}>{lang === 'en' ? 'English' : 'हिन्दी · Hinglish'}</Text>
-          </Pressable>
         </View>
 
         <View style={styles.orbArea}>
-          <Orb status={switching ? 'thinking' : status} size={typing ? 112 : 168} />
-          <Text style={[styles.status, status === 'error' && { color: colors.err }]}>
-            {switching ? 'Switching language…' : LABEL[status]}
-          </Text>
+          <Orb status={status} size={typing ? 112 : 168} />
+          <Text style={[styles.status, status === 'error' && { color: colors.err }]}>{LABEL[status]}</Text>
         </View>
 
         <View style={styles.captions}>
@@ -271,20 +215,8 @@ export function VoiceScreen() {
 
         <MenuSheet
           visible={menu}
-          lang={lang}
-          switching={switching}
           canExport={turns.length > 0}
           onClose={() => setMenu(false)}
-          onLang={(l) => {
-            setMenu(false);
-            void switchLang(l);
-          }}
-          voice={voice}
-          naturalAvailable={naturalAvailable}
-          onVoice={(v) => {
-            setMenu(false);
-            void switchVoice(v);
-          }}
           onNew={newConversation}
           onOpen={open}
           onExport={() => void Share.share({ message: toCsv(turns), title: 'vaani-latency.csv' })}
@@ -318,15 +250,6 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
   },
   brand: { color: colors.text, fontSize: 20, fontWeight: '700', letterSpacing: 0.4 },
-  langChip: {
-    backgroundColor: colors.raised,
-    borderRadius: 999,
-    paddingVertical: 8,
-    paddingHorizontal: 14,
-    borderWidth: 1,
-    borderColor: colors.border,
-  },
-  langText: { color: colors.text, fontSize: 13, fontWeight: '600' },
   orbArea: { alignItems: 'center', justifyContent: 'center' },
   status: { color: colors.dim, fontSize: 14, marginTop: -34, letterSpacing: 0.3 },
   captions: { flex: 1, marginTop: 6 },

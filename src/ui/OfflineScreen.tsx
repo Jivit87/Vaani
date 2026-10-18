@@ -4,8 +4,9 @@ import type { Runtime } from '../session/runtime';
 import { Button } from './Button';
 import { colors, s } from './theme';
 
+// the voice reads devanagari, so the english line is written by sound
 const LINES = {
-  en: 'This sentence is spoken entirely on the phone, with no internet.',
+  en: 'दिस सेंटेंस इज़ स्पोकन एंटायरली ऑन द फोन, विद नो इंटरनेट।',
   hi: 'यह आवाज़ पूरी तरह फ़ोन पर बन रही है, इंटरनेट के बिना।',
 };
 
@@ -89,7 +90,7 @@ export function OfflineScreen({ runtime }: { runtime: Runtime | null }) {
       </View>
 
       <View style={s.card}>
-        <Text style={s.h2}>Text → speech (on-device Kokoro)</Text>
+        <Text style={s.h2}>Text → speech (on-device Piper)</Text>
         <View style={s.row}>
           <Button title="Speak English" onPress={() => void runtime.speakDirect(LINES.en)} />
           <Button title="Speak Hindi" onPress={() => void runtime.speakDirect(LINES.hi)} />

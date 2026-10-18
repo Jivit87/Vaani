@@ -119,11 +119,8 @@ describe('generated manifest', () => {
   it('has the files and names nitro-voice expects', () => {
     const names = (id: Parameters<typeof getPack>[0]) => getPack(id).files.map((f) => f.path);
     expect(names('whisper-small-int8')).toEqual(['encoder.onnx', 'decoder.onnx', 'tokens.txt']);
-    expect(names('kokoro-int8-multi-lang-v1_0')).toEqual(
-      expect.arrayContaining(['model.onnx', 'voices.bin', 'tokens.txt']),
-    );
-    expect(names('kokoro-int8-multi-lang-v1_0').some((p) => p.startsWith('espeak-ng-data/'))).toBe(true);
-    expect(names('piper-hi-pratham-medium')).toEqual(expect.arrayContaining(['model.onnx', 'tokens.txt']));
+    expect(names('piper-hi-priyamvada-medium').some((p) => p.startsWith('espeak-ng-data/'))).toBe(true);
+    expect(names('piper-hi-priyamvada-medium')).toEqual(expect.arrayContaining(['model.onnx', 'tokens.txt']));
   });
   it('has https URLs, positive sizes and unique destination paths', () => {
     for (const p of PACKS) {
