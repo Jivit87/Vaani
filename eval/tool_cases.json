@@ -869,6 +869,71 @@
           }
         }
       ]
+    },
+    {
+      "id": "switch_en_to_hi_alarm",
+      "turns": [
+        {
+          "user": "What is the weather forecast for Pune tomorrow?",
+          "expect": {
+            "tool": "get_weather",
+            "args": {
+              "city": "Pune",
+              "date": "2026-10-17"
+            }
+          }
+        },
+        {
+          "user": "Can you set a reminder for my meeting at 5 PM?",
+          "expect": {
+            "tool": "set_reminder"
+          }
+        },
+        {
+          "user": "Mujhe kal subah saat baje ka alarm set karna hai",
+          "expect": {
+            "tool": "set_alarm",
+            "args": {
+              "hour": 7,
+              "minute": 0
+            }
+          }
+        },
+        {
+          "user": "Aur hamne alarm kitne baje laga hai?",
+          "expect": {
+            "tool": null,
+            "allow": ["get_schedule"]
+          }
+        },
+        {
+          "user": "Nahin",
+          "expect": {
+            "tool": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "switch_hi_to_en",
+      "turns": [
+        {
+          "user": "aaj ka mausam kaisa hai Pune mein",
+          "expect": {
+            "tool": "get_weather",
+            "args": {
+              "city": "Pune"
+            }
+          }
+        },
+        {
+          "user": "Tell me a fun fact about the moon please",
+          "expect": {
+            "tool": null,
+            "allow": ["search_wikipedia"]
+          }
+        }
+      ]
     }
   ]
 }

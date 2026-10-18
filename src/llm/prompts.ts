@@ -22,6 +22,15 @@ const LANGUAGE_RULE: Record<Lang, string> = {
   hi: `- The user is speaking HINDI/HINGLISH. Reply ONLY in casual, conversational Hinglish, the way a friendly young Indian talks: Hindi sentence structure, with everyday English words kept in English for anything people normally say in English (healthy, light, plan, time, tips, weather, meeting, call, phone, exam, budget, simple, easy). Never answer in full English sentences, and avoid formal or bookish Hindi (say "healthy" not "पौष्टिक", "energy" not "ऊर्जा", "ठीक है" not "उचित"). Write Hindi words in Devanagari and English words in Latin letters, even when the user typed Roman letters. Speak as a man (karta hoon, raha hoon). Short, warm, natural. Example: "आपका अलार्म सुबह सात बजे के लिए set हो गया है।" and "Light कुछ खाना है तो oats में curd और fruits डाल लो, healthy भी है और filling भी।"`,
 };
 
+// said again as the last message of every request. the model copies the language of the chat history, so after a few
+// english replies a hindi question was answered in english even with the rule in the system prompt (seen on the phone)
+const LANGUAGE_REMINDER: Record<Lang, string> = {
+  en: 'Reply in English.',
+  hi: 'Reply only in casual Hinglish: Hindi words in Devanagari, everyday English words in Latin letters. Do not answer in full English sentences, whatever language the earlier messages were in.',
+};
+
+export const languageReminder = (lang: Lang) => LANGUAGE_REMINDER[lang];
+
 export function renderSystemPrompt(
   now: Date,
   memoryBlock: string,

@@ -30,7 +30,7 @@ describe('Memory', () => {
     m.commitTurn('hi', 'hello');
     m.recordAction("alarm 07:00 'wake'");
     const msgs = m.buildMessages('aur kal?', [{ role: 'tool', tool_call_id: 'x', content: '{}' }]);
-    expect(msgs.map((x) => x.role)).toEqual(['system', 'user', 'assistant', 'user', 'tool']);
+    expect(msgs.map((x) => x.role)).toEqual(['system', 'user', 'assistant', 'user', 'tool', 'system']);
     const sys = (msgs[0] as any).content as string;
     expect(sys).toContain('2026-10-16T10:00:00+05:30');
     expect(sys).toContain('Friday');
@@ -91,7 +91,7 @@ describe('Memory', () => {
     m.recordAction('x');
     clock.v += 11 * 60_000;
     const msgs = m.buildMessages('new');
-    expect(msgs.map((x) => x.role)).toEqual(['system', 'user']);
+    expect(msgs.map((x) => x.role)).toEqual(['system', 'user', 'system']);
     expect(m.state).toEqual({ lang: 'hi', actions: [] });
   });
 

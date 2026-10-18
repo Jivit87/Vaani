@@ -99,6 +99,7 @@ async function main() {
     for (const c of cases) {
       const mem = new Memory(() => NOW);
       for (const turn of c.turns) {
+        const langBefore = mem.state.lang;
         let obs: Observed = { tools: [], spoken: 'ERROR not run', speech: '', ttftMs: null, totalMs: 0 };
         // free tiers cap tokens per minute: on a 429, cool down and retry instead of scoring a rate limit
         for (let attempt = 0; attempt < 4; attempt++) {
@@ -126,7 +127,7 @@ async function main() {
           console.log(`  (429 rate limit, cooling down 40 s, attempt ${attempt + 1})`);
           await sleep(40_000);
         }
-        const s = scoreTurn(c.id, turn, obs, mem.state.lang);
+        const s = scoreTurn(c.id, turn, obs, langBefore);
         scores.push(s);
         observed.push(obs);
         const ok = s.toolOk && s.argsOk !== false && s.clarifyOk !== false && s.styleOk && s.speechOk;

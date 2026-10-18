@@ -1,4 +1,4 @@
-import { renderSystemPrompt } from '../llm/prompts';
+import { languageReminder, renderSystemPrompt } from '../llm/prompts';
 import type { AgentState, Lang, Msg } from './types';
 
 export type Summarizer = (previousSummary: string, evicted: Msg[]) => Promise<string>;
@@ -45,6 +45,7 @@ export class Memory {
       ...this.window,
       { role: 'user', content: userText },
       ...scratch,
+      { role: 'system', content: languageReminder(this.state.lang) },
     ];
   }
 

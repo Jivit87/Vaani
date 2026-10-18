@@ -65,6 +65,26 @@ function harness(script: (StepResult | Error)[], backendOver: Partial<ToolBacken
   return { said, shown, fillers, backends, requests, mem, deps };
 }
 
+describe('runTurn language reminder', () => {
+  it('ends every request with the reply language, even after tool results', async () => {
+    const h = harness([step('', [call('c1', 'set_alarm', { hour: 7, minute: 0 })]), step('हो गया।')]);
+    await runTurn('alarm laga do subah saat baje', h.mem, h.deps);
+    for (const req of h.requests) {
+      const last = req.messages.at(-1) as any;
+      expect(last.role).toBe('system');
+      expect(last.content).toContain('Hinglish');
+    }
+  });
+
+  it('reminds english turns to answer in english, even when the chat so far was hindi', async () => {
+    const h = harness([step('Hello.')]);
+    h.mem.commitTurn('namaste', 'नमस्ते!');
+    h.mem.setLang('hi');
+    await runTurn('What is the weather forecast for Pune tomorrow today please', h.mem, h.deps);
+    expect((h.requests[0].messages.at(-1) as any).content).toBe('Reply in English.');
+  });
+});
+
 describe('runTurn reply handling', () => {
   it('shows the reply as it streams and speaks it sentence by sentence', async () => {
     const h = harness([step('Tomorrow will be sunny. Enjoy your day!')]);
@@ -97,6 +117,9 @@ describe('runTurn reply handling', () => {
   });
 });
 
+// every request ends with a system message that repeats the reply language
+const withoutReminder = (messages: any[]) => messages.slice(0, -1);
+
 describe('runTurn', () => {
   it('answers directly without tools and speaks sentence by sentence', async () => {
     const h = harness([step('The capital of France is Paris. It is lovely this time of year.')]);
@@ -116,7 +139,7 @@ describe('runTurn', () => {
 
     expect(h.backends.setAlarm).toHaveBeenCalledWith({ hour: 7, minute: 0, label: undefined });
     expect(h.fillers).toEqual(['en']); // model said nothing first, so a filler covers the gap
-    const second = h.requests[1].messages;
+    const second = withoutReminder(h.requests[1].messages);
     expect(second.at(-2)).toMatchObject({ role: 'assistant', tool_calls: [{ id: 'c1' }] });
     expect(second.at(-1)).toMatchObject({
       role: 'tool',
@@ -145,7 +168,7 @@ describe('runTurn', () => {
       step('Standup at ten thirty and it is sunny.'),
     ]);
     const r = await runTurn('schedule aur weather', h.mem, h.deps);
-    const tail = h.requests[1].messages.slice(-2);
+    const tail = withoutReminder(h.requests[1].messages).slice(-2);
     expect(tail.map((m: any) => m.tool_call_id)).toEqual(['a', 'b']);
     expect(r.toolsCalled.map((t) => t.name)).toEqual(['get_schedule', 'get_weather']);
   });
@@ -153,7 +176,9 @@ describe('runTurn', () => {
   it('turns malformed tool arguments into an error result instead of crashing', async () => {
     const h = harness([step('', [call('c1', 'set_alarm', '{"hour": 7,')]), step('Sorry, which time?')]);
     await runTurn('alarm', h.mem, h.deps);
-    expect((h.requests[1].messages.at(-1) as any).content).toBe('{"error":"bad_arguments_json"}');
+    expect((withoutReminder(h.requests[1].messages).at(-1) as any).content).toBe(
+      '{"error":"bad_arguments_json"}',
+    );
     expect(h.backends.setAlarm).not.toHaveBeenCalled();
   });
 
@@ -163,7 +188,7 @@ describe('runTurn', () => {
       step('That time is not valid. What time?'),
     ]);
     await runTurn('alarm at twenty five', h.mem, h.deps);
-    expect((h.requests[1].messages.at(-1) as any).content).toContain('invalid_argument');
+    expect((withoutReminder(h.requests[1].messages).at(-1) as any).content).toContain('invalid_argument');
   });
 
   it('lets a clarifying question through with no tool call', async () => {
