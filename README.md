@@ -6,6 +6,10 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/Jivit87/Vaani/actions/workflows/ci.yml"><img src="https://github.com/Jivit87/Vaani/actions/workflows/ci.yml/badge.svg" alt="CI"/></a>
+</p>
+
+<p align="center">
   <img src="docs/screenshots/overview.png" alt="Vaani on a Redmi Note 12 Pro: home, speaking, Hinglish reply, typing" width="900"/>
 </p>
 
