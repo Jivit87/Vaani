@@ -60,6 +60,8 @@ Bugs found on the device and fixed (all with tests): the agent **heard its own v
 
 ## Still to do
 
+- Voices are Amy (English) and Pratham (Hindi) with a toggle that follows the language you speak (D23). Listen to both and judge them, especially English words inside Hindi sentences.
+
 Done since this list was first written: phone setup, build and install, on-device speech, the weather/calendar/alarm/reminder tools, and the voice and UI work (see the sections above).
 
 1. **Listen** to the Fast (Piper) and Natural (Kokoro) voices in English and Hinglish and note which sounds better (D20, D21).

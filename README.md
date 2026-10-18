@@ -17,8 +17,8 @@ Vaani is a voice-mode chat assistant, in the spirit of ChatGPT's voice screen. T
 
 ## What it does
 
-- **Talks both ways, on the phone.** Silero VAD finds the end of your sentence, Whisper-small (int8) transcribes it, and a Piper voice speaks the reply. No audio leaves the device.
-- **English and Hinglish.** One toggle switches what it listens for and what it answers in. Hindi comes out in Devanagari.
+- **Talks both ways, on the phone.** Silero VAD finds the end of your sentence, Whisper-small (int8) transcribes it and works out whether it was English or Hindi, and a Piper voice speaks the reply: Amy for English, Pratham for Hindi. No audio leaves the device.
+- **English and Hinglish, switchable mid-conversation.** A sliding toggle sets the language. It also follows you: say something in the other language and it switches by itself, voice included. Both voices stay loaded, so nothing reloads.
 - **Acts, not just chats.** Alarm, timer and reminder, calendar read, weather (Open-Meteo), exact maths, and Wikipedia lookups for facts it might not know.
 - **Asks when it has to.** "Alarm laga do" gets a "kitne baje?" instead of a guess, and follow-ups like "aur kal?" work.
 - **Never claims what it didn't do.** If a tool fails, it says so. If the model returns nothing, it asks you to repeat, instead of saying "done".
@@ -34,7 +34,7 @@ Vaani is a voice-mode chat assistant, in the spirit of ChatGPT's voice screen. T
 | :-----------------------------------------------------: | :---------------------------------------------------: | :------------------------------------------------------: |
 | <img src="docs/screenshots/04-typing.png" width="230"/> | <img src="docs/screenshots/05-menu.png" width="230"/> | <img src="docs/screenshots/06-latency.png" width="230"/> |
 
-The orb shows what Vaani is doing: blue while listening, violet while thinking, cyan while speaking, grey when the mic is muted. Screenshots are from a Redmi Note 12 Pro 5G.
+The orb shows what Vaani is doing: blue while listening, violet while thinking, cyan while speaking, grey when the mic is muted. The English / हिन्दी switch at the top changes the language and voice for the next reply, and it moves by itself when you switch language in a sentence. Screenshots are from a Redmi Note 12 Pro 5G.
 
 ## How it works
 
@@ -48,7 +48,7 @@ The orb shows what Vaani is doing: blue while listening, violet while thinking, 
                       └───────────────┬──────────────────────────────────────────┘
                                       │ tokens, as they arrive
                                       ▼
-                  sentence chunker ─▶ text cleanup ─▶ Piper (on device) ─▶ speaker
+                  sentence chunker ─▶ voice router ─▶ Amy (English) / Pratham (Hindi) ─▶ speaker
 ```
 
 - **Sentence by sentence.** The first sentence is spoken while the model is still writing the second, and the next one is already being synthesized while the current one plays.
@@ -62,14 +62,14 @@ More detail in [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md), and the reasoning
 
 All measured on a Redmi Note 12 Pro 5G (Android 14, 5.5 GB RAM) unless stated.
 
-| Thing                                              | Result                                                                                             |
-| -------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| Tool-calling eval, `gpt-oss-120b` on Groq (laptop) | 100% tool choice, 100% arguments, 100% clarification on 27 cases. First token about 0.7 s.         |
-| Same eval, noisy transcripts added (35 cases)      | 100% / 97% / 100%                                                                                  |
-| General-assistant cases, `gpt-oss-20b`             | 96% tool choice, 100% plain-speech and length checks, first token about 0.5 s                      |
-| Voice speed: Piper                                 | synthesizes at about 0.2x real time, around 1% silence between sentences in a long reply           |
-| Voice speed: Kokoro                                | about 1.5x real time, around 40% silence in a long reply, so it is an opt-in "Natural" voice       |
-| First audio, a weather question                    | about 3.8 s on one phone hotspot run (LLM 0.5 s, tool 2.7 s, voice 1 s). One sample, not a median. |
+| Thing                                              | Result                                                                                                                    |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| Tool-calling eval, `gpt-oss-120b` on Groq (laptop) | 100% tool choice, 100% arguments, 100% clarification on 27 cases. First token about 0.7 s.                                |
+| Same eval, noisy transcripts added (35 cases)      | 100% / 97% / 100%                                                                                                         |
+| General-assistant cases, `gpt-oss-20b`             | 96% tool choice, 100% plain-speech and length checks, first token about 0.5 s                                             |
+| Voice speed (Piper, both voices)                   | synthesizes at about 0.2x real time, around 1% silence between sentences in a long reply                                  |
+| Replies in the language you spoke                  | 100% of 28 turns with the per-message language rule, against 61% with a plain "answer in the user's language" instruction |
+| First audio, a weather question                    | about 3.8 s on one phone hotspot run (LLM 0.5 s, tool 2.7 s, voice 1 s). One sample, not a median.                        |
 
 Full tables and the failures are in [`eval/results.md`](eval/results.md).
 
@@ -95,7 +95,6 @@ For latency numbers and demos use a release build: `npm run android:release`.
 | `EXPO_PUBLIC_GROQ_API_KEY`   | free key from <https://console.groq.com/keys> (default provider) |
 | `EXPO_PUBLIC_NVIDIA_API_KEY` | key from <https://build.nvidia.com>, an alternative provider     |
 | `EXPO_PUBLIC_LLM_PROVIDER`   | `groq` or `nvidia`                                               |
-| `EXPO_PUBLIC_TTS_ENGINE`     | `piper` (default, fast) or `kokoro` (richer, slower)             |
 
 The Groq free tier is about 200,000 tokens a day on the main model, roughly 150 to 190 requests. Vaani skips a rate-limited model for its cooldown, falls back to the smaller one, and says so out loud if both are used up. See [`docs/DECISIONS.md`](docs/DECISIONS.md) (D19).
 
@@ -115,7 +114,7 @@ The Groq free tier is about 200,000 tokens a day on the main model, roughly 150 
 App.tsx           entry: first-run download, then the voice screen
 src/agent/        turn loop, memory, tool runner, safe calculator
 src/llm/          streaming client, fallback and cooldowns, prompt, tool schemas
-src/tts/          sentence chunker, number and time speech, Hindi and loanword respelling
+src/tts/          sentence chunker, number and time speech, Devanagari rewrite for the Hindi voice
 src/pipeline/     voice agent state machine, speech queue, echo and noise filters, metrics
 src/speech/       nitro-voice adapters, model packs, verified downloader
 src/tools/        alarm, timer, reminder, calendar, weather, Wikipedia
@@ -130,7 +129,8 @@ The core (`agent`, `llm`, `tts`, `pipeline`) has no React Native imports and tak
 
 ## Known limits
 
-- **Hindi voice.** The Piper Hindi voice cannot read Latin letters, so English words in Hinglish go through a dictionary and a rough transliterator, and some will sound off.
+- **English inside Hindi sentences.** The Hindi voice can't read Latin letters, so English words in a Hinglish reply are first rewritten in Devanagari by a small model. If that call fails, a rough rule-based spelling takes over, and some words will sound off.
+- **Free weather API.** Open-Meteo sometimes answers HTTP 503. Vaani retries once and then says it couldn't get the forecast.
 - **Always-on mic.** In a noisy room it will transcribe and answer other people. Use the mute button, or a quiet room.
 - **Latency.** Whisper takes about 2 s per utterance on this phone, and a tool turn adds a network call. First audio is a few seconds, not instant.
 - **Not tested on other phones.** Everything above is one Redmi Note 12 Pro 5G.
