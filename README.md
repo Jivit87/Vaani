@@ -1,111 +1,152 @@
-# Vaani — on-device Hinglish voice agent (React Native, Android)
+<h1 align="center">Vaani</h1>
 
-Speak English or Hinglish; the agent answers out loud, like a voice-mode chat assistant: ask it anything (facts, explanations, maths, translation, advice, stories) or have it set alarms, timers and reminders, read your calendar and check the weather. **Speech recognition and speech synthesis run on
-the phone** (sherpa-onnx: Silero VAD + Whisper-small int8 + Piper voices, with Kokoro-82M as an optional richer voice). The language model is in the
-cloud (Groq free tier by default, or the NVIDIA API; both OpenAI-compatible) and runs inside a small tool-using **agent loop** with bounded memory.
-Built for the IISc Computational Intelligence Lab assignment; design rationale is in `about.md`.
+<p align="center">
+  A voice assistant for Android that speaks English and Hinglish.<br/>
+  Speech recognition and the voice run on the phone. Only text goes to the cloud.
+</p>
 
-## What works, honestly
+<p align="center">
+  <img src="docs/screenshots/overview.png" alt="Vaani on a Redmi Note 12 Pro: home, speaking, Hinglish reply, typing" width="900"/>
+</p>
 
-|                                                                                                                                   | Status                                                                                                        |
-| --------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| Agent loop, tool validation, memory, SSE client, chunker, normalizer, downloader, metrics, eval harness                           | **Built and unit-tested** (136 tests)                                                                         |
-| JS bundle, native project generation, debug APK build (Gradle + NDK)                                                              | **Verified**                                                                                                  |
-| Live LLM tool-calling eval (27 cases / 33 turns)                                                                                  | **Measured** on 2026-10-16: Groq `gpt-oss-120b` 100 % / 100 % / 100 %, ~0.7 s first token (`eval/results.md`) |
-| Running on an **Android emulator** with typed input: install, model download, engines load, weather / alarm / reminder end to end | **Verified** (alarm appears in the system Clock app)                                                          |
-| Calendar read (`get_schedule`)                                                                                                    | **Not verified** (timed out once on a starved emulator)                                                       |
-| Real microphone speech, STT accuracy (WER), Hindi/English audio quality, latency numbers, offline screen                          | **Not verified**: needs a phone. Placeholders in `benchmarks/results.md`                                      |
+Vaani is a voice-mode chat assistant, in the spirit of ChatGPT's voice screen. Talk to it, or type. Ask it anything (facts, explanations, maths, translation, advice, stories), or have it set alarms, timers and reminders, read your calendar and check the weather. It answers out loud and shows live captions.
 
-`docs/TASKS.md` lists exactly what to do on real hardware, in order.
+It was built for the IISc Computational Intelligence Lab assignment (on-device STT and TTS, cloud LLM, English and Hinglish). The original brief is in [`docs/original-brief.md`](docs/original-brief.md).
 
-## Requirements
+## What it does
 
-- Node 20+, npm
-- JDK 17 (recommended for React Native; newer JDKs untested here), Android SDK + NDK (via Android Studio), `adb`
-- A physical Android phone, API 29+, ≥ 6 GB RAM, ~1 GB free storage (models ≈ 540 MB)
-- An LLM key: **Groq** (free, <https://console.groq.com/keys>, default; ~30 requests/min) or **NVIDIA** (<https://build.nvidia.com>). Each turn costs 1–3 requests
+- **Talks both ways, on the phone.** Silero VAD finds the end of your sentence, Whisper-small (int8) transcribes it, and a Piper voice speaks the reply. No audio leaves the device.
+- **English and Hinglish.** One toggle switches what it listens for and what it answers in. Hindi comes out in Devanagari.
+- **Acts, not just chats.** Alarm, timer and reminder, calendar read, weather (Open-Meteo), exact maths, and Wikipedia lookups for facts it might not know.
+- **Asks when it has to.** "Alarm laga do" gets a "kitne baje?" instead of a guess, and follow-ups like "aur kal?" work.
+- **Never claims what it didn't do.** If a tool fails, it says so. If the model returns nothing, it asks you to repeat, instead of saying "done".
+- **Keeps working when things go wrong.** Network loss, rate limits and bad tool arguments all end in a short spoken message, and the mic always comes back on.
 
-## Setup
+## Screenshots
 
-```bash
-npm ci
-cp .env.example .env            # set EXPO_PUBLIC_GROQ_API_KEY (and EXPO_PUBLIC_LLM_PROVIDER=groq)
-npm run prebuild                # generates ./android (gitignored)
-npm run android                 # builds the dev client, installs on the connected phone
+|                         Home                          |                         Speaking                          |                         Hinglish                          |
+| :---------------------------------------------------: | :-------------------------------------------------------: | :-------------------------------------------------------: |
+| <img src="docs/screenshots/01-home.png" width="230"/> | <img src="docs/screenshots/02-speaking.png" width="230"/> | <img src="docs/screenshots/03-hinglish.png" width="230"/> |
+
+|                         Typing                          |                         Menu                          |                    Latency and trace                     |
+| :-----------------------------------------------------: | :---------------------------------------------------: | :------------------------------------------------------: |
+| <img src="docs/screenshots/04-typing.png" width="230"/> | <img src="docs/screenshots/05-menu.png" width="230"/> | <img src="docs/screenshots/06-latency.png" width="230"/> |
+
+The orb shows what Vaani is doing: blue while listening, violet while thinking, cyan while speaking, grey when the mic is muted. Screenshots are from a Redmi Note 12 Pro 5G.
+
+## How it works
+
+```
+ mic ─▶ Silero VAD ─▶ Whisper-small (on device) ─▶ text
+                                                     │
+                      ┌──────────────────────────────▼───────────────────────────┐
+                      │ agent loop (max 3 steps)                                 │
+                      │   memory: last 6 turns + rolling summary + state         │
+                      │   LLM (Groq or NVIDIA, streamed) ◀──▶ tools              │
+                      └───────────────┬──────────────────────────────────────────┘
+                                      │ tokens, as they arrive
+                                      ▼
+                  sentence chunker ─▶ text cleanup ─▶ Piper (on device) ─▶ speaker
 ```
 
-After editing `.env`, restart Metro with `npx expo start --clear` — Expo caches inlined env values.
-First launch downloads the speech models (Wi-Fi recommended); the download resumes and verifies sizes.
+- **Sentence by sentence.** The first sentence is spoken while the model is still writing the second, and the next one is already being synthesized while the current one plays.
+- **Half duplex.** The mic is off while Vaani speaks, and it reopens only after the player buffer has drained. Short transcripts that only repeat Vaani's own words are dropped as echo.
+- **Small, bounded memory.** Recent turns, a short summary of older ones, and a small state record written by the tools (so "aur kal?" does not depend on the model remembering).
+- **The LLM is untrusted.** Tool arguments are validated (types, ranges, real dates, future-only reminders), maths goes to a safe parser instead of the model, and nothing the model writes reaches the speaker unfiltered.
 
-## Free-tier limits (Groq)
+More detail in [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md), and the reasoning behind each choice in [`docs/DECISIONS.md`](docs/DECISIONS.md).
 
-The default LLM provider is Groq's free tier. Measured limits for `gpt-oss-120b`: 8,000 tokens per minute and **200,000 tokens per day** (about 150-190 requests). When a model answers 429 the app skips it until its cooldown and uses the backup model; when both are limited it says so out loud. Avoid running big evals on the primary model on a demo day. See `docs/DECISIONS.md` D19.
+## Numbers
 
-## Using the app
+All measured on a Redmi Note 12 Pro 5G (Android 14, 5.5 GB RAM) unless stated.
 
-- **Agent tab:** talk, or type. EN / Hinglish toggle re-creates the Whisper engine (a few seconds). _Stop_ interrupts; _New chat_ clears memory; _Export CSV_ shares the per-turn latency table. The overlay shows time to first audio, LLM TTFT, tool time, TTS first chunk, medians for direct vs tool turns, and the last tool calls.
-- **Offline tab:** shows a live "internet reachable?" probe; _Transcribe only_ (STT, no LLM) and _Speak_ buttons prove the on-device path under airplane mode.
-- **Benchmark tab:** see below.
+| Thing                                              | Result                                                                                             |
+| -------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| Tool-calling eval, `gpt-oss-120b` on Groq (laptop) | 100% tool choice, 100% arguments, 100% clarification on 27 cases. First token about 0.7 s.         |
+| Same eval, noisy transcripts added (35 cases)      | 100% / 97% / 100%                                                                                  |
+| General-assistant cases, `gpt-oss-20b`             | 96% tool choice, 100% plain-speech and length checks, first token about 0.5 s                      |
+| Voice speed: Piper                                 | synthesizes at about 0.2x real time, around 1% silence between sentences in a long reply           |
+| Voice speed: Kokoro                                | about 1.5x real time, around 40% silence in a long reply, so it is an opt-in "Natural" voice       |
+| First audio, a weather question                    | about 3.8 s on one phone hotspot run (LLM 0.5 s, tool 2.7 s, voice 1 s). One sample, not a median. |
 
-Try: "What's the weather in Bangalore tomorrow?" → "And the day after?" · "Mujhe kal subah 7 baje ka alarm set karna hai" · "Alarm laga do" → "Kitne baje?" → "saat baje" · "Aaj ka schedule kya hai?"
+Full tables and the failures are in [`eval/results.md`](eval/results.md). Things that are **not** measured yet (accuracy on a recorded test set, a proper latency series, the audio quality of the voices) are listed in [`docs/TASKS.md`](docs/TASKS.md).
+
+## Run it
+
+You need Node 20, JDK 17, the Android SDK with the NDK, `adb`, and a phone (Android 10 or newer, 6 GB RAM or more recommended, about 1 GB free). The speech runtime is native, so this does not run in Expo Go.
+
+```bash
+npm ci                         # also applies the nitro-voice patches
+cp .env.example .env           # add a free Groq key (or an NVIDIA key)
+npm run prebuild               # generates ./android
+npm run android                # builds a dev client and installs it on the connected phone
+```
+
+The first launch downloads the voice models once (about 540 MB with both languages, so use Wi-Fi). After editing `.env`, restart Metro with `npx expo start --clear`, because Expo inlines those values at build time.
+
+For latency numbers and demos use a release build: `npm run android:release`.
+
+### Keys and providers
+
+| Variable                     | What it does                                                     |
+| ---------------------------- | ---------------------------------------------------------------- |
+| `EXPO_PUBLIC_GROQ_API_KEY`   | free key from <https://console.groq.com/keys> (default provider) |
+| `EXPO_PUBLIC_NVIDIA_API_KEY` | key from <https://build.nvidia.com>, an alternative provider     |
+| `EXPO_PUBLIC_LLM_PROVIDER`   | `groq` or `nvidia`                                               |
+| `EXPO_PUBLIC_TTS_ENGINE`     | `piper` (default, fast) or `kokoro` (richer, slower)             |
+
+The Groq free tier is about 200,000 tokens a day on the main model, roughly 150 to 190 requests. Vaani skips a rate-limited model for its cooldown, falls back to the smaller one, and says so out loud if both are used up. See [`docs/DECISIONS.md`](docs/DECISIONS.md) (D19).
 
 ## Commands
 
-|                                         |                                                                                             |
-| --------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `npm run check`                         | typecheck + eslint + prettier + tests (what CI runs)                                        |
-| `npm test` / `npm run test:watch`       | Vitest                                                                                      |
-| `npm run eval:tools -- --models a,b`    | tool-calling eval against live NVIDIA models (needs key; ~225 requests for 3 models, paced) |
-| `npm run android:release`               | release build — **use this for latency numbers and the demo**                               |
-| `python3 scripts/gen_model_manifest.py` | regenerate model file lists/sizes from Hugging Face                                         |
+| Command                                 | What it does                                                |
+| --------------------------------------- | ----------------------------------------------------------- |
+| `npm run check`                         | typecheck, eslint, prettier and all tests                   |
+| `npm test`                              | Vitest, runs in Node, no phone needed                       |
+| `npm run eval:tools`                    | tool-calling and general-assistant eval against live models |
+| `python3 benchmarks/run_wer.py`         | word error rate from the in-app STT benchmark export        |
+| `python3 scripts/gen_model_manifest.py` | refresh model file lists and sizes from Hugging Face        |
 
-## Measuring
-
-**Latency.** The app reports _transcript received → first audio_. nitro-voice's VAD-gated STT does not expose the end-of-speech instant, so add two terms for true voice-to-voice: the VAD wait (0.5 s, fixed inside the library) and the median Whisper decode time from the benchmark. Report direct and tool turns separately.
-
-**STT accuracy.** Record 40 sentences (20 EN, 20 Hinglish; name them `en_01.wav`…, `hi_01.wav`…; 16 kHz mono, 16-bit) → put references in `benchmarks/test_sentences.tsv`. Push audio: `adb push en_01.wav /sdcard/` then copy into the app dir with `adb shell run-as com.vaani.voiceagent` (debug builds), or place files via Android Studio's Device Explorer under `files/benchmark/audio/`. To compare other Whisper exports, put each in `files/models/<name>/` with `encoder.onnx`, `decoder.onnx`, `tokens.txt`. Run the Benchmark tab, _Share results JSON_, save it as `benchmarks/benchmark_results.json`, then:
-
-```bash
-pip install jiwer
-python3 benchmarks/run_wer.py benchmarks/benchmark_results.json benchmarks/test_sentences.tsv
-```
-
-**Agent quality.** `eval/tool_cases.json` (27 cases): tool choice, argument accuracy, clarification behaviour, TTFT per model. This is also how the LLM is chosen.
-
-## Layout
+## Project layout
 
 ```
-App.tsx                 tab shell
-src/agent/              runTurn loop, Memory, ToolRunner, summarizer
-src/llm/                SSE client + fallback, prompts, tool schemas, model defaults
-src/tts/                sentence chunker, normalizer (EN/HI numbers & times), script splitter
-src/pipeline/           VoiceAgent state machine, TtsQueue, metrics, transcript filter
-src/speech/             nitro-voice adapters, model packs + downloader, generated manifest
-src/tools/              alarm, reminder, calendar, weather
-src/session/            runtime wiring, permissions
-src/ui/                 screens
-src/benchmark/          WAV parser, result types, on-device runner
-eval/  benchmarks/      tool-calling eval; WER tooling
-docs/                   PRD, ARCHITECTURE, DECISIONS, TASKS
-tests/                  Vitest (Node)
+App.tsx           entry: first-run download, then the voice screen
+src/agent/        turn loop, memory, tool runner, safe calculator
+src/llm/          streaming client, fallback and cooldowns, prompt, tool schemas
+src/tts/          sentence chunker, number and time speech, Hindi and loanword respelling
+src/pipeline/     voice agent state machine, speech queue, echo and noise filters, metrics
+src/speech/       nitro-voice adapters, model packs, verified downloader
+src/tools/        alarm, timer, reminder, calendar, weather, Wikipedia
+src/session/      wiring and permissions
+src/ui/           orb, captions, controls, menu, developer screens
+eval/             live eval and its cases      benchmarks/   WER tooling
+patches/          nitro-voice patches          docs/         design notes and decisions
+tests/            unit tests
 ```
+
+The core (`agent`, `llm`, `tts`, `pipeline`) has no React Native imports and takes its I/O as arguments, which is why most of it is covered by tests that run in Node.
+
+## Known limits
+
+- **Voice quality is unjudged.** Piper is fast, but nobody has compared it with Kokoro by ear yet. The Hindi voice cannot read Latin letters, so English words in Hinglish go through a dictionary and a rough transliterator, and some will sound off.
+- **Always-on mic.** In a noisy room it will transcribe and answer other people. Use the mute button, or a quiet room.
+- **Latency.** Whisper takes about 2 s per utterance on this phone, and a tool turn adds a network call. First audio is a few seconds, not instant.
+- **Not tested on other phones.** Everything above is one Redmi Note 12 Pro 5G.
+- **The API key ships inside the APK** (`EXPO_PUBLIC_*` values are bundled). Fine for a coursework demo, so revoke it afterwards. A real product would put the LLM behind its own proxy.
 
 ## Troubleshooting
 
-| Symptom                                   | Likely cause / fix                                                                                                          |
-| ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| "No API key for provider …"               | `.env` missing the key for the chosen `EXPO_PUBLIC_LLM_PROVIDER`, or Metro cache stale: `npx expo start --clear`            |
-| Model download stalls                     | re-run; complete files are skipped, partial ones re-fetched. Check storage space                                            |
-| Hindi sounds wrong or spelled out         | Devanagari is read by espeak inside Kokoro; try voices 32/33/34, else `EXPO_PUBLIC_TTS_ENGINE=piper-hi` (docs/DECISIONS D7) |
-| Agent answers its own speech              | half-duplex relies on `stopMic()`; check the phone's audio route / use headphones and report                                |
-| Empty or odd replies on a reasoning model | give `maxTokens` headroom or add reasoning-off in `src/llm/models.ts` (`extraBody` / `systemSuffix`)                        |
-| Alarm intent does nothing                 | merged manifest must contain `com.android.alarm.permission.SET_ALARM` (use prebuild, not Expo Go)                           |
-| Reminder fires late                       | Android 14+ denies exact alarms by default; battery optimisation; prefer the Clock alarm for time-critical use              |
-| Build fails on a new JDK                  | use JDK 17                                                                                                                  |
-| App process dies when TTS loads           | nitro-voice 0.1.1 needs `patches/` applied (`npm install` runs `patch-package`); see docs/DECISIONS                         |
-| "LLM first-token timeout"                 | provider endpoint is slow or down (NVIDIA hung for 12+ min once); switch `EXPO_PUBLIC_LLM_PROVIDER`                         |
-| Emulator freezes                          | needs ~4 GB free RAM next to Metro/Gradle; a real phone is far better                                                       |
+| Symptom                                          | What to try                                                                                         |
+| ------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
+| "No API key for provider ..."                    | the key for your `EXPO_PUBLIC_LLM_PROVIDER` is missing, or Metro is stale: `npx expo start --clear` |
+| App closes when the voice loads                  | the nitro-voice patches are missing, run `npm install` (it runs `patch-package`)                    |
+| A `.env` change has no effect in a release build | delete `android/app/build/generated/assets/react` and rebuild                                       |
+| "LLM first-token timeout"                        | the provider is slow or down, switch `EXPO_PUBLIC_LLM_PROVIDER`                                     |
+| Alarm does nothing                               | the manifest needs `com.android.alarm.permission.SET_ALARM`, so use prebuild, not Expo Go           |
+| Reminder fires late                              | Android 14 denies exact alarms by default and battery savers delay them                             |
+| Install blocked on Xiaomi phones                 | turn on "Install via USB" in developer options                                                      |
+| Build fails on a new JDK                         | use JDK 17                                                                                          |
 
-## Security
+## Docs
 
-The LLM key (Groq or NVIDIA) is compiled into the app (`EXPO_PUBLIC_*`) — fine for a coursework demo, **revoke it afterwards**; a real product would proxy the LLM. `.env` is gitignored; `.env.example` has placeholders. Tool arguments from the model are validated before use. Audio is never uploaded. `npm audit` reports 22 advisories, all in build-time tooling (Metro/Expo CLI/node-forge); none ship in the APK, and the fix requires a breaking Expo downgrade (`--force`).
+[Architecture](docs/ARCHITECTURE.md) · [Decisions](docs/DECISIONS.md) · [Requirements](docs/PRD.md) · [Status and to-do](docs/TASKS.md) · [Eval results](eval/results.md) · [Agent notes](AGENTS.md)
