@@ -37,12 +37,20 @@ describe('Memory', () => {
     expect(sys).toContain('alarm 07:00');
   });
 
-  it('renders an explicit reply-language rule from the session toggle', () => {
-    const en = new Memory(() => new Date(t0), undefined, 'en').buildMessages('hi')[0] as any;
-    const hi = new Memory(() => new Date(t0), undefined, 'hi').buildMessages('hi')[0] as any;
-    expect(en.content).toContain('session language is ENGLISH');
-    expect(en.content).not.toContain('HINGLISH');
-    expect(hi.content).toContain('session language is HINGLISH');
+  it('tells the model which language to answer in, from the language detected for this message', () => {
+    const en = new Memory(() => new Date(t0));
+    const hi = new Memory(() => new Date(t0));
+    hi.setLang('hi');
+    expect((en.buildMessages('hi')[0] as any).content).toContain('speaking ENGLISH');
+    expect((hi.buildMessages('hi')[0] as any).content).toContain('HINDI/HINGLISH');
+    expect((hi.buildMessages('hi')[0] as any).content).not.toContain('speaking ENGLISH');
+  });
+
+  it('keeps the detected language out of the state the model sees', () => {
+    const m = new Memory(() => new Date(t0));
+    m.setLang('hi');
+    const sys = (m.buildMessages('hi')[0] as any).content as string;
+    expect(sys).toContain('State: {"actions":[]}');
   });
 
   it('keeps only the last 5 actions', () => {

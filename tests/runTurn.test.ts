@@ -36,8 +36,13 @@ function scriptedLlm(script: (StepResult | Error)[]) {
 
 function harness(script: (StepResult | Error)[], backendOver: Partial<ToolBackends> = {}) {
   const said: string[] = [];
+  const shown: string[] = [];
   const fillers: string[] = [];
-  const speaker: Speaker = { say: (s) => said.push(s), playFiller: (l) => fillers.push(l) };
+  const speaker: Speaker = {
+    show: (t) => shown.push(t),
+    say: (s) => said.push(s),
+    playFiller: (l) => fillers.push(l),
+  };
   const backends: ToolBackends = {
     setAlarm: vi.fn(async () => {}),
     setReminder: vi.fn(async () => {}),
@@ -57,8 +62,40 @@ function harness(script: (StepResult | Error)[], backendOver: Partial<ToolBacken
   const { llm, requests } = scriptedLlm(script);
   const mem = new Memory(() => NOW);
   const deps = { llm, models: MODELS, runTool: createToolRunner(backends, () => NOW), speaker };
-  return { said, fillers, backends, requests, mem, deps };
+  return { said, shown, fillers, backends, requests, mem, deps };
 }
+
+describe('runTurn reply handling', () => {
+  it('shows the reply as it streams and speaks it sentence by sentence', async () => {
+    const h = harness([step('Tomorrow will be sunny. Enjoy your day!')]);
+    const r = await runTurn('how is the weather', h.mem, h.deps);
+    expect(h.shown.join('')).toBe('Tomorrow will be sunny. Enjoy your day!');
+    expect(h.said).toEqual(['Tomorrow will be sunny.', 'Enjoy your day!']);
+    expect(r.spoken).toBe('Tomorrow will be sunny. Enjoy your day!');
+  });
+
+  it('keeps what was shown in memory', async () => {
+    const h = harness([step('Hello there.')]);
+    await runTurn('hi', h.mem, h.deps);
+    expect(h.mem.window.map((m: any) => m.content)).toEqual(['hi', 'Hello there.']);
+  });
+
+  it('follows the language of each message, not a session setting', async () => {
+    const h = harness([step('')]);
+    await runTurn('alarm laga do', h.mem, h.deps);
+    expect(h.mem.state.lang).toBe('hi');
+    const h2 = harness([step('')]);
+    await runTurn('set an alarm', h2.mem, h2.deps);
+    expect(h2.mem.state.lang).toBe('en');
+  });
+
+  it("says the app's own fallback line in the language of the question", async () => {
+    const h = harness([step('')]);
+    const r = await runTurn('mujhe kal ka weather batao', h.mem, h.deps);
+    expect(r.spoken).toContain('माफ़ कीजिए');
+    expect(h.said.join(' ')).toContain('माफ़ कीजिए');
+  });
+});
 
 describe('runTurn', () => {
   it('answers directly without tools and speaks sentence by sentence', async () => {
@@ -75,7 +112,7 @@ describe('runTurn', () => {
       step('', [call('c1', 'set_alarm', { hour: 7, minute: 0 })]),
       step('Your alarm is set for seven AM.'),
     ]);
-    const r = await runTurn('alarm laga do subah saat baje', h.mem, h.deps);
+    const r = await runTurn('set an alarm for seven in the morning', h.mem, h.deps);
 
     expect(h.backends.setAlarm).toHaveBeenCalledWith({ hour: 7, minute: 0, label: undefined });
     expect(h.fillers).toEqual(['en']); // model said nothing first, so a filler covers the gap
@@ -165,7 +202,7 @@ describe('runTurn', () => {
 
   it('never claims success when the model said nothing and no tool ran', async () => {
     const h = harness([step('')]);
-    const r = await runTurn('shaam ko 6 baje alarm laga do', h.mem, h.deps);
+    const r = await runTurn('set an alarm for six pm', h.mem, h.deps);
     expect(r.spoken).not.toBe('Done.');
     expect(r.spoken).toContain("didn't get that");
     expect(h.backends.setAlarm).not.toHaveBeenCalled();
@@ -183,9 +220,8 @@ describe('runTurn', () => {
     expect(r.spoken).toBe('Done.');
   });
 
-  it('uses the Hindi filler and fallback when the session language is Hindi', async () => {
+  it('uses the Hindi filler and fallback when the user spoke Hinglish', async () => {
     const h = harness([step('', [call('c1', 'get_schedule', { date: '2026-10-16' })]), step('')]);
-    h.mem.setLang('hi');
     const r = await runTurn('aaj ka schedule', h.mem, h.deps);
     expect(h.fillers).toEqual(['hi']);
     expect(r.spoken).toBe('हो गया।'); // get_schedule worked, so saying it's done is honest

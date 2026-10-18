@@ -1,6 +1,8 @@
 import { callWithFallback, safeParse, type LlmClient, type ModelPair } from '../llm/client';
 import { TOOLS, type ToolSchema } from '../llm/tools.schema';
 import { SentenceChunker } from '../tts/chunker';
+import { detectLang } from './lang';
+import { LINES } from './lines';
 import type { Memory } from './memory';
 import type { ToolRunner } from './toolRunner';
 import type { Lang, Msg, ModelCfg, TraceEvent } from './types';
@@ -8,7 +10,9 @@ import type { Lang, Msg, ModelCfg, TraceEvent } from './types';
 export const MAX_STEPS = 3;
 
 export interface Speaker {
-  // queue a finished sentence for synthesis
+  // text for the screen, as it streams
+  show(text: string): void;
+  // queue a finished sentence for the voice (already written as it should sound)
   say(sentence: string): void;
   // play a filler line so a slow tool isn't dead air
   playFiller(lang: Lang): void;
@@ -32,19 +36,12 @@ interface TurnTimings {
 }
 
 export interface TurnResult {
+  // what was shown on screen (this is also what goes into memory)
   spoken: string;
   toolsCalled: { name: string; args: unknown; result: Record<string, unknown> }[];
   model: ModelCfg;
   timings: TurnTimings;
 }
-
-// only used when the model said nothing. we say "Done" only if a tool really worked,
-// otherwise the user should hear that nothing happened, never that an alarm was set
-const DONE_REPLY: Record<Lang, string> = { en: 'Done.', hi: 'हो गया।' };
-const NO_ANSWER_REPLY: Record<Lang, string> = {
-  en: "Sorry, I didn't get that. Could you say it again?",
-  hi: 'माफ़ कीजिए, मैं समझ नहीं पाई। क्या आप फिर से बोल सकते हैं?',
-};
 
 // one user turn: stream the LLM, run the tools it asks for, feed the results back,
 // repeat (max MAX_STEPS). text is spoken as it streams.
@@ -56,10 +53,12 @@ export async function runTurn(
 ): Promise<TurnResult> {
   const clock = deps.clock ?? (() => Date.now());
   const started = clock();
+  const lang = detectLang(userText, mem.state.lang);
+  mem.setLang(lang);
   const chunker = new SentenceChunker((s) => deps.speaker.say(s));
   const scratch: Msg[] = []; // this turn's tool calls and results, never kept long-term
   const toolsCalled: TurnResult['toolsCalled'] = [];
-  let spoken = '';
+  let shown = '';
   let toolMs = 0;
   let llmTtftMs: number | null = null;
   let llmSteps = 0;
@@ -73,7 +72,8 @@ export async function runTurn(
         tools: lastStep ? [] : (deps.tools ?? TOOLS), // the last step has no tools, so it has to answer in words
         signal,
         onText: (t) => {
-          spoken += t;
+          shown += t;
+          deps.speaker.show(t);
           chunker.push(t);
         },
       });
@@ -83,7 +83,7 @@ export async function runTurn(
       if (!result.toolCalls.length || lastStep) break;
 
       // filler only if the model hasn't already said something
-      if (step === 0 && !result.text.trim()) deps.speaker.playFiller(mem.state.lang);
+      if (step === 0 && !result.text.trim()) deps.speaker.playFiller(lang);
       scratch.push({
         role: 'assistant',
         content: result.text || null,
@@ -107,21 +107,23 @@ export async function runTurn(
       scratch.push(...results.map((r) => r.msg));
     }
 
-    if (!spoken.trim()) {
+    if (!shown.trim()) {
       const succeeded = toolsCalled.some((t) => !('error' in t.result));
-      spoken = (succeeded ? DONE_REPLY : NO_ANSWER_REPLY)[mem.state.lang];
-      chunker.push(spoken);
+      const line = (succeeded ? LINES.done : LINES.noAnswer)[lang];
+      shown = line.show;
+      deps.speaker.show(line.show);
+      chunker.push(line.say);
     }
+    chunker.end();
   } catch (e) {
     // a cancelled turn shouldn't speak half a sentence
     if (!signal?.aborted) chunker.end();
     throw e;
   }
-  chunker.end();
 
-  mem.commitTurn(userText, spoken);
+  mem.commitTurn(userText, shown);
   return {
-    spoken: spoken.trim(),
+    spoken: shown.trim(),
     toolsCalled,
     model,
     timings: { llmTtftMs, toolMs, llmSteps, totalMs: clock() - started },

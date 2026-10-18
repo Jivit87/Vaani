@@ -34,7 +34,10 @@ export class Memory {
 
   buildMessages(userText: string, scratch: Msg[] = []): Msg[] {
     if (this.now().getTime() - this.lastActive > IDLE_RESET_MS) this.reset();
-    const block = [this.summary && `Earlier: ${this.summary}`, `State: ${JSON.stringify(this.state)}`]
+    const block = [
+      this.summary && `Earlier: ${this.summary}`,
+      `State: ${JSON.stringify({ ...this.state, lang: undefined })}`,
+    ]
       .filter(Boolean)
       .join('\n');
     return [
