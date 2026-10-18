@@ -3,7 +3,7 @@ import { calculate, formatNumber } from './calc';
 import type { Memory } from './memory';
 import type { ToolResult } from './types';
 
-export interface WikiHit {
+interface WikiHit {
   title: string;
   summary: string;
   url: string;

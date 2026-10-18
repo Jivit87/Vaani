@@ -1,4 +1,4 @@
-import { Directory, File, Paths } from 'expo-file-system';
+import { File, Paths } from 'expo-file-system';
 import type { FsOps } from './download';
 
 export const modelsRoot = () => `${Paths.document.uri.replace(/\/$/, '')}/models`;
@@ -23,5 +23,3 @@ export const expoFsOps: FsOps = {
     if (!parent.exists) parent.create({ intermediates: true, idempotent: true });
   },
 };
-
-export { Directory };

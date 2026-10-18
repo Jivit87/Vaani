@@ -6,8 +6,6 @@ export interface NitroPaths {
   vadPath: string;
 }
 
-export { KOKORO_VOICES } from './voices';
-
 export function createNitroSpeech(paths: NitroPaths): SpeechFactory {
   return {
     async createStt(language: SttLanguage): Promise<SttEngine> {

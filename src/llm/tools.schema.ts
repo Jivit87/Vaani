@@ -110,12 +110,3 @@ export const TOOLS: ToolSchema[] = [
     },
   },
 ];
-
-export type ToolName =
-  | 'set_alarm'
-  | 'set_reminder'
-  | 'get_schedule'
-  | 'get_weather'
-  | 'set_timer'
-  | 'search_wikipedia'
-  | 'calculate';

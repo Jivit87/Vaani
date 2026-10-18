@@ -1,6 +1,6 @@
 # PRD — Vaani Hinglish Voice Agent
 
-Normalised from `about.md`. IDs are referenced by `docs/TASKS.md` and the tests.
+Normalised from `docs/original-brief.md`. IDs are referenced by `docs/TASKS.md` and the tests.
 
 ## Goal
 

@@ -1,6 +1,6 @@
 # AGENTS.md — instructions for coding agents
 
-Project: Vaani on-device Hinglish voice agent. Read `README.md`, `docs/ARCHITECTURE.md`, `docs/DECISIONS.md` first; `about.md` is the original design brief (corrections discovered during implementation live in `docs/DECISIONS.md`).
+Project: Vaani on-device Hinglish voice agent. Read `README.md`, `docs/ARCHITECTURE.md`, `docs/DECISIONS.md` first; `docs/original-brief.md` is the original design brief (corrections discovered during implementation live in `docs/DECISIONS.md`).
 
 ## Commands
 
@@ -17,3 +17,4 @@ Project: Vaani on-device Hinglish voice agent. Read `README.md`, `docs/ARCHITECT
 - Model IDs and library APIs drift: check the installed package source / `build.nvidia.com` before changing them.
 - A new tool needs: schema in `src/llm/tools.schema.ts`, validation + state update in `toolRunner.ts`, device adapter in `src/tools/`, tests, and an eval case.
 - Keep the working tree outside iCloud-synced folders (see ARCHITECTURE).
+- Write comments and commit messages plainly, in lowercase short sentences, no `feat(scope):` prefixes.

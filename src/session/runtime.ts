@@ -33,8 +33,7 @@ const voiceFor = (lang: Lang, engine: TtsEngineChoice) => {
   return { spec, options };
 };
 
-export const requiredPackIds = (): PackId[] => requiredPackIdsFor(config.ttsEngine);
-export const requiredPacks = () => requiredPackIds().map(getPack);
+export const requiredPacks = () => requiredPackIdsFor(config.ttsEngine).map(getPack);
 
 export interface Runtime {
   agent: VoiceAgent;

@@ -9,7 +9,7 @@ export interface FsOps {
   ensureDirFor(path: string): Promise<void>;
 }
 
-export interface DownloadProgress {
+interface DownloadProgress {
   bytesDone: number;
   bytesTotal: number;
   filesDone: number;

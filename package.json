@@ -1,5 +1,5 @@
 {
-  "name": "vaani-voice-agent",
+  "name": "vaani",
   "version": "1.0.0",
   "private": true,
   "main": "index.ts",
@@ -46,5 +46,6 @@
     "tsx": "^4.23.15",
     "typescript": "~6.0.3",
     "vitest": "^3.2.7"
-  }
+  },
+  "description": "On-device Hinglish voice assistant for Android: local speech recognition and voice, cloud LLM, tools."
 }

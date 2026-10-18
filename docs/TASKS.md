@@ -6,7 +6,7 @@ Last updated: 2026-10-16.
 
 ## Incident: iCloud eviction and rebuild (2026-10-16)
 
-The project was first created under `~/Desktop`, which syncs to iCloud. With the disk at 98 %, macOS evicted most files to "dataless" placeholders whose contents could not be re-downloaded (reads returned 0 bytes; `brctl download`, daemon restart and Finder all failed; no Time Machine snapshots). Everything still readable was copied to `~/VaaniBackup`, and the whole project was rebuilt in `~/Developer/Vaani` from the session history. The rebuild passes typecheck, lint and all tests. **Not re-verified after the rebuild:** the Gradle APK build (it passed before the incident on equivalent code) and `about.md` content beyond what is restored below. If the original `~/Desktop/Vaani` files ever download, diff them against this tree rather than overwriting.
+The project was first created under `~/Desktop`, which syncs to iCloud. With the disk at 98 %, macOS evicted most files to "dataless" placeholders whose contents could not be re-downloaded (reads returned 0 bytes; `brctl download`, daemon restart and Finder all failed; no Time Machine snapshots). Everything still readable was copied to `~/VaaniBackup`, and the whole project was rebuilt in `~/Developer/Vaani` from the session history. The rebuild passes typecheck, lint and all tests. **Not re-verified after the rebuild:** the Gradle APK build (it passed before the incident on equivalent code) and `docs/original-brief.md` content beyond what is restored below. If the original `~/Desktop/Vaani` files ever download, diff them against this tree rather than overwriting.
 
 ## Verified in this environment
 
@@ -56,18 +56,17 @@ Bugs found on the device and fixed (all with tests): the agent **heard its own v
 | 11  | UI: setup, agent + latency/trace overlay, offline test, benchmark                       | 🟡                                      | type-checks and bundles; not rendered                        |
 | 12  | STT benchmark: in-app runner, WAV parser, `run_wer.py`                                  | ✅ parser/script · 🟡 runner            |                                                              |
 | 13  | Tool-calling eval (27 cases, scorer, CLI)                                               | ✅                                      | live run 2026-10-16: see `eval/results.md`                   |
-| 14  | Docs (README, PRD, ARCHITECTURE, DECISIONS, AGENTS, CLAUDE)                             | ✅                                      |                                                              |
+| 14  | Docs (README, PRD, ARCHITECTURE, DECISIONS, AGENTS)                                     | ✅                                      |                                                              |
 
-## Needs a human with the right hardware (in this order)
+## Still to do
 
-1. `cp .env.example .env`, add the NVIDIA key. Run the LLM smoke test and `npm run eval:tools -- --models <2–3 ids>`; commit the winning model IDs and paste the table into `eval/results.md`. _(about.md §4, §7.2)_
-2. (Toolchain already installed on this Mac.) Plug in a phone with USB debugging; `npm run prebuild && npm run android` on a physical phone (API 29+, ≥ 6 GB RAM).
-3. **Day-1 gate:** speak → transcript on screen; TTS audible; 20-turn loop without a crash. If nitro-voice fails, follow DECISIONS D2.
-4. **Hindi TTS A/B** (D7): Kokoro `hf_alpha` vs `hf_beta` vs `EXPO_PUBLIC_TTS_ENGINE=piper-hi`. Record the choice.
-5. Verify on device: alarm appears in Clock; reminder fires; calendar read (seed 2–3 events, include one crossing midnight); mic permission flow; half-duplex (agent must not hear itself).
-6. Record 40 sentences → `benchmarks/audio/`, fill `benchmarks/test_sentences.tsv`, run the in-app benchmark, `python3 benchmarks/run_wer.py`, paste into `benchmarks/results.md`.
-7. Release build (`npm run android:release`) for latency numbers and the demo; fill `docs/` latency table from the CSV export.
-8. Airplane-mode clip via the Offline tab; demo video per about.md §13.
+Done since this list was first written: phone setup, build and install, on-device speech, the weather/calendar/alarm/reminder tools, and the voice and UI work (see the sections above).
+
+1. **Listen** to the Fast (Piper) and Natural (Kokoro) voices in English and Hinglish and note which sounds better (D20, D21).
+2. **Record 40 sentences** into `benchmarks/audio/`, fill `benchmarks/test_sentences.tsv`, run the in-app benchmark and `python3 benchmarks/run_wer.py`, and paste the table into `benchmarks/results.md`.
+3. **Latency**: run at least 10 direct and 10 tool turns on a release build and export the CSV from the menu.
+4. **Reminder delivery** on the phone and the offline (airplane mode) screen.
+5. **Demo video**, including an airplane-mode clip for the on-device speech.
 
 ## Device-gated improvements (do only if measurement says so)
 
@@ -75,6 +74,6 @@ Bugs found on the device and fixed (all with tests): the agent **heard its own v
 - `SCHEDULE_EXACT_ALARM` is denied by default on Android 14+; reminders may fire inexactly. Use the Clock alarm for time-critical demos, or direct the user to the exact-alarm setting.
 - Whisper-small may hallucinate on silence; `transcriptFilter.ts` has a starter list — extend it from real logs.
 
-## Deferred (documented cut order, about.md §12)
+## Deferred (documented cut order, docs/original-brief.md §12)
 
 ➖ auto language detection · ➖ dual-voice TTS (`splitByScript` exists and is tested; synthesis path not wired) · ➖ Moonshine/Omnilingual STT variants · ➖ barge-in by voice (manual Stop exists) · ➖ romanised-Hindi → Devanagari dictionary (normalizer handles digits/times/symbols only) · ➖ persisted memory · ➖ patched `npm audit` items (all in build tooling; fix needs `--force` downgrade of Expo).

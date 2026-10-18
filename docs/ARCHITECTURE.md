@@ -11,7 +11,7 @@ mic ─▶ nitro-voice STT (Silero VAD + Whisper int8, native) ─▶ transcript
                                        ToolRunner (validate)   SentenceChunker
                                               │                      │
                                      alarm / reminder /              ▼
-                                     calendar / weather      TtsQueue ─▶ nitro-voice TTS (Kokoro, native, plays audio)
+                                     calendar / weather      TtsQueue ─▶ nitro-voice TTS (Piper, or Kokoro; native, plays audio)
 ```
 
 ## Layers and boundaries

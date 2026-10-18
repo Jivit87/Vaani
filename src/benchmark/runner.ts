@@ -4,7 +4,7 @@ import { modelsRoot, toNativePath } from '../speech/fsOps';
 import type { BenchmarkFile, BenchmarkRow } from './results';
 import { parseWav } from './wav';
 
-export const benchmarkAudioDir = () => new Directory(Paths.document, 'benchmark', 'audio');
+const benchmarkAudioDir = () => new Directory(Paths.document, 'benchmark', 'audio');
 
 // whisper model folders under models/ (push extra candidates with adb, see README)
 export function listWhisperModels(): string[] {
@@ -31,7 +31,7 @@ const FIRST_TRANSCRIPT_TIMEOUT_MS = 30_000;
 const EXTRA_SEGMENT_WAIT_MS = 600;
 
 // language comes from the file prefix: en_*.wav / hi_*.wav
-export const languageOf = (file: string): 'en' | 'hi' => (file.toLowerCase().startsWith('hi_') ? 'hi' : 'en');
+const languageOf = (file: string): 'en' | 'hi' => (file.toLowerCase().startsWith('hi_') ? 'hi' : 'en');
 
 export async function runBenchmark(
   models: string[],

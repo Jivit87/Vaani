@@ -24,7 +24,7 @@ export interface AgentDeps {
   onTrace?: (e: TraceEvent) => void;
 }
 
-export interface TurnTimings {
+interface TurnTimings {
   llmTtftMs: number | null; // first token of the first LLM step
   toolMs: number; // time spent in tools this turn
   llmSteps: number;
