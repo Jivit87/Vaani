@@ -3,7 +3,6 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   KeyboardAvoidingView,
   Linking,
-  Platform,
   Pressable,
   Share,
   StyleSheet,
@@ -26,7 +25,7 @@ import { BenchmarkScreen } from './BenchmarkScreen';
 import { Button } from './Button';
 import { Captions } from './Captions';
 import { ControlBar } from './ControlBar';
-import { ArrowUpIcon } from './icons';
+import { ArrowUpIcon, CloseIcon } from './icons';
 import { LatencyOverlay } from './LatencyOverlay';
 import { OfflineScreen } from './OfflineScreen';
 import { Orb } from './Orb';
@@ -165,6 +164,7 @@ export function VoiceScreen() {
     if (!t || !rt.current) return;
     void rt.current.agent.submitText(t);
     setTyped('');
+    setTyping(false); // back to the voice view, the reply shows up there
   };
 
   const onMain = () => {
@@ -189,46 +189,55 @@ export function VoiceScreen() {
   };
 
   return (
-    <View style={[styles.screen, { paddingTop: insets.top + 6, paddingBottom: insets.bottom + 10 }]}>
-      <View style={styles.header}>
-        <Text style={styles.brand}>Vaani</Text>
-        <Pressable
-          onPress={() => void switchLang(lang === 'en' ? 'hi' : 'en')}
-          disabled={switching || !runtime}
-          accessibilityRole="button"
-          accessibilityLabel="Switch language"
-          style={({ pressed }) => [styles.langChip, pressed && { opacity: 0.6 }]}
-        >
-          <Text style={styles.langText}>{lang === 'en' ? 'English' : 'हिन्दी · Hinglish'}</Text>
-        </Pressable>
-      </View>
+    // padding (not height) is what works with android's edge-to-edge layout, the screen moves up with the keyboard
+    <KeyboardAvoidingView style={styles.screen} behavior="padding">
+      <View style={[styles.screen, { paddingTop: insets.top + 6, paddingBottom: insets.bottom + 10 }]}>
+        <View style={styles.header}>
+          <Text style={styles.brand}>Vaani</Text>
+          <Pressable
+            onPress={() => void switchLang(lang === 'en' ? 'hi' : 'en')}
+            disabled={switching || !runtime}
+            accessibilityRole="button"
+            accessibilityLabel="Switch language"
+            style={({ pressed }) => [styles.langChip, pressed && { opacity: 0.6 }]}
+          >
+            <Text style={styles.langText}>{lang === 'en' ? 'English' : 'हिन्दी · Hinglish'}</Text>
+          </Pressable>
+        </View>
 
-      <View style={styles.orbArea}>
-        <Orb status={switching ? 'thinking' : status} />
-        <Text style={[styles.status, status === 'error' && { color: colors.err }]}>
-          {switching ? 'Switching language…' : LABEL[status]}
-        </Text>
-      </View>
+        <View style={styles.orbArea}>
+          <Orb status={switching ? 'thinking' : status} size={typing ? 112 : 168} />
+          <Text style={[styles.status, status === 'error' && { color: colors.err }]}>
+            {switching ? 'Switching language…' : LABEL[status]}
+          </Text>
+        </View>
 
-      <View style={styles.captions}>
-        {error ? (
-          <View style={styles.errorBox}>
-            <Text style={styles.errorText}>{error}</Text>
-            <View style={styles.row}>
-              {needsPermission && (
-                <Button title="Open settings" ghost onPress={() => void Linking.openSettings()} />
-              )}
-              <Button title="Try again" onPress={retry} />
+        <View style={styles.captions}>
+          {error ? (
+            <View style={styles.errorBox}>
+              <Text style={styles.errorText}>{error}</Text>
+              <View style={styles.row}>
+                {needsPermission && (
+                  <Button title="Open settings" ghost onPress={() => void Linking.openSettings()} />
+                )}
+                <Button title="Try again" onPress={retry} />
+              </View>
             </View>
-          </View>
-        ) : (
-          <Captions user={userText} reply={reply} ready={ready} onSuggest={submit} />
-        )}
-      </View>
+          ) : (
+            <Captions user={userText} reply={reply} ready={ready} compact={typing} onSuggest={submit} />
+          )}
+        </View>
 
-      {typing && (
-        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+        {typing && (
           <View style={styles.typeRow}>
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel="Back to voice"
+              onPress={() => setTyping(false)}
+              style={styles.typeClose}
+            >
+              <CloseIcon size={20} color={colors.text} />
+            </Pressable>
             <TextInput
               style={styles.input}
               value={typed}
@@ -248,52 +257,54 @@ export function VoiceScreen() {
               <ArrowUpIcon size={22} color={colors.bg} />
             </Pressable>
           </View>
-        </KeyboardAvoidingView>
-      )}
+        )}
 
-      <ControlBar
-        status={status}
-        typing={typing}
-        onKeyboard={() => setTyping((t) => !t)}
-        onMain={onMain}
-        onMenu={() => setMenu(true)}
-      />
+        {!typing && (
+          <ControlBar
+            status={status}
+            typing={typing}
+            onKeyboard={() => setTyping(true)}
+            onMain={onMain}
+            onMenu={() => setMenu(true)}
+          />
+        )}
 
-      <MenuSheet
-        visible={menu}
-        lang={lang}
-        switching={switching}
-        canExport={turns.length > 0}
-        onClose={() => setMenu(false)}
-        onLang={(l) => {
-          setMenu(false);
-          void switchLang(l);
-        }}
-        voice={voice}
-        naturalAvailable={naturalAvailable}
-        onVoice={(v) => {
-          setMenu(false);
-          void switchVoice(v);
-        }}
-        onNew={newConversation}
-        onOpen={open}
-        onExport={() => void Share.share({ message: toCsv(turns), title: 'vaani-latency.csv' })}
-      />
-      <FullSheet title="Transcript" visible={sheet === 'transcript'} onClose={() => setSheet(null)}>
-        <TranscriptList lines={lines} />
-      </FullSheet>
-      <FullSheet title="Latency and trace" visible={sheet === 'latency'} onClose={() => setSheet(null)}>
-        <DevScroll>
-          <LatencyOverlay turns={turns} trace={trace} />
-        </DevScroll>
-      </FullSheet>
-      <FullSheet title="Offline test" visible={sheet === 'offline'} onClose={() => setSheet(null)}>
-        <OfflineScreen runtime={runtime} />
-      </FullSheet>
-      <FullSheet title="Speech benchmark" visible={sheet === 'benchmark'} onClose={() => setSheet(null)}>
-        <BenchmarkScreen />
-      </FullSheet>
-    </View>
+        <MenuSheet
+          visible={menu}
+          lang={lang}
+          switching={switching}
+          canExport={turns.length > 0}
+          onClose={() => setMenu(false)}
+          onLang={(l) => {
+            setMenu(false);
+            void switchLang(l);
+          }}
+          voice={voice}
+          naturalAvailable={naturalAvailable}
+          onVoice={(v) => {
+            setMenu(false);
+            void switchVoice(v);
+          }}
+          onNew={newConversation}
+          onOpen={open}
+          onExport={() => void Share.share({ message: toCsv(turns), title: 'vaani-latency.csv' })}
+        />
+        <FullSheet title="Transcript" visible={sheet === 'transcript'} onClose={() => setSheet(null)}>
+          <TranscriptList lines={lines} />
+        </FullSheet>
+        <FullSheet title="Latency and trace" visible={sheet === 'latency'} onClose={() => setSheet(null)}>
+          <DevScroll>
+            <LatencyOverlay turns={turns} trace={trace} />
+          </DevScroll>
+        </FullSheet>
+        <FullSheet title="Offline test" visible={sheet === 'offline'} onClose={() => setSheet(null)}>
+          <OfflineScreen runtime={runtime} />
+        </FullSheet>
+        <FullSheet title="Speech benchmark" visible={sheet === 'benchmark'} onClose={() => setSheet(null)}>
+          <BenchmarkScreen />
+        </FullSheet>
+      </View>
+    </KeyboardAvoidingView>
   );
 }
 
@@ -331,6 +342,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 12,
     fontSize: 16,
+  },
+  typeClose: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    backgroundColor: colors.raised,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   send: {
     width: 48,

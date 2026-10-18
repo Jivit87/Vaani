@@ -1,7 +1,7 @@
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { colors } from './theme';
 
-export const SUGGESTIONS = [
+const SUGGESTIONS = [
   'Explain how a rainbow forms',
   'Set a timer for ten minutes',
   'Tell me a fun fact about space',
@@ -11,11 +11,20 @@ interface Props {
   user: string;
   reply: string;
   ready: boolean;
+  /** typing with the keyboard open: no room for the greeting and chips */
+  compact?: boolean;
   onSuggest: (text: string) => void;
 }
 
 // what you said (small, dim) and what Vaani is saying (large). the empty state suggests a few things to try
-export function Captions({ user, reply, ready, onSuggest }: Props) {
+export function Captions({ user, reply, ready, compact, onSuggest }: Props) {
+  if (!user && !reply && compact) {
+    return (
+      <View style={styles.center}>
+        <Text style={styles.greetingSub}>Type a message below</Text>
+      </View>
+    );
+  }
   if (!user && !reply) {
     return (
       <View style={styles.center}>
