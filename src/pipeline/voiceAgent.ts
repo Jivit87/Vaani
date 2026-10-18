@@ -7,6 +7,7 @@ import { isRateLimit } from '../llm/client';
 import type { SttEngine } from '../speech/types';
 import type { TurnMetrics } from './metrics';
 import { TtsQueue } from './ttsQueue';
+import { correctTranscript } from './correctTranscript';
 import { isEcho, isNoiseTranscript } from './transcriptFilter';
 
 export type AgentStatus = 'idle' | 'listening' | 'muted' | 'thinking' | 'acting' | 'speaking' | 'error';
@@ -121,7 +122,8 @@ export class VoiceAgent {
 
   // fromMic is false for typed text, which mute shouldn't block
   private async handleTranscript(raw: string, fromMic = true) {
-    const text = raw.trim();
+    // typed text is what the user meant, only recognized speech gets corrected
+    const text = fromMic ? correctTranscript(raw.trim()) : raw.trim();
     if (this.muted && fromMic) return;
     // shows in adb logcat (ReactNativeJS): what the recognizer gave us and why a turn got skipped
     const recent = (this.d.now ?? Date.now)() - this.lastSpokenAt < ECHO_WINDOW_MS;
