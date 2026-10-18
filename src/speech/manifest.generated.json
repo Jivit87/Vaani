@@ -1,21 +1,21 @@
 {
  "packs": [
   {
-   "id": "whisper-small-int8",
+   "id": "hinglish-swift-int8",
    "files": [
     {
      "path": "encoder.onnx",
-     "url": "https://huggingface.co/csukuangfj/sherpa-onnx-whisper-small/resolve/main/small-encoder.int8.onnx",
-     "size": 112442483
+     "url": "https://github.com/Jivit87/Vaani/releases/download/models-v1/encoder.onnx",
+     "size": 29104816
     },
     {
      "path": "decoder.onnx",
-     "url": "https://huggingface.co/csukuangfj/sherpa-onnx-whisper-small/resolve/main/small-decoder.int8.onnx",
-     "size": 262226114
+     "url": "https://github.com/Jivit87/Vaani/releases/download/models-v1/decoder.onnx",
+     "size": 130659024
     },
     {
      "path": "tokens.txt",
-     "url": "https://huggingface.co/csukuangfj/sherpa-onnx-whisper-small/resolve/main/small-tokens.txt",
+     "url": "https://github.com/Jivit87/Vaani/releases/download/models-v1/tokens.txt",
      "size": 816730
     }
    ]

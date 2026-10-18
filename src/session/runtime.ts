@@ -41,9 +41,9 @@ export async function createRuntime(uiEvents: VoiceAgentEvents): Promise<Runtime
 
   // two voices, both kept loaded so switching language is instant: amy speaks english, pratham speaks hindi.
   // a hindi sentence in latin letters is first rewritten in devanagari as it sounds, see src/tts/phonetic.ts.
-  // whisper detects the language of what you say by itself, so listening needs no switch either.
+  // one speech model hears both languages: whisper detects which one you spoke, so listening needs no switch either.
   const speech = createNitroSpeech({
-    whisperDir: toNativePath(packDir('whisper-small-int8')),
+    whisperDir: toNativePath(packDir('hinglish-swift-int8')),
     vadPath: toNativePath(`${packDir('silero-vad')}/silero_vad.onnx`),
   });
   const voice = (pack: PackId) =>

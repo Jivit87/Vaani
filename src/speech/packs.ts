@@ -11,7 +11,7 @@ export interface ModelPack {
   files: PackFile[];
 }
 
-export type PackId = 'whisper-small-int8' | 'piper-hi-pratham-medium' | 'piper-en-amy-medium' | 'silero-vad';
+export type PackId = 'hinglish-swift-int8' | 'piper-hi-pratham-medium' | 'piper-en-amy-medium' | 'silero-vad';
 
 export const PACKS = manifest.packs as ModelPack[];
 
@@ -26,7 +26,7 @@ export const packBytes = (p: ModelPack) => p.files.reduce((n, f) => n + f.size, 
 // everything the app needs on the phone: speech recognition, voice activity detection and the two voices
 export const REQUIRED_PACKS: PackId[] = [
   'silero-vad',
-  'whisper-small-int8',
+  'hinglish-swift-int8',
   'piper-hi-pratham-medium',
   'piper-en-amy-medium',
 ];

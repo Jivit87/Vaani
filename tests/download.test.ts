@@ -118,7 +118,7 @@ describe('isPackComplete', () => {
 describe('generated manifest', () => {
   it('has the files and names nitro-voice expects', () => {
     const names = (id: Parameters<typeof getPack>[0]) => getPack(id).files.map((f) => f.path);
-    expect(names('whisper-small-int8')).toEqual(['encoder.onnx', 'decoder.onnx', 'tokens.txt']);
+    expect(names('hinglish-swift-int8')).toEqual(['encoder.onnx', 'decoder.onnx', 'tokens.txt']);
     expect(names('piper-hi-pratham-medium').some((p) => p.startsWith('espeak-ng-data/'))).toBe(true);
     expect(names('piper-hi-pratham-medium')).toEqual(expect.arrayContaining(['model.onnx', 'tokens.txt']));
   });
@@ -130,7 +130,7 @@ describe('generated manifest', () => {
         expect(f.size).toBeGreaterThan(0);
       }
     }
-    expect(packBytes(getPack('whisper-small-int8'))).toBeGreaterThan(300e6);
+    expect(packBytes(getPack('hinglish-swift-int8'))).toBeGreaterThan(150e6);
   });
 });
 

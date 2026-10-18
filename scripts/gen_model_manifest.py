@@ -28,15 +28,15 @@ def entry(repo: str, upstream: str, dest: str, sizes: dict[str, int]) -> dict:
     return {"path": dest, "url": f"{HF}/{repo}/resolve/main/{urllib.parse.quote(upstream, safe='/')}", "size": sizes[upstream]}
 
 
-def pack_whisper_small(repo="csukuangfj/sherpa-onnx-whisper-small") -> dict:
-    s = tree(repo)
+# the speech model is converted by scripts/build_stt_model.py and published as a release of this repo
+STT_RELEASE = "https://github.com/Jivit87/Vaani/releases/download/models-v1"
+STT_FILES = {"encoder.onnx": 29104816, "decoder.onnx": 130659024, "tokens.txt": 816730}
+
+
+def pack_stt() -> dict:
     return {
-        "id": "whisper-small-int8",
-        "files": [
-            entry(repo, "small-encoder.int8.onnx", "encoder.onnx", s),
-            entry(repo, "small-decoder.int8.onnx", "decoder.onnx", s),
-            entry(repo, "small-tokens.txt", "tokens.txt", s),
-        ],
+        "id": "hinglish-swift-int8",
+        "files": [{"path": n, "url": f"{STT_RELEASE}/{n}", "size": size} for n, size in STT_FILES.items()],
     }
 
 
@@ -69,7 +69,7 @@ def pack_vad() -> dict:
 
 
 def main() -> int:
-    packs = [pack_whisper_small(), pack_piper_hi(), pack_piper_en(), pack_vad()]
+    packs = [pack_stt(), pack_piper_hi(), pack_piper_en(), pack_vad()]
     OUT.write_text(json.dumps({"packs": packs}, indent=1, ensure_ascii=False) + "\n")
     for p in packs:
         total = sum(f["size"] for f in p["files"])
