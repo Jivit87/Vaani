@@ -2,7 +2,7 @@ import { detectLang } from '../agent/lang';
 import { LINES } from '../agent/lines';
 import type { Memory } from '../agent/memory';
 import { runTurn, type AgentDeps } from '../agent/runTurn';
-import type { TraceEvent } from '../agent/types';
+import type { Lang, TraceEvent } from '../agent/types';
 import { isRateLimit } from '../llm/client';
 import type { SttEngine } from '../speech/types';
 import type { TurnMetrics } from './metrics';
@@ -17,6 +17,8 @@ export interface VoiceAgentEvents {
   onReply(text: string): void;
   // reply text for the screen, as it streams
   onShow?(text: string): void;
+  // the app noticed you switched language, so the toggle can follow
+  onLanguage?(lang: Lang): void;
   onTrace(e: TraceEvent): void;
   onMetrics(m: TurnMetrics): void;
 }
@@ -89,6 +91,11 @@ export class VoiceAgent {
     }
   }
 
+  // the toggle: takes effect from the next message, nothing has to be reloaded
+  setLanguage(lang: Lang) {
+    this.d.memory.setLang(lang);
+  }
+
   // typed input, used by the text box and the tests
   submitText(text: string) {
     return this.handleTranscript(text, false);
@@ -137,15 +144,18 @@ export class VoiceAgent {
     this.firstAudioMs = null;
     this.ttsFirstChunkMs = null;
     this.ctl = new AbortController();
-    // the reply language follows what the user just said, there is no setting for it
-    const lang = detectLang(text);
+    // the reply language follows what the user just said. a short neutral message ("Pune") stays in the
+    // language the toggle is on, and a clear switch moves the toggle
+    const previous = this.d.memory.state.lang;
+    const lang = detectLang(text, previous);
     this.d.memory.setLang(lang);
+    if (lang !== previous) this.d.events.onLanguage?.(lang);
     let spokenAloud = '';
 
     this.d.stt.pauseMic(); // half-duplex: don't let the speaker feed the VAD
     this.d.events.onTranscript(text);
     this.setStatus('thinking');
-    this.d.queue.beginTurn();
+    this.d.queue.beginTurn(lang);
 
     const metrics: TurnMetrics = {
       at: new Date().toISOString(),

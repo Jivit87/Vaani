@@ -18,6 +18,6 @@ export function detectLang(text: string, previous?: Lang): Lang {
   if (hits.some((w) => w.length >= MIN_SOLO_LENGTH) || hits.length >= 2) return 'hi';
   // a one or two word answer ("Pune", "yes") carries no language of its own, so it stays in the language
   // of the conversation instead of flipping to english
-  if (previous === 'hi' && words.length <= 2) return 'hi';
+  if (previous && words.length <= 2) return previous;
   return 'en';
 }

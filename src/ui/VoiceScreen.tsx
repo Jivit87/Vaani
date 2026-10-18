@@ -11,7 +11,7 @@ import {
   View,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import type { TraceEvent } from '../agent/types';
+import type { Lang, TraceEvent } from '../agent/types';
 import { toCsv, type TurnMetrics } from '../pipeline/metrics';
 import type { AgentStatus } from '../pipeline/voiceAgent';
 import { ensureMicPermission, ensureToolPermissions } from '../session/permissions';
@@ -21,6 +21,7 @@ import { Button } from './Button';
 import { Captions } from './Captions';
 import { ControlBar } from './ControlBar';
 import { ArrowUpIcon, CloseIcon } from './icons';
+import { LangToggle } from './LangToggle';
 import { LatencyOverlay } from './LatencyOverlay';
 import { OfflineScreen } from './OfflineScreen';
 import { Orb } from './Orb';
@@ -40,6 +41,7 @@ const LABEL: Record<AgentStatus, string> = {
 export function VoiceScreen() {
   useKeepAwake();
   const insets = useSafeAreaInsets();
+  const [lang, setLang] = useState<Lang>('en');
   const [status, setStatus] = useState<AgentStatus>('idle');
   const [userText, setUserText] = useState('');
   const [reply, setReply] = useState('');
@@ -79,6 +81,8 @@ export function VoiceScreen() {
             addLine('you', t);
           },
           onShow: (text) => setReply((r) => r + text),
+          // you started speaking the other language: the toggle follows
+          onLanguage: setLang,
           onReply: (t) => {
             setReply(t);
             addLine('agent', t);
@@ -111,6 +115,12 @@ export function VoiceScreen() {
     setNeedsPermission(false);
     setStatus('idle');
     setAttempt((a) => a + 1);
+  };
+
+  // the toggle: nothing reloads, it just changes the language and voice of the next reply
+  const changeLanguage = (next: Lang) => {
+    setLang(next);
+    rt.current?.agent.setLanguage(next);
   };
 
   const ready = !!runtime && status !== 'error';
@@ -149,6 +159,7 @@ export function VoiceScreen() {
       <View style={[styles.screen, { paddingTop: insets.top + 6, paddingBottom: insets.bottom + 10 }]}>
         <View style={styles.header}>
           <Text style={styles.brand}>Vaani</Text>
+          <LangToggle lang={lang} onChange={changeLanguage} />
         </View>
 
         <View style={styles.orbArea}>

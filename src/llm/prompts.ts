@@ -19,7 +19,7 @@ Now: {{now_iso}} IST, {{weekday}}.`;
 // model, because "answer in the user's language" on its own was followed in only about 60% of replies
 const LANGUAGE_RULE: Record<Lang, string> = {
   en: '- The user is speaking ENGLISH. Reply only in English, even if they use a Hindi word.',
-  hi: '- The user is speaking HINDI/HINGLISH. Reply in natural Hinglish. Write every Hindi word in Devanagari, never in Roman letters, even when the user typed Roman letters; keep English words in Latin. Speak as a woman (karti hoon, rahi hoon). Example: "आपका अलार्म सुबह सात बजे के लिए set हो गया है।"',
+  hi: '- The user is speaking HINDI/HINGLISH. Reply in natural Hinglish. Write every Hindi word in Devanagari, never in Roman letters, even when the user typed Roman letters; keep English words in Latin. Speak as a man (karta hoon, raha hoon). Example: "आपका अलार्म सुबह सात बजे के लिए set हो गया है।"',
 };
 
 export function renderSystemPrompt(
