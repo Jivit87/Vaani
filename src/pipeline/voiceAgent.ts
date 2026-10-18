@@ -1,4 +1,4 @@
-import { detectLang } from '../agent/lang';
+import { chooseLang } from '../agent/lang';
 import { LINES } from '../agent/lines';
 import type { Memory } from '../agent/memory';
 import { runTurn, type AgentDeps } from '../agent/runTurn';
@@ -147,7 +147,7 @@ export class VoiceAgent {
     // the reply language follows what the user just said. a short neutral message ("Pune") stays in the
     // language the toggle is on, and a clear switch moves the toggle
     const previous = this.d.memory.state.lang;
-    const lang = detectLang(text, previous);
+    const lang = chooseLang(text, previous);
     this.d.memory.setLang(lang);
     if (lang !== previous) this.d.events.onLanguage?.(lang);
     let spokenAloud = '';

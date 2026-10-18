@@ -1,7 +1,7 @@
 import { callWithFallback, safeParse, type LlmClient, type ModelPair } from '../llm/client';
 import { TOOLS, type ToolSchema } from '../llm/tools.schema';
 import { SentenceChunker } from '../tts/chunker';
-import { detectLang } from './lang';
+import { chooseLang } from './lang';
 import { LINES } from './lines';
 import type { Memory } from './memory';
 import type { ToolRunner } from './toolRunner';
@@ -53,7 +53,7 @@ export async function runTurn(
 ): Promise<TurnResult> {
   const clock = deps.clock ?? (() => Date.now());
   const started = clock();
-  const lang = detectLang(userText, mem.state.lang);
+  const lang = chooseLang(userText, mem.state.lang);
   mem.setLang(lang);
   const chunker = new SentenceChunker((s) => deps.speaker.say(s));
   const scratch: Msg[] = []; // this turn's tool calls and results, never kept long-term

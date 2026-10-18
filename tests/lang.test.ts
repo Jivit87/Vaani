@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { detectLang } from '../src/agent/lang';
+import { chooseLang, detectLang } from '../src/agent/lang';
 
 describe('detectLang', () => {
   it.each([
@@ -18,11 +18,35 @@ describe('detectLang', () => {
     expect(detectLang(text)).toBe(lang);
   });
 
+  it('understands the spellings the speech model writes for hinglish', () => {
+    for (const t of [
+      'Mujhe kal subah saath baje ka aalaan set karna hai.',
+      'Mujhe ek chhoti si kahaani sunao.',
+      'Mujhe bhookh lagi hai kuchh healthy khaane ko batao',
+      'Paanch minute ka timer laga do.',
+      'Internet kaise kaam karta hai aasaan bhaasha mein samajhao?',
+      'Mera mood thik nahin hai kuchh achchha sunao.',
+      'Kal shaam paanch baje meeting ka reminder laga do.',
+    ])
+      expect(detectLang(t)).toBe('hi');
+  });
+
   it('keeps a very short neutral answer in the language of the conversation', () => {
-    expect(detectLang('Pune', 'hi')).toBe('hi');
-    expect(detectLang('yes please', 'hi')).toBe('hi');
-    expect(detectLang('Pune', 'en')).toBe('en');
-    expect(detectLang('what is the weather in Pune', 'hi')).toBe('en'); // a real english sentence switches back
+    expect(chooseLang('Pune', 'hi')).toBe('hi');
+    expect(chooseLang('yes please', 'hi')).toBe('hi');
+    expect(chooseLang('Pune', 'en')).toBe('en');
+  });
+
+  it('the toggle wins: a hindi conversation only goes back to english for a long sentence with no hindi', () => {
+    expect(chooseLang('Can you set it', 'hi')).toBe('hi'); // short: could be garbled hindi
+    expect(chooseLang('Set an alarm for me', 'hi')).toBe('en');
+    expect(chooseLang('Mujhe kal ka alarm', 'hi')).toBe('hi');
+    expect(chooseLang('Reminder 5', 'hi')).toBe('hi'); // short, probably a garbled hindi request
+  });
+
+  it('clear hindi moves an english conversation to hindi', () => {
+    expect(chooseLang('Mujhe kal subah 7 baje ka alarm set karna hai.', 'en')).toBe('hi');
+    expect(chooseLang('what time is it', 'en')).toBe('en');
   });
 
   it('does not trust one very short word on its own', () => {
