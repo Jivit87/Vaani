@@ -28,11 +28,11 @@ describe('TtsQueue', () => {
     const first = vi.fn();
     const q = new TtsQueue(tts, { onFirstAudio: first });
     q.beginTurn();
-    q.say('Alarm at 7:30 AM.');
+    q.say('अलार्म 7:30 बजे।');
     q.say('✅');
-    q.say('Done.');
+    q.say('डन।');
     await q.drain();
-    expect(spoken).toEqual(['Alarm at seven thirty AM.', 'Done.']);
+    expect(spoken).toEqual(['अलार्म साढ़े सात बजे।', 'डन।']);
     expect(first).toHaveBeenCalledTimes(1);
     expect(first).toHaveBeenCalledWith(120);
   });
@@ -44,11 +44,11 @@ describe('TtsQueue', () => {
     });
     const onError = vi.fn();
     const q = new TtsQueue(tts, { onError });
-    q.say('First sentence here.');
-    q.say('Second sentence here.');
+    q.say('पहला वाक्य यहाँ है।');
+    q.say('दूसरा वाक्य यहाँ है।');
     await q.drain();
     expect(onError).toHaveBeenCalledTimes(1);
-    expect(spoken).toEqual(['Second sentence here.']);
+    expect(spoken).toEqual(['दूसरा वाक्य यहाँ है।']);
   });
 
   it('cancel drops sentences not yet handed to the engine and stops it', async () => {
@@ -62,11 +62,11 @@ describe('TtsQueue', () => {
         }),
     );
     const q = new TtsQueue(tts);
-    q.say('Playing right now.');
-    q.say('Synthesizing next.');
-    q.say('Never sent to the engine.');
+    q.say('अभी बज रहा है।');
+    q.say('अगला बन रहा है।');
+    q.say('इंजन तक नहीं पहुँचा।');
     await new Promise((r) => setTimeout(r, 0));
-    expect(spoken).toEqual(['Playing right now.', 'Synthesizing next.']); // two in flight, third waits
+    expect(spoken).toEqual(['अभी बज रहा है।', 'अगला बन रहा है।']); // two in flight, third waits
     await q.cancel();
     releases.forEach((r) => r());
     await q.drain();
@@ -88,20 +88,63 @@ describe('TtsQueue', () => {
       return { firstChunkMs: 1, audioMs: 1 };
     });
     const q = new TtsQueue(tts);
-    [
-      'First sentence here.',
-      'Second sentence here.',
-      'Third sentence here.',
-      'Fourth sentence here.',
-    ].forEach((x) => q.say(x));
+    ['पहला वाक्य यहाँ है।', 'दूसरा वाक्य यहाँ है।', 'तीसरा वाक्य यहाँ है।', 'चौथा वाक्य यहाँ है।'].forEach(
+      (x) => q.say(x),
+    );
     await q.drain();
     expect(peak).toBe(2);
     expect(order).toEqual([
-      'First sentence here.',
-      'Second sentence here.',
-      'Third sentence here.',
-      'Fourth sentence here.',
+      'पहला वाक्य यहाँ है।',
+      'दूसरा वाक्य यहाँ है।',
+      'तीसरा वाक्य यहाँ है।',
+      'चौथा वाक्य यहाँ है।',
     ]);
+  });
+});
+
+describe('TtsQueue with a rewrite step', () => {
+  it('rewrites every sentence before speaking it', async () => {
+    const { tts, spoken } = fakeTts();
+    const q = new TtsQueue(tts, { prepare: async (s) => (s === 'Hello.' ? 'हेलो।' : s) });
+    q.say('Hello.');
+    q.say('नमस्ते।');
+    await q.drain();
+    expect(spoken).toEqual(['हेलो।', 'नमस्ते।']);
+  });
+
+  it('keeps sentences in order even when a later rewrite finishes first', async () => {
+    const { tts, spoken } = fakeTts();
+    const delays: Record<string, number> = { 'एक।': 30, 'दो।': 1, 'तीन।': 10 };
+    const q = new TtsQueue(tts, {
+      prepare: (s) => new Promise((r) => setTimeout(() => r(s), delays[s])),
+    });
+    ['एक।', 'दो।', 'तीन।'].forEach((x) => q.say(x));
+    await q.drain();
+    expect(spoken).toEqual(['एक।', 'दो।', 'तीन।']);
+  });
+
+  it('falls back to the original sentence when the rewrite throws', async () => {
+    const { tts, spoken } = fakeTts();
+    const q = new TtsQueue(tts, {
+      prepare: async () => {
+        throw new Error('down');
+      },
+    });
+    q.say('नमस्ते दोस्त।');
+    await q.drain();
+    expect(spoken).toEqual(['नमस्ते दोस्त।']);
+  });
+
+  it('drops a sentence whose rewrite was still running when the turn was cancelled', async () => {
+    const { tts, spoken } = fakeTts();
+    let release!: (s: string) => void;
+    const q = new TtsQueue(tts, { prepare: () => new Promise<string>((r) => (release = r)) });
+    q.say('Slow one.');
+    await new Promise((r) => setTimeout(r, 0));
+    await q.cancel();
+    release('धीमा।');
+    await q.drain();
+    expect(spoken).toEqual([]);
   });
 });
 
@@ -214,7 +257,12 @@ describe('metrics', () => {
 describe('VoiceAgent', () => {
   function setup(llmImpl: LlmClient) {
     const { tts, spoken } = fakeTts();
-    const events = { statuses: [] as AgentStatus[], replies: [] as string[], metrics: [] as TurnMetrics[] };
+    const events = {
+      statuses: [] as AgentStatus[],
+      replies: [] as string[],
+      shown: [] as string[],
+      metrics: [] as TurnMetrics[],
+    };
     const stt: SttEngine = {
       listen: vi.fn(async () => {}),
       pauseMic: vi.fn(),
@@ -237,6 +285,7 @@ describe('VoiceAgent', () => {
         onStatus: (s) => events.statuses.push(s),
         onTranscript: () => {},
         onReply: (r) => events.replies.push(r),
+        onShow: (t) => events.shown.push(t),
         onTrace: () => {},
         onMetrics: (m) => events.metrics.push(m),
       },
@@ -251,12 +300,12 @@ describe('VoiceAgent', () => {
     };
 
   it('pauses the mic during a turn, speaks the reply, resumes and records metrics', async () => {
-    const h = setup(say('Hello there friend.'));
+    const h = setup(say('हेलो देयर फ्रेंड।'));
     await h.agent.start();
     await h.agent.submitText('hello');
     expect(h.stt.pauseMic).toHaveBeenCalledTimes(1);
     expect(h.stt.resumeMic).toHaveBeenCalledTimes(1);
-    expect(h.spoken).toEqual(['Hello there friend.']);
+    expect(h.spoken).toEqual(['हेलो देयर फ्रेंड।']);
     expect(h.events.statuses.at(-1)).toBe('listening');
     expect(h.events.metrics[0]).toMatchObject({ model: 'p', llmTtftMs: 5, ttsFirstChunkMs: 120, tools: '' });
     expect(h.events.metrics[0].firstAudioMs).not.toBeNull();
@@ -281,14 +330,13 @@ describe('VoiceAgent', () => {
     expect(h.events.metrics).toHaveLength(1);
   });
 
-  it('speaks an offline line (in the session language) when the network fails', async () => {
+  it('speaks an offline line, in the language of the question, when the network fails', async () => {
     const h = setup(async () => {
       throw new TypeError('Network request failed');
     });
-    h.memory.setLang('hi');
     await h.agent.start();
     await h.agent.submitText('mujhe kal ka weather batao');
-    expect(h.spoken[0]).toContain('internet');
+    expect(h.spoken[0]).toContain('इंटरनेट');
     expect(h.spoken[0]).toMatch(/[ऀ-ॿ]/);
     expect(h.events.metrics[0].error).toContain('Network');
     expect(h.stt.resumeMic).toHaveBeenCalled(); // never leaves the mic off
@@ -307,19 +355,22 @@ describe('VoiceAgent', () => {
     expect(h.stt.pauseMic).not.toHaveBeenCalled();
   });
 
-  it('does not let one Hinglish-looking turn switch an English session to Hindi', async () => {
+  it('answers each message in its own language: an english question after a hinglish one gets english', async () => {
     const h = setup(async () => {
       throw new Error('HTTP 500');
     });
     await h.agent.start();
     await h.agent.submitText('mujhe kal subah alarm laga do');
+    expect(h.memory.state.lang).toBe('hi');
+    expect(h.events.shown.join('')).toContain('कुछ गड़बड़');
+    h.events.shown.length = 0;
     await h.agent.submitText('what is the weather like');
-    expect(h.spoken.every((t) => !/[ऀ-ॿ]/.test(t))).toBe(true);
     expect(h.memory.state.lang).toBe('en');
+    expect(h.events.shown.join('')).toContain('went wrong');
   });
 
   it('mute stops hearing, pauses the mic, and survives a turn in flight', async () => {
-    const h = setup(say('Hello there friend.'));
+    const h = setup(say('हेलो देयर फ्रेंड।'));
     await h.agent.start();
     h.agent.setMuted(true);
     expect(h.stt.pauseMic).toHaveBeenCalledTimes(1);
@@ -344,7 +395,7 @@ describe('VoiceAgent', () => {
     });
     await h.agent.start();
     await h.agent.submitText('hello there');
-    expect(h.spoken[0]).toContain('quota');
+    expect(h.events.shown.join('')).toContain('quota');
   });
 
   it('speaks a generic error line for other failures', async () => {
@@ -353,6 +404,6 @@ describe('VoiceAgent', () => {
     });
     await h.agent.start();
     await h.agent.submitText('hello there');
-    expect(h.spoken[0]).toContain('went wrong');
+    expect(h.events.shown.join('')).toContain('went wrong');
   });
 });

@@ -1,8 +1,10 @@
+import { detectLang } from '../agent/lang';
+import { LINES } from '../agent/lines';
 import type { Memory } from '../agent/memory';
 import { runTurn, type AgentDeps } from '../agent/runTurn';
-import type { Lang, TraceEvent } from '../agent/types';
+import type { TraceEvent } from '../agent/types';
 import { isRateLimit } from '../llm/client';
-import { ERROR_TEXT, FILLER_TEXT, OFFLINE_TEXT, RATE_LIMIT_TEXT, type SttEngine } from '../speech/types';
+import type { SttEngine } from '../speech/types';
 import type { TurnMetrics } from './metrics';
 import { TtsQueue } from './ttsQueue';
 import { isEcho, isNoiseTranscript } from './transcriptFilter';
@@ -13,8 +15,8 @@ export interface VoiceAgentEvents {
   onStatus(s: AgentStatus): void;
   onTranscript(text: string): void;
   onReply(text: string): void;
-  // every sentence as it goes to the speaker, for live captions
-  onSpeaking?(sentence: string): void;
+  // reply text for the screen, as it streams
+  onShow?(text: string): void;
   onTrace(e: TraceEvent): void;
   onMetrics(m: TurnMetrics): void;
 }
@@ -135,8 +137,10 @@ export class VoiceAgent {
     this.firstAudioMs = null;
     this.ttsFirstChunkMs = null;
     this.ctl = new AbortController();
-    // the language toggle decides the session language
-    const lang: Lang = this.d.memory.state.lang;
+    // the reply language follows what the user just said, there is no setting for it
+    const lang = detectLang(text);
+    this.d.memory.setLang(lang);
+    let spokenAloud = '';
 
     this.d.stt.pauseMic(); // half-duplex: don't let the speaker feed the VAD
     this.d.events.onTranscript(text);
@@ -164,12 +168,13 @@ export class VoiceAgent {
         {
           ...this.d.agent,
           speaker: {
+            show: (t) => this.d.events.onShow?.(t),
             say: (s) => {
               this.setStatus('speaking');
-              this.d.events.onSpeaking?.(s);
+              spokenAloud += `${s} `;
               this.d.queue.say(s);
             },
-            playFiller: (l) => this.d.queue.say(FILLER_TEXT[l]),
+            playFiller: (l) => this.d.queue.say(LINES.filler[l].say),
           },
           onTrace: (e) => {
             this.setStatus('acting');
@@ -188,9 +193,12 @@ export class VoiceAgent {
     } catch (e) {
       if (!this.ctl.signal.aborted) {
         metrics.error = e instanceof Error ? e.message : String(e);
-        this.d.queue.say(
-          (isRateLimit(e) ? RATE_LIMIT_TEXT : isNetworkError(e) ? OFFLINE_TEXT : ERROR_TEXT)[lang],
-        );
+        const line = (isRateLimit(e) ? LINES.rateLimit : isNetworkError(e) ? LINES.offline : LINES.error)[
+          lang
+        ];
+        this.d.events.onShow?.(line.show);
+        this.d.queue.say(line.say);
+        spokenAloud += line.say;
       }
     }
 
@@ -199,7 +207,7 @@ export class VoiceAgent {
     metrics.ttsFirstChunkMs = this.ttsFirstChunkMs;
     metrics.totalMs = now() - this.turnStart;
     this.d.events.onMetrics(metrics);
-    this.lastSpoken = metrics.spoken;
+    this.lastSpoken = `${metrics.spoken} ${spokenAloud}`; // echo can come back as either text
     await this.d.queue.playbackDone();
     this.lastSpokenAt = (this.d.now ?? Date.now)();
 
