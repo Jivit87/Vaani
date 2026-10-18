@@ -17,7 +17,7 @@ Vaani is a voice-mode chat assistant, in the spirit of ChatGPT's voice screen. T
 
 ## What it does
 
-- **Talks both ways, on the phone.** Silero VAD finds the end of your sentence, Whisper-small (int8) transcribes it and works out whether it was English or Hindi, and a Piper voice speaks the reply: Amy for English, Pratham for Hindi. No audio leaves the device.
+- **Talks both ways, on the phone.** Silero VAD finds the end of your sentence, a Hindi2Hinglish Whisper model (Oriserve's Swift, converted to sherpa-onnx, 161 MB) transcribes it and works out whether it was English or Hindi, and a Piper voice speaks the reply: Amy for English, Pratham for Hindi. No audio leaves the device.
 - **English and Hinglish, switchable mid-conversation.** A sliding toggle sets the language. It also follows you: say something in the other language and it switches by itself, voice included. Both voices stay loaded, so nothing reloads.
 - **Acts, not just chats.** Alarm, timer and reminder, calendar read, weather (Open-Meteo), exact maths, and Wikipedia lookups for facts it might not know.
 - **Asks when it has to.** "Alarm laga do" gets a "kitne baje?" instead of a guess, and follow-ups like "aur kal?" work.
@@ -39,7 +39,7 @@ The orb shows what Vaani is doing: blue while listening, violet while thinking, 
 ## How it works
 
 ```
- mic ─▶ Silero VAD ─▶ Whisper-small (on device) ─▶ text
+ mic ─▶ Silero VAD ─▶ Swift Hinglish Whisper (on device) ─▶ text
                                                      │
                       ┌──────────────────────────────▼───────────────────────────┐
                       │ agent loop (max 3 steps)                                 │
@@ -62,14 +62,15 @@ More detail in [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md), and the reasoning
 
 All measured on a Redmi Note 12 Pro 5G (Android 14, 5.5 GB RAM) unless stated.
 
-| Thing                                              | Result                                                                                                                    |
-| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| Tool-calling eval, `gpt-oss-120b` on Groq (laptop) | 100% tool choice, 100% arguments, 100% clarification on 27 cases. First token about 0.7 s.                                |
-| Same eval, noisy transcripts added (35 cases)      | 100% / 97% / 100%                                                                                                         |
-| General-assistant cases, `gpt-oss-20b`             | 96% tool choice, 100% plain-speech and length checks, first token about 0.5 s                                             |
-| Voice speed (Piper, both voices)                   | synthesizes at about 0.2x real time, around 1% silence between sentences in a long reply                                  |
-| Replies in the language you spoke                  | 100% of 28 turns with the per-message language rule, against 61% with a plain "answer in the user's language" instruction |
-| First audio, a weather question                    | about 3.8 s on one phone hotspot run (LLM 0.5 s, tool 2.7 s, voice 1 s). One sample, not a median.                        |
+| Thing                                              | Result                                                                                                                                                                        |
+| -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Tool-calling eval, `gpt-oss-120b` on Groq (laptop) | 100% tool choice, 100% arguments, 100% clarification on 27 cases. First token about 0.7 s.                                                                                    |
+| Same eval, noisy transcripts added (35 cases)      | 100% / 97% / 100%                                                                                                                                                             |
+| General-assistant cases, `gpt-oss-20b`             | 96% tool choice, 100% plain-speech and length checks, first token about 0.5 s                                                                                                 |
+| Voice speed (Piper, both voices)                   | synthesizes at about 0.2x real time, around 1% silence between sentences in a long reply                                                                                      |
+| Replies in the language you spoke                  | 100% of 28 turns with the per-message language rule, against 61% with a plain "answer in the user's language" instruction                                                     |
+| Speech recognition on the phone                    | about 0.9 s per utterance with the Swift model, against 2.7-3.5 s with Whisper-small. On Hindi speech from a computer voice: close to right, against about 80% of words wrong |
+| First audio, a weather question                    | about 3.8 s on one phone hotspot run (LLM 0.5 s, tool 2.7 s, voice 1 s). One sample, not a median.                                                                            |
 
 Full tables and the failures are in [`eval/results.md`](eval/results.md).
 
