@@ -11429,7 +11429,7 @@ index 0000000..baebbcd
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/compile_commands.json.bin differ
 diff --git a/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/configure_fingerprint.bin b/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/configure_fingerprint.bin
 new file mode 100644
-index 0000000..8a9fa9b
+index 0000000..f4dcaf1
 --- /dev/null
 +++ b/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/configure_fingerprint.bin
 @@ -0,0 +1,40 @@
@@ -11437,42 +11437,42 @@ index 0000000..8a9fa9b
 +¬
 +ø/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-modules/android/build/intermediates/prefab_package_configuration/release/prefabReleaseConfigurePackage/prefab_publication.jsonC
 +A
-+?com.android.build.gradle.internal.cxx.io.EncodedFileFingerPrint	≤’û∞î4ò
++?com.android.build.gradle.internal.cxx.io.EncodedFileFingerPrint	ÜˇÓ˛î4ò
 +ï
-+í/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/additional_project_files.txt	≤’û∞î4 ∫Òî´î4ï
++í/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/additional_project_files.txt	ÜˇÓ˛î4 ∫Òî´î4ï
 +í
-+è/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/android_gradle_build.json	≤’û∞î4¢ ªÒî´î4ö
++è/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/android_gradle_build.json	ÜˇÓ˛î4¢ ªÒî´î4ö
 +ó
-+î/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/android_gradle_build_mini.json	≤’û∞î4ˆ øÒî´î4á
++î/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/android_gradle_build_mini.json	ÜˇÓ˛î4ˆ øÒî´î4á
 +Ñ
-+Å/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/build.ninja	≤’û∞î4Åû ∞Òî´î4ã
++Å/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/build.ninja	ÜˇÓ˛î4Åû ∞Òî´î4ã
 +à
-+Ö/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/build.ninja.txt	≤’û∞î4ê
++Ö/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/build.ninja.txt	ÜˇÓ˛î4ê
 +ç
-+ä/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/build_file_index.txt	≤’û∞î4› øÒî´î4ë
++ä/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/build_file_index.txt	ÜˇÓ˛î4› øÒî´î4ë
 +é
-+ã/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/compile_commands.json	≤’û∞î4	ùú ∞Òî´î4ï
++ã/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/compile_commands.json	ÜˇÓ˛î4	ùú ∞Òî´î4ï
 +í
-+è/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/compile_commands.json.bin	≤’û∞î4
++è/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/compile_commands.json.bin	ÜˇÓ˛î4
 +û$ ∞Òî´î4õ
 +ò
-+ï/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/metadata_generation_command.txt	≤’û∞î4Ô øÒî´î4é
++ï/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/metadata_generation_command.txt	ÜˇÓ˛î4Ô øÒî´î4é
 +ã
-+à/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/prefab_config.json	≤’û∞î4“ øÒî´î4ì
++à/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/prefab_config.json	áˇÓ˛î4“ øÒî´î4ì
 +ê
-+ç/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/symbol_folder_index.txt	≤’û∞î4å øÒî´î4œ
++ç/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/symbol_folder_index.txt	áˇÓ˛î4å øÒî´î4œ
 +Ã
-+…/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/prefab/arm64-v8a/prefab/lib/aarch64-linux-android/cmake/ReactAndroid/ReactAndroidConfig.cmake	≤’û∞î4˘ ÿÓî´î4÷
++…/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/prefab/arm64-v8a/prefab/lib/aarch64-linux-android/cmake/ReactAndroid/ReactAndroidConfig.cmake	áˇÓ˛î4˘ ÿÓî´î4÷
 +”
-+–/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/prefab/arm64-v8a/prefab/lib/aarch64-linux-android/cmake/ReactAndroid/ReactAndroidConfigVersion.cmake	≤’û∞î4∂ ÿÓî´î4¡
++–/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/prefab/arm64-v8a/prefab/lib/aarch64-linux-android/cmake/ReactAndroid/ReactAndroidConfigVersion.cmake	áˇÓ˛î4∂ ÿÓî´î4¡
 +æ
-+ª/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/prefab/arm64-v8a/prefab/lib/aarch64-linux-android/cmake/fbjni/fbjniConfig.cmake	≤’û∞î4Ñ ◊Óî´î4»
++ª/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/prefab/arm64-v8a/prefab/lib/aarch64-linux-android/cmake/fbjni/fbjniConfig.cmake	áˇÓ˛î4Ñ ◊Óî´î4»
 +≈
-+¬/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/prefab/arm64-v8a/prefab/lib/aarch64-linux-android/cmake/fbjni/fbjniConfigVersion.cmake	≤’û∞î4∂ ◊Óî´î4Î
++¬/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/prefab/arm64-v8a/prefab/lib/aarch64-linux-android/cmake/fbjni/fbjniConfigVersion.cmake	áˇÓ˛î4∂ ◊Óî´î4Î
 +Ë
-+Â/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/prefab/arm64-v8a/prefab/lib/aarch64-linux-android/cmake/react-native-nitro-modules/react-native-nitro-modulesConfig.cmake	≤’û∞î4Ω ◊Óî´î4a
++Â/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/prefab/arm64-v8a/prefab/lib/aarch64-linux-android/cmake/react-native-nitro-modules/react-native-nitro-modulesConfig.cmake	áˇÓ˛î4Ω ◊Óî´î4a
 +_
-+]/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/CMakeLists.txt	≤’û∞î4ï ÏàÒ¢î4
++]/Users/jivitrana/Developer/Vaani/node_modules/react-native-nitro-voice/android/CMakeLists.txt	áˇÓ˛î4ï ÏàÒ¢î4
 \ No newline at end of file
 diff --git a/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/metadata_generation_command.txt b/node_modules/react-native-nitro-voice/android/.cxx/RelWithDebInfo/523n3n5j/arm64-v8a/metadata_generation_command.txt
 new file mode 100644
@@ -13556,6 +13556,14 @@ index 0000000..9708df4
 @@ -0,0 +1,2 @@
 +# C/C++ build system timings
 +
+diff --git a/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_190_timing.txt b/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_190_timing.txt
+new file mode 100644
+index 0000000..9708df4
+--- /dev/null
++++ b/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_190_timing.txt
+@@ -0,0 +1,2 @@
++# C/C++ build system timings
++
 diff --git a/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_1949_timing.txt b/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_1949_timing.txt
 new file mode 100644
 index 0000000..9708df4
@@ -13612,11 +13620,67 @@ index 0000000..9708df4
 @@ -0,0 +1,2 @@
 +# C/C++ build system timings
 +
+diff --git a/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_2576_timing.txt b/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_2576_timing.txt
+new file mode 100644
+index 0000000..9708df4
+--- /dev/null
++++ b/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_2576_timing.txt
+@@ -0,0 +1,2 @@
++# C/C++ build system timings
++
+diff --git a/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_2657_timing.txt b/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_2657_timing.txt
+new file mode 100644
+index 0000000..9708df4
+--- /dev/null
++++ b/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_2657_timing.txt
+@@ -0,0 +1,2 @@
++# C/C++ build system timings
++
+diff --git a/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_2745_timing.txt b/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_2745_timing.txt
+new file mode 100644
+index 0000000..9708df4
+--- /dev/null
++++ b/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_2745_timing.txt
+@@ -0,0 +1,2 @@
++# C/C++ build system timings
++
+diff --git a/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_282_timing.txt b/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_282_timing.txt
+new file mode 100644
+index 0000000..9708df4
+--- /dev/null
++++ b/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_282_timing.txt
+@@ -0,0 +1,2 @@
++# C/C++ build system timings
++
+diff --git a/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_2831_timing.txt b/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_2831_timing.txt
+new file mode 100644
+index 0000000..9708df4
+--- /dev/null
++++ b/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_2831_timing.txt
+@@ -0,0 +1,2 @@
++# C/C++ build system timings
++
+diff --git a/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_373_timing.txt b/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_373_timing.txt
+new file mode 100644
+index 0000000..9708df4
+--- /dev/null
++++ b/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_373_timing.txt
+@@ -0,0 +1,2 @@
++# C/C++ build system timings
++
 diff --git a/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_404_timing.txt b/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_404_timing.txt
 new file mode 100644
 index 0000000..9708df4
 --- /dev/null
 +++ b/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_404_timing.txt
+@@ -0,0 +1,2 @@
++# C/C++ build system timings
++
+diff --git a/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_465_timing.txt b/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_465_timing.txt
+new file mode 100644
+index 0000000..9708df4
+--- /dev/null
++++ b/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_465_timing.txt
 @@ -0,0 +1,2 @@
 +# C/C++ build system timings
 +
@@ -13633,6 +13697,14 @@ index 0000000..eacac32
 +  write-metadata-json-to-file 14ms
 +generate_cxx_metadata completed in 48ms
 +
+diff --git a/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_542_timing.txt b/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_542_timing.txt
+new file mode 100644
+index 0000000..9708df4
+--- /dev/null
++++ b/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_542_timing.txt
+@@ -0,0 +1,2 @@
++# C/C++ build system timings
++
 diff --git a/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_585_timing.txt b/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_585_timing.txt
 new file mode 100644
 index 0000000..9708df4
@@ -13646,6 +13718,14 @@ new file mode 100644
 index 0000000..9708df4
 --- /dev/null
 +++ b/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_704_timing.txt
+@@ -0,0 +1,2 @@
++# C/C++ build system timings
++
+diff --git a/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_76_timing.txt b/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_76_timing.txt
+new file mode 100644
+index 0000000..9708df4
+--- /dev/null
++++ b/node_modules/react-native-nitro-voice/android/build/intermediates/cxx/RelWithDebInfo/523n3n5j/logs/arm64-v8a/generate_cxx_metadata_76_timing.txt
 @@ -0,0 +1,2 @@
 +# C/C++ build system timings
 +
@@ -67721,7 +67801,7 @@ index 0000000..6376a94
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileDebugKotlin/local-state/build-history.bin differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/inputs/source-to-output.tab b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/inputs/source-to-output.tab
 new file mode 100644
-index 0000000..ce1d7f9
+index 0000000..eae1bf2
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/inputs/source-to-output.tab differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.keystream b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.keystream
 new file mode 100644
@@ -67737,7 +67817,7 @@ index 0000000..09407ef
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.len differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.values.at b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.values.at
 new file mode 100644
-index 0000000..b39afdb
+index 0000000..5ce41b8
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.values.at differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/inputs/source-to-output.tab_i b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/inputs/source-to-output.tab_i
 new file mode 100644
@@ -67749,7 +67829,7 @@ index 0000000..131e265
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/inputs/source-to-output.tab_i.len differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab
 new file mode 100644
-index 0000000..9e3d258
+index 0000000..a7aa10b
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab.keystream b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab.keystream
 new file mode 100644
@@ -67765,7 +67845,7 @@ index 0000000..73e7fcf
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab.len differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab.values.at b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab.values.at
 new file mode 100644
-index 0000000..8ea12d5
+index 0000000..fd8bbba
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab.values.at differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab_i b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab_i
 new file mode 100644
@@ -67777,7 +67857,7 @@ index 0000000..131e265
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab_i.len differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab
 new file mode 100644
-index 0000000..d85c3b7
+index 0000000..888ad7f
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.keystream b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.keystream
 new file mode 100644
@@ -67793,7 +67873,7 @@ index 0000000..73e7fcf
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.len differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.values.at b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.values.at
 new file mode 100644
-index 0000000..48ac0d3
+index 0000000..6f6f46d
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.values.at differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab_i b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab_i
 new file mode 100644
@@ -67833,7 +67913,7 @@ index 0000000..131e265
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/constants.tab_i.len differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab
 new file mode 100644
-index 0000000..5632a57
+index 0000000..1ce1160
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.keystream b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.keystream
 new file mode 100644
@@ -67849,7 +67929,7 @@ index 0000000..62cf1e5
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.len differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.values.at b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.values.at
 new file mode 100644
-index 0000000..99d3fb5
+index 0000000..fe67d63
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.values.at differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab_i b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab_i
 new file mode 100644
@@ -67861,7 +67941,7 @@ index 0000000..131e265
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab_i.len differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab
 new file mode 100644
-index 0000000..84ad879
+index 0000000..2ad9794
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab.keystream b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab.keystream
 new file mode 100644
@@ -67877,7 +67957,7 @@ index 0000000..b287d95
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab.len differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab.values.at b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab.values.at
 new file mode 100644
-index 0000000..f52423c
+index 0000000..aa44ffd
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab.values.at differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab_i b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab_i
 new file mode 100644
@@ -67889,7 +67969,7 @@ index 0000000..131e265
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab_i.len differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab
 new file mode 100644
-index 0000000..42b22e4
+index 0000000..ce6e8b9
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.keystream b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.keystream
 new file mode 100644
@@ -67905,7 +67985,7 @@ index 0000000..09407ef
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.len differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.values.at b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.values.at
 new file mode 100644
-index 0000000..bdf3bc5
+index 0000000..da4b0b5
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.values.at differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab_i b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab_i
 new file mode 100644
@@ -67917,7 +67997,7 @@ index 0000000..131e265
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab_i.len differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab
 new file mode 100644
-index 0000000..39cf8b9
+index 0000000..82913e0
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.keystream b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.keystream
 new file mode 100644
@@ -67933,7 +68013,7 @@ index 0000000..003bc0e
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.len differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.values.at b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.values.at
 new file mode 100644
-index 0000000..5a340f0
+index 0000000..f4d4032
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.values.at differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab_i b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab_i
 new file mode 100644
@@ -67945,7 +68025,7 @@ index 0000000..131e265
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab_i.len differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab
 new file mode 100644
-index 0000000..5198345
+index 0000000..7cb7c7f
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab.keystream b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab.keystream
 new file mode 100644
@@ -67961,7 +68041,7 @@ index 0000000..6a294aa
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab.len differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab.values.at b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab.values.at
 new file mode 100644
-index 0000000..4a67308
+index 0000000..3c1872b
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab.values.at differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab_i b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab_i
 new file mode 100644
@@ -67973,16 +68053,16 @@ index 0000000..131e265
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab_i.len differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/counters.tab b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/counters.tab
 new file mode 100644
-index 0000000..4d35fc9
+index 0000000..16fdec2
 --- /dev/null
 +++ b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/counters.tab
 @@ -0,0 +1,2 @@
-+22
++24
 +0
 \ No newline at end of file
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/file-to-id.tab b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/file-to-id.tab
 new file mode 100644
-index 0000000..67829c5
+index 0000000..966939b
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/file-to-id.tab differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/file-to-id.tab.keystream b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/file-to-id.tab.keystream
 new file mode 100644
@@ -67998,7 +68078,7 @@ index 0000000..09407ef
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/file-to-id.tab.len differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/file-to-id.tab.values.at b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/file-to-id.tab.values.at
 new file mode 100644
-index 0000000..af73654
+index 0000000..3cc261a
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/file-to-id.tab.values.at differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/file-to-id.tab_i b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/file-to-id.tab_i
 new file mode 100644
@@ -68010,27 +68090,27 @@ index 0000000..131e265
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/file-to-id.tab_i.len differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab
 new file mode 100644
-index 0000000..43f3e94
+index 0000000..a27a19f
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.keystream b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.keystream
 new file mode 100644
-index 0000000..69efd67
+index 0000000..3a764f1
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.keystream differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.keystream.len b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.keystream.len
 new file mode 100644
-index 0000000..2647ad1
+index 0000000..e534549
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.keystream.len differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.len b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.len
 new file mode 100644
-index 0000000..b31f54b
+index 0000000..6a294aa
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.len differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.values.at b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.values.at
 new file mode 100644
-index 0000000..121ee1a
+index 0000000..86bc99e
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.values.at differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab_i b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab_i
 new file mode 100644
-index 0000000..d3635c2
+index 0000000..14c8c8e
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab_i differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab_i.len b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab_i.len
 new file mode 100644
@@ -68038,7 +68118,7 @@ index 0000000..131e265
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/id-to-file.tab_i.len differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/lookups.tab b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/lookups.tab
 new file mode 100644
-index 0000000..6f03263
+index 0000000..8b72965
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/lookups.tab differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/lookups.tab.keystream b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/lookups.tab.keystream
 new file mode 100644
@@ -68054,7 +68134,7 @@ index 0000000..00dcba9
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/lookups.tab.len differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/lookups.tab.values.at b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/lookups.tab.values.at
 new file mode 100644
-index 0000000..4b0fc0f
+index 0000000..6794e13
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/lookups.tab.values.at differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/lookups.tab_i b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/lookups.tab_i
 new file mode 100644
@@ -68066,7 +68146,7 @@ index 0000000..131e265
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/caches-jvm/lookups/lookups.tab_i.len differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/last-build.bin b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/last-build.bin
 new file mode 100644
-index 0000000..e451afe
+index 0000000..9561713
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/cacheable/last-build.bin differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/classpath-snapshot/shrunk-classpath-snapshot.bin b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/classpath-snapshot/shrunk-classpath-snapshot.bin
 new file mode 100644
@@ -68074,7 +68154,7 @@ index 0000000..7657ba9
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/classpath-snapshot/shrunk-classpath-snapshot.bin differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/local-state/build-history.bin b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/local-state/build-history.bin
 new file mode 100644
-index 0000000..74b7c4c
+index 0000000..bdd731d
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/kotlin/compileReleaseKotlin/local-state/build-history.bin differ
 diff --git a/node_modules/react-native-nitro-voice/android/build/outputs/aar/react-native-nitro-voice-release.aar b/node_modules/react-native-nitro-voice/android/build/outputs/aar/react-native-nitro-voice-release.aar
 new file mode 100644
@@ -68557,10 +68637,20 @@ new file mode 100644
 index 0000000..71780ae
 Binary files /dev/null and b/node_modules/react-native-nitro-voice/android/build/tmp/kotlin-classes/release/com/margelo/nitro/nitrovoice/VADConfig.class differ
 diff --git a/node_modules/react-native-nitro-voice/android/src/main/java/com/margelo/nitro/nitrovoice/HybridSTT.kt b/node_modules/react-native-nitro-voice/android/src/main/java/com/margelo/nitro/nitrovoice/HybridSTT.kt
-index 690760a..031cb1a 100644
+index 690760a..a9b98af 100644
 --- a/node_modules/react-native-nitro-voice/android/src/main/java/com/margelo/nitro/nitrovoice/HybridSTT.kt
 +++ b/node_modules/react-native-nitro-voice/android/src/main/java/com/margelo/nitro/nitrovoice/HybridSTT.kt
-@@ -317,10 +317,17 @@ class HybridSTT : HybridSTTSpec() {
+@@ -184,7 +184,8 @@ class HybridSTT : HybridSTTSpec() {
+           )
+         } else OfflineSenseVoiceModelConfig(),
+         tokens = "$modelDir/tokens.txt",
+-        numThreads = 2,
++        // whisper decode was the slowest step on the phone (~2 s). 4 threads instead of 2, see docs/DECISIONS D28
++        numThreads = 4,
+         provider = "cpu",
+         debug = false
+       )
+@@ -317,10 +318,17 @@ class HybridSTT : HybridSTTSpec() {
      val recognizer = offlineRecognizer ?: return
      if (samples.isEmpty()) return
  
