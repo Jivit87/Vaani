@@ -21,1791 +21,3581 @@
    ]
   },
   {
-   "id": "piper-hi-priyamvada-medium",
+   "id": "piper-hi-pratham-medium",
    "files": [
     {
      "path": "model.onnx",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/hi_IN-priyamvada-medium.onnx",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/hi_IN-pratham-medium.onnx",
      "size": 63145178
     },
     {
      "path": "tokens.txt",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/tokens.txt",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/tokens.txt",
      "size": 940
     },
     {
      "path": "espeak-ng-data/af_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/af_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/af_dict",
      "size": 121473
     },
     {
      "path": "espeak-ng-data/am_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/am_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/am_dict",
      "size": 63878
     },
     {
      "path": "espeak-ng-data/an_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/an_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/an_dict",
      "size": 6691
     },
     {
      "path": "espeak-ng-data/ar_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/ar_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/ar_dict",
      "size": 478165
     },
     {
      "path": "espeak-ng-data/as_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/as_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/as_dict",
      "size": 5005
     },
     {
      "path": "espeak-ng-data/az_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/az_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/az_dict",
      "size": 43773
     },
     {
      "path": "espeak-ng-data/ba_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/ba_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/ba_dict",
      "size": 2098
     },
     {
      "path": "espeak-ng-data/be_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/be_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/be_dict",
      "size": 2652
     },
     {
      "path": "espeak-ng-data/bg_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/bg_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/bg_dict",
      "size": 87051
     },
     {
      "path": "espeak-ng-data/bn_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/bn_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/bn_dict",
      "size": 89979
     },
     {
      "path": "espeak-ng-data/bpy_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/bpy_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/bpy_dict",
      "size": 5226
     },
     {
      "path": "espeak-ng-data/bs_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/bs_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/bs_dict",
      "size": 47068
     },
     {
      "path": "espeak-ng-data/ca_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/ca_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/ca_dict",
      "size": 45566
     },
     {
      "path": "espeak-ng-data/chr_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/chr_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/chr_dict",
      "size": 2859
     },
     {
      "path": "espeak-ng-data/cmn_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/cmn_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/cmn_dict",
      "size": 1566335
     },
     {
      "path": "espeak-ng-data/cs_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/cs_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/cs_dict",
      "size": 49645
     },
     {
      "path": "espeak-ng-data/cv_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/cv_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/cv_dict",
      "size": 1344
     },
     {
      "path": "espeak-ng-data/cy_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/cy_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/cy_dict",
      "size": 43130
     },
     {
      "path": "espeak-ng-data/da_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/da_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/da_dict",
      "size": 245287
     },
     {
      "path": "espeak-ng-data/de_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/de_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/de_dict",
      "size": 68276
     },
     {
      "path": "espeak-ng-data/el_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/el_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/el_dict",
      "size": 72841
     },
     {
      "path": "espeak-ng-data/en_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/en_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/en_dict",
      "size": 166944
     },
     {
      "path": "espeak-ng-data/eo_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/eo_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/eo_dict",
      "size": 4666
     },
     {
      "path": "espeak-ng-data/es_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/es_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/es_dict",
      "size": 49252
     },
     {
      "path": "espeak-ng-data/et_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/et_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/et_dict",
      "size": 44263
     },
     {
      "path": "espeak-ng-data/eu_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/eu_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/eu_dict",
      "size": 48841
     },
     {
      "path": "espeak-ng-data/fa_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/fa_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/fa_dict",
      "size": 292423
     },
     {
      "path": "espeak-ng-data/fi_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/fi_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/fi_dict",
      "size": 43928
     },
     {
      "path": "espeak-ng-data/fr_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/fr_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/fr_dict",
      "size": 63727
     },
     {
      "path": "espeak-ng-data/ga_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/ga_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/ga_dict",
      "size": 52673
     },
     {
      "path": "espeak-ng-data/gd_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/gd_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/gd_dict",
      "size": 49121
     },
     {
      "path": "espeak-ng-data/gn_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/gn_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/gn_dict",
      "size": 3248
     },
     {
      "path": "espeak-ng-data/grc_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/grc_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/grc_dict",
      "size": 3433
     },
     {
      "path": "espeak-ng-data/gu_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/gu_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/gu_dict",
      "size": 82480
     },
     {
      "path": "espeak-ng-data/hak_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/hak_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/hak_dict",
      "size": 3335
     },
     {
      "path": "espeak-ng-data/haw_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/haw_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/haw_dict",
      "size": 2443
     },
     {
      "path": "espeak-ng-data/he_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/he_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/he_dict",
      "size": 6963
     },
     {
      "path": "espeak-ng-data/hi_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/hi_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/hi_dict",
      "size": 92143
     },
     {
      "path": "espeak-ng-data/hr_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/hr_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/hr_dict",
      "size": 49388
     },
     {
      "path": "espeak-ng-data/ht_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/ht_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/ht_dict",
      "size": 1803
     },
     {
      "path": "espeak-ng-data/hu_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/hu_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/hu_dict",
      "size": 153785
     },
     {
      "path": "espeak-ng-data/hy_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/hy_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/hy_dict",
      "size": 62263
     },
     {
      "path": "espeak-ng-data/ia_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/ia_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/ia_dict",
      "size": 331275
     },
     {
      "path": "espeak-ng-data/id_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/id_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/id_dict",
      "size": 43458
     },
     {
      "path": "espeak-ng-data/intonations",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/intonations",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/intonations",
      "size": 2040
     },
     {
      "path": "espeak-ng-data/io_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/io_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/io_dict",
      "size": 2165
     },
     {
      "path": "espeak-ng-data/is_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/is_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/is_dict",
      "size": 44354
     },
     {
      "path": "espeak-ng-data/it_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/it_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/it_dict",
      "size": 152889
     },
     {
      "path": "espeak-ng-data/ja_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/ja_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/ja_dict",
      "size": 47652
     },
     {
      "path": "espeak-ng-data/jbo_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/jbo_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/jbo_dict",
      "size": 2243
     },
     {
      "path": "espeak-ng-data/ka_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/ka_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/ka_dict",
      "size": 87775
     },
     {
      "path": "espeak-ng-data/kk_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/kk_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/kk_dict",
      "size": 1859
     },
     {
      "path": "espeak-ng-data/kl_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/kl_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/kl_dict",
      "size": 2838
     },
     {
      "path": "espeak-ng-data/kn_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/kn_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/kn_dict",
      "size": 87828
     },
     {
      "path": "espeak-ng-data/ko_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/ko_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/ko_dict",
      "size": 47523
     },
     {
      "path": "espeak-ng-data/kok_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/kok_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/kok_dict",
      "size": 6394
     },
     {
      "path": "espeak-ng-data/ku_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/ku_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/ku_dict",
      "size": 2265
     },
     {
      "path": "espeak-ng-data/ky_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/ky_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/ky_dict",
      "size": 64977
     },
     {
      "path": "espeak-ng-data/la_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/la_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/la_dict",
      "size": 3806
     },
     {
      "path": "espeak-ng-data/lang/aav/vi",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/aav/vi",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/aav/vi",
      "size": 111
     },
     {
      "path": "espeak-ng-data/lang/aav/vi-VN-x-central",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/aav/vi-VN-x-central",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/aav/vi-VN-x-central",
      "size": 143
     },
     {
      "path": "espeak-ng-data/lang/aav/vi-VN-x-south",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/aav/vi-VN-x-south",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/aav/vi-VN-x-south",
      "size": 142
     },
     {
      "path": "espeak-ng-data/lang/art/eo",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/art/eo",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/art/eo",
      "size": 41
     },
     {
      "path": "espeak-ng-data/lang/art/ia",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/art/ia",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/art/ia",
      "size": 29
     },
     {
      "path": "espeak-ng-data/lang/art/io",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/art/io",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/art/io",
      "size": 50
     },
     {
      "path": "espeak-ng-data/lang/art/jbo",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/art/jbo",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/art/jbo",
      "size": 69
     },
     {
      "path": "espeak-ng-data/lang/art/lfn",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/art/lfn",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/art/lfn",
      "size": 135
     },
     {
      "path": "espeak-ng-data/lang/art/piqd",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/art/piqd",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/art/piqd",
      "size": 56
     },
     {
      "path": "espeak-ng-data/lang/art/py",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/art/py",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/art/py",
      "size": 140
     },
     {
      "path": "espeak-ng-data/lang/art/qdb",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/art/qdb",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/art/qdb",
      "size": 57
     },
     {
      "path": "espeak-ng-data/lang/art/qya",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/art/qya",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/art/qya",
      "size": 173
     },
     {
      "path": "espeak-ng-data/lang/art/sjn",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/art/sjn",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/art/sjn",
      "size": 175
     },
     {
      "path": "espeak-ng-data/lang/azc/nci",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/azc/nci",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/azc/nci",
      "size": 114
     },
     {
      "path": "espeak-ng-data/lang/bat/lt",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/bat/lt",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/bat/lt",
      "size": 28
     },
     {
      "path": "espeak-ng-data/lang/bat/ltg",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/bat/ltg",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/bat/ltg",
      "size": 312
     },
     {
      "path": "espeak-ng-data/lang/bat/lv",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/bat/lv",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/bat/lv",
      "size": 229
     },
     {
      "path": "espeak-ng-data/lang/bnt/sw",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/bnt/sw",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/bnt/sw",
      "size": 41
     },
     {
      "path": "espeak-ng-data/lang/bnt/tn",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/bnt/tn",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/bnt/tn",
      "size": 42
     },
     {
      "path": "espeak-ng-data/lang/ccs/ka",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/ccs/ka",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/ccs/ka",
      "size": 124
     },
     {
      "path": "espeak-ng-data/lang/cel/cy",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/cel/cy",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/cel/cy",
      "size": 37
     },
     {
      "path": "espeak-ng-data/lang/cel/ga",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/cel/ga",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/cel/ga",
      "size": 66
     },
     {
      "path": "espeak-ng-data/lang/cel/gd",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/cel/gd",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/cel/gd",
      "size": 51
     },
     {
      "path": "espeak-ng-data/lang/cus/om",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/cus/om",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/cus/om",
      "size": 39
     },
     {
      "path": "espeak-ng-data/lang/dra/kn",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/dra/kn",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/dra/kn",
      "size": 55
     },
     {
      "path": "espeak-ng-data/lang/dra/ml",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/dra/ml",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/dra/ml",
      "size": 57
     },
     {
      "path": "espeak-ng-data/lang/dra/ta",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/dra/ta",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/dra/ta",
      "size": 51
     },
     {
      "path": "espeak-ng-data/lang/dra/te",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/dra/te",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/dra/te",
      "size": 70
     },
     {
      "path": "espeak-ng-data/lang/esx/kl",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/esx/kl",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/esx/kl",
      "size": 30
     },
     {
      "path": "espeak-ng-data/lang/eu",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/eu",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/eu",
      "size": 54
     },
     {
      "path": "espeak-ng-data/lang/gmq/da",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/gmq/da",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/gmq/da",
      "size": 43
     },
     {
      "path": "espeak-ng-data/lang/gmq/is",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/gmq/is",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/gmq/is",
      "size": 27
     },
     {
      "path": "espeak-ng-data/lang/gmq/nb",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/gmq/nb",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/gmq/nb",
      "size": 87
     },
     {
      "path": "espeak-ng-data/lang/gmq/sv",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/gmq/sv",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/gmq/sv",
      "size": 25
     },
     {
      "path": "espeak-ng-data/lang/gmw/af",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/gmw/af",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/gmw/af",
      "size": 123
     },
     {
      "path": "espeak-ng-data/lang/gmw/de",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/gmw/de",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/gmw/de",
      "size": 42
     },
     {
      "path": "espeak-ng-data/lang/gmw/en",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/gmw/en",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/gmw/en",
      "size": 140
     },
     {
      "path": "espeak-ng-data/lang/gmw/en-029",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/gmw/en-029",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/gmw/en-029",
      "size": 335
     },
     {
      "path": "espeak-ng-data/lang/gmw/en-GB-scotland",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/gmw/en-GB-scotland",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/gmw/en-GB-scotland",
      "size": 295
     },
     {
      "path": "espeak-ng-data/lang/gmw/en-GB-x-gbclan",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/gmw/en-GB-x-gbclan",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/gmw/en-GB-x-gbclan",
      "size": 238
     },
     {
      "path": "espeak-ng-data/lang/gmw/en-GB-x-gbcwmd",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/gmw/en-GB-x-gbcwmd",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/gmw/en-GB-x-gbcwmd",
      "size": 188
     },
     {
      "path": "espeak-ng-data/lang/gmw/en-GB-x-rp",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/gmw/en-GB-x-rp",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/gmw/en-GB-x-rp",
      "size": 249
     },
     {
      "path": "espeak-ng-data/lang/gmw/en-US",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/gmw/en-US",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/gmw/en-US",
      "size": 257
     },
     {
      "path": "espeak-ng-data/lang/gmw/en-US-nyc",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/gmw/en-US-nyc",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/gmw/en-US-nyc",
      "size": 271
     },
     {
      "path": "espeak-ng-data/lang/gmw/lb",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/gmw/lb",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/gmw/lb",
      "size": 31
     },
     {
      "path": "espeak-ng-data/lang/gmw/nl",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/gmw/nl",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/gmw/nl",
      "size": 23
     },
     {
      "path": "espeak-ng-data/lang/grk/el",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/grk/el",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/grk/el",
      "size": 23
     },
     {
      "path": "espeak-ng-data/lang/grk/grc",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/grk/grc",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/grk/grc",
      "size": 99
     },
     {
      "path": "espeak-ng-data/lang/inc/as",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/inc/as",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/inc/as",
      "size": 42
     },
     {
      "path": "espeak-ng-data/lang/inc/bn",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/inc/bn",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/inc/bn",
      "size": 25
     },
     {
      "path": "espeak-ng-data/lang/inc/bpy",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/inc/bpy",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/inc/bpy",
      "size": 39
     },
     {
      "path": "espeak-ng-data/lang/inc/gu",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/inc/gu",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/inc/gu",
      "size": 42
     },
     {
      "path": "espeak-ng-data/lang/inc/hi",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/inc/hi",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/inc/hi",
      "size": 23
     },
     {
      "path": "espeak-ng-data/lang/inc/kok",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/inc/kok",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/inc/kok",
      "size": 26
     },
     {
      "path": "espeak-ng-data/lang/inc/mr",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/inc/mr",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/inc/mr",
      "size": 41
     },
     {
      "path": "espeak-ng-data/lang/inc/ne",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/inc/ne",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/inc/ne",
      "size": 37
     },
     {
      "path": "espeak-ng-data/lang/inc/or",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/inc/or",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/inc/or",
      "size": 39
     },
     {
      "path": "espeak-ng-data/lang/inc/pa",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/inc/pa",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/inc/pa",
      "size": 25
     },
     {
      "path": "espeak-ng-data/lang/inc/sd",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/inc/sd",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/inc/sd",
      "size": 66
     },
     {
      "path": "espeak-ng-data/lang/inc/si",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/inc/si",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/inc/si",
      "size": 55
     },
     {
      "path": "espeak-ng-data/lang/inc/ur",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/inc/ur",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/inc/ur",
      "size": 94
     },
     {
      "path": "espeak-ng-data/lang/ine/hy",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/ine/hy",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/ine/hy",
      "size": 61
     },
     {
      "path": "espeak-ng-data/lang/ine/hyw",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/ine/hyw",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/ine/hyw",
      "size": 365
     },
     {
      "path": "espeak-ng-data/lang/ine/sq",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/ine/sq",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/ine/sq",
      "size": 103
     },
     {
      "path": "espeak-ng-data/lang/ira/fa",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/ira/fa",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/ira/fa",
      "size": 90
     },
     {
      "path": "espeak-ng-data/lang/ira/fa-Latn",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/ira/fa-Latn",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/ira/fa-Latn",
      "size": 269
     },
     {
      "path": "espeak-ng-data/lang/ira/ku",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/ira/ku",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/ira/ku",
      "size": 40
     },
     {
      "path": "espeak-ng-data/lang/iro/chr",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/iro/chr",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/iro/chr",
      "size": 569
     },
     {
      "path": "espeak-ng-data/lang/itc/la",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/itc/la",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/itc/la",
      "size": 297
     },
     {
      "path": "espeak-ng-data/lang/jpx/ja",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/jpx/ja",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/jpx/ja",
      "size": 52
     },
     {
      "path": "espeak-ng-data/lang/ko",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/ko",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/ko",
      "size": 51
     },
     {
      "path": "espeak-ng-data/lang/map/haw",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/map/haw",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/map/haw",
      "size": 42
     },
     {
      "path": "espeak-ng-data/lang/miz/mto",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/miz/mto",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/miz/mto",
      "size": 183
     },
     {
      "path": "espeak-ng-data/lang/myn/quc",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/myn/quc",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/myn/quc",
      "size": 210
     },
     {
      "path": "espeak-ng-data/lang/poz/id",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/poz/id",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/poz/id",
      "size": 134
     },
     {
      "path": "espeak-ng-data/lang/poz/mi",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/poz/mi",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/poz/mi",
      "size": 367
     },
     {
      "path": "espeak-ng-data/lang/poz/ms",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/poz/ms",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/poz/ms",
      "size": 430
     },
     {
      "path": "espeak-ng-data/lang/qu",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/qu",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/qu",
      "size": 88
     },
     {
      "path": "espeak-ng-data/lang/roa/an",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/roa/an",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/roa/an",
      "size": 27
     },
     {
      "path": "espeak-ng-data/lang/roa/ca",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/roa/ca",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/roa/ca",
      "size": 25
     },
     {
      "path": "espeak-ng-data/lang/roa/es",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/roa/es",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/roa/es",
      "size": 63
     },
     {
      "path": "espeak-ng-data/lang/roa/es-419",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/roa/es-419",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/roa/es-419",
      "size": 167
     },
     {
      "path": "espeak-ng-data/lang/roa/fr",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/roa/fr",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/roa/fr",
      "size": 79
     },
     {
      "path": "espeak-ng-data/lang/roa/fr-BE",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/roa/fr-BE",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/roa/fr-BE",
      "size": 84
     },
     {
      "path": "espeak-ng-data/lang/roa/fr-CH",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/roa/fr-CH",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/roa/fr-CH",
      "size": 86
     },
     {
      "path": "espeak-ng-data/lang/roa/ht",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/roa/ht",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/roa/ht",
      "size": 140
     },
     {
      "path": "espeak-ng-data/lang/roa/it",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/roa/it",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/roa/it",
      "size": 109
     },
     {
      "path": "espeak-ng-data/lang/roa/pap",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/roa/pap",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/roa/pap",
      "size": 62
     },
     {
      "path": "espeak-ng-data/lang/roa/pt",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/roa/pt",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/roa/pt",
      "size": 95
     },
     {
      "path": "espeak-ng-data/lang/roa/pt-BR",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/roa/pt-BR",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/roa/pt-BR",
      "size": 109
     },
     {
      "path": "espeak-ng-data/lang/roa/ro",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/roa/ro",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/roa/ro",
      "size": 26
     },
     {
      "path": "espeak-ng-data/lang/sai/gn",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/sai/gn",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/sai/gn",
      "size": 47
     },
     {
      "path": "espeak-ng-data/lang/sem/am",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/sem/am",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/sem/am",
      "size": 41
     },
     {
      "path": "espeak-ng-data/lang/sem/ar",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/sem/ar",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/sem/ar",
      "size": 50
     },
     {
      "path": "espeak-ng-data/lang/sem/he",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/sem/he",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/sem/he",
      "size": 40
     },
     {
      "path": "espeak-ng-data/lang/sem/mt",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/sem/mt",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/sem/mt",
      "size": 41
     },
     {
      "path": "espeak-ng-data/lang/sit/cmn",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/sit/cmn",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/sit/cmn",
      "size": 686
     },
     {
      "path": "espeak-ng-data/lang/sit/cmn-Latn-pinyin",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/sit/cmn-Latn-pinyin",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/sit/cmn-Latn-pinyin",
      "size": 161
     },
     {
      "path": "espeak-ng-data/lang/sit/hak",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/sit/hak",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/sit/hak",
      "size": 128
     },
     {
      "path": "espeak-ng-data/lang/sit/my",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/sit/my",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/sit/my",
      "size": 56
     },
     {
      "path": "espeak-ng-data/lang/sit/yue",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/sit/yue",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/sit/yue",
      "size": 194
     },
     {
      "path": "espeak-ng-data/lang/sit/yue-Latn-jyutping",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/sit/yue-Latn-jyutping",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/sit/yue-Latn-jyutping",
      "size": 213
     },
     {
      "path": "espeak-ng-data/lang/tai/shn",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/tai/shn",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/tai/shn",
      "size": 92
     },
     {
      "path": "espeak-ng-data/lang/tai/th",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/tai/th",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/tai/th",
      "size": 37
     },
     {
      "path": "espeak-ng-data/lang/trk/az",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/trk/az",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/trk/az",
      "size": 45
     },
     {
      "path": "espeak-ng-data/lang/trk/ba",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/trk/ba",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/trk/ba",
      "size": 25
     },
     {
      "path": "espeak-ng-data/lang/trk/cv",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/trk/cv",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/trk/cv",
      "size": 40
     },
     {
      "path": "espeak-ng-data/lang/trk/kk",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/trk/kk",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/trk/kk",
      "size": 40
     },
     {
      "path": "espeak-ng-data/lang/trk/ky",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/trk/ky",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/trk/ky",
      "size": 43
     },
     {
      "path": "espeak-ng-data/lang/trk/nog",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/trk/nog",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/trk/nog",
      "size": 39
     },
     {
      "path": "espeak-ng-data/lang/trk/tk",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/trk/tk",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/trk/tk",
      "size": 25
     },
     {
      "path": "espeak-ng-data/lang/trk/tr",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/trk/tr",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/trk/tr",
      "size": 25
     },
     {
      "path": "espeak-ng-data/lang/trk/tt",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/trk/tt",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/trk/tt",
      "size": 23
     },
     {
      "path": "espeak-ng-data/lang/trk/ug",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/trk/ug",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/trk/ug",
      "size": 24
     },
     {
      "path": "espeak-ng-data/lang/trk/uz",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/trk/uz",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/trk/uz",
      "size": 39
     },
     {
      "path": "espeak-ng-data/lang/urj/et",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/urj/et",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/urj/et",
      "size": 237
     },
     {
      "path": "espeak-ng-data/lang/urj/fi",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/urj/fi",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/urj/fi",
      "size": 237
     },
     {
      "path": "espeak-ng-data/lang/urj/hu",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/urj/hu",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/urj/hu",
      "size": 73
     },
     {
      "path": "espeak-ng-data/lang/urj/smj",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/urj/smj",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/urj/smj",
      "size": 45
     },
     {
      "path": "espeak-ng-data/lang/zle/be",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/zle/be",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/zle/be",
      "size": 52
     },
     {
      "path": "espeak-ng-data/lang/zle/ru",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/zle/ru",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/zle/ru",
      "size": 57
     },
     {
      "path": "espeak-ng-data/lang/zle/ru-LV",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/zle/ru-LV",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/zle/ru-LV",
      "size": 280
     },
     {
      "path": "espeak-ng-data/lang/zle/ru-cl",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/zle/ru-cl",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/zle/ru-cl",
      "size": 91
     },
     {
      "path": "espeak-ng-data/lang/zle/uk",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/zle/uk",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/zle/uk",
      "size": 97
     },
     {
      "path": "espeak-ng-data/lang/zls/bg",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/zls/bg",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/zls/bg",
      "size": 111
     },
     {
      "path": "espeak-ng-data/lang/zls/bs",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/zls/bs",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/zls/bs",
      "size": 230
     },
     {
      "path": "espeak-ng-data/lang/zls/hr",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/zls/hr",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/zls/hr",
      "size": 262
     },
     {
      "path": "espeak-ng-data/lang/zls/mk",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/zls/mk",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/zls/mk",
      "size": 28
     },
     {
      "path": "espeak-ng-data/lang/zls/sl",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/zls/sl",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/zls/sl",
      "size": 43
     },
     {
      "path": "espeak-ng-data/lang/zls/sr",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/zls/sr",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/zls/sr",
      "size": 250
     },
     {
      "path": "espeak-ng-data/lang/zlw/cs",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/zlw/cs",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/zlw/cs",
      "size": 23
     },
     {
      "path": "espeak-ng-data/lang/zlw/pl",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/zlw/pl",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/zlw/pl",
      "size": 38
     },
     {
      "path": "espeak-ng-data/lang/zlw/sk",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lang/zlw/sk",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lang/zlw/sk",
      "size": 24
     },
     {
      "path": "espeak-ng-data/lb_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lb_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lb_dict",
      "size": 687931
     },
     {
      "path": "espeak-ng-data/lfn_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lfn_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lfn_dict",
      "size": 2793
     },
     {
      "path": "espeak-ng-data/lt_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lt_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lt_dict",
      "size": 49890
     },
     {
      "path": "espeak-ng-data/lv_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/lv_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/lv_dict",
      "size": 66337
     },
     {
      "path": "espeak-ng-data/mi_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/mi_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/mi_dict",
      "size": 1346
     },
     {
      "path": "espeak-ng-data/mk_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/mk_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/mk_dict",
      "size": 63859
     },
     {
      "path": "espeak-ng-data/ml_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/ml_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/ml_dict",
      "size": 92345
     },
     {
      "path": "espeak-ng-data/mr_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/mr_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/mr_dict",
      "size": 87391
     },
     {
      "path": "espeak-ng-data/ms_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/ms_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/ms_dict",
      "size": 53541
     },
     {
      "path": "espeak-ng-data/mt_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/mt_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/mt_dict",
      "size": 4384
     },
     {
      "path": "espeak-ng-data/mto_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/mto_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/mto_dict",
      "size": 3960
     },
     {
      "path": "espeak-ng-data/my_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/my_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/my_dict",
      "size": 95948
     },
     {
      "path": "espeak-ng-data/nci_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/nci_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/nci_dict",
      "size": 1534
     },
     {
      "path": "espeak-ng-data/ne_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/ne_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/ne_dict",
      "size": 95377
     },
     {
      "path": "espeak-ng-data/nl_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/nl_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/nl_dict",
      "size": 65979
     },
     {
      "path": "espeak-ng-data/no_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/no_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/no_dict",
      "size": 4178
     },
     {
      "path": "espeak-ng-data/nog_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/nog_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/nog_dict",
      "size": 3294
     },
     {
      "path": "espeak-ng-data/om_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/om_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/om_dict",
      "size": 2302
     },
     {
      "path": "espeak-ng-data/or_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/or_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/or_dict",
      "size": 89246
     },
     {
      "path": "espeak-ng-data/pa_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/pa_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/pa_dict",
      "size": 79953
     },
     {
      "path": "espeak-ng-data/pap_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/pap_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/pap_dict",
      "size": 2128
     },
     {
      "path": "espeak-ng-data/phondata",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/phondata",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/phondata",
      "size": 550424
     },
     {
      "path": "espeak-ng-data/phondata-manifest",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/phondata-manifest",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/phondata-manifest",
      "size": 21821
     },
     {
      "path": "espeak-ng-data/phonindex",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/phonindex",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/phonindex",
      "size": 39074
     },
     {
      "path": "espeak-ng-data/phontab",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/phontab",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/phontab",
      "size": 55796
     },
     {
      "path": "espeak-ng-data/piqd_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/piqd_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/piqd_dict",
      "size": 1710
     },
     {
      "path": "espeak-ng-data/pl_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/pl_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/pl_dict",
      "size": 76730
     },
     {
      "path": "espeak-ng-data/pt_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/pt_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/pt_dict",
      "size": 67817
     },
     {
      "path": "espeak-ng-data/py_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/py_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/py_dict",
      "size": 2409
     },
     {
      "path": "espeak-ng-data/qdb_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/qdb_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/qdb_dict",
      "size": 3028
     },
     {
      "path": "espeak-ng-data/qu_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/qu_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/qu_dict",
      "size": 1919
     },
     {
      "path": "espeak-ng-data/quc_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/quc_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/quc_dict",
      "size": 1450
     },
     {
      "path": "espeak-ng-data/qya_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/qya_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/qya_dict",
      "size": 1939
     },
     {
      "path": "espeak-ng-data/ro_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/ro_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/ro_dict",
      "size": 68538
     },
     {
      "path": "espeak-ng-data/ru_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/ru_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/ru_dict",
      "size": 8532392
     },
     {
      "path": "espeak-ng-data/sd_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/sd_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/sd_dict",
      "size": 59928
     },
     {
      "path": "espeak-ng-data/shn_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/shn_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/shn_dict",
      "size": 88172
     },
     {
      "path": "espeak-ng-data/si_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/si_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/si_dict",
      "size": 85384
     },
     {
      "path": "espeak-ng-data/sjn_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/sjn_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/sjn_dict",
      "size": 1783
     },
     {
      "path": "espeak-ng-data/sk_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/sk_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/sk_dict",
      "size": 50002
     },
     {
      "path": "espeak-ng-data/sl_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/sl_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/sl_dict",
      "size": 45047
     },
     {
      "path": "espeak-ng-data/smj_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/smj_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/smj_dict",
      "size": 35095
     },
     {
      "path": "espeak-ng-data/sq_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/sq_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/sq_dict",
      "size": 45003
     },
     {
      "path": "espeak-ng-data/sr_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/sr_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/sr_dict",
      "size": 46832
     },
     {
      "path": "espeak-ng-data/sv_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/sv_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/sv_dict",
      "size": 47836
     },
     {
      "path": "espeak-ng-data/sw_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/sw_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/sw_dict",
      "size": 47804
     },
     {
      "path": "espeak-ng-data/ta_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/ta_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/ta_dict",
      "size": 209553
     },
     {
      "path": "espeak-ng-data/te_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/te_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/te_dict",
      "size": 94837
     },
     {
      "path": "espeak-ng-data/th_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/th_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/th_dict",
      "size": 2301
     },
     {
      "path": "espeak-ng-data/tk_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/tk_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/tk_dict",
      "size": 20868
     },
     {
      "path": "espeak-ng-data/tn_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/tn_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/tn_dict",
      "size": 3072
     },
     {
      "path": "espeak-ng-data/tr_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/tr_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/tr_dict",
      "size": 46793
     },
     {
      "path": "espeak-ng-data/tt_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/tt_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/tt_dict",
      "size": 2121
     },
     {
      "path": "espeak-ng-data/ug_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/ug_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/ug_dict",
      "size": 2070
     },
     {
      "path": "espeak-ng-data/uk_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/uk_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/uk_dict",
      "size": 3492
     },
     {
      "path": "espeak-ng-data/ur_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/ur_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/ur_dict",
      "size": 133556
     },
     {
      "path": "espeak-ng-data/uz_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/uz_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/uz_dict",
      "size": 2540
     },
     {
      "path": "espeak-ng-data/vi_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/vi_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/vi_dict",
      "size": 52608
     },
     {
      "path": "espeak-ng-data/voices/!v/Alex",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/Alex",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/Alex",
      "size": 128
     },
     {
      "path": "espeak-ng-data/voices/!v/Alicia",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/Alicia",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/Alicia",
      "size": 474
     },
     {
      "path": "espeak-ng-data/voices/!v/Andrea",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/Andrea",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/Andrea",
      "size": 357
     },
     {
      "path": "espeak-ng-data/voices/!v/Andy",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/Andy",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/Andy",
      "size": 320
     },
     {
      "path": "espeak-ng-data/voices/!v/Annie",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/Annie",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/Annie",
      "size": 315
     },
     {
      "path": "espeak-ng-data/voices/!v/AnxiousAndy",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/AnxiousAndy",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/AnxiousAndy",
      "size": 361
     },
     {
      "path": "espeak-ng-data/voices/!v/Demonic",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/Demonic",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/Demonic",
      "size": 3858
     },
     {
      "path": "espeak-ng-data/voices/!v/Denis",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/Denis",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/Denis",
      "size": 305
     },
     {
      "path": "espeak-ng-data/voices/!v/Diogo",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/Diogo",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/Diogo",
      "size": 379
     },
     {
      "path": "espeak-ng-data/voices/!v/Gene",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/Gene",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/Gene",
      "size": 281
     },
     {
      "path": "espeak-ng-data/voices/!v/Gene2",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/Gene2",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/Gene2",
      "size": 283
     },
     {
      "path": "espeak-ng-data/voices/!v/Henrique",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/Henrique",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/Henrique",
      "size": 381
     },
     {
      "path": "espeak-ng-data/voices/!v/Hugo",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/Hugo",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/Hugo",
      "size": 378
     },
     {
      "path": "espeak-ng-data/voices/!v/Jacky",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/Jacky",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/Jacky",
      "size": 267
     },
     {
      "path": "espeak-ng-data/voices/!v/Lee",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/Lee",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/Lee",
      "size": 338
     },
     {
      "path": "espeak-ng-data/voices/!v/Marco",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/Marco",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/Marco",
      "size": 467
     },
     {
      "path": "espeak-ng-data/voices/!v/Mario",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/Mario",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/Mario",
      "size": 270
     },
     {
      "path": "espeak-ng-data/voices/!v/Michael",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/Michael",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/Michael",
      "size": 270
     },
     {
      "path": "espeak-ng-data/voices/!v/Mike",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/Mike",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/Mike",
      "size": 112
     },
     {
      "path": "espeak-ng-data/voices/!v/Mr serious",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/Mr%20serious",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/Mr%20serious",
      "size": 3193
     },
     {
      "path": "espeak-ng-data/voices/!v/Nguyen",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/Nguyen",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/Nguyen",
      "size": 280
     },
     {
      "path": "espeak-ng-data/voices/!v/Reed",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/Reed",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/Reed",
      "size": 202
     },
     {
      "path": "espeak-ng-data/voices/!v/RicishayMax",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/RicishayMax",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/RicishayMax",
      "size": 233
     },
     {
      "path": "espeak-ng-data/voices/!v/RicishayMax2",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/RicishayMax2",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/RicishayMax2",
      "size": 435
     },
     {
      "path": "espeak-ng-data/voices/!v/RicishayMax3",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/RicishayMax3",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/RicishayMax3",
      "size": 435
     },
     {
      "path": "espeak-ng-data/voices/!v/Storm",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/Storm",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/Storm",
      "size": 420
     },
     {
      "path": "espeak-ng-data/voices/!v/Tweaky",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/Tweaky",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/Tweaky",
      "size": 3189
     },
     {
      "path": "espeak-ng-data/voices/!v/UniRobot",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/UniRobot",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/UniRobot",
      "size": 417
     },
     {
      "path": "espeak-ng-data/voices/!v/adam",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/adam",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/adam",
      "size": 75
     },
     {
      "path": "espeak-ng-data/voices/!v/anika",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/anika",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/anika",
      "size": 493
     },
     {
      "path": "espeak-ng-data/voices/!v/anikaRobot",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/anikaRobot",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/anikaRobot",
      "size": 512
     },
     {
      "path": "espeak-ng-data/voices/!v/announcer",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/announcer",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/announcer",
      "size": 300
     },
     {
      "path": "espeak-ng-data/voices/!v/antonio",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/antonio",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/antonio",
      "size": 381
     },
     {
      "path": "espeak-ng-data/voices/!v/aunty",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/aunty",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/aunty",
      "size": 358
     },
     {
      "path": "espeak-ng-data/voices/!v/belinda",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/belinda",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/belinda",
      "size": 340
     },
     {
      "path": "espeak-ng-data/voices/!v/benjamin",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/benjamin",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/benjamin",
      "size": 201
     },
     {
      "path": "espeak-ng-data/voices/!v/boris",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/boris",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/boris",
      "size": 224
     },
     {
      "path": "espeak-ng-data/voices/!v/caleb",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/caleb",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/caleb",
      "size": 57
     },
     {
      "path": "espeak-ng-data/voices/!v/croak",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/croak",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/croak",
      "size": 93
     },
     {
      "path": "espeak-ng-data/voices/!v/david",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/david",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/david",
      "size": 112
     },
     {
      "path": "espeak-ng-data/voices/!v/ed",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/ed",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/ed",
      "size": 287
     },
     {
      "path": "espeak-ng-data/voices/!v/edward",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/edward",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/edward",
      "size": 151
     },
     {
      "path": "espeak-ng-data/voices/!v/edward2",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/edward2",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/edward2",
      "size": 152
     },
     {
      "path": "espeak-ng-data/voices/!v/f1",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/f1",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/f1",
      "size": 324
     },
     {
      "path": "espeak-ng-data/voices/!v/f2",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/f2",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/f2",
      "size": 357
     },
     {
      "path": "espeak-ng-data/voices/!v/f3",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/f3",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/f3",
      "size": 375
     },
     {
      "path": "espeak-ng-data/voices/!v/f4",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/f4",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/f4",
      "size": 350
     },
     {
      "path": "espeak-ng-data/voices/!v/f5",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/f5",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/f5",
      "size": 432
     },
     {
      "path": "espeak-ng-data/voices/!v/fast",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/fast",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/fast",
      "size": 149
     },
     {
      "path": "espeak-ng-data/voices/!v/grandma",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/grandma",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/grandma",
      "size": 263
     },
     {
      "path": "espeak-ng-data/voices/!v/grandpa",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/grandpa",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/grandpa",
      "size": 256
     },
     {
      "path": "espeak-ng-data/voices/!v/gustave",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/gustave",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/gustave",
      "size": 253
     },
     {
      "path": "espeak-ng-data/voices/!v/ian",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/ian",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/ian",
      "size": 3168
     },
     {
      "path": "espeak-ng-data/voices/!v/iven",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/iven",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/iven",
      "size": 261
     },
     {
      "path": "espeak-ng-data/voices/!v/iven2",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/iven2",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/iven2",
      "size": 279
     },
     {
      "path": "espeak-ng-data/voices/!v/iven3",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/iven3",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/iven3",
      "size": 262
     },
     {
      "path": "espeak-ng-data/voices/!v/iven4",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/iven4",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/iven4",
      "size": 261
     },
     {
      "path": "espeak-ng-data/voices/!v/john",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/john",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/john",
      "size": 3186
     },
     {
      "path": "espeak-ng-data/voices/!v/kaukovalta",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/kaukovalta",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/kaukovalta",
      "size": 361
     },
     {
      "path": "espeak-ng-data/voices/!v/klatt",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/klatt",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/klatt",
      "size": 38
     },
     {
      "path": "espeak-ng-data/voices/!v/klatt2",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/klatt2",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/klatt2",
      "size": 38
     },
     {
      "path": "espeak-ng-data/voices/!v/klatt3",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/klatt3",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/klatt3",
      "size": 39
     },
     {
      "path": "espeak-ng-data/voices/!v/klatt4",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/klatt4",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/klatt4",
      "size": 39
     },
     {
      "path": "espeak-ng-data/voices/!v/klatt5",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/klatt5",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/klatt5",
      "size": 39
     },
     {
      "path": "espeak-ng-data/voices/!v/klatt6",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/klatt6",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/klatt6",
      "size": 39
     },
     {
      "path": "espeak-ng-data/voices/!v/linda",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/linda",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/linda",
      "size": 350
     },
     {
      "path": "espeak-ng-data/voices/!v/m1",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/m1",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/m1",
      "size": 335
     },
     {
      "path": "espeak-ng-data/voices/!v/m2",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/m2",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/m2",
      "size": 264
     },
     {
      "path": "espeak-ng-data/voices/!v/m3",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/m3",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/m3",
      "size": 300
     },
     {
      "path": "espeak-ng-data/voices/!v/m4",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/m4",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/m4",
      "size": 290
     },
     {
      "path": "espeak-ng-data/voices/!v/m5",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/m5",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/m5",
      "size": 262
     },
     {
      "path": "espeak-ng-data/voices/!v/m6",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/m6",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/m6",
      "size": 188
     },
     {
      "path": "espeak-ng-data/voices/!v/m7",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/m7",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/m7",
      "size": 254
     },
     {
      "path": "espeak-ng-data/voices/!v/m8",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/m8",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/m8",
      "size": 284
     },
     {
      "path": "espeak-ng-data/voices/!v/marcelo",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/marcelo",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/marcelo",
      "size": 251
     },
     {
      "path": "espeak-ng-data/voices/!v/max",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/max",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/max",
      "size": 225
     },
     {
      "path": "espeak-ng-data/voices/!v/michel",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/michel",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/michel",
      "size": 404
     },
     {
      "path": "espeak-ng-data/voices/!v/miguel",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/miguel",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/miguel",
      "size": 382
     },
     {
      "path": "espeak-ng-data/voices/!v/mike2",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/mike2",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/mike2",
      "size": 188
     },
     {
      "path": "espeak-ng-data/voices/!v/norbert",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/norbert",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/norbert",
      "size": 3189
     },
     {
      "path": "espeak-ng-data/voices/!v/pablo",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/pablo",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/pablo",
      "size": 3142
     },
     {
      "path": "espeak-ng-data/voices/!v/paul",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/paul",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/paul",
      "size": 284
     },
     {
      "path": "espeak-ng-data/voices/!v/pedro",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/pedro",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/pedro",
      "size": 352
     },
     {
      "path": "espeak-ng-data/voices/!v/quincy",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/quincy",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/quincy",
      "size": 354
     },
     {
      "path": "espeak-ng-data/voices/!v/rob",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/rob",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/rob",
      "size": 265
     },
     {
      "path": "espeak-ng-data/voices/!v/robert",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/robert",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/robert",
      "size": 274
     },
     {
      "path": "espeak-ng-data/voices/!v/robosoft",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/robosoft",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/robosoft",
      "size": 451
     },
     {
      "path": "espeak-ng-data/voices/!v/robosoft2",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/robosoft2",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/robosoft2",
      "size": 454
     },
     {
      "path": "espeak-ng-data/voices/!v/robosoft3",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/robosoft3",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/robosoft3",
      "size": 455
     },
     {
      "path": "espeak-ng-data/voices/!v/robosoft4",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/robosoft4",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/robosoft4",
      "size": 447
     },
     {
      "path": "espeak-ng-data/voices/!v/robosoft5",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/robosoft5",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/robosoft5",
      "size": 445
     },
     {
      "path": "espeak-ng-data/voices/!v/robosoft6",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/robosoft6",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/robosoft6",
      "size": 287
     },
     {
      "path": "espeak-ng-data/voices/!v/robosoft7",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/robosoft7",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/robosoft7",
      "size": 410
     },
     {
      "path": "espeak-ng-data/voices/!v/robosoft8",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/robosoft8",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/robosoft8",
      "size": 243
     },
     {
      "path": "espeak-ng-data/voices/!v/sandro",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/sandro",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/sandro",
      "size": 530
     },
     {
      "path": "espeak-ng-data/voices/!v/shelby",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/shelby",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/shelby",
      "size": 280
     },
     {
      "path": "espeak-ng-data/voices/!v/steph",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/steph",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/steph",
      "size": 364
     },
     {
      "path": "espeak-ng-data/voices/!v/steph2",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/steph2",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/steph2",
      "size": 367
     },
     {
      "path": "espeak-ng-data/voices/!v/steph3",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/steph3",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/steph3",
      "size": 377
     },
     {
      "path": "espeak-ng-data/voices/!v/travis",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/travis",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/travis",
      "size": 383
     },
     {
      "path": "espeak-ng-data/voices/!v/victor",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/victor",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/victor",
      "size": 253
     },
     {
      "path": "espeak-ng-data/voices/!v/whisper",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/whisper",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/whisper",
      "size": 186
     },
     {
      "path": "espeak-ng-data/voices/!v/whisperf",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/whisperf",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/whisperf",
      "size": 392
     },
     {
      "path": "espeak-ng-data/voices/!v/zac",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/voices/%21v/zac",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/voices/%21v/zac",
      "size": 275
     },
     {
      "path": "espeak-ng-data/yue_dict",
-     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-priyamvada-medium/resolve/main/espeak-ng-data/yue_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-hi_IN-pratham-medium/resolve/main/espeak-ng-data/yue_dict",
+     "size": 563571
+    }
+   ]
+  },
+  {
+   "id": "piper-en-amy-medium",
+   "files": [
+    {
+     "path": "model.onnx",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/en_US-amy-medium.onnx",
+     "size": 63201425
+    },
+    {
+     "path": "tokens.txt",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/tokens.txt",
+     "size": 921
+    },
+    {
+     "path": "espeak-ng-data/af_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/af_dict",
+     "size": 121473
+    },
+    {
+     "path": "espeak-ng-data/am_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/am_dict",
+     "size": 63878
+    },
+    {
+     "path": "espeak-ng-data/an_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/an_dict",
+     "size": 6691
+    },
+    {
+     "path": "espeak-ng-data/ar_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/ar_dict",
+     "size": 478165
+    },
+    {
+     "path": "espeak-ng-data/as_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/as_dict",
+     "size": 5005
+    },
+    {
+     "path": "espeak-ng-data/az_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/az_dict",
+     "size": 43773
+    },
+    {
+     "path": "espeak-ng-data/ba_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/ba_dict",
+     "size": 2098
+    },
+    {
+     "path": "espeak-ng-data/be_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/be_dict",
+     "size": 2652
+    },
+    {
+     "path": "espeak-ng-data/bg_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/bg_dict",
+     "size": 87051
+    },
+    {
+     "path": "espeak-ng-data/bn_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/bn_dict",
+     "size": 89979
+    },
+    {
+     "path": "espeak-ng-data/bpy_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/bpy_dict",
+     "size": 5226
+    },
+    {
+     "path": "espeak-ng-data/bs_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/bs_dict",
+     "size": 47068
+    },
+    {
+     "path": "espeak-ng-data/ca_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/ca_dict",
+     "size": 45566
+    },
+    {
+     "path": "espeak-ng-data/chr_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/chr_dict",
+     "size": 2859
+    },
+    {
+     "path": "espeak-ng-data/cmn_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/cmn_dict",
+     "size": 1566335
+    },
+    {
+     "path": "espeak-ng-data/cs_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/cs_dict",
+     "size": 49645
+    },
+    {
+     "path": "espeak-ng-data/cv_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/cv_dict",
+     "size": 1344
+    },
+    {
+     "path": "espeak-ng-data/cy_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/cy_dict",
+     "size": 43130
+    },
+    {
+     "path": "espeak-ng-data/da_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/da_dict",
+     "size": 245287
+    },
+    {
+     "path": "espeak-ng-data/de_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/de_dict",
+     "size": 68276
+    },
+    {
+     "path": "espeak-ng-data/el_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/el_dict",
+     "size": 72841
+    },
+    {
+     "path": "espeak-ng-data/en_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/en_dict",
+     "size": 166944
+    },
+    {
+     "path": "espeak-ng-data/eo_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/eo_dict",
+     "size": 4666
+    },
+    {
+     "path": "espeak-ng-data/es_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/es_dict",
+     "size": 49252
+    },
+    {
+     "path": "espeak-ng-data/et_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/et_dict",
+     "size": 44263
+    },
+    {
+     "path": "espeak-ng-data/eu_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/eu_dict",
+     "size": 48841
+    },
+    {
+     "path": "espeak-ng-data/fa_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/fa_dict",
+     "size": 292423
+    },
+    {
+     "path": "espeak-ng-data/fi_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/fi_dict",
+     "size": 43928
+    },
+    {
+     "path": "espeak-ng-data/fr_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/fr_dict",
+     "size": 63727
+    },
+    {
+     "path": "espeak-ng-data/ga_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/ga_dict",
+     "size": 52673
+    },
+    {
+     "path": "espeak-ng-data/gd_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/gd_dict",
+     "size": 49121
+    },
+    {
+     "path": "espeak-ng-data/gn_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/gn_dict",
+     "size": 3248
+    },
+    {
+     "path": "espeak-ng-data/grc_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/grc_dict",
+     "size": 3433
+    },
+    {
+     "path": "espeak-ng-data/gu_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/gu_dict",
+     "size": 82480
+    },
+    {
+     "path": "espeak-ng-data/hak_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/hak_dict",
+     "size": 3335
+    },
+    {
+     "path": "espeak-ng-data/haw_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/haw_dict",
+     "size": 2443
+    },
+    {
+     "path": "espeak-ng-data/he_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/he_dict",
+     "size": 6963
+    },
+    {
+     "path": "espeak-ng-data/hi_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/hi_dict",
+     "size": 92143
+    },
+    {
+     "path": "espeak-ng-data/hr_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/hr_dict",
+     "size": 49388
+    },
+    {
+     "path": "espeak-ng-data/ht_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/ht_dict",
+     "size": 1803
+    },
+    {
+     "path": "espeak-ng-data/hu_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/hu_dict",
+     "size": 153785
+    },
+    {
+     "path": "espeak-ng-data/hy_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/hy_dict",
+     "size": 62263
+    },
+    {
+     "path": "espeak-ng-data/ia_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/ia_dict",
+     "size": 331275
+    },
+    {
+     "path": "espeak-ng-data/id_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/id_dict",
+     "size": 43458
+    },
+    {
+     "path": "espeak-ng-data/intonations",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/intonations",
+     "size": 2040
+    },
+    {
+     "path": "espeak-ng-data/io_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/io_dict",
+     "size": 2165
+    },
+    {
+     "path": "espeak-ng-data/is_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/is_dict",
+     "size": 44354
+    },
+    {
+     "path": "espeak-ng-data/it_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/it_dict",
+     "size": 152889
+    },
+    {
+     "path": "espeak-ng-data/ja_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/ja_dict",
+     "size": 47652
+    },
+    {
+     "path": "espeak-ng-data/jbo_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/jbo_dict",
+     "size": 2243
+    },
+    {
+     "path": "espeak-ng-data/ka_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/ka_dict",
+     "size": 87775
+    },
+    {
+     "path": "espeak-ng-data/kk_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/kk_dict",
+     "size": 1859
+    },
+    {
+     "path": "espeak-ng-data/kl_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/kl_dict",
+     "size": 2838
+    },
+    {
+     "path": "espeak-ng-data/kn_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/kn_dict",
+     "size": 87828
+    },
+    {
+     "path": "espeak-ng-data/ko_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/ko_dict",
+     "size": 47523
+    },
+    {
+     "path": "espeak-ng-data/kok_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/kok_dict",
+     "size": 6394
+    },
+    {
+     "path": "espeak-ng-data/ku_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/ku_dict",
+     "size": 2265
+    },
+    {
+     "path": "espeak-ng-data/ky_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/ky_dict",
+     "size": 64977
+    },
+    {
+     "path": "espeak-ng-data/la_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/la_dict",
+     "size": 3806
+    },
+    {
+     "path": "espeak-ng-data/lang/aav/vi",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/aav/vi",
+     "size": 111
+    },
+    {
+     "path": "espeak-ng-data/lang/aav/vi-VN-x-central",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/aav/vi-VN-x-central",
+     "size": 143
+    },
+    {
+     "path": "espeak-ng-data/lang/aav/vi-VN-x-south",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/aav/vi-VN-x-south",
+     "size": 142
+    },
+    {
+     "path": "espeak-ng-data/lang/art/eo",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/art/eo",
+     "size": 41
+    },
+    {
+     "path": "espeak-ng-data/lang/art/ia",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/art/ia",
+     "size": 29
+    },
+    {
+     "path": "espeak-ng-data/lang/art/io",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/art/io",
+     "size": 50
+    },
+    {
+     "path": "espeak-ng-data/lang/art/jbo",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/art/jbo",
+     "size": 69
+    },
+    {
+     "path": "espeak-ng-data/lang/art/lfn",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/art/lfn",
+     "size": 135
+    },
+    {
+     "path": "espeak-ng-data/lang/art/piqd",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/art/piqd",
+     "size": 56
+    },
+    {
+     "path": "espeak-ng-data/lang/art/py",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/art/py",
+     "size": 140
+    },
+    {
+     "path": "espeak-ng-data/lang/art/qdb",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/art/qdb",
+     "size": 57
+    },
+    {
+     "path": "espeak-ng-data/lang/art/qya",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/art/qya",
+     "size": 173
+    },
+    {
+     "path": "espeak-ng-data/lang/art/sjn",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/art/sjn",
+     "size": 175
+    },
+    {
+     "path": "espeak-ng-data/lang/azc/nci",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/azc/nci",
+     "size": 114
+    },
+    {
+     "path": "espeak-ng-data/lang/bat/lt",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/bat/lt",
+     "size": 28
+    },
+    {
+     "path": "espeak-ng-data/lang/bat/ltg",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/bat/ltg",
+     "size": 312
+    },
+    {
+     "path": "espeak-ng-data/lang/bat/lv",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/bat/lv",
+     "size": 229
+    },
+    {
+     "path": "espeak-ng-data/lang/bnt/sw",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/bnt/sw",
+     "size": 41
+    },
+    {
+     "path": "espeak-ng-data/lang/bnt/tn",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/bnt/tn",
+     "size": 42
+    },
+    {
+     "path": "espeak-ng-data/lang/ccs/ka",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/ccs/ka",
+     "size": 124
+    },
+    {
+     "path": "espeak-ng-data/lang/cel/cy",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/cel/cy",
+     "size": 37
+    },
+    {
+     "path": "espeak-ng-data/lang/cel/ga",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/cel/ga",
+     "size": 66
+    },
+    {
+     "path": "espeak-ng-data/lang/cel/gd",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/cel/gd",
+     "size": 51
+    },
+    {
+     "path": "espeak-ng-data/lang/cus/om",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/cus/om",
+     "size": 39
+    },
+    {
+     "path": "espeak-ng-data/lang/dra/kn",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/dra/kn",
+     "size": 55
+    },
+    {
+     "path": "espeak-ng-data/lang/dra/ml",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/dra/ml",
+     "size": 57
+    },
+    {
+     "path": "espeak-ng-data/lang/dra/ta",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/dra/ta",
+     "size": 51
+    },
+    {
+     "path": "espeak-ng-data/lang/dra/te",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/dra/te",
+     "size": 70
+    },
+    {
+     "path": "espeak-ng-data/lang/esx/kl",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/esx/kl",
+     "size": 30
+    },
+    {
+     "path": "espeak-ng-data/lang/eu",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/eu",
+     "size": 54
+    },
+    {
+     "path": "espeak-ng-data/lang/gmq/da",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/gmq/da",
+     "size": 43
+    },
+    {
+     "path": "espeak-ng-data/lang/gmq/is",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/gmq/is",
+     "size": 27
+    },
+    {
+     "path": "espeak-ng-data/lang/gmq/nb",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/gmq/nb",
+     "size": 87
+    },
+    {
+     "path": "espeak-ng-data/lang/gmq/sv",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/gmq/sv",
+     "size": 25
+    },
+    {
+     "path": "espeak-ng-data/lang/gmw/af",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/gmw/af",
+     "size": 123
+    },
+    {
+     "path": "espeak-ng-data/lang/gmw/de",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/gmw/de",
+     "size": 42
+    },
+    {
+     "path": "espeak-ng-data/lang/gmw/en",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/gmw/en",
+     "size": 140
+    },
+    {
+     "path": "espeak-ng-data/lang/gmw/en-029",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/gmw/en-029",
+     "size": 335
+    },
+    {
+     "path": "espeak-ng-data/lang/gmw/en-GB-scotland",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/gmw/en-GB-scotland",
+     "size": 295
+    },
+    {
+     "path": "espeak-ng-data/lang/gmw/en-GB-x-gbclan",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/gmw/en-GB-x-gbclan",
+     "size": 238
+    },
+    {
+     "path": "espeak-ng-data/lang/gmw/en-GB-x-gbcwmd",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/gmw/en-GB-x-gbcwmd",
+     "size": 188
+    },
+    {
+     "path": "espeak-ng-data/lang/gmw/en-GB-x-rp",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/gmw/en-GB-x-rp",
+     "size": 249
+    },
+    {
+     "path": "espeak-ng-data/lang/gmw/en-US",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/gmw/en-US",
+     "size": 257
+    },
+    {
+     "path": "espeak-ng-data/lang/gmw/en-US-nyc",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/gmw/en-US-nyc",
+     "size": 271
+    },
+    {
+     "path": "espeak-ng-data/lang/gmw/lb",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/gmw/lb",
+     "size": 31
+    },
+    {
+     "path": "espeak-ng-data/lang/gmw/nl",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/gmw/nl",
+     "size": 23
+    },
+    {
+     "path": "espeak-ng-data/lang/grk/el",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/grk/el",
+     "size": 23
+    },
+    {
+     "path": "espeak-ng-data/lang/grk/grc",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/grk/grc",
+     "size": 99
+    },
+    {
+     "path": "espeak-ng-data/lang/inc/as",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/inc/as",
+     "size": 42
+    },
+    {
+     "path": "espeak-ng-data/lang/inc/bn",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/inc/bn",
+     "size": 25
+    },
+    {
+     "path": "espeak-ng-data/lang/inc/bpy",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/inc/bpy",
+     "size": 39
+    },
+    {
+     "path": "espeak-ng-data/lang/inc/gu",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/inc/gu",
+     "size": 42
+    },
+    {
+     "path": "espeak-ng-data/lang/inc/hi",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/inc/hi",
+     "size": 23
+    },
+    {
+     "path": "espeak-ng-data/lang/inc/kok",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/inc/kok",
+     "size": 26
+    },
+    {
+     "path": "espeak-ng-data/lang/inc/mr",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/inc/mr",
+     "size": 41
+    },
+    {
+     "path": "espeak-ng-data/lang/inc/ne",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/inc/ne",
+     "size": 37
+    },
+    {
+     "path": "espeak-ng-data/lang/inc/or",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/inc/or",
+     "size": 39
+    },
+    {
+     "path": "espeak-ng-data/lang/inc/pa",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/inc/pa",
+     "size": 25
+    },
+    {
+     "path": "espeak-ng-data/lang/inc/sd",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/inc/sd",
+     "size": 66
+    },
+    {
+     "path": "espeak-ng-data/lang/inc/si",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/inc/si",
+     "size": 55
+    },
+    {
+     "path": "espeak-ng-data/lang/inc/ur",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/inc/ur",
+     "size": 94
+    },
+    {
+     "path": "espeak-ng-data/lang/ine/hy",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/ine/hy",
+     "size": 61
+    },
+    {
+     "path": "espeak-ng-data/lang/ine/hyw",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/ine/hyw",
+     "size": 365
+    },
+    {
+     "path": "espeak-ng-data/lang/ine/sq",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/ine/sq",
+     "size": 103
+    },
+    {
+     "path": "espeak-ng-data/lang/ira/fa",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/ira/fa",
+     "size": 90
+    },
+    {
+     "path": "espeak-ng-data/lang/ira/fa-Latn",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/ira/fa-Latn",
+     "size": 269
+    },
+    {
+     "path": "espeak-ng-data/lang/ira/ku",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/ira/ku",
+     "size": 40
+    },
+    {
+     "path": "espeak-ng-data/lang/iro/chr",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/iro/chr",
+     "size": 569
+    },
+    {
+     "path": "espeak-ng-data/lang/itc/la",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/itc/la",
+     "size": 297
+    },
+    {
+     "path": "espeak-ng-data/lang/jpx/ja",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/jpx/ja",
+     "size": 52
+    },
+    {
+     "path": "espeak-ng-data/lang/ko",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/ko",
+     "size": 51
+    },
+    {
+     "path": "espeak-ng-data/lang/map/haw",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/map/haw",
+     "size": 42
+    },
+    {
+     "path": "espeak-ng-data/lang/miz/mto",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/miz/mto",
+     "size": 183
+    },
+    {
+     "path": "espeak-ng-data/lang/myn/quc",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/myn/quc",
+     "size": 210
+    },
+    {
+     "path": "espeak-ng-data/lang/poz/id",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/poz/id",
+     "size": 134
+    },
+    {
+     "path": "espeak-ng-data/lang/poz/mi",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/poz/mi",
+     "size": 367
+    },
+    {
+     "path": "espeak-ng-data/lang/poz/ms",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/poz/ms",
+     "size": 430
+    },
+    {
+     "path": "espeak-ng-data/lang/qu",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/qu",
+     "size": 88
+    },
+    {
+     "path": "espeak-ng-data/lang/roa/an",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/roa/an",
+     "size": 27
+    },
+    {
+     "path": "espeak-ng-data/lang/roa/ca",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/roa/ca",
+     "size": 25
+    },
+    {
+     "path": "espeak-ng-data/lang/roa/es",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/roa/es",
+     "size": 63
+    },
+    {
+     "path": "espeak-ng-data/lang/roa/es-419",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/roa/es-419",
+     "size": 167
+    },
+    {
+     "path": "espeak-ng-data/lang/roa/fr",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/roa/fr",
+     "size": 79
+    },
+    {
+     "path": "espeak-ng-data/lang/roa/fr-BE",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/roa/fr-BE",
+     "size": 84
+    },
+    {
+     "path": "espeak-ng-data/lang/roa/fr-CH",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/roa/fr-CH",
+     "size": 86
+    },
+    {
+     "path": "espeak-ng-data/lang/roa/ht",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/roa/ht",
+     "size": 140
+    },
+    {
+     "path": "espeak-ng-data/lang/roa/it",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/roa/it",
+     "size": 109
+    },
+    {
+     "path": "espeak-ng-data/lang/roa/pap",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/roa/pap",
+     "size": 62
+    },
+    {
+     "path": "espeak-ng-data/lang/roa/pt",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/roa/pt",
+     "size": 95
+    },
+    {
+     "path": "espeak-ng-data/lang/roa/pt-BR",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/roa/pt-BR",
+     "size": 109
+    },
+    {
+     "path": "espeak-ng-data/lang/roa/ro",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/roa/ro",
+     "size": 26
+    },
+    {
+     "path": "espeak-ng-data/lang/sai/gn",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/sai/gn",
+     "size": 47
+    },
+    {
+     "path": "espeak-ng-data/lang/sem/am",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/sem/am",
+     "size": 41
+    },
+    {
+     "path": "espeak-ng-data/lang/sem/ar",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/sem/ar",
+     "size": 50
+    },
+    {
+     "path": "espeak-ng-data/lang/sem/he",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/sem/he",
+     "size": 40
+    },
+    {
+     "path": "espeak-ng-data/lang/sem/mt",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/sem/mt",
+     "size": 41
+    },
+    {
+     "path": "espeak-ng-data/lang/sit/cmn",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/sit/cmn",
+     "size": 686
+    },
+    {
+     "path": "espeak-ng-data/lang/sit/cmn-Latn-pinyin",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/sit/cmn-Latn-pinyin",
+     "size": 161
+    },
+    {
+     "path": "espeak-ng-data/lang/sit/hak",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/sit/hak",
+     "size": 128
+    },
+    {
+     "path": "espeak-ng-data/lang/sit/my",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/sit/my",
+     "size": 56
+    },
+    {
+     "path": "espeak-ng-data/lang/sit/yue",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/sit/yue",
+     "size": 194
+    },
+    {
+     "path": "espeak-ng-data/lang/sit/yue-Latn-jyutping",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/sit/yue-Latn-jyutping",
+     "size": 213
+    },
+    {
+     "path": "espeak-ng-data/lang/tai/shn",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/tai/shn",
+     "size": 92
+    },
+    {
+     "path": "espeak-ng-data/lang/tai/th",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/tai/th",
+     "size": 37
+    },
+    {
+     "path": "espeak-ng-data/lang/trk/az",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/trk/az",
+     "size": 45
+    },
+    {
+     "path": "espeak-ng-data/lang/trk/ba",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/trk/ba",
+     "size": 25
+    },
+    {
+     "path": "espeak-ng-data/lang/trk/cv",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/trk/cv",
+     "size": 40
+    },
+    {
+     "path": "espeak-ng-data/lang/trk/kk",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/trk/kk",
+     "size": 40
+    },
+    {
+     "path": "espeak-ng-data/lang/trk/ky",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/trk/ky",
+     "size": 43
+    },
+    {
+     "path": "espeak-ng-data/lang/trk/nog",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/trk/nog",
+     "size": 39
+    },
+    {
+     "path": "espeak-ng-data/lang/trk/tk",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/trk/tk",
+     "size": 25
+    },
+    {
+     "path": "espeak-ng-data/lang/trk/tr",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/trk/tr",
+     "size": 25
+    },
+    {
+     "path": "espeak-ng-data/lang/trk/tt",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/trk/tt",
+     "size": 23
+    },
+    {
+     "path": "espeak-ng-data/lang/trk/ug",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/trk/ug",
+     "size": 24
+    },
+    {
+     "path": "espeak-ng-data/lang/trk/uz",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/trk/uz",
+     "size": 39
+    },
+    {
+     "path": "espeak-ng-data/lang/urj/et",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/urj/et",
+     "size": 237
+    },
+    {
+     "path": "espeak-ng-data/lang/urj/fi",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/urj/fi",
+     "size": 237
+    },
+    {
+     "path": "espeak-ng-data/lang/urj/hu",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/urj/hu",
+     "size": 73
+    },
+    {
+     "path": "espeak-ng-data/lang/urj/smj",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/urj/smj",
+     "size": 45
+    },
+    {
+     "path": "espeak-ng-data/lang/zle/be",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/zle/be",
+     "size": 52
+    },
+    {
+     "path": "espeak-ng-data/lang/zle/ru",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/zle/ru",
+     "size": 57
+    },
+    {
+     "path": "espeak-ng-data/lang/zle/ru-LV",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/zle/ru-LV",
+     "size": 280
+    },
+    {
+     "path": "espeak-ng-data/lang/zle/ru-cl",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/zle/ru-cl",
+     "size": 91
+    },
+    {
+     "path": "espeak-ng-data/lang/zle/uk",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/zle/uk",
+     "size": 97
+    },
+    {
+     "path": "espeak-ng-data/lang/zls/bg",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/zls/bg",
+     "size": 111
+    },
+    {
+     "path": "espeak-ng-data/lang/zls/bs",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/zls/bs",
+     "size": 230
+    },
+    {
+     "path": "espeak-ng-data/lang/zls/hr",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/zls/hr",
+     "size": 262
+    },
+    {
+     "path": "espeak-ng-data/lang/zls/mk",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/zls/mk",
+     "size": 28
+    },
+    {
+     "path": "espeak-ng-data/lang/zls/sl",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/zls/sl",
+     "size": 43
+    },
+    {
+     "path": "espeak-ng-data/lang/zls/sr",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/zls/sr",
+     "size": 250
+    },
+    {
+     "path": "espeak-ng-data/lang/zlw/cs",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/zlw/cs",
+     "size": 23
+    },
+    {
+     "path": "espeak-ng-data/lang/zlw/pl",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/zlw/pl",
+     "size": 38
+    },
+    {
+     "path": "espeak-ng-data/lang/zlw/sk",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lang/zlw/sk",
+     "size": 24
+    },
+    {
+     "path": "espeak-ng-data/lb_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lb_dict",
+     "size": 687931
+    },
+    {
+     "path": "espeak-ng-data/lfn_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lfn_dict",
+     "size": 2793
+    },
+    {
+     "path": "espeak-ng-data/lt_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lt_dict",
+     "size": 49890
+    },
+    {
+     "path": "espeak-ng-data/lv_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/lv_dict",
+     "size": 66337
+    },
+    {
+     "path": "espeak-ng-data/mi_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/mi_dict",
+     "size": 1346
+    },
+    {
+     "path": "espeak-ng-data/mk_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/mk_dict",
+     "size": 63859
+    },
+    {
+     "path": "espeak-ng-data/ml_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/ml_dict",
+     "size": 92345
+    },
+    {
+     "path": "espeak-ng-data/mr_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/mr_dict",
+     "size": 87391
+    },
+    {
+     "path": "espeak-ng-data/ms_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/ms_dict",
+     "size": 53541
+    },
+    {
+     "path": "espeak-ng-data/mt_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/mt_dict",
+     "size": 4384
+    },
+    {
+     "path": "espeak-ng-data/mto_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/mto_dict",
+     "size": 3960
+    },
+    {
+     "path": "espeak-ng-data/my_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/my_dict",
+     "size": 95948
+    },
+    {
+     "path": "espeak-ng-data/nci_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/nci_dict",
+     "size": 1534
+    },
+    {
+     "path": "espeak-ng-data/ne_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/ne_dict",
+     "size": 95377
+    },
+    {
+     "path": "espeak-ng-data/nl_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/nl_dict",
+     "size": 65979
+    },
+    {
+     "path": "espeak-ng-data/no_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/no_dict",
+     "size": 4178
+    },
+    {
+     "path": "espeak-ng-data/nog_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/nog_dict",
+     "size": 3294
+    },
+    {
+     "path": "espeak-ng-data/om_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/om_dict",
+     "size": 2302
+    },
+    {
+     "path": "espeak-ng-data/or_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/or_dict",
+     "size": 89246
+    },
+    {
+     "path": "espeak-ng-data/pa_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/pa_dict",
+     "size": 79953
+    },
+    {
+     "path": "espeak-ng-data/pap_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/pap_dict",
+     "size": 2128
+    },
+    {
+     "path": "espeak-ng-data/phondata",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/phondata",
+     "size": 550424
+    },
+    {
+     "path": "espeak-ng-data/phondata-manifest",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/phondata-manifest",
+     "size": 21821
+    },
+    {
+     "path": "espeak-ng-data/phonindex",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/phonindex",
+     "size": 39074
+    },
+    {
+     "path": "espeak-ng-data/phontab",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/phontab",
+     "size": 55796
+    },
+    {
+     "path": "espeak-ng-data/piqd_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/piqd_dict",
+     "size": 1710
+    },
+    {
+     "path": "espeak-ng-data/pl_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/pl_dict",
+     "size": 76730
+    },
+    {
+     "path": "espeak-ng-data/pt_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/pt_dict",
+     "size": 67817
+    },
+    {
+     "path": "espeak-ng-data/py_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/py_dict",
+     "size": 2409
+    },
+    {
+     "path": "espeak-ng-data/qdb_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/qdb_dict",
+     "size": 3028
+    },
+    {
+     "path": "espeak-ng-data/qu_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/qu_dict",
+     "size": 1919
+    },
+    {
+     "path": "espeak-ng-data/quc_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/quc_dict",
+     "size": 1450
+    },
+    {
+     "path": "espeak-ng-data/qya_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/qya_dict",
+     "size": 1939
+    },
+    {
+     "path": "espeak-ng-data/ro_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/ro_dict",
+     "size": 68538
+    },
+    {
+     "path": "espeak-ng-data/ru_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/ru_dict",
+     "size": 8532392
+    },
+    {
+     "path": "espeak-ng-data/sd_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/sd_dict",
+     "size": 59928
+    },
+    {
+     "path": "espeak-ng-data/shn_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/shn_dict",
+     "size": 88172
+    },
+    {
+     "path": "espeak-ng-data/si_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/si_dict",
+     "size": 85384
+    },
+    {
+     "path": "espeak-ng-data/sjn_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/sjn_dict",
+     "size": 1783
+    },
+    {
+     "path": "espeak-ng-data/sk_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/sk_dict",
+     "size": 50002
+    },
+    {
+     "path": "espeak-ng-data/sl_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/sl_dict",
+     "size": 45047
+    },
+    {
+     "path": "espeak-ng-data/smj_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/smj_dict",
+     "size": 35095
+    },
+    {
+     "path": "espeak-ng-data/sq_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/sq_dict",
+     "size": 45003
+    },
+    {
+     "path": "espeak-ng-data/sr_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/sr_dict",
+     "size": 46832
+    },
+    {
+     "path": "espeak-ng-data/sv_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/sv_dict",
+     "size": 47836
+    },
+    {
+     "path": "espeak-ng-data/sw_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/sw_dict",
+     "size": 47804
+    },
+    {
+     "path": "espeak-ng-data/ta_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/ta_dict",
+     "size": 209553
+    },
+    {
+     "path": "espeak-ng-data/te_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/te_dict",
+     "size": 94837
+    },
+    {
+     "path": "espeak-ng-data/th_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/th_dict",
+     "size": 2301
+    },
+    {
+     "path": "espeak-ng-data/tk_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/tk_dict",
+     "size": 20868
+    },
+    {
+     "path": "espeak-ng-data/tn_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/tn_dict",
+     "size": 3072
+    },
+    {
+     "path": "espeak-ng-data/tr_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/tr_dict",
+     "size": 46793
+    },
+    {
+     "path": "espeak-ng-data/tt_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/tt_dict",
+     "size": 2121
+    },
+    {
+     "path": "espeak-ng-data/ug_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/ug_dict",
+     "size": 2070
+    },
+    {
+     "path": "espeak-ng-data/uk_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/uk_dict",
+     "size": 3492
+    },
+    {
+     "path": "espeak-ng-data/ur_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/ur_dict",
+     "size": 133556
+    },
+    {
+     "path": "espeak-ng-data/uz_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/uz_dict",
+     "size": 2540
+    },
+    {
+     "path": "espeak-ng-data/vi_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/vi_dict",
+     "size": 52608
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/Alex",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/Alex",
+     "size": 128
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/Alicia",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/Alicia",
+     "size": 474
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/Andrea",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/Andrea",
+     "size": 357
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/Andy",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/Andy",
+     "size": 320
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/Annie",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/Annie",
+     "size": 315
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/AnxiousAndy",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/AnxiousAndy",
+     "size": 361
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/Demonic",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/Demonic",
+     "size": 3858
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/Denis",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/Denis",
+     "size": 305
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/Diogo",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/Diogo",
+     "size": 379
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/Gene",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/Gene",
+     "size": 281
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/Gene2",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/Gene2",
+     "size": 283
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/Henrique",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/Henrique",
+     "size": 381
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/Hugo",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/Hugo",
+     "size": 378
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/Jacky",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/Jacky",
+     "size": 267
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/Lee",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/Lee",
+     "size": 338
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/Marco",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/Marco",
+     "size": 467
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/Mario",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/Mario",
+     "size": 270
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/Michael",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/Michael",
+     "size": 270
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/Mike",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/Mike",
+     "size": 112
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/Mr serious",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/Mr%20serious",
+     "size": 3193
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/Nguyen",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/Nguyen",
+     "size": 280
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/Reed",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/Reed",
+     "size": 202
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/RicishayMax",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/RicishayMax",
+     "size": 233
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/RicishayMax2",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/RicishayMax2",
+     "size": 435
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/RicishayMax3",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/RicishayMax3",
+     "size": 435
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/Storm",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/Storm",
+     "size": 420
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/Tweaky",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/Tweaky",
+     "size": 3189
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/UniRobot",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/UniRobot",
+     "size": 417
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/adam",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/adam",
+     "size": 75
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/anika",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/anika",
+     "size": 493
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/anikaRobot",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/anikaRobot",
+     "size": 512
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/announcer",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/announcer",
+     "size": 300
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/antonio",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/antonio",
+     "size": 381
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/aunty",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/aunty",
+     "size": 358
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/belinda",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/belinda",
+     "size": 340
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/benjamin",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/benjamin",
+     "size": 201
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/boris",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/boris",
+     "size": 224
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/caleb",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/caleb",
+     "size": 57
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/croak",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/croak",
+     "size": 93
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/david",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/david",
+     "size": 112
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/ed",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/ed",
+     "size": 287
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/edward",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/edward",
+     "size": 151
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/edward2",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/edward2",
+     "size": 152
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/f1",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/f1",
+     "size": 324
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/f2",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/f2",
+     "size": 357
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/f3",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/f3",
+     "size": 375
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/f4",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/f4",
+     "size": 350
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/f5",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/f5",
+     "size": 432
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/fast",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/fast",
+     "size": 149
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/grandma",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/grandma",
+     "size": 263
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/grandpa",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/grandpa",
+     "size": 256
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/gustave",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/gustave",
+     "size": 253
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/ian",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/ian",
+     "size": 3168
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/iven",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/iven",
+     "size": 261
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/iven2",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/iven2",
+     "size": 279
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/iven3",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/iven3",
+     "size": 262
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/iven4",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/iven4",
+     "size": 261
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/john",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/john",
+     "size": 3186
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/kaukovalta",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/kaukovalta",
+     "size": 361
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/klatt",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/klatt",
+     "size": 38
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/klatt2",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/klatt2",
+     "size": 38
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/klatt3",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/klatt3",
+     "size": 39
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/klatt4",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/klatt4",
+     "size": 39
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/klatt5",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/klatt5",
+     "size": 39
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/klatt6",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/klatt6",
+     "size": 39
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/linda",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/linda",
+     "size": 350
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/m1",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/m1",
+     "size": 335
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/m2",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/m2",
+     "size": 264
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/m3",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/m3",
+     "size": 300
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/m4",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/m4",
+     "size": 290
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/m5",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/m5",
+     "size": 262
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/m6",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/m6",
+     "size": 188
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/m7",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/m7",
+     "size": 254
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/m8",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/m8",
+     "size": 284
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/marcelo",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/marcelo",
+     "size": 251
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/max",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/max",
+     "size": 225
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/michel",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/michel",
+     "size": 404
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/miguel",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/miguel",
+     "size": 382
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/mike2",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/mike2",
+     "size": 188
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/norbert",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/norbert",
+     "size": 3189
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/pablo",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/pablo",
+     "size": 3142
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/paul",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/paul",
+     "size": 284
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/pedro",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/pedro",
+     "size": 352
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/quincy",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/quincy",
+     "size": 354
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/rob",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/rob",
+     "size": 265
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/robert",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/robert",
+     "size": 274
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/robosoft",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/robosoft",
+     "size": 451
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/robosoft2",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/robosoft2",
+     "size": 454
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/robosoft3",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/robosoft3",
+     "size": 455
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/robosoft4",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/robosoft4",
+     "size": 447
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/robosoft5",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/robosoft5",
+     "size": 445
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/robosoft6",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/robosoft6",
+     "size": 287
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/robosoft7",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/robosoft7",
+     "size": 410
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/robosoft8",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/robosoft8",
+     "size": 243
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/sandro",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/sandro",
+     "size": 530
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/shelby",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/shelby",
+     "size": 280
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/steph",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/steph",
+     "size": 364
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/steph2",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/steph2",
+     "size": 367
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/steph3",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/steph3",
+     "size": 377
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/travis",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/travis",
+     "size": 383
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/victor",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/victor",
+     "size": 253
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/whisper",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/whisper",
+     "size": 186
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/whisperf",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/whisperf",
+     "size": 392
+    },
+    {
+     "path": "espeak-ng-data/voices/!v/zac",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/voices/%21v/zac",
+     "size": 275
+    },
+    {
+     "path": "espeak-ng-data/yue_dict",
+     "url": "https://huggingface.co/csukuangfj/vits-piper-en_US-amy-medium/resolve/main/espeak-ng-data/yue_dict",
      "size": 563571
     }
    ]

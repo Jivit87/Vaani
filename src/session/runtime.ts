@@ -2,6 +2,7 @@ import { fetch as expoFetch } from 'expo/fetch';
 import { Memory } from '../agent/memory';
 import { createSummarizer } from '../agent/summarizer';
 import { createToolRunner } from '../agent/toolRunner';
+import type { Lang } from '../agent/types';
 import { config } from '../config';
 import { createLlmClient } from '../llm/client';
 import { TtsQueue } from '../pipeline/ttsQueue';
@@ -10,7 +11,6 @@ import { createPhoneticizer } from '../tts/phonetic';
 import { getPack, REQUIRED_PACKS, type PackId } from '../speech/packs';
 import { createNitroSpeech } from '../speech/nitro';
 import { modelsRoot, toNativePath } from '../speech/fsOps';
-import type { TtsEngine } from '../speech/types';
 import { createDeviceBackends } from '../tools';
 
 export const packDir = (id: PackId) => `${modelsRoot()}/${id}`;
@@ -20,9 +20,8 @@ export const requiredPacks = () => REQUIRED_PACKS.map(getPack);
 export interface Runtime {
   agent: VoiceAgent;
   memory: Memory;
-  tts: TtsEngine;
-  // say a line without the LLM (offline test)
-  speakDirect(text: string): Promise<void>;
+  // say a line with the voice for that language, without the LLM (offline test)
+  speakDirect(text: string, lang: Lang): Promise<void>;
   // listen to every accepted transcript, returns an unsubscribe function
   onHeard(cb: (text: string) => void): () => void;
   destroy(): Promise<void>;
@@ -40,18 +39,21 @@ export async function createRuntime(uiEvents: VoiceAgentEvents): Promise<Runtime
     },
   };
 
-  // one hindi voice (piper priyamvada) speaks everything. english comes out right because each sentence is first
-  // rewritten in devanagari as it sounds, see src/tts/phonetic.ts. whisper detects the language by itself.
+  // two voices, both kept loaded so switching language is instant: amy speaks english, pratham speaks hindi.
+  // a hindi sentence in latin letters is first rewritten in devanagari as it sounds, see src/tts/phonetic.ts.
+  // whisper detects the language of what you say by itself, so listening needs no switch either.
   const speech = createNitroSpeech({
     whisperDir: toNativePath(packDir('whisper-small-int8')),
     vadPath: toNativePath(`${packDir('silero-vad')}/silero_vad.onnx`),
   });
-  const tts = await speech.createTts({
-    dir: toNativePath(packDir('piper-hi-priyamvada-medium')),
-    type: 'vits',
-    speakerId: 0,
-    speed: config.ttsSpeed,
-  });
+  const voice = (pack: PackId) =>
+    speech.createTts({
+      dir: toNativePath(packDir(pack)),
+      type: 'vits',
+      speakerId: 0,
+      speed: config.ttsSpeed,
+    });
+  const voices = { en: await voice('piper-en-amy-medium'), hi: await voice('piper-hi-pratham-medium') };
   const stt = await speech.createStt();
 
   const memory = new Memory(() => new Date());
@@ -66,8 +68,7 @@ export async function createRuntime(uiEvents: VoiceAgentEvents): Promise<Runtime
 
   // the agent needs the queue and the queue calls back into the agent, so wire them lazily
   let agent: VoiceAgent;
-  // the small model also rewrites each sentence into spoken devanagari for the hindi voice
-  const queue = new TtsQueue(tts, {
+  const queue = new TtsQueue(voices, {
     onFirstAudio: (ms) => agent.onFirstAudio(ms),
     prepare: createPhoneticizer({ llm, model: config.backup }),
   });
@@ -85,7 +86,7 @@ export async function createRuntime(uiEvents: VoiceAgentEvents): Promise<Runtime
   });
 
   // warm up so the first real turn doesn't pay for model load
-  await tts.speak('.').catch(() => undefined);
+  await Promise.all([voices.en.speak('.'), voices.hi.speak('.')]).catch(() => undefined);
   // open the TLS connection to the LLM now (fire and forget) so the first turn skips the handshake
   void llm({
     model: { ...config.primary, maxTokens: 4 },
@@ -97,9 +98,8 @@ export async function createRuntime(uiEvents: VoiceAgentEvents): Promise<Runtime
   return {
     agent,
     memory,
-    tts,
-    async speakDirect(text) {
-      await tts.speak(text);
+    async speakDirect(text, lang) {
+      await voices[lang === 'hi' ? 'hi' : 'en'].speak(text);
     },
     onHeard(cb) {
       heardListeners.add(cb);
@@ -107,7 +107,7 @@ export async function createRuntime(uiEvents: VoiceAgentEvents): Promise<Runtime
     },
     async destroy() {
       await agent.stop();
-      await tts.destroy();
+      await Promise.all([voices.en.destroy(), voices.hi.destroy()]);
     },
   };
 }

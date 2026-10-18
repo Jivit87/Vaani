@@ -26,8 +26,8 @@ describe('TtsQueue', () => {
   it('speaks sentences in order, normalized, and reports first audio once per turn', async () => {
     const { tts, spoken } = fakeTts();
     const first = vi.fn();
-    const q = new TtsQueue(tts, { onFirstAudio: first });
-    q.beginTurn();
+    const q = new TtsQueue({ en: tts, hi: tts }, { onFirstAudio: first });
+    q.beginTurn('hi');
     q.say('अलार्म 7:30 बजे।');
     q.say('✅');
     q.say('डन।');
@@ -43,7 +43,7 @@ describe('TtsQueue', () => {
       throw new Error('synth failed');
     });
     const onError = vi.fn();
-    const q = new TtsQueue(tts, { onError });
+    const q = new TtsQueue({ en: tts, hi: tts }, { onError });
     q.say('पहला वाक्य यहाँ है।');
     q.say('दूसरा वाक्य यहाँ है।');
     await q.drain();
@@ -61,7 +61,7 @@ describe('TtsQueue', () => {
           releases.push(() => r({ firstChunkMs: 1, audioMs: 1 }));
         }),
     );
-    const q = new TtsQueue(tts);
+    const q = new TtsQueue({ en: tts, hi: tts });
     q.say('अभी बज रहा है।');
     q.say('अगला बन रहा है।');
     q.say('इंजन तक नहीं पहुँचा।');
@@ -87,7 +87,7 @@ describe('TtsQueue', () => {
       live--;
       return { firstChunkMs: 1, audioMs: 1 };
     });
-    const q = new TtsQueue(tts);
+    const q = new TtsQueue({ en: tts, hi: tts });
     ['पहला वाक्य यहाँ है।', 'दूसरा वाक्य यहाँ है।', 'तीसरा वाक्य यहाँ है।', 'चौथा वाक्य यहाँ है।'].forEach(
       (x) => q.say(x),
     );
@@ -105,7 +105,8 @@ describe('TtsQueue', () => {
 describe('TtsQueue with a rewrite step', () => {
   it('rewrites every sentence before speaking it', async () => {
     const { tts, spoken } = fakeTts();
-    const q = new TtsQueue(tts, { prepare: async (s) => (s === 'Hello.' ? 'हेलो।' : s) });
+    const q = new TtsQueue({ en: tts, hi: tts }, { prepare: async (s) => (s === 'Hello.' ? 'हेलो।' : s) });
+    q.beginTurn('hi');
     q.say('Hello.');
     q.say('नमस्ते।');
     await q.drain();
@@ -115,9 +116,12 @@ describe('TtsQueue with a rewrite step', () => {
   it('keeps sentences in order even when a later rewrite finishes first', async () => {
     const { tts, spoken } = fakeTts();
     const delays: Record<string, number> = { 'एक।': 30, 'दो।': 1, 'तीन।': 10 };
-    const q = new TtsQueue(tts, {
-      prepare: (s) => new Promise((r) => setTimeout(() => r(s), delays[s])),
-    });
+    const q = new TtsQueue(
+      { en: tts, hi: tts },
+      {
+        prepare: (s) => new Promise((r) => setTimeout(() => r(s), delays[s])),
+      },
+    );
     ['एक।', 'दो।', 'तीन।'].forEach((x) => q.say(x));
     await q.drain();
     expect(spoken).toEqual(['एक।', 'दो।', 'तीन।']);
@@ -125,11 +129,14 @@ describe('TtsQueue with a rewrite step', () => {
 
   it('falls back to the original sentence when the rewrite throws', async () => {
     const { tts, spoken } = fakeTts();
-    const q = new TtsQueue(tts, {
-      prepare: async () => {
-        throw new Error('down');
+    const q = new TtsQueue(
+      { en: tts, hi: tts },
+      {
+        prepare: async () => {
+          throw new Error('down');
+        },
       },
-    });
+    );
     q.say('नमस्ते दोस्त।');
     await q.drain();
     expect(spoken).toEqual(['नमस्ते दोस्त।']);
@@ -138,13 +145,97 @@ describe('TtsQueue with a rewrite step', () => {
   it('drops a sentence whose rewrite was still running when the turn was cancelled', async () => {
     const { tts, spoken } = fakeTts();
     let release!: (s: string) => void;
-    const q = new TtsQueue(tts, { prepare: () => new Promise<string>((r) => (release = r)) });
+    const q = new TtsQueue(
+      { en: tts, hi: tts },
+      { prepare: () => new Promise<string>((r) => (release = r)) },
+    );
+    q.beginTurn('hi');
     q.say('Slow one.');
     await new Promise((r) => setTimeout(r, 0));
     await q.cancel();
     release('धीमा।');
     await q.drain();
     expect(spoken).toEqual([]);
+  });
+});
+
+describe('TtsQueue voices', () => {
+  const twoVoices = () => {
+    const en = fakeTts();
+    const hi = fakeTts();
+    return { en, hi, voices: { en: en.tts, hi: hi.tts } };
+  };
+
+  it('speaks an english reply with the english voice and a hinglish reply with the hindi voice', async () => {
+    const v = twoVoices();
+    const q = new TtsQueue(v.voices, { prepare: async (s) => (s === 'Okay.' ? 'ओके।' : s) });
+    q.beginTurn('en');
+    q.say('Tomorrow will be sunny.');
+    await q.drain();
+    q.beginTurn('hi');
+    q.say('Okay.');
+    q.say('आज मौसम साफ़ है।');
+    await q.drain();
+    expect(v.en.spoken).toEqual(['Tomorrow will be sunny.']);
+    expect(v.hi.spoken).toEqual(['ओके।', 'आज मौसम साफ़ है।']);
+  });
+
+  it('gives a devanagari sentence in an english reply (a translation) to the hindi voice', async () => {
+    const v = twoVoices();
+    const q = new TtsQueue(v.voices);
+    q.beginTurn('en');
+    q.say('Good morning in Hindi is');
+    q.say('सुप्रभात।');
+    await q.drain();
+    expect(v.en.spoken).toEqual(['Good morning in Hindi is']);
+    expect(v.hi.spoken).toEqual(['सुप्रभात।']);
+  });
+
+  it('does not send english text through the hindi rewrite, and says numbers in english', async () => {
+    const v = twoVoices();
+    const prepare = vi.fn(async (s: string) => s);
+    const q = new TtsQueue(v.voices, { prepare });
+    q.beginTurn('en');
+    q.say('Your alarm is set for 7:30 AM.');
+    await q.drain();
+    expect(prepare).not.toHaveBeenCalled();
+    expect(v.en.spoken).toEqual(['Your alarm is set for seven thirty AM.']);
+  });
+
+  it('waits for the first voice to finish before the second one starts', async () => {
+    vi.useFakeTimers();
+    const v = twoVoices();
+    (v.en.tts.speak as any).mockImplementation(async (t: string) => {
+      v.en.spoken.push(t);
+      return { firstChunkMs: 5, audioMs: 3000 };
+    });
+    const startedAt: number[] = [];
+    (v.hi.tts.speak as any).mockImplementation(async (t: string) => {
+      v.hi.spoken.push(t);
+      startedAt.push(Date.now());
+      return { firstChunkMs: 5, audioMs: 1000 };
+    });
+    const q = new TtsQueue(v.voices);
+    const t0 = Date.now();
+    q.beginTurn('en');
+    q.say('First part in English.');
+    q.say('फिर हिंदी।');
+    const done = q.drain();
+    await vi.advanceTimersByTimeAsync(100);
+    expect(v.hi.spoken).toEqual([]); // still waiting for the english voice's last second
+    await vi.advanceTimersByTimeAsync(1400);
+    await done;
+    expect(v.hi.spoken).toEqual(['फिर हिंदी।']);
+    expect(startedAt[0] - t0).toBeGreaterThanOrEqual(1350);
+    vi.useRealTimers();
+  });
+
+  it('stops both voices on cancel', async () => {
+    const v = twoVoices();
+    const q = new TtsQueue(v.voices);
+    await q.cancel();
+    expect(v.en.tts.stop).toHaveBeenCalled();
+    expect(v.hi.tts.stop).toHaveBeenCalled();
   });
 });
 
@@ -206,7 +297,7 @@ describe('TtsQueue.playbackDone', () => {
       stop: vi.fn(async () => {}),
       destroy: vi.fn(async () => {}),
     };
-    const q = new TtsQueue(tts);
+    const q = new TtsQueue({ en: tts, hi: tts });
     q.say('A long sentence that plays for several seconds.');
     let done = false;
     void q.playbackDone().then(() => (done = true));
@@ -271,7 +362,7 @@ describe('VoiceAgent', () => {
     };
     const memory = new Memory();
     let agent!: VoiceAgent;
-    const queue = new TtsQueue(tts, { onFirstAudio: (ms) => agent.onFirstAudio(ms) });
+    const queue = new TtsQueue({ en: tts, hi: tts }, { onFirstAudio: (ms) => agent.onFirstAudio(ms) });
     agent = new VoiceAgent({
       stt,
       queue,
