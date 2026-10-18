@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [main, Jivit]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm run format:check
+      - run: npm test
+      # Proves the whole app graph resolves and compiles to Hermes bytecode (no Android SDK needed).
+      - run: npx expo export --platform android --output-dir dist
+        env:
+          EXPO_PUBLIC_NVIDIA_API_KEY: ci-placeholder
+      # Proves the native project generates with the expected permissions and minSdk.
+      - run: |
+          npx expo prebuild --platform android --no-install
+          grep -q 'com.android.alarm.permission.SET_ALARM' android/app/src/main/AndroidManifest.xml
+          grep -q 'android.permission.RECORD_AUDIO' android/app/src/main/AndroidManifest.xml
+          grep -q 'android.minSdkVersion=29' android/gradle.properties
