@@ -1,4 +1,5 @@
 import type { WeatherReport } from '../agent/toolRunner';
+import { knownCity } from './cities';
 
 const GEO = 'https://geocoding-api.open-meteo.com/v1/search';
 const FORECAST = 'https://api.open-meteo.com/v1/forecast';
@@ -62,6 +63,8 @@ async function getJson(fetchFn: typeof fetch, url: string, signal?: AbortSignal)
 }
 
 async function locate(fetchFn: typeof fetch, city: string, signal?: AbortSignal): Promise<Place> {
+  const known = knownCity(city); // no network call for the common cities
+  if (known) return known;
   const hit = places.get(keyOf(city));
   if (hit) return hit;
   const geo = await getJson(fetchFn, `${GEO}?name=${encodeURIComponent(city)}&count=1&language=en`, signal);

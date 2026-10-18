@@ -12,7 +12,7 @@ describe('fetchWeather', () => {
     const fake = (async (url: string) => {
       urls.push(url);
       if (url.includes('geocoding'))
-        return json({ results: [{ name: 'Bengaluru', latitude: 12.97, longitude: 77.59 }] });
+        return json({ results: [{ name: 'Gorakhpur', latitude: 26.76, longitude: 83.37 }] });
       return json({
         daily: {
           time: ['2026-10-17'],
@@ -24,16 +24,16 @@ describe('fetchWeather', () => {
       });
     }) as unknown as typeof fetch;
 
-    const r = await fetchWeather(fake, 'Bangalore', '2026-10-17');
+    const r = await fetchWeather(fake, 'Gorakhpur', '2026-10-17');
     expect(r).toEqual({
-      city: 'Bengaluru',
+      city: 'Gorakhpur',
       date: '2026-10-17',
       max_c: 29,
       min_c: 19,
       rain_pct: 62,
       summary: 'rain',
     });
-    expect(urls[0]).toContain('name=Bangalore');
+    expect(urls[0]).toContain('name=Gorakhpur');
     expect(urls[1]).toContain('start_date=2026-10-17');
     expect(urls[1]).toContain('timezone=Asia%2FKolkata');
   });
@@ -78,7 +78,7 @@ describe('fetchWeather caching and retry', () => {
     const fake = (async (url: string) => {
       if (url.includes('geocoding')) {
         calls.geo++;
-        return json({ results: [{ name: 'Pune', latitude: 18.5, longitude: 73.8 }] });
+        return json({ results: [{ name: 'Gorakhpur', latitude: 26.76, longitude: 83.37 }] });
       }
       calls.forecast++;
       return forecast(30 + calls.forecast);
@@ -90,8 +90,8 @@ describe('fetchWeather caching and retry', () => {
 
   it('geocodes a city once and reuses it for other dates ("aur parso?")', async () => {
     const { calls, fake } = counting();
-    await fetchWeather(fake, 'Pune', '2026-10-17');
-    await fetchWeather(fake, ' pune ', '2026-10-18');
+    await fetchWeather(fake, 'Gorakhpur', '2026-10-17');
+    await fetchWeather(fake, ' gorakhpur ', '2026-10-18');
     expect(calls).toEqual({ geo: 1, forecast: 2 });
   });
 
@@ -141,5 +141,52 @@ describe('fetchWeather caching and retry', () => {
     expect((await p).message).toBe('weather_http_503');
     expect(hits).toBe(2);
     vi.useRealTimers();
+  });
+});
+
+describe('built-in cities', () => {
+  beforeEach(() => clearWeatherCaches());
+
+  it('skips the geocoding call for a common city, whatever the spelling', async () => {
+    const urls: string[] = [];
+    const fake = (async (url: string) => {
+      urls.push(url);
+      return json({
+        daily: {
+          time: ['d'],
+          temperature_2m_max: [30],
+          temperature_2m_min: [21],
+          precipitation_probability_max: [10],
+          weather_code: [0],
+        },
+      });
+    }) as unknown as typeof fetch;
+    for (const name of ['Bengaluru', ' bangalore ', 'Bombay']) await fetchWeather(fake, name, '2026-10-17');
+    expect(urls.every((u) => u.includes('api.open-meteo.com/v1/forecast'))).toBe(true);
+    expect(urls).toHaveLength(3);
+    expect(urls[0]).toContain('latitude=12.9716');
+    expect(urls[2]).toContain('latitude=19.076');
+  });
+
+  it('reports the canonical city name', async () => {
+    const fake = (async () =>
+      json({
+        daily: { time: ['d'], temperature_2m_max: [30], temperature_2m_min: [21], weather_code: [0] },
+      })) as unknown as typeof fetch;
+    expect((await fetchWeather(fake, 'bengaluru', '2026-10-17')).city).toBe('Bangalore');
+  });
+
+  it('still geocodes a city that is not in the list', async () => {
+    const urls: string[] = [];
+    const fake = (async (url: string) => {
+      urls.push(url);
+      return url.includes('geocoding')
+        ? json({ results: [{ name: 'Tiny Town', latitude: 1, longitude: 2 }] })
+        : json({
+            daily: { time: ['d'], temperature_2m_max: [30], temperature_2m_min: [21], weather_code: [0] },
+          });
+    }) as unknown as typeof fetch;
+    await fetchWeather(fake, 'Tiny Town', '2026-10-17');
+    expect(urls.some((u) => u.includes('geocoding'))).toBe(true);
   });
 });
